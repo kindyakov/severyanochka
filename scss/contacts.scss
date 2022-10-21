@@ -1,0 +1,95 @@
+.contacts {
+  margin-top: 40px;
+
+  &__telefons {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 80px;
+    padding-left: 29px;
+    row-gap: 18px;
+  }
+
+  &__telefons-block {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+  }
+
+  &__telefons-name {
+    font-size: 24px;
+    position: relative;
+
+    &::before {
+      position: absolute;
+      right: calc(100% + 5px);
+      top: 0;
+    }
+  }
+
+  &__telefons-tel {
+    font-size: 24px;
+    font-weight: bold;
+    transition: 0.2s linear;
+    text-decoration: underline;
+
+    &:hover {
+      color: #FF6633;
+    }
+  }
+}
+
+.shops {
+  margin-top: 120px;
+
+  &__title {
+    font-weight: bold;
+    font-size: 36px;
+    margin-bottom: 40px;
+  }
+
+  &__adress {
+    margin: 30px 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 80px;
+    row-gap: 18px;
+  }
+
+  &__adress-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 10px;
+  }
+
+  &__adress-img {
+    max-width: 100%;
+    object-fit: cover;
+  }
+
+  &__adress-name {
+    font-size: 18px;
+
+    &::before {
+      margin-right: 10px;
+    }
+  }
+
+  &__wrapper-tel {
+    &::before {
+      margin-right: 10px;
+    }
+  }
+
+  &__tel {
+    font-size: 18px;
+    text-decoration: underline;
+    transition: 0.2s linear;
+
+    &:hover {
+      color: #FF6633;
+    }
+  }
+}

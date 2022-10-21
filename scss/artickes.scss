@@ -1,0 +1,42 @@
+.article {
+
+  &__nav {
+    margin-top: 60px;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    column-gap: 40px;
+    flex-wrap: wrap;
+    row-gap: 15px;
+  }
+
+  &__item-data {
+    font-size: 18px;
+    background-color: #FCD5BA;
+    color: #FF6633;
+    padding: 8px 14px;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 2px solid transparent;
+    transition: border 0.2s linear;
+
+    &:hover {
+      border: 2px solid #FF6633;
+    }
+
+    &.active {
+      background-color: #FF6633;
+      color: #FCD5BA;
+    }
+  }
+}
+
+.article-block {
+  display: none;
+
+  &.active {
+    display: flex;
+  }
+}

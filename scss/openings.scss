@@ -1,0 +1,71 @@
+.openings {
+  margin-top: 60px;
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+
+  &__card {
+    background-color: #fff;
+    padding: 32px;
+    border-radius: 4px;
+    box-shadow: 1px 2px 0 0 rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 16px;
+    max-width: 370px;
+  }
+
+  // &__card-wrapper-title {}
+
+  &__card-title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  &__card-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 8px;
+  }
+
+  &__card-subtitle {
+    font-size: 18px;
+  }
+
+  &__card-text {
+    font-size: 18px;
+    font-style: italic;
+  }
+
+  &__card-wrapper-tel {
+    display: flex;
+    align-items: flex-end;
+
+    &:hover {
+      .openings__card-tel {
+        color: #FF6633;
+      }
+
+      .openings__card-icon {
+        color: #FF6633;
+      }
+    }
+  }
+
+  &__card-icon {
+    font-size: 26px;
+    margin-right: 13px;
+    transition: color 0.1s linear;
+  }
+
+  &__card-tel {
+    font-size: 18px;
+    text-decoration: underline;
+    transition: color 0.1s linear;
+  }
+}
