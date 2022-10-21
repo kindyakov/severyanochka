@@ -1061,7 +1061,7 @@ body.lock {
 
 .btn-up {
   position: fixed;
-  bottom: 50px;
+  bottom: 65px;
   right: -70px;
   width: 40px;
   height: 40px;
@@ -1777,9 +1777,14 @@ body.lock {
 }
 .basket__card-wrapper-img {
   height: 100%;
+  padding: 2px 0;
+  margin-left: 2px;
+  box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
 }
 .basket__card-img {
-  max-width: 100%;
+  max-width: 88px;
   -o-object-fit: cover;
   object-fit: cover;
 }
@@ -1838,6 +1843,7 @@ body.lock {
   justify-content: space-between;
   -moz-column-gap: 24px;
        column-gap: 24px;
+  width: 180px;
 }
 .basket__card-counter {
   display: flex;
@@ -1872,11 +1878,13 @@ body.lock {
 .basket__card-counter-price-sum {
   font-size: 18px;
   font-weight: bold;
+  white-space: nowrap;
 }
 .basket__card-counter-price-old {
   color: #8F8F8F;
   font-size: 16px;
   text-decoration: line-through;
+  white-space: nowrap;
 }
 .basket__aside {
   flex: 0 1 23.24%;
@@ -2905,7 +2913,7 @@ body.lock {
     top: 0;
     height: 100%;
     background-color: #fff;
-    z-index: 20;
+    z-index: 25;
     max-width: 360px;
     padding: 20px;
     transition: transform 0.3s;

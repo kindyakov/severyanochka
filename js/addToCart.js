@@ -1,5 +1,11 @@
 const body = document.body;
 let cardObject;
+let cardArray = [];
+
+// Проверяю чтоб не было null
+if (JSON.parse(localStorage.getItem('productsBasket')) !== null) {
+  cardArray = JSON.parse(localStorage.getItem('productsBasket'));
+}
 
 body.addEventListener('click', function (e) {
   const target = e.target;
@@ -7,10 +13,8 @@ body.addEventListener('click', function (e) {
     id: ``,
     name: ``,
     price: ``,
-    price_card: ``,
     img: ``,
     rating: ``,
-    discount: ``
   };
 
   if (target.classList.contains('card-button')) {
@@ -27,7 +31,7 @@ body.addEventListener('click', function (e) {
     // Цена товара без карты 
     const price_card = card.querySelector('.card-price__ordinary');
     // Картинка карточки
-    const imgSrc = card.querySelector('.card-img').getAttribute('src');
+    const imgSrc = card.querySelector('.card-img').dataset.img;
     // Рейтинг 
     const rating = card.querySelector('.card-rating__items').dataset.rating;
     // Скидка 
@@ -44,6 +48,8 @@ body.addEventListener('click', function (e) {
     if (discount) {
       cardObject.discount = `${discount.textContent}`;
     }
-    console.log(cardObject);
+    cardArray.push(cardObject)
+    console.log(cardArray);
+    localStorage.setItem('productsBasket', JSON.stringify(cardArray));
   }
 })

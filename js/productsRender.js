@@ -20,12 +20,12 @@ if (products_container) {
 
     productsArray.forEach(card => {
       if (inter < cards) {
-        if (card.discount) {
+        if (card.discount || card.price_card) {
           const productHTML = `
           <div class="wrapper-card" id="${card.id}">
                   <div class="card">
                     <a href="" class="card-wrapper-img">
-                      <img src="${card.img}" alt="Блинчики" class="card-img"></img>
+                      <img src="../img/img-card/${card.img}" alt="Блинчики" class="card-img" data-img="${card.img}"></img>
                       <span class="card-discount">-${card.discount}%</span>
                     </a>
                     <div class="card-content">
@@ -70,7 +70,7 @@ if (products_container) {
           <div class="wrapper-card" id="${card.id}">
                               <div class="card">
                                 <a href="" class="card-wrapper-img">
-                                  <img src="${card.img}" alt="Блинчики" class="card-img"></img>
+                                  <img src="../img/img-card/${card.img}" alt="Блинчики" class="card-img" data-img="${card.img}"></img>
                                 </a>
                                 <div class="card-content">
                                   <div class="card-wrapper-price">
@@ -138,12 +138,12 @@ if (products_container) {
         cards += cardsVisible;
         // Вывод карточек
         visibleCard.forEach(card => {
-          if (card.discount) {
+          if (card.discount || card.price_card) {
             const productHTML = `
           <div class="wrapper-card" id="${card.id}">
                   <div class="card">
                     <a href="" class="card-wrapper-img">
-                      <img src="${card.img}" alt="Блинчики" class="card-img"></img>
+                      <img src="../img/img-card/${card.img}" alt="Блинчики" class="card-img" data-img="${card.img}"></img>
                       <span class="card-discount">-${card.discount}%</span>
                     </a>
                     <div class="card-content">
@@ -188,7 +188,7 @@ if (products_container) {
           <div class="wrapper-card" id="${card.id}">
                               <div class="card">
                                 <a href="" class="card-wrapper-img">
-                                  <img src="${card.img}" alt="Блинчики" class="card-img"></img>
+                                  <img src="../img/img-card/${card.img}" alt="Блинчики" class="card-img" data-img="${card.img}"></img>
                                 </a>
                                 <div class="card-content">
                                   <div class="card-wrapper-price">
