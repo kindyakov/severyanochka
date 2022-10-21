@@ -55,21 +55,12 @@ window.addEventListener('load', function () {
       cardArray.push(cardObject)
       localStorage.setItem('productsBasket', JSON.stringify(cardArray));
 
-    }
-
-    if (target.classList.contains('card-button')) {
-      // Обертка карточки
-      const card = target.closest('.wrapper-card');
-      // ID карточки
-      const cardID = card.getAttribute('id');
-
       disableCardArray.push(cardID);
       localStorage.setItem('disebleCards', JSON.stringify(disableCardArray));
 
       if (disableCardArray.length > 0) {
         addDisableCardBtn();
       }
-
     }
   })
   addDisableCardBtn();

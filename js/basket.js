@@ -147,8 +147,8 @@ basket.addEventListener('click', function (e) {
 
       wrapperCard.remove();
     })
-    // const infoBlock = document.querySelector(`[data-card-id="${wrapperCardId}"]`);
-    function a() {
+    // Нахожу карточки с checked = false;
+    function falseWrapperCard() {
       let arr = [];
       cardsCheckInputArr_false.forEach(check => {
         // Карточка
@@ -157,7 +157,7 @@ basket.addEventListener('click', function (e) {
       })
       return arr;
     }
-    calcSumPrice(a());
+    calcSumPrice(falseWrapperCard());
   }
   // Выделить всё
   if (e.target.classList.contains('basket__settings-check') || e.target.closest('.basket__settings-allot')) {
@@ -247,7 +247,7 @@ basket.addEventListener('click', function (e) {
     }
   }
 })
-// Получаю числовое значени из строки 
+// Получаю числовое значение из строки 
 const priceWithoutSpaces = (str) => {
   return str.replace(/[^\d.-]/g, '');
 }
