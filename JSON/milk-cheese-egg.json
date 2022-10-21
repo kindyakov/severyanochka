@@ -30,7 +30,8 @@
     "price": "77.99",
     "price_card": "68.50",
     "img": "йогурт2.jpg",
-    "rating": 3.7
+    "rating": 3.7,
+    "discount": 25
   },
   {
     "id": "005",

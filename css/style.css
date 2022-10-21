@@ -1841,8 +1841,8 @@ body.lock {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  -moz-column-gap: 24px;
-       column-gap: 24px;
+  -moz-column-gap: 5px;
+       column-gap: 5px;
   width: 180px;
 }
 .basket__card-counter {

@@ -110,9 +110,6 @@ if (product.length > 0) {
     }
   })
 }
-let a = 3 * 77.99;
-console.log(a.toFixed(2));
-
 
 // Значение счетчика
 let counterScore = 1;
@@ -219,9 +216,18 @@ const priceWithoutSpaces = (str) => {
 basket__form.addEventListener('click', function (e) {
 })
 
-basket.querySelectorAll('.basket__wrapper-cards').forEach(function (card) {
-  boxInfoOrder.insertAdjacentHTML('beforeend', `<div class="basket__aside-info-block" data-card-id="${card.getAttribute('id')}">
+const cardsWrapper = basket.querySelectorAll('.basket__wrapper-cards');
+// Сумма товаров
+let sumProductsPrice = 0;
+
+for (let i = 0; i < cardsWrapper.length; i++) {
+  // Цена каждого товара
+  const currentPrice = cardsWrapper[i].querySelector('.basket__card-price').textContent;
+  +
+    boxInfoOrder.insertAdjacentHTML('beforeend', `<div class="basket__aside-info-block" data-card-id="${cardsWrapper[i].getAttribute('id')}">
   <p class="basket__aside-info-text">${counterScore} товар</p>
-  <span class="basket__aside-info-price">${counterScorePriceSum.toFixed(2)} ₽</span>
+  <span class="basket__aside-info-price">${currentPrice}</span>
 </div>`);
-});
+  sumProductsPrice += Number(priceWithoutSpaces(currentPrice))
+}
+priceResult.textContent = sumProductsPrice.toFixed(2) + ' ₽';
