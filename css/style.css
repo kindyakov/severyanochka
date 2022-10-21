@@ -1061,18 +1061,17 @@ body.lock {
 
 .btn-up {
   position: fixed;
-  bottom: 90px;
-  right: 30px;
-  width: 50px;
-  height: 50px;
+  bottom: 50px;
+  right: -70px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background-color: #FF6633;
   color: #fff;
-  font-size: 36px;
+  font-size: 26px;
   text-align: center;
   cursor: pointer;
-  transform: scale(0);
-  transition: transform 0.2s;
+  transition: 0.2s;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -1080,7 +1079,7 @@ body.lock {
   z-index: 10;
 }
 .btn-up.visible {
-  transform: scale(1);
+  right: 20px;
 }
 
 .main-body {
