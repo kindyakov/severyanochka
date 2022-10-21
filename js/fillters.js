@@ -162,6 +162,8 @@ window.addEventListener('load', function () {
     let viewport_width = Math.max(document.documentElement.clientWidth, window.innerWidth);
     if (viewport_width <= 768) {
       filters.classList.add('dev');
+
+      catalogWrapper.classList.add('add-margin');
     }
     window.addEventListener('resize', function () {
       viewport_width = Math.max(document.documentElement.clientWidth, window.innerWidth);
