@@ -12,10 +12,14 @@ const boxInfoOrder = document.querySelector('.basket__aside-info');
 const priceResult = document.querySelector('.basket__aside-info-price-result');
 // Продукт из localSorange
 let product = [];
-
+// Колличество товаров
+const productQuantity = document.querySelector('.main-title-quantity');
 // Проверяю чтоб не было null
 if (JSON.parse(localStorage.getItem('productsBasket')) !== null) {
   product = JSON.parse(localStorage.getItem('productsBasket'));
+  productQuantity.textContent = product.length;
+} else {
+  productQuantity.textContent = '0';
 }
 
 if (product.length > 0) {
@@ -119,6 +123,42 @@ let priceResultSum = 0;
 
 basket.addEventListener('click', function (e) {
   const cardsCheckImput = basket.querySelectorAll('.basket-card-check');
+
+  // Удалить выбранные
+  if (e.target.classList.contains('basket__settings-button')) {
+    // Все инпуты с checked = true;
+    let cardsCheckInputArr_true = [];
+    // Все инпуты с checked = false;
+    let cardsCheckInputArr_false = [];
+
+    cardsCheckImput.forEach(check => {
+      if (check.checked == true) {
+        cardsCheckInputArr_true.push(check);
+      } else {
+        cardsCheckInputArr_false.push(check);
+      }
+    })
+
+    cardsCheckInputArr_true.forEach(check => {
+      // Карточка
+      const wrapperCard = check.closest('.basket__wrapper-cards');
+      // ID карточки
+      const wrapperCardId = wrapperCard.getAttribute('id');
+
+      wrapperCard.remove();
+    })
+    // const infoBlock = document.querySelector(`[data-card-id="${wrapperCardId}"]`);
+    function a() {
+      let arr = [];
+      cardsCheckInputArr_false.forEach(check => {
+        // Карточка
+        const wrapperCard = check.closest('.basket__wrapper-cards');
+        arr.push(wrapperCard);
+      })
+      return arr;
+    }
+    calcSumPrice(a());
+  }
   // Выделить всё
   if (e.target.classList.contains('basket__settings-check') || e.target.closest('.basket__settings-allot')) {
     if (checkAll.checked == true) {
@@ -212,22 +252,25 @@ const priceWithoutSpaces = (str) => {
   return str.replace(/[^\d.-]/g, '');
 }
 
-// Форма оформления заказы
-basket__form.addEventListener('click', function (e) {
-})
-
+// // Форма оформления заказы
+// basket__form.addEventListener('click', function (e) {
+// })
 const cardsWrapper = basket.querySelectorAll('.basket__wrapper-cards');
-// Сумма товаров
-let sumProductsPrice = 0;
+function calcSumPrice(elem) {
+  boxInfoOrder.innerHTML = '';
+  // Сумма товаров
+  let sumProductsPrice = 0;
 
-for (let i = 0; i < cardsWrapper.length; i++) {
-  // Цена каждого товара
-  const currentPrice = cardsWrapper[i].querySelector('.basket__card-price').textContent;
-  +
-    boxInfoOrder.insertAdjacentHTML('beforeend', `<div class="basket__aside-info-block" data-card-id="${cardsWrapper[i].getAttribute('id')}">
+  for (let i = 0; i < elem.length; i++) {
+    // Цена каждого товара
+    const currentPrice = elem[i].querySelector('.basket__card-price').textContent;
+
+    boxInfoOrder.innerHTML += `<div class="basket__aside-info-block" data-card-id="${cardsWrapper[i].getAttribute('id')}">
   <p class="basket__aside-info-text">${counterScore} товар</p>
   <span class="basket__aside-info-price">${currentPrice}</span>
-</div>`);
-  sumProductsPrice += Number(priceWithoutSpaces(currentPrice))
+  </div>`;
+    sumProductsPrice += Number(priceWithoutSpaces(currentPrice))
+  }
+  priceResult.textContent = sumProductsPrice.toFixed(2) + ' ₽';
 }
-priceResult.textContent = sumProductsPrice.toFixed(2) + ' ₽';
+calcSumPrice(cardsWrapper);

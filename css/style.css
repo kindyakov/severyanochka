@@ -782,6 +782,12 @@ body.lock {
   background-color: #FF6633;
   color: #fff;
 }
+.card-button.disable {
+  color: #fff;
+  background-color: #606060;
+  opacity: 0.4;
+  border: 1px solid #606060;
+}
 
 .card-like {
   position: absolute;
