@@ -147,11 +147,11 @@ body {
   font-weight: normal;
   color: #414141;
   font-size: 16px;
+  touch-action: none;
+  -ms-touch-action: none;
 }
 body.lock {
   overflow-y: hidden;
-  touch-action: none;
-  -ms-touch-action: none;
 }
 
 .wrapper {
