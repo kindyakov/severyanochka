@@ -150,6 +150,8 @@ body {
 }
 body.lock {
   overflow-y: hidden;
+  touch-action: none;
+  -ms-touch-action: none;
 }
 
 .wrapper {
