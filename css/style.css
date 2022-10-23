@@ -422,6 +422,7 @@ body.lock {
   opacity: 0;
   visibility: hidden;
   transition: 0.4s;
+  overflow: auto;
 }
 .modal-login.active {
   opacity: 1;
@@ -433,7 +434,6 @@ body.lock {
   align-items: center;
   justify-content: center;
   padding: 10px;
-  overflow: auto;
 }
 .modal-login__content {
   background-color: #fff;
