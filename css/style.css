@@ -138,6 +138,10 @@ body {
   padding: 0;
 }
 
+html.lock {
+  overflow-y: hidden;
+}
+
 [class*=copyrights-pane] {
   display: none !important;
 }
