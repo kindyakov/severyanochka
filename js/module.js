@@ -18,6 +18,5 @@ window.addEventListener('load', function () {
       basketQuantity.textContent = cardArray.length;
     }
   })
-
 })
 

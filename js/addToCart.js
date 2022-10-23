@@ -63,7 +63,7 @@ window.addEventListener('load', function () {
       }
     }
   })
-  addDisableCardBtn();
+  setTimeout(addDisableCardBtn, 0)
 })
 
 function addDisableCardBtn() {

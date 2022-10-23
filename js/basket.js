@@ -244,6 +244,18 @@ basket.addEventListener('click', function (e) {
 
       priceResultSum = ResultPriceProductSum;
       priceResult.textContent = priceResultSum.toFixed(2) + ' ₽';
+
+      if (priceResultSum < 1000) {
+        let minSum = document.querySelector('.basket__aside-minsum');
+        if (!minSum) {
+          document.querySelector('.basket__aside-footer').insertAdjacentHTML('afterbegin', `<div class="basket__aside-minsum">Минимальная сумма заказа 1000р</div>`);
+        }
+      } else {
+        let minSum = document.querySelector('.basket__aside-minsum');
+        if (minSum) {
+          minSum.remove();
+        }
+      }
     }
   }
 })
@@ -262,15 +274,24 @@ function calcSumPrice(elem) {
   let sumProductsPrice = 0;
 
   for (let i = 0; i < elem.length; i++) {
+    // ID товара
+    const elemId = elem[i].getAttribute('id');
     // Цена каждого товара
-    const currentPrice = elem[i].querySelector('.basket__card-price').textContent;
-
-    boxInfoOrder.innerHTML += `<div class="basket__aside-info-block" data-card-id="${cardsWrapper[i].getAttribute('id')}">
-  <p class="basket__aside-info-text">${counterScore} товар</p>
+    const currentPrice = elem[i].querySelector('.basket__card-counter-price-sum').textContent;
+    // Количество товара
+    const currentScore = elem[i].querySelector('.basket__card-counter-input').textContent;
+    boxInfoOrder.innerHTML += `<div class="basket__aside-info-block" data-card-id="${elemId}">
+  <p class="basket__aside-info-text">${currentScore} товар</p>
   <span class="basket__aside-info-price">${currentPrice}</span>
   </div>`;
     sumProductsPrice += Number(priceWithoutSpaces(currentPrice))
   }
   priceResult.textContent = sumProductsPrice.toFixed(2) + ' ₽';
+  if (sumProductsPrice < 1000) {
+    let minSum = document.querySelector('.basket__aside-minsum');
+    if (!minSum) {
+      document.querySelector('.basket__aside-footer').insertAdjacentHTML('afterbegin', `<div class="basket__aside-minsum">Минимальная сумма заказа 1000р</div>`);
+    }
+  }
 }
 calcSumPrice(cardsWrapper);
