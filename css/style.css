@@ -139,7 +139,9 @@ body {
 }
 
 html.lock {
-  overflow-y: hidden;
+  overflow: hidden;
+  position: relative;
+  height: 100%;
 }
 
 [class*=copyrights-pane] {
@@ -155,8 +157,9 @@ body {
   -ms-touch-action: none;
 }
 body.lock {
-  overflow-y: hidden;
-  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  height: 100%;
 }
 
 .wrapper {

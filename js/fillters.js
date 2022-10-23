@@ -1,6 +1,8 @@
 window.addEventListener('load', function () {
-  const body = document.querySelector('html');
-  body.classList.remove('lock')
+  const html = document.querySelector('html');
+  const body = document.querySelector('body');
+  html.classList.remove('lock');
+  body.classList.remove('lock');
   //
   const randeSlider = document.querySelector('.filters_box-paramets__sliders');
   const filtersProducts = document.querySelectorAll('.filters-products__name');
@@ -113,11 +115,13 @@ window.addEventListener('load', function () {
       }
       if (e.target.classList.contains('filter-adaptive-active')) {
         filters.classList.add('active');
-        body.classList.add('lock')
+        body.classList.add('lock');
+        html.classList.add('lock');
       }
     })
     document.querySelector('.filtres-close').addEventListener('click', function () {
       filters.classList.remove('active');
+      html.classList.remove('lock');
       body.classList.remove('lock')
     })
     quickFilters.forEach(el => {
