@@ -1,5 +1,5 @@
 window.addEventListener('load', function () {
-  const body = document.querySelector('.body');
+  const body = document.querySelector('html');
   body.classList.remove('lock')
   //
   const randeSlider = document.querySelector('.filters_box-paramets__sliders');
@@ -13,7 +13,6 @@ window.addEventListener('load', function () {
   const catalogContent = document.querySelector('.catalog-products__content'),
     catalogWrapper = document.querySelector('.catalog-products__wrapper');
   let min_maxPriceArr = [];
-
   let rangeSettings = {
     start: [0, 999],
     connect: true,
