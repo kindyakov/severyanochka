@@ -615,10 +615,10 @@ body.lock {
   white-space: nowrap;
 }
 .main-promo__all-link::before {
-  font-size: 8px;
+  font-size: 12px;
   transform: rotate(-90deg);
   right: 0;
-  top: 6px;
+  top: 4px;
   position: absolute;
   transition: right 0.2s;
 }
@@ -1726,6 +1726,36 @@ body.lock {
   display: flex;
   flex-direction: column;
   row-gap: 30px;
+  transition: 0.3s;
+}
+.basket__wrapper-empty {
+  min-width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+}
+.basket__empty {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  align-items: center;
+}
+.basket__empty-text {
+  text-align: center;
+  color: #8F8F8F;
+  font-size: 32px;
+}
+.basket__empty-link {
+  transition: color 0.1s linear;
+  text-align: center;
+}
+.basket__empty-link:hover {
+  color: #FF6633;
+}
+.basket__wrapper-cards {
+  transition: 0.9s;
 }
 .basket__card {
   position: relative;
@@ -1862,7 +1892,6 @@ body.lock {
   justify-content: space-between;
   -moz-column-gap: 5px;
        column-gap: 5px;
-  max-width: 190px;
   min-width: 190px;
 }
 .basket__card-counter {
@@ -2720,7 +2749,8 @@ body.lock {
     font-size: calc(12px + 4 * (100vw - 360px) / 840);
   }
   .main-promo__all-link::before {
-    font-size: calc(4px + 4 * (100vw - 360px) / 840);
+    font-size: calc(10px + 2 * (100vw - 360px) / 840);
+    top: calc(2px + 2 * (100vw - 360px) / 840);
   }
   .card-price-text .card-price {
     font-size: calc(14px + 4 * (100vw - 360px) / 840);

@@ -6,9 +6,7 @@ let disableCardArray = [];
 if (JSON.parse(localStorage.getItem('productsBasket')) !== null) {
   cardArray = JSON.parse(localStorage.getItem('productsBasket'));
 }
-// if (JSON.parse(localStorage.getItem('disebleCards')) !== null) {
-//   disableCardArray = JSON.parse(localStorage.getItem('disebleCards'));
-// }
+
 window.addEventListener('load', function () {
   const body = document.body;
 
@@ -56,7 +54,7 @@ window.addEventListener('load', function () {
       cardArray.push(cardObject)
       localStorage.setItem('productsBasket', JSON.stringify(cardArray));
 
-      if (disableCardArray.length > 0) {
+      if (cardArray.length > 0) {
         addDisableCardBtn();
       }
     }

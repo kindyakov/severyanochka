@@ -626,10 +626,10 @@ body {
     white-space: nowrap;
 
     &::before {
-      font-size: 8px;
+      font-size: 12px;
       transform: rotate(-90deg);
       right: 0;
-      top: 6px;
+      top: 4px;
       position: absolute;
       transition: right 0.2s;
     }

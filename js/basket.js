@@ -113,7 +113,7 @@ if (product.length > 0) {
       basket__content.insertAdjacentHTML('beforeend', productHTML);
     }
   })
-}
+} else basket__content.innerHTML = `<div class="basket__wrapper-empty"><div class="basket__empty"><p class="basket__empty-text">Ваша корзина пуста</p><a href="html/catalog.html" class="basket__empty-link">Нажмите здесь, чтобы продолжить покупки</a></div></div>`;
 
 // Значение счетчика
 let counterScore = 1;
@@ -151,8 +151,12 @@ basket.addEventListener('click', function (e) {
       product.splice(removeCardIndex, 1);
       localStorage.setItem('productsBasket', JSON.stringify(product));
 
-      wrapperCard.remove();
+      removeCardAnimate(wrapperCard);
     })
+    // Вывод количество товаров в корзине 
+    document.querySelector('#menu-basket').textContent = product.length;
+    productQuantity.textContent = product.length;
+
     // Нахожу карточки с checked = false;
     function falseWrapperCard() {
       let arr = [];
@@ -164,6 +168,7 @@ basket.addEventListener('click', function (e) {
       return arr;
     }
     calcSumPrice(falseWrapperCard());
+    if (product.length == 0) basket__content.innerHTML = `<div class="basket__wrapper-empty"><div class="basket__empty"><p class="basket__empty-text">Ваша корзина пуста</p><a href="html/catalog.html" class="basket__empty-link">Нажмите здесь, чтобы продолжить покупки</a></div></div>`;
   }
 
   // Выделить всё
@@ -296,3 +301,12 @@ function calcSumPrice(elem) {
   }
 }
 calcSumPrice(cardsWrapper);
+function removeCardAnimate(el) {
+  let anim = el.animate([
+    { transform: 'translateX(0px)', opacity: '1' },
+    { transform: 'translateX(-100%)', opacity: '0' },
+  ], { duration: 400 });
+  anim.addEventListener('finish', () => {
+    el.remove();
+  })
+}
