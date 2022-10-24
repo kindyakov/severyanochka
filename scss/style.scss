@@ -71,6 +71,14 @@ body {
 
 }
 
+html {
+  &.lock {
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+  }
+}
+
 [class*="copyrights-pane"] {
   display: none !important;
 }
@@ -80,9 +88,13 @@ body {
   font-weight: normal;
   color: #414141;
   font-size: 16px;
+  touch-action: none;
+  -ms-touch-action: none;
 
   &.lock {
-    overflow-y: hidden;
+    overflow: hidden;
+    position: relative;
+    height: 100%;
   }
 }
 
@@ -397,6 +409,7 @@ body {
   opacity: 0;
   visibility: hidden;
   transition: 0.4s;
+  overflow: auto;
 
   &.active {
     opacity: 1;
@@ -409,7 +422,6 @@ body {
     align-items: center;
     justify-content: center;
     padding: 10px;
-    overflow: auto;
   }
 
   &__content {
@@ -812,6 +824,13 @@ body {
     background-color: #FF6633;
     color: #fff;
   }
+
+  &.disable {
+    color: #fff;
+    background-color: #606060;
+    opacity: 0.4;
+    border: 1px solid #606060;
+  }
 }
 
 .card-like {
@@ -1163,7 +1182,7 @@ body {
 
 .btn-up {
   position: fixed;
-  bottom: 50px;
+  bottom: 65px;
   right: -70px;
   width: 40px;
   height: 40px;
