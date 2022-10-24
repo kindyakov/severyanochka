@@ -120,7 +120,6 @@ let counterScore = 1;
 let counterScorePriceSum = 0;
 let counterScorePriceSumOld = 0;
 let priceResultSum = 0;
-
 basket.addEventListener('click', function (e) {
   const cardsCheckImput = basket.querySelectorAll('.basket-card-check');
 
@@ -144,6 +143,13 @@ basket.addEventListener('click', function (e) {
       const wrapperCard = check.closest('.basket__wrapper-cards');
       // ID карточки
       const wrapperCardId = wrapperCard.getAttribute('id');
+      // Нахожу удалееные карточку в массиве 
+      const removeCardIndex = product.findIndex(card => {
+        return card.id === wrapperCardId;
+      });
+      // Удаление из массива
+      product.splice(removeCardIndex, 1);
+      localStorage.setItem('productsBasket', JSON.stringify(product));
 
       wrapperCard.remove();
     })
@@ -159,30 +165,25 @@ basket.addEventListener('click', function (e) {
     }
     calcSumPrice(falseWrapperCard());
   }
+
   // Выделить всё
   if (e.target.classList.contains('basket__settings-check') || e.target.closest('.basket__settings-allot')) {
     if (checkAll.checked == true) {
-      cardsCheckImput.forEach(check => {
-        check.checked = true;
-      })
+      cardsCheckImput.forEach(check => check.checked = true);
     } else {
-      cardsCheckImput.forEach(check => {
-        check.checked = false;
-      })
+      cardsCheckImput.forEach(check => check.checked = false);
     }
   }
   if (e.target.classList.contains('basket-card-check')) {
     let cardsCheckImputArr = [];
+
     for (let i = 0; i < cardsCheckImput.length; i++) {
       const check = cardsCheckImput[i];
       if (check.checked == true) {
         cardsCheckImputArr.push(check);
-        if (cardsCheckImput.length === cardsCheckImputArr.length) {
-          checkAll.checked = true;
-        }
-      } else {
-        checkAll.checked = false;
-      }
+        if (cardsCheckImput.length === cardsCheckImputArr.length) checkAll.checked = true;
+
+      } else checkAll.checked = false;
     }
   }
   // Cчетчик

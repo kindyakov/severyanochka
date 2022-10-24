@@ -1,13 +1,14 @@
 let cardObject;
 let cardArray = [];
 let disableCardArray = [];
+
 // Проверяю чтоб не было null
 if (JSON.parse(localStorage.getItem('productsBasket')) !== null) {
   cardArray = JSON.parse(localStorage.getItem('productsBasket'));
 }
-if (JSON.parse(localStorage.getItem('disebleCards')) !== null) {
-  disableCardArray = JSON.parse(localStorage.getItem('disebleCards'));
-}
+// if (JSON.parse(localStorage.getItem('disebleCards')) !== null) {
+//   disableCardArray = JSON.parse(localStorage.getItem('disebleCards'));
+// }
 window.addEventListener('load', function () {
   const body = document.body;
 
@@ -55,9 +56,6 @@ window.addEventListener('load', function () {
       cardArray.push(cardObject)
       localStorage.setItem('productsBasket', JSON.stringify(cardArray));
 
-      disableCardArray.push(cardID);
-      localStorage.setItem('disebleCards', JSON.stringify(disableCardArray));
-
       if (disableCardArray.length > 0) {
         addDisableCardBtn();
       }
@@ -67,6 +65,7 @@ window.addEventListener('load', function () {
 })
 
 function addDisableCardBtn() {
+  cardArray.forEach(card => disableCardArray.push(card.id));
   disableCardArray.forEach(cardsID => {
     let cardDisable = document.querySelector(`[id="${cardsID}"]`);
     let cardDisableBtn = cardDisable.querySelector('.card-button');
