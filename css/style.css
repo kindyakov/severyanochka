@@ -1725,7 +1725,6 @@ body.lock {
   flex: 0 1 74.87%;
   display: flex;
   flex-direction: column;
-  row-gap: 30px;
   transition: 0.3s;
 }
 .basket__wrapper-empty {
@@ -1734,7 +1733,7 @@ body.lock {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px 0;
+  padding: 60px 0;
 }
 .basket__empty {
   display: flex;
@@ -1753,9 +1752,6 @@ body.lock {
 }
 .basket__empty-link:hover {
   color: #FF6633;
-}
-.basket__wrapper-cards {
-  transition: 0.9s;
 }
 .basket__card {
   position: relative;
