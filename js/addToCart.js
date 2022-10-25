@@ -66,8 +66,10 @@ function addDisableCardBtn() {
   cardArray.forEach(card => disableCardArray.push(card.id));
   disableCardArray.forEach(cardsID => {
     let cardDisable = document.querySelector(`[id="${cardsID}"]`);
-    let cardDisableBtn = cardDisable.querySelector('.card-button');
-    cardDisableBtn.classList.add('disable');
-    cardDisableBtn.textContent = 'В корзине';
+    if (cardDisable) {
+      let cardDisableBtn = cardDisable.querySelector('.card-button');
+      cardDisableBtn.classList.add('disable');
+      cardDisableBtn.textContent = 'В корзине';
+    }
   })
 }

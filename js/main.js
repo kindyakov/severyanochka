@@ -139,12 +139,14 @@ window.addEventListener('load', function () {
   linkActive(footerLinks, url);
   linkActive(menuLinks, url);
 })
-btnUp.addEventListener('click', function () {
-  window.scrollTo({
-    top: 1,
-    behavior: "smooth"
-  });
-})
+if (btnUp) {
+  btnUp.addEventListener('click', function () {
+    window.scrollTo({
+      top: 1,
+      behavior: "smooth"
+    });
+  })
+}
 window.addEventListener('scroll', function () {
   const viewport_width = Math.max(document.documentElement.clientHeight, window.innerHeight);
   if (scrollY >= viewport_width) {

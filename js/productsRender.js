@@ -1,6 +1,15 @@
 const products_container = document.querySelector('#products-container');
+
 let btnNore;
 let paginationList;
+let productsArrayLocalStorage = [];
+
+// Проверяю чтоб не было null
+if (JSON.parse(localStorage.getItem('productsBasket')) !== null) {
+  productsArrayLocalStorage = JSON.parse(localStorage.getItem('productsBasket'));
+}
+
+
 const products__footer = document.querySelector('.catalog-products__footer');
 if (products_container) {
   async function getProducts() {
@@ -225,7 +234,7 @@ if (products_container) {
           }
         })
         rating();
-
+        addDisableCardBtn();
         // Pagination active
         let arrayCard = document.querySelectorAll('.wrapper-card').length;
         document.querySelectorAll('.module-pagination__item').forEach((page, i) => {
@@ -290,3 +299,14 @@ function rating() {
 rating();
 
 
+function addDisableCardBtn() {
+  productsArrayLocalStorage.forEach(card => disableCardArray.push(card.id));
+  disableCardArray.forEach(cardsID => {
+    let cardDisable = document.querySelector(`[id="${cardsID}"]`);
+    if (cardDisable) {
+      let cardDisableBtn = cardDisable.querySelector('.card-button');
+      cardDisableBtn.classList.add('disable');
+      cardDisableBtn.textContent = 'В корзине';
+    }
+  })
+}
