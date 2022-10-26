@@ -70,7 +70,7 @@
     display: flex;
     align-items: flex-start;
     column-gap: 40px;
-    margin-top: 16px;
+    margin: 16px 0 120px 0;
   }
 
   &__main-gallery {
@@ -264,7 +264,9 @@
   }
 
   // Характеристики
-  // &__aside-specifications {}
+  &__aside-specifications {
+    width: 100%;
+  }
 
   &__aside-similar {
     width: 168px;
@@ -308,6 +310,44 @@
     font-weight: bold;
     font-size: 18px;
   }
+}
+
+.specifications-table {
+  width: 100%;
+  display: block;
+}
+
+.specifications-body {
+  width: 100%;
+  display: block;
+}
+
+.specifications-row {
+  display: flex;
+  min-width: 100%;
+  padding: 6px 12px;
+
+  &:nth-child(odd) {
+    background-color: #F3F2F1;
+
+
+    .specifications-cell {
+      background-color: #F3F2F1;
+      outline: 1px solid #F3F2F1;
+    }
+  }
+}
+
+.specifications-cell {
+  font-size: 12px;
+  width: 50%;
+  display: block;
+}
+
+// .specifications-cell-name {}
+
+.specifications-cell-value {
+  font-weight: bold;
 }
 
 .products-swiper-wrapper {

@@ -646,9 +646,6 @@ body {
   &__content {
     display: flex;
     justify-content: space-between;
-    // grid-template-columns: repeat(4, minmax(160px, 1fr));
-    // column-gap: 20px;
-    // row-gap: 15px;
     padding: 0 0 14px 0;
   }
 }

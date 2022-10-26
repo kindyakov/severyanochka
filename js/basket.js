@@ -12,7 +12,7 @@ const boxInfoOrder = document.querySelector('.basket__aside-info');
 const priceResult = document.querySelector('.basket__aside-info-price-result');
 // Продукт из localSorange
 let product = [];
-// Колличество товаров
+// "span" для вывода Колличество товара 
 const productQuantity = document.querySelector('.main-title-quantity');
 // Проверяю чтоб не было null
 if (JSON.parse(localStorage.getItem('productsBasket')) !== null) {
@@ -155,8 +155,6 @@ basket.addEventListener('click', function (e) {
       // Удаление из массива
       product.splice(removeCardIndex, 1);
       localStorage.setItem('productsBasket', JSON.stringify(product));
-
-      // removeCardAnimate(wrapperCard);
     })
 
     indexAnim = 0;
@@ -271,14 +269,38 @@ const priceWithoutSpaces = (str) => {
   return str.replace(/[^\d.-]/g, '');
 }
 
-// // Форма оформления заказы
-// basket__form.addEventListener('click', function (e) {
-// })
+// Форма оформления заказы
+basket__form.addEventListener('click', function (e) {
+  e.preventDefault();
+  if (priceResultSum > 1000) {
+    let productsInfo = {
+      price: 0,
+      quan: 0,
+    }
+
+    let quantity = 0;
+    const quantityProduct = document.querySelectorAll('.basket__card-counter-input');
+    quantityProduct.forEach(item => { quantity += Number(item.textContent) });
+
+    productsInfo.price = priceResultSum.toFixed(2);
+    productsInfo.quan = quantity;
+
+    localStorage.setItem('quantityProducts', JSON.stringify(productsInfo));
+    document.location.pathname = '/delivery.html';
+  } else {
+    const minSum = document.querySelector('.basket__aside-minsum');
+    minSum.classList.add('bounce');
+    setTimeout(() => { minSum.classList.remove("bounce") }, 350);
+  }
+})
+
+
 const cardsWrapper = basket.querySelectorAll('.basket__wrapper-cards');
+
 function calcSumPrice(elem) {
   boxInfoOrder.innerHTML = '';
   // Сумма товаров
-  let sumProductsPrice = 0;
+  priceResultSum = 0;
 
   for (let i = 0; i < elem.length; i++) {
     // ID товара
@@ -291,10 +313,10 @@ function calcSumPrice(elem) {
   <p class="basket__aside-info-text">${currentScore} товар</p>
   <span class="basket__aside-info-price">${currentPrice}</span>
   </div>`;
-    sumProductsPrice += Number(priceWithoutSpaces(currentPrice))
+    priceResultSum += Number(priceWithoutSpaces(currentPrice))
   }
-  priceResult.textContent = sumProductsPrice.toFixed(2) + ' ₽';
-  if (sumProductsPrice < 1000) {
+  priceResult.textContent = priceResultSum.toFixed(2) + ' ₽';
+  if (priceResultSum < 1000) {
     let minSum = document.querySelector('.basket__aside-minsum');
     if (!minSum) document.querySelector('.basket__aside-footer').insertAdjacentHTML('afterbegin', `<div class="basket__aside-minsum">Минимальная сумма заказа 1000р</div>`);
   }

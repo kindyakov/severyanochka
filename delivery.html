@@ -5,8 +5,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Корзина | Интернет-магазин Северяночка</title>
+  <title>Доставка | Интернет-магазин Северяночка</title>
   <link type="image/ico" rel="icon" href="img/favicon.ico">
+  <link rel="stylesheet" href="libs/Choices/choices.min.css">
   <link rel="stylesheet" href="css/icons-font.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -130,28 +131,88 @@
           </nav>
           <div class="main__content">
             <div class="main-wrapper-title">
-              <h1 class="main__title">Корзина</h1>
+              <h1 class="main__title">Доставка</h1>
               <span class="main-title-quantity">1</span>
             </div>
             <!-- basket -->
             <div class="basket">
-              <!-- basket__settings -->
-              <div class="basket__settings">
-                <div class="basket__settings-checkbox">
-                  <div class="basket__settings-block-check">
-                    <input type="checkbox" class="basket__card-check basket__settings-check" id="settings-check">
-                    <label for="settings-check" class="basket__settings-check-label">—</label>
-                  </div>
-                  <label for="settings-check" class="basket__settings-allot">Выделить всё</label>
-                </div>
-                <button class="basket__settings-button">Удалить выбранные</button>
-              </div>
               <!-- basket__wrapper -->
               <div class="basket__wrapper">
-                <!-- products-container -->
-                <div class="basket__content">
-                  <!-- Товар  здесь-->
-                </div>
+                <form class="basket__delivery">
+                  <div class="basket__delivery-item">
+                    <h3 class="basket__delivery-title">Куда</h3>
+                    <div class="basket__delivery-row">
+                      <div class="basket__delivery-inner">
+                        <span class="basket__delivery-inner-span">Населенный пункт</span>
+                        <select name="select_city" id="select-city" class="basket__delivery-select">
+                          <option value=""></option>
+                          <option value="Усть-Ижма">Усть-Ижма</option>
+                          <option value="Калининград">Калининград</option>
+                          <option value="Волгоград">Волгоград</option>
+                        </select>
+                      </div>
+                      <div class="basket__delivery-inner">
+                        <span class="basket__delivery-inner-span">Улица</span>
+                        <input type="text" name="street" class="basket__delivery-input delivery-input-street" required>
+                      </div>
+                      <div class="basket__delivery-inner">
+                        <span class="basket__delivery-inner-span">Дом</span>
+                        <input type="text" name="house" class="basket__delivery-input delivery-input-house" required>
+                      </div>
+                      <div class="basket__delivery-inner">
+                        <span class="basket__delivery-inner-span">Квартира</span>
+                        <input type="text" name="apartment" class="basket__delivery-input delivery-input-apartment"
+                          required>
+                      </div>
+                      <div class="basket__delivery-inner">
+                        <span class="basket__delivery-inner-span">Подъезд</span>
+                        <input type="text" name="entrance" class="basket__delivery-input delivery-input-entrance"
+                          required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="basket__delivery-item">
+                    <h3 class="basket__delivery-title">Куда</h3>
+                    <div class="basket__delivery-row">
+                      <div class="basket__delivery-inner">
+                        <span class="basket__delivery-inner-span">Дата</span>
+                        <input type="date" name="date" class="basket__delivery-input delivery-input-date">
+                      </div>
+                      <div class="basket__delivery-inner-time">
+                        <span class="basket__delivery-inner-span">Время</span>
+                        <div class="basket__delivery-inner-content">
+                          <div class="basket__delivery-time-block"><span class="span-time">8:00 - 14:00</span></div>
+                          <div class="basket__delivery-time-block"><span class="span-time">14:00 - 18:00</span></div>
+                          <div class="basket__delivery-time-block"><span class="span-time">18:00 - 20:00</span></div>
+                          <div class="basket__delivery-time-block time-disable">
+                            <span class="span-time">20:00 - 22:00</span>
+                            <div class="basket__delivery-info-wrapper">
+                              <div class="basket__delivery-time-info">
+                                <span class="basket__delivery-time-icon"></span>
+                                <span class="span-text">На это время доставить не можем</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="basket__delivery-item">
+                    <h3 class="basket__delivery-title">Куда</h3>
+                    <div class="basket__delivery-row">
+                      <div class="basket__delivery-inner">
+                        <span class="basket__delivery-inner-span">Телефон</span>
+                        <input type="tel" name="phone" required class="basket__delivery-input delivery-input-phone">
+                      </div>
+                      <div class="basket__delivery-inner">
+                        <button class="basket__delivery-get-code get-code-btn">Получить код</button>
+                      </div>
+                      <div class="basket__delivery-inner">
+                        <button class="basket__delivery-mail-btn">Войти по почте</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
                 <!-- basket-aside -->
                 <aside class="basket__aside">
                   <form class="basket__aside-form">
@@ -179,14 +240,16 @@
                         <p class="basket__aside-info-text">Итог</p>
                         <span class="basket__aside-info-price-result">250.09 ₽</span>
                       </div>
-                      <div class="basket__aside-result-bonus"><img src="img/img-card/bonus.png" alt=""><span>Вы
-                          получяете
-                          100 бонусов</span></div>
+                      <div class="basket__aside-result-bonus">
+                        <img src="img/img-card/bonus.png" alt="">
+                        <span>Вы получяете 100 бонусов</span>
+                      </div>
                     </div>
 
                     <div class="basket__aside-footer">
 
-                      <button class="basket__aside-button">Оформить заказ</button>
+                      <button type="submit" class="basket__aside-button delivery-btn">Оплатить на сайте</button>
+                      <button type="submit" class="basket__aside-button delivery-btn2">Оплатить при получении</button>
                     </div>
                   </form>
                 </aside>
@@ -251,9 +314,11 @@
     <div class="menu-fixed"></div>
     <div class="btn-up">↑</div>
   </div>
+  <script src="libs/Choices/choices.min.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/basket.js" type="module"></script>
+  <!-- <script src="js/basket.js" type="module"></script> -->
   <script src="js/module.js" type="module"></script>
+  <script src="js/making_an_order.js"></script>
 </body>
 
 </html>
