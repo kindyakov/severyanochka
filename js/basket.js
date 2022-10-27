@@ -272,8 +272,6 @@ const priceWithoutSpaces = (str) => {
 // Форма оформления заказы
 basket__form.addEventListener('click', function (e) {
   e.preventDefault();
-  console.log(document.location);
-  console.log(document.location.origin)
   if (priceResultSum > 1000) {
     let productsInfo = {
       price: 0,
@@ -288,6 +286,7 @@ basket__form.addEventListener('click', function (e) {
     productsInfo.quan = quantity;
 
     localStorage.setItem('quantityProducts', JSON.stringify(productsInfo));
+    document.location.pathname = '/severyanochka/delivery.html';
     // document.location.pathname = '/delivery.html';
   } else {
     const minSum = document.querySelector('.basket__aside-minsum');
