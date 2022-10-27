@@ -286,7 +286,8 @@ basket__form.addEventListener('click', function (e) {
     productsInfo.quan = quantity;
 
     localStorage.setItem('quantityProducts', JSON.stringify(productsInfo));
-    document.location.pathname = '/delivery.html';
+    console.log(document.location.pathname);
+    // document.location.pathname = '/delivery.html';
   } else {
     const minSum = document.querySelector('.basket__aside-minsum');
     minSum.classList.add('bounce');
