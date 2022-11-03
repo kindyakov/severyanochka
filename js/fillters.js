@@ -26,10 +26,10 @@ window.addEventListener('load', function () {
   }
   if (filters) {
     async function getProducts() {
-      const response = await fetch(`../JSON/${catalogWrapper.dataset.products}.json`); // нужный мне json файл
+      const response = await fetch('../JSON/products.json');
       const productsArray = await response.json();
 
-      productsArray.forEach(object => {
+      productsArray[`${products_container.dataset.products}`].forEach(object => {
         min_maxPriceArr.push(object.price, object.price_card);
         if (object.price_card == undefined) {
           min_maxPriceArr.pop();
@@ -61,6 +61,14 @@ window.addEventListener('load', function () {
           setRangeSlider(i, e.currentTarget.value);
         })
       })
+
+      OffsetLeft = container.offsetLeft + 15;
+      topFilters = catalogContent.offsetTop - 20;
+
+      heightFilters = catalogContent.offsetHeight;
+      heightFilter = filters_body.offsetHeight;
+
+      widthFilters = filters.offsetWidth;
     }
 
     getProducts();

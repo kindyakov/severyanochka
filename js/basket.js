@@ -10,6 +10,8 @@ const basket__form = document.querySelector('.basket__aside-form');
 const boxInfoOrder = document.querySelector('.basket__aside-info');
 // Итоговая цена 
 const priceResult = document.querySelector('.basket__aside-info-price-result');
+// Кнопка оформить заказ
+const basketButton = document.querySelector('.basket__aside-button');
 // Продукт из localSorange
 let product = [];
 // "span" для вывода Колличество товара 
@@ -270,7 +272,7 @@ const priceWithoutSpaces = (str) => {
 }
 
 // Форма оформления заказы
-basket__form.addEventListener('click', function (e) {
+basketButton.addEventListener('click', function (e) {
   e.preventDefault();
   if (priceResultSum > 1000) {
     let productsInfo = {

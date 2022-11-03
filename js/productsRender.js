@@ -13,9 +13,9 @@ if (JSON.parse(localStorage.getItem('productsBasket')) !== null) {
 const products__footer = document.querySelector('.catalog-products__footer');
 if (products_container) {
   async function getProducts() {
-    const response = await fetch(`../JSON/${products_container.dataset.products}.json`); // нужный мне json файл
+    const response = await fetch('../JSON/products.json');
     const productsArray = await response.json();
-    renderProducts(productsArray);
+    renderProducts(productsArray[`${products_container.dataset.products}`]);
     rating();
   }
   getProducts();
@@ -309,4 +309,42 @@ function addDisableCardBtn() {
       cardDisableBtn.textContent = 'В корзине';
     }
   })
+}
+
+function cardsHtml(id, img, price, title, rating, discount) {
+  return `<div class="wrapper-card" id="${id}">
+  <div class="card">
+    <a href="" class="card-wrapper-img">
+      <img src="../img/img-card/${img}" alt="Блинчики" class="card-img" data-img="${img}"></img>
+    </a>
+    <div class="card-content">
+      <div class="card-wrapper-price">
+        <p class="card-price-text">
+          <span class="card-price__card card-price">${price} ₽</span>
+        </p>
+      </div>
+      <div class="card-info">
+        <a href="" class="card-name-product">${title}</a>
+        <div class="card-rating">
+          <div class="card-rating__active">
+            <div class="card-rating__item _icon-star"></div>
+            <div class="card-rating__item _icon-star"></div>
+            <div class="card-rating__item _icon-star"></div>
+            <div class="card-rating__item _icon-star"></div>
+            <div class="card-rating__item _icon-star"></div>
+          </div>
+          <div class="card-rating__items" data-rating="${rating}">
+            <div class="card-rating__item _icon-star"></div>
+            <div class="card-rating__item _icon-star"></div>
+            <div class="card-rating__item _icon-star"></div>
+            <div class="card-rating__item _icon-star"></div>
+            <div class="card-rating__item _icon-star"></div>
+          </div>
+        </div>
+      </div>
+      <button class="card-button">В корзину</button>
+    </div>
+    <span class="card-like _icon-shape"></span>
+  </div>
+</div>`;
 }

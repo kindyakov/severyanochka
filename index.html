@@ -30,10 +30,14 @@
           </div>
           <div class="header-serch__block">
             <form action="#" class="header-search">
-              <input id="header-input" type="search" name="search" class="header-search__input"
-                placeholder="Найти товар">
-              <button for="header-input" class="_icon-search btn-search">
+              <input id="header-input" type="text" name="search" class="header-search__input" placeholder="Найти товар">
+              <button for="header-input" class="_icon-search btn-search"></button>
             </form>
+            <div class="search_result">
+              <ul class="search_list">
+              </ul>
+              <a href="" class="search-all">Все результаты</a>
+            </div>
           </div>
           <div class="header-menu__wrpper">
             <div class="header-menu">
@@ -42,16 +46,21 @@
                 <span class="text">Каталог</span>
               </a>
               <a href="favourites.html" class="header-menu__item header-menu__favourites">
-                <span class="icon icon-menu _icon-shape"><span id="menu-favourites"
-                    class="cart-quantity">1</span></span>
+                <span class="icon icon-menu _icon-shape">
+                  <span id="menu-favourites" class="cart-quantity">1</span>
+                </span>
                 <span class="text">Избраное</span>
               </a>
               <a href="orders.html" class="header-menu__item header-menu__orders">
-                <span class="icon icon-menu _icon-orders"><span id="menu-orders" class="cart-quantity">1</span></span>
+                <span class="icon icon-menu _icon-orders">
+                  <span id="menu-orders" class="cart-quantity">1</span>
+                </span>
                 <span class="text">Заказы</span>
               </a>
               <a href="basket.html" class="header-menu__item header-menu__cart">
-                <span class="icon icon-menu _icon-cart"><span id="menu-basket" class="cart-quantity">1</span></span>
+                <span class="icon icon-menu _icon-cart">
+                  <span id="menu-basket" class="cart-quantity">1</span>
+                </span>
                 <span class="text">Корзина</span>
               </a>
             </div>
@@ -127,10 +136,10 @@
             </div>
             <div class="index-swiper swiper">
               <div class="main-promo__content swiper-wrapper">
-                <div class="wrapper-card swiper-slide">
+                <div class="wrapper-card swiper-slide" id="1">
                   <div class="card">
                     <a href="html/cards_product/milk.html" class="card-wrapper-img">
-                      <img src="img/img-card/milk.jpg" alt="Блинчики" class="card-img"></img>
+                      <img src="img/img-card/milk.jpg" alt="Блинчики" class="card-img" data-img="milk.jpg"></img>
                       <span class="card-discount">-50%</span>
                     </a>
                     <div class="card-content">
@@ -168,10 +177,11 @@
                     <span class="card-like _icon-shape"></span>
                   </div>
                 </div>
-                <div class="wrapper-card swiper-slide">
+                <div class="wrapper-card swiper-slide" id="2">
                   <div class="card">
                     <a href="" class="card-wrapper-img">
-                      <img src="img/img-card/kalbasa2.jpg" alt="Блинчики" class="card-img"></img>
+                      <img src="img/img-card/kalbasa2.jpg" alt="Блинчики" class="card-img"
+                        data-img="kalbasa2.jpg"></img>
                       <span class="card-discount">-50%</span>
                     </a>
                     <div class="card-content">
@@ -209,10 +219,10 @@
                     <span class="card-like _icon-shape"></span>
                   </div>
                 </div>
-                <div class="wrapper-card swiper-slide">
+                <div class="wrapper-card swiper-slide" id="3">
                   <div class="card">
                     <a href="" class="card-wrapper-img">
-                      <img src="img/img-card/kalbasa.jpg" alt="Блинчики" class="card-img"></img>
+                      <img src="img/img-card/kalbasa.jpg" alt="Блинчики" class="card-img" data-img="kalbasa.jpg"></img>
                       <span class="card-discount">-50%</span>
                     </a>
                     <div class="card-content">
@@ -250,10 +260,10 @@
                     <span class="card-like _icon-shape"></span>
                   </div>
                 </div>
-                <div class="wrapper-card swiper-slide">
+                <div class="wrapper-card swiper-slide" id="4">
                   <div class="card">
                     <a href="" class="card-wrapper-img">
-                      <img src="img/img-card/blin.jpg" alt="Блинчики" class="card-img"></img>
+                      <img src="img/img-card/blin.jpg" alt="Блинчики" class="card-img" data-img="blin.jpg"></img>
                       <span class="card-discount">-50%</span>
                     </a>
                     <div class="card-content">
@@ -291,10 +301,10 @@
                     <span class="card-like _icon-shape"></span>
                   </div>
                 </div>
-                <div class="wrapper-card swiper-slide">
+                <div class="wrapper-card swiper-slide" id="5">
                   <div class="card">
                     <a href="" class="card-wrapper-img">
-                      <img src="img/img-card/blin.jpg" alt="Блинчики" class="card-img"></img>
+                      <img src="img/img-card/blin.jpg" alt="Блинчики" class="card-img" data-img="blin.jpg"></img>
                       <span class="card-discount">-50%</span>
                     </a>
                     <div class="card-content">
@@ -332,10 +342,10 @@
                     <span class="card-like _icon-shape"></span>
                   </div>
                 </div>
-                <div class="wrapper-card swiper-slide">
+                <div class="wrapper-card swiper-slide" id="6">
                   <div class="card">
                     <a href="" class="card-wrapper-img">
-                      <img src="img/img-card/milk.jpg" alt="Блинчики" class="card-img"></img>
+                      <img src="img/img-card/milk.jpg" alt="Блинчики" class="card-img" data-img="milk.jpg"></img>
                       <span class="card-discount">-50%</span>
                     </a>
                     <div class="card-content">
@@ -373,10 +383,11 @@
                     <span class="card-like _icon-shape"></span>
                   </div>
                 </div>
-                <div class="wrapper-card swiper-slide">
+                <div class="wrapper-card swiper-slide" id="7">
                   <div class="card">
                     <a href="" class="card-wrapper-img">
-                      <img src="img/img-card/kalbasa2.jpg" alt="Блинчики" class="card-img"></img>
+                      <img src="img/img-card/kalbasa2.jpg" alt="Блинчики" class="card-img"
+                        data-img="kalbasa2.jpg"></img>
                       <span class="card-discount">-50%</span>
                     </a>
                     <div class="card-content">
@@ -414,10 +425,10 @@
                     <span class="card-like _icon-shape"></span>
                   </div>
                 </div>
-                <div class="wrapper-card swiper-slide">
+                <div class="wrapper-card swiper-slide" id="8">
                   <div class="card">
                     <a href="" class="card-wrapper-img">
-                      <img src="img/img-card/kalbasa.jpg" alt="Блинчики" class="card-img"></img>
+                      <img src="img/img-card/kalbasa.jpg" alt="Блинчики" class="card-img" data-img="kalbasa.jpg"></img>
                       <span class="card-discount">-50%</span>
                     </a>
                     <div class="card-content">
@@ -467,10 +478,10 @@
             </div>
             <div class="index-swiper swiper">
               <div class="main-promo__content swiper-wrapper">
-                <div class="wrapper-card swiper-slide">
+                <div class="wrapper-card swiper-slide" id="9">
                   <div class="card">
                     <a href="" class="card-wrapper-img">
-                      <img src="img/img-card/kalbasa.jpg" alt="Блинчики" class="card-img"></img>
+                      <img src="img/img-card/kalbasa.jpg" alt="Блинчики" class="card-img" data-img="kalbasa.jpg"></img>
                     </a>
                     <div class="card-content">
                       <div class="card-wrapper-price">
@@ -502,10 +513,11 @@
                     <span class="card-like _icon-shape"></span>
                   </div>
                 </div>
-                <div class="wrapper-card swiper-slide">
+                <div class="wrapper-card swiper-slide" id="10">
                   <div class="card">
                     <a href="" class="card-wrapper-img">
-                      <img src="img/img-card/kalbasa2.jpg" alt="Блинчики" class="card-img"></img>
+                      <img src="img/img-card/kalbasa2.jpg" alt="Блинчики" class="card-img"
+                        data-img="kalbasa2.jpg"></img>
                     </a>
                     <div class="card-content">
                       <div class="card-wrapper-price">
@@ -537,10 +549,11 @@
                     <span class="card-like _icon-shape"></span>
                   </div>
                 </div>
-                <div class="wrapper-card swiper-slide">
+                <div class="wrapper-card swiper-slide" id="11">
                   <div class="card">
                     <a href="" class="card-wrapper-img">
-                      <img src="img/img-card//kalbasa3.jpg" alt="Блинчики" class="card-img"></img>
+                      <img src="img/img-card//kalbasa3.jpg" alt="Блинчики" class="card-img"
+                        data-img="kalbasa3.jpg"></img>
                     </a>
                     <div class="card-content">
                       <div class="card-wrapper-price">
@@ -572,10 +585,10 @@
                     <span class="card-like _icon-shape"></span>
                   </div>
                 </div>
-                <div class="wrapper-card swiper-slide">
+                <div class="wrapper-card swiper-slide" id="12">
                   <div class="card">
                     <a href="" class="card-wrapper-img">
-                      <img src="img/img-card/kalbasa.jpg" alt="Блинчики" class="card-img"></img>
+                      <img src="img/img-card/kalbasa.jpg" alt="Блинчики" class="card-img" data-img="kalbasa.jpg"></img>
                     </a>
                     <div class="card-content">
                       <div class="card-wrapper-price">
@@ -607,10 +620,10 @@
                     <span class="card-like _icon-shape"></span>
                   </div>
                 </div>
-                <div class="wrapper-card swiper-slide">
+                <div class="wrapper-card swiper-slide" id="13">
                   <div class="card">
                     <a href="" class="card-wrapper-img">
-                      <img src="img/img-card/kalbasa.jpg" alt="Блинчики" class="card-img"></img>
+                      <img src="img/img-card/kalbasa.jpg" alt="Блинчики" class="card-img" data-img="kalbasa.jpg"></img>
                     </a>
                     <div class="card-content">
                       <div class="card-wrapper-price">
@@ -642,10 +655,11 @@
                     <span class="card-like _icon-shape"></span>
                   </div>
                 </div>
-                <div class="wrapper-card swiper-slide">
+                <div class="wrapper-card swiper-slide" id="14">
                   <div class="card">
                     <a href="" class="card-wrapper-img">
-                      <img src="img/img-card/kalbasa2.jpg" alt="Блинчики" class="card-img"></img>
+                      <img src="img/img-card/kalbasa2.jpg" alt="Блинчики" class="card-img"
+                        data-img="kalbasa2.jpg"></img>
                     </a>
                     <div class="card-content">
                       <div class="card-wrapper-price">
@@ -677,10 +691,11 @@
                     <span class="card-like _icon-shape"></span>
                   </div>
                 </div>
-                <div class="wrapper-card swiper-slide">
+                <div class="wrapper-card swiper-slide" id="15">
                   <div class="card">
                     <a href="" class="card-wrapper-img">
-                      <img src="img/img-card//kalbasa3.jpg" alt="Блинчики" class="card-img"></img>
+                      <img src="img/img-card//kalbasa3.jpg" alt="Блинчики" class="card-img"
+                        data-img="kalbasa3.jpg"></img>
                     </a>
                     <div class="card-content">
                       <div class="card-wrapper-price">
@@ -712,10 +727,10 @@
                     <span class="card-like _icon-shape"></span>
                   </div>
                 </div>
-                <div class="wrapper-card swiper-slide">
+                <div class="wrapper-card swiper-slide" id="16">
                   <div class="card">
                     <a href="" class="card-wrapper-img">
-                      <img src="img/img-card/kalbasa.jpg" alt="Блинчики" class="card-img"></img>
+                      <img src="img/img-card/kalbasa.jpg" alt="Блинчики" class="card-img" data-img="kalbasa.jpg"></img>
                     </a>
                     <div class="card-content">
                       <div class="card-wrapper-price">
@@ -759,10 +774,45 @@
             </div>
             <div class="index-swiper swiper">
               <div class="main-promo__content swiper-wrapper">
-                <div class="wrapper-card swiper-slide">
+                <div class="wrapper-card swiper-slide" id="17">
                   <div class="card">
                     <a href="" class="card-wrapper-img">
-                      <img src="img/img-card/kalbasa.jpg" alt="Блинчики" class="card-img"></img>
+                      <img src="img/img-card/kalbasa.jpg" alt="Блинчики" class="card-img" data-img="kalbasa.jpg"></img>
+                    </a>
+                    <div class="card-content">
+                      <div class="card-wrapper-price">
+                        <p class="card-price-text">
+                          <span class="card-price__card card-price">44.50 ₽</span>
+                        </p>
+                      </div>
+                      <div class="card-info">
+                        <a href="" class="card-name-product">Г/Ц Блинчики с мясом вес. Россия</a>
+                        <div class="card-rating">
+                          <div class="card-rating__active">
+                            <div class="card-rating__item _icon-star"></div>
+                            <div class="card-rating__item _icon-star"></div>
+                            <div class="card-rating__item _icon-star"></div>
+                            <div class="card-rating__item _icon-star"></div>
+                            <div class="card-rating__item _icon-star"></div>
+                          </div>
+                          <div class="card-rating__items" data-rating="2.7">
+                            <div class="card-rating__item _icon-star"></div>
+                            <div class="card-rating__item _icon-star"></div>
+                            <div class="card-rating__item _icon-star"></div>
+                            <div class="card-rating__item _icon-star"></div>
+                            <div class="card-rating__item _icon-star"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <button class="card-button">В корзину</button>
+                    </div>
+                    <span class="card-like _icon-shape"></span>
+                  </div>
+                </div>
+                <div class="wrapper-card swiper-slide" id="18">
+                  <div class="card">
+                    <a href="" class="card-wrapper-img">
+                      <img src="img/img-card/milk.jpg" alt="Блинчики" class="card-img" data-img="milk.jpg"></img>
                     </a>
                     <div class="card-content">
                       <div class="card-wrapper-price">
@@ -794,10 +844,10 @@
                     <span class="card-like _icon-shape"></span>
                   </div>
                 </div>
-                <div class="wrapper-card swiper-slide">
+                <div class="wrapper-card swiper-slide" id="19">
                   <div class="card">
                     <a href="" class="card-wrapper-img">
-                      <img src="img/img-card/milk.jpg" alt="Блинчики" class="card-img"></img>
+                      <img src="img/img-card/blin.png" alt="Блинчики" class="card-img" data-img="blin.png"></img>
                     </a>
                     <div class="card-content">
                       <div class="card-wrapper-price">
@@ -829,10 +879,11 @@
                     <span class="card-like _icon-shape"></span>
                   </div>
                 </div>
-                <div class="wrapper-card swiper-slide">
+                <div class="wrapper-card swiper-slide" id="20">
                   <div class="card">
                     <a href="" class="card-wrapper-img">
-                      <img src="img/img-card/blin.png" alt="Блинчики" class="card-img"></img>
+                      <img src="img/img-card/kalbasa3.jpg" alt="Блинчики" class="card-img"
+                        data-img="kalbasa3.jpg"></img>
                     </a>
                     <div class="card-content">
                       <div class="card-wrapper-price">
@@ -864,10 +915,10 @@
                     <span class="card-like _icon-shape"></span>
                   </div>
                 </div>
-                <div class="wrapper-card swiper-slide">
+                <div class="wrapper-card swiper-slide" id="21">
                   <div class="card">
                     <a href="" class="card-wrapper-img">
-                      <img src="img/img-card/kalbasa3.jpg" alt="Блинчики" class="card-img"></img>
+                      <img src="img/img-card/kalbasa.jpg" alt="Блинчики" class="card-img" data-img="kalbasa.jpg"></img>
                     </a>
                     <div class="card-content">
                       <div class="card-wrapper-price">
@@ -899,10 +950,10 @@
                     <span class="card-like _icon-shape"></span>
                   </div>
                 </div>
-                <div class="wrapper-card swiper-slide">
+                <div class="wrapper-card swiper-slide" id="22">
                   <div class="card">
                     <a href="" class="card-wrapper-img">
-                      <img src="img/img-card/kalbasa.jpg" alt="Блинчики" class="card-img"></img>
+                      <img src="img/img-card/milk.jpg" alt="Блинчики" class="card-img" data-img="milk.jpg"></img>
                     </a>
                     <div class="card-content">
                       <div class="card-wrapper-price">
@@ -934,10 +985,10 @@
                     <span class="card-like _icon-shape"></span>
                   </div>
                 </div>
-                <div class="wrapper-card swiper-slide">
+                <div class="wrapper-card swiper-slide" id="33">
                   <div class="card">
                     <a href="" class="card-wrapper-img">
-                      <img src="img/img-card/milk.jpg" alt="Блинчики" class="card-img"></img>
+                      <img src="img/img-card/blin.png" alt="Блинчики" class="card-img" data-img="blin.png"></img>
                     </a>
                     <div class="card-content">
                       <div class="card-wrapper-price">
@@ -969,45 +1020,11 @@
                     <span class="card-like _icon-shape"></span>
                   </div>
                 </div>
-                <div class="wrapper-card swiper-slide">
+                <div class="wrapper-card swiper-slide" id="34">
                   <div class="card">
                     <a href="" class="card-wrapper-img">
-                      <img src="img/img-card/blin.png" alt="Блинчики" class="card-img"></img>
-                    </a>
-                    <div class="card-content">
-                      <div class="card-wrapper-price">
-                        <p class="card-price-text">
-                          <span class="card-price__card card-price">44.50 ₽</span>
-                        </p>
-                      </div>
-                      <div class="card-info">
-                        <a href="" class="card-name-product">Г/Ц Блинчики с мясом вес. Россия</a>
-                        <div class="card-rating">
-                          <div class="card-rating__active">
-                            <div class="card-rating__item _icon-star"></div>
-                            <div class="card-rating__item _icon-star"></div>
-                            <div class="card-rating__item _icon-star"></div>
-                            <div class="card-rating__item _icon-star"></div>
-                            <div class="card-rating__item _icon-star"></div>
-                          </div>
-                          <div class="card-rating__items" data-rating="3.5">
-                            <div class="card-rating__item _icon-star"></div>
-                            <div class="card-rating__item _icon-star"></div>
-                            <div class="card-rating__item _icon-star"></div>
-                            <div class="card-rating__item _icon-star"></div>
-                            <div class="card-rating__item _icon-star"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <button class="card-button">В корзину</button>
-                    </div>
-                    <span class="card-like _icon-shape"></span>
-                  </div>
-                </div>
-                <div class="wrapper-card swiper-slide">
-                  <div class="card">
-                    <a href="" class="card-wrapper-img">
-                      <img src="img/img-card/kalbasa3.jpg" alt="Блинчики" class="card-img"></img>
+                      <img src="img/img-card/kalbasa3.jpg" alt="Блинчики" class="card-img"
+                        data-img="kalbasa3.jpg"></img>
                     </a>
                     <div class="card-content">
                       <div class="card-wrapper-price">
@@ -1192,12 +1209,13 @@
     type="text/javascript">
     </script>
   <!-- b756749a-c9d8-4f04-a6c7-2653f5d9d0b7 -->
-  <script src="js/map.js"></script>
-  <script src="js/main.js"></script>
   <script src="libs/Swiper/swiper-bundle.min.js"></script>
   <script src="js/swiper.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/main.js"></script>
   <script src="js/addToCart.js"></script>
   <script src="js/module.js" type="module"></script>
+  <script src="js/search.js"></script>
 </body>
 
 </html>
