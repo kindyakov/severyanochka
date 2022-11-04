@@ -4,6 +4,8 @@ window.addEventListener('load', function () {
   html.classList.remove('lock');
   body.classList.remove('lock');
   //
+  const products_container = document.querySelector('#products-container')
+
   const randeSlider = document.querySelector('.filters_box-paramets__sliders');
   const filtersProducts = document.querySelectorAll('.filters-products__name');
   const filters = document.querySelector('.catalog-products__filters'),
@@ -28,13 +30,14 @@ window.addEventListener('load', function () {
     async function getProducts() {
       const response = await fetch('../JSON/products.json');
       const productsArray = await response.json();
-
-      productsArray[`${products_container.dataset.products}`].forEach(object => {
-        min_maxPriceArr.push(object.price, object.price_card);
-        if (object.price_card == undefined) {
-          min_maxPriceArr.pop();
-        }
-      })
+      if (products_container) {
+        productsArray[`${products_container.dataset.products}`].forEach(object => {
+          min_maxPriceArr.push(object.price, object.price_card);
+          if (object.price_card == undefined) {
+            min_maxPriceArr.pop();
+          }
+        })
+      }
       rangeSettings.range['max'] = [Math.max.apply(null, min_maxPriceArr)];
       rangeSettings.range['min'] = [Math.min.apply(null, min_maxPriceArr)];
 

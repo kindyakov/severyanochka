@@ -328,10 +328,6 @@ body.lock {
   background-color: #ffffff;
   border-radius: 4px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  -moz-column-gap: 8px;
-       column-gap: 8px;
 }
 .search_li:hover .search_span {
   color: #FF6633;
@@ -340,10 +336,27 @@ body.lock {
   transform: scale(0.9);
 }
 
+.search_link {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 8px;
+       column-gap: 8px;
+}
+
+.search-wrapper_img {
+  min-width: 80px;
+  max-width: 80px;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .search_img {
   -o-object-fit: cover;
      object-fit: cover;
-  max-height: 60px;
+  max-width: 100%;
+  max-height: 100%;
   transition: 0.2s;
 }
 
@@ -886,6 +899,12 @@ body.lock {
 }
 .card-like:hover::before {
   color: #FF6633;
+  font-weight: 700;
+}
+.card-like.disable {
+  color: #FF6633;
+}
+.card-like.disable::before {
   font-weight: 700;
 }
 
@@ -2208,6 +2227,7 @@ body.lock {
   align-items: flex-end;
   -moz-column-gap: 40px;
        column-gap: 40px;
+  row-gap: 16px;
 }
 .basket .choices {
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
@@ -2238,6 +2258,7 @@ body.lock {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width: auto;
 }
 .basket__delivery-inner-span {
   color: #8F8F8F;
@@ -2255,14 +2276,15 @@ body.lock {
   border: 1px solid #FFF;
 }
 .basket__delivery-inner-time {
-  width: 100%;
+  max-width: 672px;
 }
 .basket__delivery-inner-content {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   -moz-column-gap: 8px;
        column-gap: 8px;
+  flex-wrap: wrap;
+  row-gap: 16px;
 }
 .basket__delivery-time-block {
   padding: 8px 16px;
@@ -3338,6 +3360,14 @@ body.lock {
   .basket__aside-button {
     font-size: calc(16px + 8 * (100vw - 360px) / 840);
   }
+  .basket__delivery-row {
+    flex-wrap: wrap;
+    -moz-column-gap: calc(16px + 24 * (100vw - 360px) / 840);
+         column-gap: calc(16px + 24 * (100vw - 360px) / 840);
+  }
+  .basket__delivery-title {
+    font-size: calc(24px + 22 * (100vw - 360px) / 840);
+  }
 }
 @media (max-width: 960px) {
   .header-logo__span {
@@ -3599,5 +3629,28 @@ body.lock {
   }
   .openings__card {
     max-width: 100%;
+  }
+  .delivery-inner-city {
+    width: 100%;
+  }
+  .choices {
+    width: 100%;
+  }
+  .delivery-inner-street {
+    width: 100%;
+  }
+  .basket .choices__inner {
+    min-width: 100%;
+  }
+  .delivery-input-street {
+    max-width: none;
+    min-width: 100%;
+    display: block;
+  }
+  .delivery-inner-phone {
+    width: 100%;
+  }
+  .delivery-input-phone {
+    width: 100%;
   }
 }

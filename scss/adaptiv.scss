@@ -255,7 +255,16 @@
 
     &__aside-button {
       font-size: calc(16px + (24 - 16) * ((100vw - 360px) / 840));
-      ;
+
+    }
+
+    &__delivery-row {
+      flex-wrap: wrap;
+      column-gap: calc(16px + (40 - 16) * ((100vw - 360px) / 840));
+    }
+
+    &__delivery-title {
+      font-size: calc(24px + (46 - 24) * ((100vw - 360px) / 840));
     }
   }
 }
@@ -625,6 +634,36 @@
     &__card {
       max-width: 100%;
     }
+  }
+
+  .delivery-inner-city {
+    width: 100%;
+  }
+
+  .choices {
+    width: 100%;
+  }
+
+  .delivery-inner-street {
+    width: 100%;
+  }
+
+  .basket .choices__inner {
+    min-width: 100%;
+  }
+
+  .delivery-input-street {
+    max-width: none;
+    min-width: 100%;
+    display: block;
+  }
+
+  .delivery-inner-phone {
+    width: 100%;
+  }
+
+  .delivery-input-phone {
+    width: 100%;
   }
 }
 

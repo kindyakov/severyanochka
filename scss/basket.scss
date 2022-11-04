@@ -576,6 +576,7 @@
     display: flex;
     align-items: flex-end;
     column-gap: 40px;
+    row-gap: 16px;
   }
 
   .choices {
@@ -616,6 +617,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: auto;
   }
 
   &__delivery-inner-span {
@@ -638,14 +640,15 @@
 
 
   &__delivery-inner-time {
-    width: 100%;
+    max-width: 672px;
   }
 
   &__delivery-inner-content {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     column-gap: 8px;
+    flex-wrap: wrap;
+    row-gap: 16px;
   }
 
   &__delivery-time-block {

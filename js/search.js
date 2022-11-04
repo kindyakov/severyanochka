@@ -20,15 +20,20 @@ searchInput.addEventListener('input', () => {
         const imgProducts = product.img;
         search_result.classList.add('search');
         search_list.insertAdjacentHTML('afterbegin', `<li class="search_li" id="${idProducts}">
+        <a href="" class="search_link">
+          <div class="search-wrapper_img">
             <img class="search_img" src="../img/img-card/${imgProducts}" alt="${imgProducts}">
-            <span class="search_span">${nameProducts}</span>
-          </li>`);
+          </div>
+          <span class="search_span">${nameProducts}</span>
+        </a>
+      </li>`);
       }
       else {
         // search_list.classList.remove('search');
-        const search_li = document.querySelector('.search_li');
+        const search_li = document.querySelectorAll('.search_li');
         search_li.forEach(li => {
-          if (li.innerText.search(value) == -1) li.remove();
+          const currentNameProducts = li.querySelector('.search_span');
+          if (currentNameProducts.innerText.search(value) == -1) li.remove();
         });
       }
     });
