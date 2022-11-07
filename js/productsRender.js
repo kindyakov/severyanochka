@@ -15,8 +15,18 @@ if (products_container) {
   async function getProducts() {
     const response = await fetch('../JSON/products.json');
     const productsArray = await response.json();
-    renderProducts(productsArray[`${products_container.dataset.products}`]);
-    rating();
+    const productsCurrent = productsArray[`${products_container.dataset.products}`];
+    if (productsCurrent !== undefined) {
+      renderProducts(productsCurrent);
+      rating();
+    } else {
+      products_container.innerHTML = `<div class="error-products">
+    <div class="error-products_content">
+      <span class="error-products_text">К сожалению, раздел пуст</span>
+      <span class="error-products_comment">В данный момент нет активных товаров</span>
+    </div>
+  </div>`;
+    }
   }
   getProducts();
 

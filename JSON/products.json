@@ -144,5 +144,16 @@
       "rating": 4.8,
       "discount": 5
     }
+  ],
+  "breed": [
+    {
+      "id": "019",
+      "name": "Батон ЛИМАК Нарезной в нарезке, 360г, Россия, 360 г",
+      "price": "46.79",
+      "price_card": "39.89",
+      "img": "baton-limak.jfif",
+      "rating": 4.8,
+      "discount": 5
+    }
   ]
 }

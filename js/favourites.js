@@ -1,4 +1,6 @@
 const favouritesProducts = document.querySelector('#favourites-products');
+const randeSlider = document.querySelector('.filters_box-paramets__sliders');
+
 // Продукт из localSorange
 let product = [];
 
@@ -25,10 +27,11 @@ if (product.length > 0) {
       const cardWrapperPrice = cards.querySelector('.card-wrapper-price');
       const cardPrice__card = cards.querySelector('.card-price__card');
 
-      cardWrapperPrice.insertAdjacentHTML('beforeend', `<p class="card-price-text">
-      <span class="card-price__card card-price">${card.price_card}</span>
-      <i>Обычная</i>
-    </p>`);
+      cardWrapperPrice.insertAdjacentHTML('beforeend', `
+      <p class="card-price-text">
+        <span class="card-price__ordinary card-price">${card.price_card}</span>
+        <i>Обычная</i>
+      </p>`);
       cardPrice__card.insertAdjacentHTML('afterend', `<i>С картой</i>`);
     }
   })
@@ -68,6 +71,57 @@ function cardsHtml(id, img, price, title, rating) {
       <button class="card-button">В корзину</button>
     </div>
     <span class="card-like _icon-shape"></span>
+    <div class="card-delete-wrapper">
+      <span class="card-delete">✖</span>
+    </div>
   </div>
 </div>`;
+}
+
+let min_maxPriceArr = [];
+let rangeSettings = {
+  start: [0, 999],
+  connect: true,
+  step: 1,
+  range: {
+    'min': [0],
+    'max': [999],
+  }
+}
+
+product.forEach(card => {
+  min_maxPriceArr.push(priceWithoutSpaces(card.price));
+  if (card.price_card !== undefined) min_maxPriceArr.push(priceWithoutSpaces(card.price_card))
+})
+
+rangeSettings.range['max'] = [Math.max.apply(null, min_maxPriceArr)];
+rangeSettings.range['min'] = [Math.min.apply(null, min_maxPriceArr)];
+
+noUiSlider.create(randeSlider, rangeSettings);
+
+const minPrice = document.querySelector('#min-price');
+const maxPrice = document.querySelector('#max-price');
+
+const inputsPrice = [minPrice, maxPrice];
+
+randeSlider.noUiSlider.on('update', function (values, handle) {
+  inputsPrice[handle].value = Math.round(values[handle]);
+})
+
+const setRangeSlider = (i, value) => {
+  let arr = [null, null]
+  arr[i] = value;
+
+  randeSlider.noUiSlider.set(arr);
+}
+
+inputsPrice.forEach((el, i) => {
+  el.addEventListener('change', function (e) {
+    setRangeSlider(i, e.currentTarget.value);
+  })
+})
+
+// Получаю числовое значение из строки 
+function priceWithoutSpaces(str) {
+  return Number(str.replace(/[^\d.-]/g, ''));
 }

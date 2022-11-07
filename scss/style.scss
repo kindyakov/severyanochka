@@ -763,12 +763,17 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
+  z-index: 1;
 
   &:hover {
     box-shadow: 1px 4px 14px 2px rgba(255, 102, 51, 0.2);
 
     .card-img {
       transform: scale(1.1);
+    }
+
+    .card-delete {
+      opacity: 1;
     }
   }
 }
@@ -948,6 +953,36 @@ body {
     }
   }
 }
+
+.card-delete-wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.card-delete {
+  position: absolute;
+  left: 8px;
+  top: 6px;
+  font-size: 22px;
+  cursor: pointer;
+  transition: 0.3s;
+  padding: 0;
+  margin: 0;
+  pointer-events: visible;
+  opacity: 0;
+
+  &:hover {
+    color: #FF6633;
+  }
+}
+
+
 
 .special-offer {
   // &__tiile {}
