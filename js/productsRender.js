@@ -16,6 +16,7 @@ if (products_container) {
     const response = await fetch('../JSON/products.json');
     const productsArray = await response.json();
     const productsCurrent = productsArray[`${products_container.dataset.products}`];
+
     if (productsCurrent !== undefined) {
       renderProducts(productsCurrent);
       rating();
@@ -39,94 +40,28 @@ if (products_container) {
 
     productsArray.forEach(card => {
       if (inter < cards) {
-        if (card.discount || card.price_card) {
-          const productHTML = `
-          <div class="wrapper-card" id="${card.id}">
-                  <div class="card">
-                    <a href="" class="card-wrapper-img">
-                      <img src="../img/img-card/${card.img}" alt="Блинчики" class="card-img" data-img="${card.img}"></img>
-                      <span class="card-discount">-${card.discount}%</span>
-                    </a>
-                    <div class="card-content">
-                      <div class="card-wrapper-price">
-                        <p class="card-price-text">
-                          <span class="card-price__card card-price">${card.price_card} ₽</span>
-                          <i>С картой</i>
-                        </p>
-                        <p class="card-price-text">
-                          <span class="card-price__ordinary card-price">${card.price} ₽</span>
-                          <i>Обычная</i>
-                        </p>
-                      </div>
-                      <div class="card-info">
-                        <a href="" class="card-name-product">${card.name}</a>
-                        <div class="card-rating">
-                          <div class="card-rating__active">
-                            <div class="card-rating__item _icon-star"></div>
-                            <div class="card-rating__item _icon-star"></div>
-                            <div class="card-rating__item _icon-star"></div>
-                            <div class="card-rating__item _icon-star"></div>
-                            <div class="card-rating__item _icon-star"></div>
-                          </div>
-                          <div class="card-rating__items" data-rating="${card.rating}">
-                            <div class="card-rating__item _icon-star"></div>
-                            <div class="card-rating__item _icon-star"></div>
-                            <div class="card-rating__item _icon-star"></div>
-                            <div class="card-rating__item _icon-star"></div>
-                            <div class="card-rating__item _icon-star"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <button class="card-button">В корзину</button>
-                    </div>
-                    <span class="card-like _icon-shape"></span>
-                  </div>
-                </div>
-          `;
-          products_container.insertAdjacentHTML('beforeend', productHTML);
-        } else {
-          const productHTML = `
-          <div class="wrapper-card" id="${card.id}">
-                              <div class="card">
-                                <a href="" class="card-wrapper-img">
-                                  <img src="../img/img-card/${card.img}" alt="Блинчики" class="card-img" data-img="${card.img}"></img>
-                                </a>
-                                <div class="card-content">
-                                  <div class="card-wrapper-price">
-                                    <p class="card-price-text">
-                                      <span class="card-price__card card-price">${card.price} ₽</span>
-                                    </p>
-                                  </div>
-                                  <div class="card-info">
-                                    <a href="" class="card-name-product">${card.name}</a>
-                                    <div class="card-rating">
-                                      <div class="card-rating__active">
-                                        <div class="card-rating__item _icon-star"></div>
-                                        <div class="card-rating__item _icon-star"></div>
-                                        <div class="card-rating__item _icon-star"></div>
-                                        <div class="card-rating__item _icon-star"></div>
-                                        <div class="card-rating__item _icon-star"></div>
-                                      </div>
-                                      <div class="card-rating__items" data-rating="${card.rating}">
-                                        <div class="card-rating__item _icon-star"></div>
-                                        <div class="card-rating__item _icon-star"></div>
-                                        <div class="card-rating__item _icon-star"></div>
-                                        <div class="card-rating__item _icon-star"></div>
-                                        <div class="card-rating__item _icon-star"></div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <button class="card-button">В корзину</button>
-                                </div>
-                                <span class="card-like _icon-shape"></span>
-                              </div>
-                            </div>
-          `;
-          products_container.insertAdjacentHTML('beforeend', productHTML);
+        products_container.insertAdjacentHTML('beforeend', cardsHtml(card.id, card.img, card.price, card.name, card.rating));
+
+        const cardID = document.querySelector(`[id = "${card.id}"]`);
+        if (card.discount) {
+          const cardWrapperImg = cardID.querySelector('.card-wrapper-img');
+          cardWrapperImg.insertAdjacentHTML('beforeend', `<span class="card-discount">-${card.discount}%</span>`)
+        }
+        if (card.price_card) {
+          const cardWrapperPrice = cardID.querySelector('.card-wrapper-price');
+          const cardPrice__card = cardID.querySelector('.card-price__card');
+
+          cardWrapperPrice.insertAdjacentHTML('beforeend', `
+            <p class="card-price-text">
+              <span class="card-price__ordinary card-price">${card.price_card} ₽</span>
+              <i>Обычная</i>
+            </p>`);
+          cardPrice__card.insertAdjacentHTML('afterend', `<i>С картой</i>`);
         }
         inter++;
       }
     });
+
     if (productsArray.length > 0) {
       products__footer.insertAdjacentHTML('beforeend', `<div class="more-wrapper">
       <button class="products__more-btn">Показать ещё</button>
@@ -151,100 +86,35 @@ if (products_container) {
       paginationList = document.querySelector('.module-pagination__list');
       btnNore = document.querySelector('.products__more-btn');
     }
+
     if (btnNore) {
       btnNore.addEventListener('click', function () {
         const visibleCard = productsArray.slice(cards, cards + cardsVisible);
         cards += cardsVisible;
         // Вывод карточек
         visibleCard.forEach(card => {
-          if (card.discount || card.price_card) {
-            const productHTML = `
-          <div class="wrapper-card" id="${card.id}">
-                  <div class="card">
-                    <a href="" class="card-wrapper-img">
-                      <img src="../img/img-card/${card.img}" alt="Блинчики" class="card-img" data-img="${card.img}"></img>
-                      <span class="card-discount">-${card.discount}%</span>
-                    </a>
-                    <div class="card-content">
-                      <div class="card-wrapper-price">
-                        <p class="card-price-text">
-                          <span class="card-price__card card-price">${card.price_card} ₽</span>
-                          <i>С картой</i>
-                        </p>
-                        <p class="card-price-text">
-                          <span class="card-price__ordinary card-price">${card.price} ₽</span>
-                          <i>Обычная</i>
-                        </p>
-                      </div>
-                      <div class="card-info">
-                        <a href="" class="card-name-product">${card.name}</a>
-                        <div class="card-rating">
-                          <div class="card-rating__active">
-                            <div class="card-rating__item _icon-star"></div>
-                            <div class="card-rating__item _icon-star"></div>
-                            <div class="card-rating__item _icon-star"></div>
-                            <div class="card-rating__item _icon-star"></div>
-                            <div class="card-rating__item _icon-star"></div>
-                          </div>
-                          <div class="card-rating__items" data-rating="${card.rating}">
-                            <div class="card-rating__item _icon-star"></div>
-                            <div class="card-rating__item _icon-star"></div>
-                            <div class="card-rating__item _icon-star"></div>
-                            <div class="card-rating__item _icon-star"></div>
-                            <div class="card-rating__item _icon-star"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <button class="card-button">В корзину</button>
-                    </div>
-                    <span class="card-like _icon-shape"></span>
-                  </div>
-                </div>
-          `;
-            products_container.insertAdjacentHTML('beforeend', productHTML);
-          } else {
-            const productHTML = `
-          <div class="wrapper-card" id="${card.id}">
-                              <div class="card">
-                                <a href="" class="card-wrapper-img">
-                                  <img src="../img/img-card/${card.img}" alt="Блинчики" class="card-img" data-img="${card.img}"></img>
-                                </a>
-                                <div class="card-content">
-                                  <div class="card-wrapper-price">
-                                    <p class="card-price-text">
-                                      <span class="card-price__card card-price">${card.price} ₽</span>
-                                    </p>
-                                  </div>
-                                  <div class="card-info">
-                                    <a href="" class="card-name-product">${card.name}</a>
-                                    <div class="card-rating">
-                                      <div class="card-rating__active">
-                                        <div class="card-rating__item _icon-star"></div>
-                                        <div class="card-rating__item _icon-star"></div>
-                                        <div class="card-rating__item _icon-star"></div>
-                                        <div class="card-rating__item _icon-star"></div>
-                                        <div class="card-rating__item _icon-star"></div>
-                                      </div>
-                                      <div class="card-rating__items" data-rating="${card.rating}">
-                                        <div class="card-rating__item _icon-star"></div>
-                                        <div class="card-rating__item _icon-star"></div>
-                                        <div class="card-rating__item _icon-star"></div>
-                                        <div class="card-rating__item _icon-star"></div>
-                                        <div class="card-rating__item _icon-star"></div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <button class="card-button">В корзину</button>
-                                </div>
-                                <span class="card-like _icon-shape"></span>
-                              </div>
-                            </div>
-          `;
-            products_container.insertAdjacentHTML('beforeend', productHTML);
+          products_container.insertAdjacentHTML('beforeend', cardsHtml(card.id, card.img, card.price, card.name, card.rating));
+
+          const cardID = document.querySelector(`[id = "${card.id}"]`);
+          if (card.discount) {
+            const cardWrapperImg = cardID.querySelector('.card-wrapper-img');
+            cardWrapperImg.insertAdjacentHTML('beforeend', `<span class="card-discount">-${card.discount}%</span>`)
+          }
+          if (card.price_card) {
+            const cardWrapperPrice = cardID.querySelector('.card-wrapper-price');
+            const cardPrice__card = cardID.querySelector('.card-price__card');
+
+            cardWrapperPrice.insertAdjacentHTML('beforeend', `
+            <p class="card-price-text">
+              <span class="card-price__ordinary card-price">${card.price_card} ₽</span>
+              <i>Обычная</i>
+            </p>`);
+            cardPrice__card.insertAdjacentHTML('afterend', `<i>С картой</i>`);
           }
         })
         rating();
         addDisableCardBtn();
+
         // Pagination active
         let arrayCard = document.querySelectorAll('.wrapper-card').length;
         document.querySelectorAll('.module-pagination__item').forEach((page, i) => {
@@ -253,6 +123,7 @@ if (products_container) {
             page.classList.add('show')
           }
         });
+
         //
         if (arrVisibleCard === (productsLength - cardsVisible)) {
           btnNore.classList.add('disable');
@@ -277,6 +148,8 @@ if (products_container) {
   };
 };
 // Rating
+let ratingActive, ratingValue;
+
 function rating() {
   const cardRating = document.getElementsByClassName('card-rating');
   if (cardRating.length > 0) {
@@ -284,7 +157,6 @@ function rating() {
   }
 
   function initRatings() {
-    let ratingActive, ratingValue;
 
     for (let i = 0; i < cardRating.length; i++) {
       const ratings = cardRating[i];
@@ -321,7 +193,7 @@ function addDisableCardBtn() {
   })
 }
 
-function cardsHtml(id, img, price, title, rating, discount) {
+function cardsHtml(id, img, price, title, rating) {
   return `<div class="wrapper-card" id="${id}">
   <div class="card">
     <a href="" class="card-wrapper-img">

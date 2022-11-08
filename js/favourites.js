@@ -10,6 +10,7 @@ const productQuantity = document.querySelector('.main-title-quantity');
 if (JSON.parse(localStorage.getItem('productsFavourites')) !== null) {
   product = JSON.parse(localStorage.getItem('productsFavourites'));
   productQuantity.textContent = product.length;
+
 } else {
   productQuantity.textContent = '0';
 }
@@ -89,39 +90,90 @@ let rangeSettings = {
   }
 }
 
-product.forEach(card => {
-  min_maxPriceArr.push(priceWithoutSpaces(card.price));
-  if (card.price_card !== undefined) min_maxPriceArr.push(priceWithoutSpaces(card.price_card))
-})
 
-rangeSettings.range['max'] = [Math.max.apply(null, min_maxPriceArr)];
-rangeSettings.range['min'] = [Math.min.apply(null, min_maxPriceArr)];
-
-noUiSlider.create(randeSlider, rangeSettings);
-
-const minPrice = document.querySelector('#min-price');
-const maxPrice = document.querySelector('#max-price');
-
-const inputsPrice = [minPrice, maxPrice];
-
-randeSlider.noUiSlider.on('update', function (values, handle) {
-  inputsPrice[handle].value = Math.round(values[handle]);
-})
-
-const setRangeSlider = (i, value) => {
-  let arr = [null, null]
-  arr[i] = value;
-
-  randeSlider.noUiSlider.set(arr);
-}
-
-inputsPrice.forEach((el, i) => {
-  el.addEventListener('change', function (e) {
-    setRangeSlider(i, e.currentTarget.value);
+if (product.length > 0) {
+  product.forEach(card => {
+    min_maxPriceArr.push(priceWithoutSpaces(card.price));
+    if (card.price_card !== undefined) min_maxPriceArr.push(priceWithoutSpaces(card.price_card))
   })
-})
+
+  rangeSettings.range['max'] = [Math.max.apply(null, min_maxPriceArr)];
+  rangeSettings.range['min'] = [Math.min.apply(null, min_maxPriceArr)];
+
+  noUiSlider.create(randeSlider, rangeSettings);
+
+  const minPrice = document.querySelector('#min-price');
+  const maxPrice = document.querySelector('#max-price');
+
+  const inputsPrice = [minPrice, maxPrice];
+
+  randeSlider.noUiSlider.on('update', function (values, handle) {
+    inputsPrice[handle].value = Math.round(values[handle]);
+  })
+
+  const setRangeSlider = (i, value) => {
+    let arr = [null, null]
+    arr[i] = value;
+
+    randeSlider.noUiSlider.set(arr);
+  }
+
+  inputsPrice.forEach((el, i) => {
+    el.addEventListener('change', function (e) {
+      setRangeSlider(i, e.currentTarget.value);
+    })
+  })
+}
 
 // Получаю числовое значение из строки 
 function priceWithoutSpaces(str) {
   return Number(str.replace(/[^\d.-]/g, ''));
+}
+
+// Удаление карточек
+favouritesProducts.addEventListener('click', e => {
+  if (e.target.classList.contains('card-delete')) {
+    // Карточка
+    const wrapperCard = e.target.closest('.wrapper-card');
+    // ID карточки
+    const wrapperCardId = wrapperCard.getAttribute('id');
+
+    // Нахожу удалееные карточку в массиве 
+    const removeCardIndex = product.findIndex(card => card.id === wrapperCardId);
+
+    // Удаление из массива
+    product.splice(removeCardIndex, 1);
+    localStorage.setItem('productsFavourites', JSON.stringify(product));
+
+    // Вывод количество товаров в избранном 
+    document.querySelector('#menu-favourites').textContent = product.length;
+    productQuantity.textContent = product.length;
+
+    wrapperCard.remove();
+
+    product.forEach(card => {
+      min_maxPriceArr.push(priceWithoutSpaces(card.price));
+      if (card.price_card !== undefined) min_maxPriceArr.push(priceWithoutSpaces(card.price_card));
+    })
+
+    priceMax = Math.max.apply(null, min_maxPriceArr);
+    priceMin = Math.min.apply(null, min_maxPriceArr);
+
+    rangeSettings.range['max'] = [priceMax];
+    rangeSettings.range['min'] = [priceMin];
+
+    randeSlider.noUiSlider.set([priceMin, priceMax]);
+  }
+});
+// Анияция карточки при удалении
+function cardRemoveAnim(item) {
+  let anim = item.animate([
+    { transform: 'scale(1)', opacity: '1' },
+    { transform: 'scale(0)', opacity: '0' },
+  ], { duration: 200 });
+  anim.addEventListener('finish', () => item.remove());
+}
+
+if ('ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0) {
+  document.querySelectorAll('.card-delete').forEach(span => span.style.opacity = 1);
 }
