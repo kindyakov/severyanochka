@@ -42,7 +42,7 @@ function cardsHtml(id, img, price, title, rating) {
   return `<div class="wrapper-card" id="${id}">
   <div class="card">
     <a href="" class="card-wrapper-img">
-      <img src="../img/img-card/${img}" alt="Блинчики" class="card-img" data-img="${img}"></img>
+      <img src="img/img-card/${img}" alt="Блинчики" class="card-img" data-img="${img}"></img>
     </a>
     <div class="card-content">
       <div class="card-wrapper-price">
