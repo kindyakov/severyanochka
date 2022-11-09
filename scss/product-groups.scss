@@ -137,6 +137,8 @@
 
   &__content {
     flex: 0 1 76.58%;
+    display: flex;
+    flex-direction: column;
   }
 
   &__wrapper {
@@ -522,16 +524,18 @@
 }
 
 .error-products {
-  width: 100%;
+  grid-column-start: 1;
+  grid-column-end: 4;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
   &_content {
+    height: 100%;
     display: flex;
     flex-direction: column;
     row-gap: 15px;
+    align-items: center;
+    justify-content: center;
+
     text-align: center;
   }
 

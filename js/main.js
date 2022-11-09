@@ -1,8 +1,6 @@
 const catalogMenu = document.querySelector('.header-catalog');
 const wrapper = document.querySelector('.wrapper');
 //Modal
-const modalLogin = document.querySelector('.modal-login');
-const inputLogin = document.querySelector('.modal-login__input');
 const profilBtn = document.querySelector('.header-profil');
 //Menu
 const headerOriginal = document.querySelector('.header-menu__wrpper');
@@ -10,7 +8,7 @@ const headerClon = document.querySelector('.menu-fixed')
 const headerMenu = document.querySelector('.header-menu')
 const headerWrapper = document.querySelector('.header-wrapper')
 //
-const catalog = document.querySelector('.catalog');
+// const catalog = document.querySelector('.catalog');
 //
 const cardsCatalog = document.querySelectorAll('.cards-catalog');
 let cardCatalogbool = true;
@@ -92,40 +90,6 @@ window.addEventListener('load', function () {
 })
 
 
-// Modal 
-let patterns = {
-  phone: /(^[7|8]{0,1}\d{10}$)|(^\+7{1}\d{10}$)/,
-}
-profilBtn.addEventListener('click', function () {
-  const document_width = document.documentElement.clientWidth;
-  const window_width = window.innerWidth;
-  const wrapper_margin = window_width - document_width;
-
-  if (wrapper_margin > 0) {
-    wrapper.style.cssText = `padding-right: ${wrapper_margin}px;`;
-  }
-
-  modalLogin.classList.add('active');
-  document.querySelector('body').classList.add('lock');
-})
-
-modalLogin.addEventListener('click', function (e) {
-  if (e.target.classList.contains('modal-login__body') || e.target.classList.contains('modal-login__close')) {
-    wrapper.style.cssText = ``;
-    modalLogin.classList.remove('active');
-    document.querySelector('body').classList.remove('lock');
-  } else if (e.target.classList.contains('modal-login__btn-log')) {
-    if (!patterns.phone.test(inputLogin.value)) {
-      e.preventDefault();
-      inputLogin.classList.add('error');
-    }
-  } else if (e.target.classList.contains('form-footer__btn-registration')) {
-    e.preventDefault();
-  }
-})
-inputLogin.addEventListener('input', function () {
-  inputLogin.classList.remove('error');
-})
 function linkActive(selector, url) {
   for (let i = 0; i < selector.length; i++) {
     const link = selector[i];
@@ -139,6 +103,7 @@ window.addEventListener('load', function () {
   linkActive(footerLinks, url);
   linkActive(menuLinks, url);
 })
+
 if (btnUp) {
   btnUp.addEventListener('click', function () {
     window.scrollTo({
@@ -147,6 +112,7 @@ if (btnUp) {
     });
   })
 }
+
 window.addEventListener('scroll', function () {
   const viewport_width = Math.max(document.documentElement.clientHeight, window.innerHeight);
   if (scrollY >= viewport_width) {

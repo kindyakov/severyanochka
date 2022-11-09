@@ -2,6 +2,10 @@ const products_container = document.querySelector('#products-container');
 
 let btnNore;
 let paginationList;
+let modulePagination;
+let paginationItem;
+// Последняя карточка в массиве
+let lastCardID;
 let productsArrayLocalStorage = [];
 
 // Проверяю чтоб не было null
@@ -16,11 +20,13 @@ if (products_container) {
     const response = await fetch('../JSON/products.json');
     const productsArray = await response.json();
     const productsCurrent = productsArray[`${products_container.dataset.products}`];
+    lastCardID = productsCurrent[productsCurrent.length - 1];
 
     if (productsCurrent !== undefined) {
       renderProducts(productsCurrent);
       rating();
     } else {
+      products_container.style.height = '100%';
       products_container.innerHTML = `<div class="error-products">
     <div class="error-products_content">
       <span class="error-products_text">К сожалению, раздел пуст</span>
@@ -33,120 +39,82 @@ if (products_container) {
 
   function renderProducts(productsArray) {
     const productsLength = productsArray.length;
-    let cardsVisible = 6;
+    const cardsVisible = 6;
     let cards = cardsVisible;
     let inter = 0;
     let arrVisibleCard = cardsVisible;
 
     productsArray.forEach(card => {
       if (inter < cards) {
-        products_container.insertAdjacentHTML('beforeend', cardsHtml(card.id, card.img, card.price, card.name, card.rating));
-
-        const cardID = document.querySelector(`[id = "${card.id}"]`);
-        if (card.discount) {
-          const cardWrapperImg = cardID.querySelector('.card-wrapper-img');
-          cardWrapperImg.insertAdjacentHTML('beforeend', `<span class="card-discount">-${card.discount}%</span>`)
-        }
-        if (card.price_card) {
-          const cardWrapperPrice = cardID.querySelector('.card-wrapper-price');
-          const cardPrice__card = cardID.querySelector('.card-price__card');
-
-          cardWrapperPrice.insertAdjacentHTML('beforeend', `
-            <p class="card-price-text">
-              <span class="card-price__ordinary card-price">${card.price_card} ₽</span>
-              <i>Обычная</i>
-            </p>`);
-          cardPrice__card.insertAdjacentHTML('afterend', `<i>С картой</i>`);
-        }
+        renderCardHtml(card);
         inter++;
       }
     });
 
-    if (productsArray.length > 0) {
-      products__footer.insertAdjacentHTML('beforeend', `<div class="more-wrapper">
-      <button class="products__more-btn">Показать ещё</button>
-    </div>
-    <div class="module-pagination">
-      <nav class="module-pagination__nav">
-        <div class="module-pagination__prev-block module-pagination__block">
-          <span
-            class="module-pagination__duble-prev module-pagination__span _icon-duble-arrows"></span>
-          <span class="module-pagination__prev module-pagination__span _icon-arrow"></span>
-        </div>
-        <ul class="module-pagination__list">
-
-        </ul>
-        <div class="module-pagination__next-block module-pagination__block">
-          <span class="module-pagination__next module-pagination__span _icon-arrow"></span>
-          <span
-            class="module-pagination__duble-next module-pagination__span _icon-duble-arrows"></span>
-        </div>
-      </nav>
-    </div>`);
+    if (productsArray.length > cardsVisible) {
+      // добовляю footer  с кнопкой more и пагинацию
+      products__footer.insertAdjacentHTML('beforeend', footerCatalogHtml());
+      modulePagination = document.querySelector('.module-pagination');
       paginationList = document.querySelector('.module-pagination__list');
       btnNore = document.querySelector('.products__more-btn');
     }
 
     if (btnNore) {
       btnNore.addEventListener('click', function () {
-        const visibleCard = productsArray.slice(cards, cards + cardsVisible);
+        let paginationIndex;
+        paginationItem = document.querySelectorAll('.module-pagination__item');
+        paginationItem.forEach(li => { if (li.classList.contains('show')) paginationIndex = Number(li.dataset.paginationIndex) });
+
+        const visibleCard = productsArray.slice(paginationIndex * cardsVisible, paginationIndex * cardsVisible + cardsVisible);
         cards += cardsVisible;
+
         // Вывод карточек
-        visibleCard.forEach(card => {
-          products_container.insertAdjacentHTML('beforeend', cardsHtml(card.id, card.img, card.price, card.name, card.rating));
-
-          const cardID = document.querySelector(`[id = "${card.id}"]`);
-          if (card.discount) {
-            const cardWrapperImg = cardID.querySelector('.card-wrapper-img');
-            cardWrapperImg.insertAdjacentHTML('beforeend', `<span class="card-discount">-${card.discount}%</span>`)
-          }
-          if (card.price_card) {
-            const cardWrapperPrice = cardID.querySelector('.card-wrapper-price');
-            const cardPrice__card = cardID.querySelector('.card-price__card');
-
-            cardWrapperPrice.insertAdjacentHTML('beforeend', `
-            <p class="card-price-text">
-              <span class="card-price__ordinary card-price">${card.price_card} ₽</span>
-              <i>Обычная</i>
-            </p>`);
-            cardPrice__card.insertAdjacentHTML('afterend', `<i>С картой</i>`);
-          }
-        })
+        visibleCard.forEach(card => renderCardHtml(card));
         rating();
         addDisableCardBtn();
 
         // Pagination active
-        let arrayCard = document.querySelectorAll('.wrapper-card').length;
-        document.querySelectorAll('.module-pagination__item').forEach((page, i) => {
-          i++;
-          if (i <= (arrayCard / cardsVisible)) {
-            page.classList.add('show')
-          }
-        });
+        paginationItem[paginationIndex--].classList.add('show');
 
-        //
-        if (arrVisibleCard === (productsLength - cardsVisible)) {
-          btnNore.classList.add('disable');
-        } else {
-          btnNore.classList.remove('disable');
-          arrVisibleCard += cardsVisible;
-        }
+        let arrayCard = document.querySelectorAll('.wrapper-card');
+        if (arrayCard[arrayCard.length - 1].getAttribute('id') === lastCardID.id) btnNore.classList.add('disable');
+        else btnNore.classList.remove('disable');
       });
     }
 
-
     // Pagination add in html
-    const arrayPaginstion = (productsArray.length / cardsVisible)
+    const arrayPaginstion = Math.ceil(productsArray.length / cardsVisible);
 
     for (let pagePagination = 1; pagePagination <= arrayPaginstion; pagePagination++) {
-      const paginadionHtml = `<li class="module-pagination__item" data-pagination-index="${pagePagination}">${pagePagination}</li>`;
-      paginationList.insertAdjacentHTML('beforeend', paginadionHtml);
-      if (pagePagination === 1) {
-        document.querySelector('.module-pagination__item').classList.add('show');
-      }
+      paginationList.insertAdjacentHTML('beforeend', `<li class="module-pagination__item" data-pagination-index="${pagePagination}">${pagePagination}</li>`);
+      if (pagePagination === 1) document.querySelector('.module-pagination__item').classList.add('show');
     }
+
+
+    modulePagination.addEventListener('click', (e) => {
+      if (e.target.classList.contains('module-pagination__item')) {
+        const paginationIndex = e.target.dataset.paginationIndex;
+        const visibleCard = productsArray.slice(paginationIndex * cardsVisible - cardsVisible, paginationIndex * cardsVisible);
+        paginationItem = document.querySelectorAll('.module-pagination__item');
+
+        document.querySelectorAll('.module-pagination__item').forEach(li => li.classList.remove('show'));
+        e.target.classList.add('show');
+        // Очищаю контейнер с карточками
+        products_container.innerHTML = '';
+        // Добовляю новые карточки
+        visibleCard.forEach(card => renderCardHtml(card));
+        // Для показа рейтинга
+        rating();
+        // Добовляет класс disabled если карточка в корзине
+        addDisableCardBtn();
+        // Проверка что последняя карточка на странице
+        if (paginationItem.length == paginationIndex) btnNore.classList.add('disable');
+        else btnNore.classList.remove('disable');
+      }
+    });
   };
 };
+
 // Rating
 let ratingActive, ratingValue;
 
@@ -155,20 +123,16 @@ function rating() {
   if (cardRating.length > 0) {
     initRatings();
   }
-
   function initRatings() {
-
     for (let i = 0; i < cardRating.length; i++) {
       const ratings = cardRating[i];
       initRating(ratings)
     }
   }
-
   function initRating(ratings) {
     initRatingVars(ratings)
     setTatingActiveWidth();
   }
-
   function initRatingVars(ratings) {
     ratingActive = ratings.querySelector('.card-rating__active');
     ratingValue = ratings.querySelector('.card-rating__items');
@@ -179,7 +143,6 @@ function rating() {
   }
 }
 rating();
-
 
 function addDisableCardBtn() {
   productsArrayLocalStorage.forEach(card => disableCardArray.push(card.id));
@@ -230,3 +193,44 @@ function cardsHtml(id, img, price, title, rating) {
   </div>
 </div>`;
 }
+function footerCatalogHtml() {
+  return `<div class="more-wrapper">
+      <button class="products__more-btn">Показать ещё</button>
+    </div>
+    <div class="module-pagination">
+      <nav class="module-pagination__nav">
+        <div class="module-pagination__prev-block module-pagination__block">
+
+        </div>
+        <ul class="module-pagination__list">
+
+        </ul>
+        <div class="module-pagination__next-block module-pagination__block">
+          <span class="module-pagination__next module-pagination__span _icon-arrow"></span>
+          <span class="module-pagination__duble-next module-pagination__span _icon-duble-arrows"></span>
+        </div>
+      </nav>
+    </div>`;
+}
+function renderCardHtml(card) {
+  products_container.insertAdjacentHTML('beforeend', cardsHtml(card.id, card.img, card.price, card.name, card.rating));
+
+  const cardID = document.querySelector(`[id = "${card.id}"]`);
+  if (card.discount) {
+    const cardWrapperImg = cardID.querySelector('.card-wrapper-img');
+    cardWrapperImg.insertAdjacentHTML('beforeend', `<span class="card-discount">-${card.discount}%</span>`)
+  }
+  if (card.price_card) {
+    const cardWrapperPrice = cardID.querySelector('.card-wrapper-price');
+    const cardPrice__card = cardID.querySelector('.card-price__card');
+
+    cardWrapperPrice.insertAdjacentHTML('beforeend', `
+      <p class="card-price-text">
+        <span class="card-price__ordinary card-price">${card.price_card} ₽</span>
+        <i>Обычная</i>
+      </p>`);
+    cardPrice__card.insertAdjacentHTML('afterend', `<i>С картой</i>`);
+  }
+}
+/* <span class="module-pagination__duble-prev module-pagination__span _icon-duble-arrows"></span> */
+/* <span class="module-pagination__prev module-pagination__span _icon-arrow"></span> */
