@@ -107,5 +107,34 @@ window.addEventListener('load', function () {
 
     widthFilters = filters.offsetWidth;
   }
+
+  let touchX = null;
+
+  function touchStart(e) {
+    if (viewport_width < 768) {
+      const touch = e.touches[0];
+      touchX = touch.clientX;
+    }
+  }
+  function touchMove(e) {
+    if (viewport_width < 768) {
+      if (!touchX) {
+        return false;
+      }
+      let filtersWidth = this.clientWidth;
+
+      let moveX = e.touches[0].clientX;
+      let xDiff = touchX - moveX;
+
+      if (xDiff > (filtersWidth / 2.5)) {
+        filters.classList.remove('active');
+        html.classList.remove('lock');
+        body.classList.remove('lock')
+      }
+    }
+  }
+  filters.addEventListener('touchstart', touchStart);
+  filters.addEventListener('touchmove', touchMove);
 });
+
 
