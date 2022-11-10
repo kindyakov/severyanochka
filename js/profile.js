@@ -1,7 +1,6 @@
-//Modal
 const modalLogin = document.querySelector('.modal-login');
 const inputLogin = document.querySelector('.modal-login__input');
-const profilBtn = document.querySelector('.header-profil');
+
 // Modal 
 let patterns = {
   phone: /(^[7|8]{0,1}\d{10}$)|(^\+7{1}\d{10}$)/,
