@@ -150,9 +150,17 @@ if (products_container) {
         } else if (e.target.classList.contains('_icon-duble-arrows')) {
           const duble = e.target.dataset.duble;
           if (duble == 'duble-prev') {
-
+            const visibleCard = productsArray.slice((paginationIndex * cardsVisible) - cardsVisible * 3, (paginationIndex * cardsVisible) - cardsVisible * 2);
+            // Pagination active
+            paginationItem[paginationIndex - 3].classList.add('show');
+            // Вывод карточек            
+            visibleCard.forEach(card => renderCardHtml(card));
           } else if (duble == 'duble-next') {
-
+            const visibleCard = productsArray.slice(paginationIndex * cardsVisible + cardsVisible, paginationIndex * cardsVisible + cardsVisible * 2);
+            // Pagination active
+            paginationItem[paginationIndex + 1].classList.add('show');
+            // Вывод карточек            
+            visibleCard.forEach(card => renderCardHtml(card));
           }
         }
         rating();
