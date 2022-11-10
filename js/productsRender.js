@@ -71,25 +71,27 @@ if (products_container) {
 
     if (btnNore) {
       btnNore.addEventListener('click', function () {
-        let paginationIndex;
-        paginationItem = document.querySelectorAll('.module-pagination__item');
-        paginationItem.forEach(li => { if (li.classList.contains('show')) paginationIndex = Number(li.dataset.paginationIndex) });
+        if (!this.classList.contains('disable')) {
+          let paginationIndex;
+          paginationItem = document.querySelectorAll('.module-pagination__item');
+          paginationItem.forEach(li => { if (li.classList.contains('show')) paginationIndex = Number(li.dataset.paginationIndex) });
 
-        const visibleCard = productsArray.slice(paginationIndex * cardsVisible, paginationIndex * cardsVisible + cardsVisible);
+          const visibleCard = productsArray.slice(paginationIndex * cardsVisible, paginationIndex * cardsVisible + cardsVisible);
 
-        // Вывод карточек
-        visibleCard.forEach(card => renderCardHtml(card));
-        rating();
-        addDisableCardBtn();
+          // Вывод карточек
+          visibleCard.forEach(card => renderCardHtml(card));
+          rating();
+          addDisableCardBtn();
 
-        // Pagination active
-        paginationItem[paginationIndex--].classList.add('show');
+          // Pagination active
+          paginationItem[paginationIndex--].classList.add('show');
 
-        let arrayCard = document.querySelectorAll('.wrapper-card');
-        if (arrayCard[arrayCard.length - 1].getAttribute('id') === lastCardID.id) btnNore.classList.add('disable');
-        else btnNore.classList.remove('disable');
+          let arrayCard = document.querySelectorAll('.wrapper-card');
+          if (arrayCard[arrayCard.length - 1].getAttribute('id') === lastCardID.id) btnNore.classList.add('disable');
+          else btnNore.classList.remove('disable');
 
-        addClassPaginationBlock();
+          addClassPaginationBlock();
+        }
       });
     }
 
@@ -132,6 +134,7 @@ if (products_container) {
         products_container.innerHTML = '';
         // Удаляю класс show всем пагинациям страницы
         paginationItem.forEach(li => li.classList.remove('show'));
+
         if (e.target.classList.contains('_icon-arrow')) {
           const single = e.target.dataset.single;
           if (single == 'prev') {
@@ -166,6 +169,9 @@ if (products_container) {
         rating();
         addDisableCardBtn();
         addClassPaginationBlock();
+        let arrayCard = document.querySelectorAll('.wrapper-card');
+        if (arrayCard[arrayCard.length - 1].getAttribute('id') === lastCardID.id) btnNore.classList.add('disable');
+        else btnNore.classList.remove('disable');
       }
     });
   };
@@ -298,6 +304,7 @@ function addClassPaginationBlock() {
 
   if (paginationItem[1].classList.contains('show')) duble_prev.classList.add('none');
   else duble_prev.classList.remove('none');
+
   if (paginationItem[paginationItem.length - 2].classList.contains('show')) duble_next.classList.add('none');
   else duble_next.classList.remove('none');
 }

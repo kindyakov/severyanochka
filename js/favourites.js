@@ -36,6 +36,14 @@ if (product.length > 0) {
       cardPrice__card.insertAdjacentHTML('afterend', `<i>С картой</i>`);
     }
   })
+} else {
+  favouritesProducts.style.height = '100%';
+  favouritesProducts.innerHTML = `<div class="error-products">
+    <div class="error-products_content">
+      <span class="error-products_text">К сожалению, раздел пуст</span>
+      <a href="html/catalog.html" class="basket__empty-link">Нажмите здесь, чтобы продолжить покупки</a>
+    </div>
+  </div>`;
 }
 
 function cardsHtml(id, img, price, title, rating) {
@@ -163,6 +171,15 @@ favouritesProducts.addEventListener('click', e => {
     rangeSettings.range['min'] = [priceMin];
 
     randeSlider.noUiSlider.set([priceMin, priceMax]);
+  }
+  if (product.length === 0) {
+    favouritesProducts.style.height = '100%';
+    favouritesProducts.innerHTML = `<div class="error-products">
+      <div class="error-products_content">
+        <span class="error-products_text">К сожалению, раздел пуст</span>
+        <a href="html/catalog.html" class="basket__empty-link">Нажмите здесь, чтобы продолжить покупки</a>
+      </div>
+    </div>`;
   }
 });
 // Анияция карточки при удалении
