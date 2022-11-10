@@ -60,6 +60,7 @@ if (products_container) {
       modulePagination = document.querySelector('.module-pagination');
       paginationList = document.querySelector('.module-pagination__list');
       btnNore = document.querySelector('.products__more-btn');
+
       blockPrev = document.querySelector('.module-pagination__prev-block');
       blockNext = document.querySelector('.module-pagination__next-block');
 
