@@ -473,15 +473,16 @@
     color: #606060;
     padding: 8px 12px;
     cursor: pointer;
-    transition: color 0.2s;
+    transition: all 0.2s linear;
+    border-radius: 6px;
+    outline: 2px solid transparent;
 
     &:hover {
-      color: #FF6633;
+      outline: 2px solid #FF6633;
     }
 
     &.show {
       color: #FF6633;
-      transform: scale(1.2);
     }
   }
 
@@ -489,6 +490,10 @@
     display: flex;
     column-gap: 16px;
     align-items: center;
+
+    &.none {
+      display: none;
+    }
   }
 
   // &__prev-block {}
@@ -497,9 +502,17 @@
 
   &__duble-next {
     transform: rotate(180deg);
+
+    &.none {
+      display: none;
+    }
   }
 
-  // &__duble-prev {}
+  &__duble-prev {
+    &.none {
+      display: none;
+    }
+  }
 
   &__span {
     font-size: 16px;
