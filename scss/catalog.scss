@@ -8,6 +8,8 @@
   &__navigation-list {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    row-gap: 8px;
   }
 
   &__navigation-item {

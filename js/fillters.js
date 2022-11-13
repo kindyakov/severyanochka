@@ -42,8 +42,8 @@ window.addEventListener('load', function () {
         } else errorProducts = true;
       }
       if (!errorProducts) {
-        rangeSettings.range['max'] = [Math.max.apply(null, min_maxPriceArr)];
-        rangeSettings.range['min'] = [Math.min.apply(null, min_maxPriceArr)];
+        rangeSettings.range['max'] = [Math.ceil(Math.max.apply(null, min_maxPriceArr))]; // Округление в большую сторону
+        rangeSettings.range['min'] = [Math.floor(Math.min.apply(null, min_maxPriceArr))]; // Округление в меньшую сторону
 
         noUiSlider.create(randeSlider, rangeSettings);
 

@@ -267,6 +267,14 @@
       font-size: calc(24px + (46 - 24) * ((100vw - 360px) / 840));
     }
   }
+
+  .products__main {
+    margin-bottom: calc(60px + 60 * (100vw - 360px) / 840);
+  }
+
+  .products-title {
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 960px) {
@@ -305,6 +313,39 @@
       max-width: none;
       min-width: auto;
     }
+  }
+
+  .products__main {
+    flex-wrap: wrap;
+    row-gap: 25px;
+  }
+
+  .products__aside-regular-price {
+    font-size: 18px;
+  }
+
+  .products__aside-card-price {
+    font-size: 24px;
+  }
+
+  .products__aside-similar {
+    width: 100%;
+  }
+
+  .products__aside-similar-column {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 8px;
+  }
+
+  .products__aside-similar-link {
+    max-width: 172px;
+  }
+
+  .products__main-slider-slide {
+    height: 36px;
+    width: 64px;
   }
 }
 
@@ -547,6 +588,18 @@
       width: 290px;
       min-width: auto;
     }
+  }
+
+  .products__main {
+    flex-direction: column;
+  }
+
+  .products__aside {
+    width: 100%;
+  }
+
+  .products__aside-similar-price {
+    font-size: 12px;
   }
 }
 

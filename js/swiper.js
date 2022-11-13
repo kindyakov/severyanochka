@@ -62,3 +62,4 @@ const productsSwiper = new Swiper('.products-swiper', {
     },
   }
 });
+const imgSwiper = new Swiper('.products__main-slider-active', {});
