@@ -38,12 +38,14 @@ if ('ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxT
       document.querySelector('.header-catalog__button').classList.add('active');
       document.body.classList.add('lock');
       document.querySelector('html').classList.add('lock');
-    } else if (!e.target.closest('.wrpper-catalog__button') && !e.target.closest('.header-catalog')) {
-      catalogMenu.classList.remove('open')
-      document.querySelector('.header-catalog__button').classList.remove('active');
+    } else if (catalogMenu.classList.contains('open')) {
+      if (!e.target.closest('.wrpper-catalog__button') && !e.target.closest('.header-catalog')) {
+        catalogMenu.classList.remove('open')
+        document.querySelector('.header-catalog__button').classList.remove('active');
 
-      document.body.classList.remove('lock');
-      document.querySelector('html').classList.remove('lock');
+        document.body.classList.remove('lock');
+        document.querySelector('html').classList.remove('lock');
+      }
     }
   });
   let touchY = null;
@@ -60,8 +62,8 @@ if ('ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxT
 
     let moveY = e.touches[0].clientY;
     let yDiff = touchY - moveY;
-    console.log(moveY);
-    if (yDiff > (catalogMenuHeight / 1.7)) {
+
+    if (yDiff > 150) {
       catalogMenu.classList.remove('open')
       document.querySelector('.header-catalog__button').classList.remove('active');
 

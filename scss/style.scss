@@ -444,9 +444,9 @@ body {
   width: 100%;
   position: absolute;
   transition: transform 0.3s;
-  top: 100%;
   transform: translateY(-100%);
   z-index: 10;
+  overflow: auto;
 
   &.open {
     transform: translateY(0);
@@ -456,7 +456,7 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     column-gap: 15px;
-    row-gap: 50px;
+    row-gap: 25px;
   }
 
   // &__list {
