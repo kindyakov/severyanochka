@@ -3709,6 +3709,13 @@ body.lock {
   .header-catalog__menu {
     grid-template-columns: repeat(2, 1fr);
   }
+  .products__aside-similar-column {
+    margin-top: 14px;
+  }
+  .products__aside-similar-text {
+    font-weight: bold;
+    font-size: 18px;
+  }
 }
 @media (max-width: 440px) {
   .modal-login__content {
@@ -3803,5 +3810,13 @@ body.lock {
   .products__main-gallery {
     -moz-column-gap: 8px;
          column-gap: 8px;
+  }
+  .products__aside-similar-column {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .products__aside-similar-link {
+    width: 100%;
+    max-width: none;
   }
 }
