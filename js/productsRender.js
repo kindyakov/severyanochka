@@ -28,6 +28,7 @@ if (products_container) {
       lastCardID = productsCurrent[productsCurrent.length - 1];
       renderProducts(productsCurrent);
       rating();
+      addDisableCardBtn();
     } else {
       products_container.style.height = '100%';
       products_container.innerHTML = `<div class="error-products">

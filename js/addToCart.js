@@ -11,7 +11,7 @@ if (JSON.parse(localStorage.getItem('productsFavourites')) !== null) {
   cardFavouritesArray = JSON.parse(localStorage.getItem('productsFavourites'));
 }
 
-window.addEventListener('load', function () {
+window.addEventListener('DOMContentLoaded', function () {
   const body = document.body;
 
   body.addEventListener('click', function (e) {
@@ -57,10 +57,6 @@ window.addEventListener('load', function () {
       }
       cardBasketArray.push(cardObject)
       localStorage.setItem('productsBasket', JSON.stringify(cardBasketArray));
-
-      if (cardBasketArray.length > 0) {
-        addDisableCardBtn();
-      }
     }
     if (target.classList.contains('card-like') && !target.classList.contains('disable')) {
       // Обертка карточки
@@ -94,9 +90,8 @@ window.addEventListener('load', function () {
       cardFavouritesArray.push(cardObject)
       localStorage.setItem('productsFavourites', JSON.stringify(cardFavouritesArray));
     }
-    if (cardBasketArray.length > 0) {
-      addDisableCardLike();
-    }
+    if (cardBasketArray.length > 0) addDisableCardLike();
+    if (cardBasketArray.length > 0) addDisableCardBtn();
   })
   setTimeout(addDisableCardBtn, 0);
   setTimeout(addDisableCardLike, 0);
@@ -145,7 +140,7 @@ function addInfoCard(target) {
   cardObject.name = name;
   cardObject.price = price;
   if (price_card) {
-    cardObject.price_card = `${price_card.textContent}`;
+    cardObject.price_card = price_card.textContent;
   }
   cardObject.img = imgSrc;
   cardObject.rating = rating;
