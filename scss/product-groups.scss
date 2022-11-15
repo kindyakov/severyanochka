@@ -172,7 +172,9 @@
   &__list {
     display: flex;
     align-items: center;
-    column-gap: 24px;
+    flex-wrap: wrap;
+    column-gap: 18px;
+    row-gap: 8px;
   }
 
   &__item {

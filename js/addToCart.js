@@ -16,80 +16,10 @@ window.addEventListener('DOMContentLoaded', function () {
 
   body.addEventListener('click', function (e) {
     const target = e.target;
-    cardObject = {
-      id: '',
-      name: '',
-      price: '',
-      img: '',
-      rating: '',
-    };
 
-    if (target.classList.contains('card-button') && !target.classList.contains('disable')) {
-      // Кнопка добавить в корзину
-      const btn = target;
-      // Обертка карточки
-      const card = target.closest('.wrapper-card');
-      // ID карточки
-      const cardID = card.getAttribute('id');
-      // Название товара
-      const name = card.querySelector('.card-name-product').textContent;
-      // Цена товара
-      const price = card.querySelector('.card-price__card').textContent;
-      // Цена товара без карты 
-      const price_card = card.querySelector('.card-price__ordinary');
-      // Картинка карточки
-      const imgSrc = card.querySelector('.card-img').dataset.img;
-      // Рейтинг 
-      const rating = card.querySelector('.card-rating__items').dataset.rating;
-      // Скидка 
-      const discount = card.querySelector('.card-discount');
+    if (target.classList.contains('card-button') && !target.classList.contains('disable')) addInfoCard(target, cardBasketArray, 'productsBasket');
+    if (target.classList.contains('card-like') && !target.classList.contains('disable')) addInfoCard(target, cardFavouritesArray, 'productsFavourites');
 
-      cardObject.id = cardID;
-      cardObject.name = name;
-      cardObject.price = price;
-      if (price_card) {
-        cardObject.price_card = price_card.textContent;
-      }
-      cardObject.img = imgSrc;
-      cardObject.rating = rating;
-      if (discount) {
-        cardObject.discount = discount.textContent;
-      }
-      cardBasketArray.push(cardObject)
-      localStorage.setItem('productsBasket', JSON.stringify(cardBasketArray));
-    }
-    if (target.classList.contains('card-like') && !target.classList.contains('disable')) {
-      // Обертка карточки
-      const card = target.closest('.wrapper-card');
-      // ID карточки
-      const cardID = card.getAttribute('id');
-      // Название товара
-      const name = card.querySelector('.card-name-product').textContent;
-      // Цена товара
-      const price = card.querySelector('.card-price__card').textContent;
-      // Цена товара без карты 
-      const price_card = card.querySelector('.card-price__ordinary');
-      // Картинка карточки
-      const imgSrc = card.querySelector('.card-img').dataset.img;
-      // Рейтинг 
-      const rating = card.querySelector('.card-rating__items').dataset.rating;
-      // Скидка 
-      const discount = card.querySelector('.card-discount');
-
-      cardObject.id = cardID;
-      cardObject.name = name;
-      cardObject.price = price;
-      if (price_card) {
-        cardObject.price_card = price_card.textContent;
-      }
-      cardObject.img = imgSrc;
-      cardObject.rating = rating;
-      if (discount) {
-        cardObject.discount = discount.textContent;
-      }
-      cardFavouritesArray.push(cardObject)
-      localStorage.setItem('productsFavourites', JSON.stringify(cardFavouritesArray));
-    }
     if (cardBasketArray.length > 0) addDisableCardLike();
     if (cardBasketArray.length > 0) addDisableCardBtn();
   })
@@ -109,16 +39,22 @@ function addDisableCardBtn() {
   })
 }
 function addDisableCardLike() {
-  cardFavouritesArray.forEach(card => disableCardFavourites.push(card.id));
-  disableCardFavourites.forEach(cardsID => {
-    let cardDisable = document.querySelector(`[id = "${cardsID}"]`);
+  cardFavouritesArray.forEach(card => {
+    let cardDisable = document.querySelector(`[id = "${card.id}"]`);
     if (cardDisable) {
       let cardDisableLike = cardDisable.querySelector('.card-like');
       cardDisableLike.classList.add('disable');
     }
-  })
+  });
 }
-function addInfoCard(target) {
+function addInfoCard(target, arr, storage) {
+  cardObject = {
+    id: '',
+    name: '',
+    price: '',
+    img: '',
+    rating: '',
+  };
   // Обертка карточки
   const card = target.closest('.wrapper-card');
   // ID карточки
@@ -139,14 +75,11 @@ function addInfoCard(target) {
   cardObject.id = cardID;
   cardObject.name = name;
   cardObject.price = price;
-  if (price_card) {
-    cardObject.price_card = price_card.textContent;
-  }
+  if (price_card) cardObject.price_card = price_card.textContent;
   cardObject.img = imgSrc;
   cardObject.rating = rating;
-  if (discount) {
-    cardObject.discount = discount.textContent;
-  }
-  cardFavouritesArray.push(cardObject)
-  localStorage.setItem('productsFavourites', JSON.stringify(cardFavouritesArray));
+  if (discount) cardObject.discount = discount.textContent;
+
+  arr.unshift(cardObject)
+  localStorage.setItem(`${storage}`, JSON.stringify(arr));
 }

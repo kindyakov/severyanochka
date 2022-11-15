@@ -29,6 +29,7 @@ if (products_container) {
       renderProducts(productsCurrent);
       rating();
       addDisableCardBtn();
+      addDisableCardLike();
     } else {
       products_container.style.height = '100%';
       products_container.innerHTML = `<div class="error-products">
@@ -84,7 +85,7 @@ if (products_container) {
           visibleCard.forEach(card => renderCardHtml(card));
           rating();
           addDisableCardBtn();
-
+          addDisableCardLike();
           // Pagination active
           paginationItem[paginationIndex--].classList.add('show');
 
@@ -122,6 +123,7 @@ if (products_container) {
         rating();
         // Добовляет класс disabled если карточка в корзине
         addDisableCardBtn();
+        addDisableCardLike();
         // Проверка что последняя карточка на странице
         if (paginationItem.length == paginationIndex) btnNore.classList.add('disable');
         else btnNore.classList.remove('disable');
@@ -170,6 +172,7 @@ if (products_container) {
         }
         rating();
         addDisableCardBtn();
+        addDisableCardLike();
         addClassPaginationBlock();
         let arrayCard = document.querySelectorAll('.wrapper-card');
         if (arrayCard[arrayCard.length - 1].getAttribute('id') === lastCardID.id) btnNore.classList.add('disable');
@@ -219,7 +222,15 @@ function addDisableCardBtn() {
     }
   })
 }
-
+function addDisableCardLike() {
+  productsArrayLocalStorage.forEach(card => {
+    let cardDisable = document.querySelector(`[id = "${card.id}"]`);
+    if (cardDisable) {
+      let cardDisableLike = cardDisable.querySelector('.card-like');
+      cardDisableLike.classList.add('disable');
+    }
+  });
+}
 function cardsHtml(id, img, price, title, rating) {
   return `<div class="wrapper-card" id="${id}">
   <div class="card">

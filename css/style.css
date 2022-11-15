@@ -1470,8 +1470,10 @@ body.lock {
 .filter-menu__list {
   display: flex;
   align-items: center;
-  -moz-column-gap: 24px;
-       column-gap: 24px;
+  flex-wrap: wrap;
+  -moz-column-gap: 18px;
+       column-gap: 18px;
+  row-gap: 8px;
 }
 .filter-menu__item {
   display: flex;
