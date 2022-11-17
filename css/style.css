@@ -1465,8 +1465,14 @@ body.lock {
   border-radius: 4px;
   width: 128px;
   display: none;
+  margin-right: 8px;
+  min-width: 80px;
 }
 
+.filter-menu {
+  display: flex;
+  align-items: flex-start;
+}
 .filter-menu__list {
   display: flex;
   align-items: center;
@@ -1497,8 +1503,14 @@ body.lock {
   content: "";
   background: #fff;
 }
+.filter-menu__item.none {
+  display: none;
+}
 .filter-menu__item-clear {
   cursor: pointer;
+}
+.filter-menu__item-clear.none {
+  display: none;
 }
 .filter-menu__item-span {
   margin-right: 8px;
@@ -3546,9 +3558,6 @@ body.lock {
   }
   .main__catalog-cards {
     max-height: 140px;
-  }
-  .filter-menu__item-clear {
-    display: none;
   }
   .filter-adaptive-active {
     display: block;

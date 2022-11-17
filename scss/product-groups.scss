@@ -165,9 +165,13 @@
   border-radius: 4px;
   width: 128px;
   display: none;
+  margin-right: 8px;
+  min-width: 80px;
 }
 
 .filter-menu {
+  display: flex;
+  align-items: flex-start;
 
   &__list {
     display: flex;
@@ -202,10 +206,18 @@
         }
       }
     }
+
+    &.none {
+      display: none;
+    }
   }
 
   &__item-clear {
     cursor: pointer;
+
+    &.none {
+      display: none;
+    }
   }
 
   &__item-span {

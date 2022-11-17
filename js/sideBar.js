@@ -9,7 +9,7 @@ window.addEventListener('load', function () {
     filters_body = document.querySelector('.catalog-products__filters_body'),
     container = document.querySelector('.container');
 
-  const filtersMenuList = document.querySelector('.filter-menu__list');
+  const filterAdaptiveBtn = document.querySelector('.filter-adaptive-active');
   const catalogContent = document.querySelector('.catalog-products__content'),
     catalogWrapper = document.querySelector('.catalog-products__wrapper');
 
@@ -33,12 +33,10 @@ window.addEventListener('load', function () {
 
   getProducts();
 
-  filtersMenuList.addEventListener('click', function (e) {
-    if (e.target.classList.contains('filter-adaptive-active')) {
-      filters.classList.add('active');
-      body.classList.add('lock');
-      html.classList.add('lock');
-    }
+  filterAdaptiveBtn.addEventListener('click', () => {
+    filters.classList.add('active');
+    body.classList.add('lock');
+    html.classList.add('lock');
   })
 
   document.querySelector('.filtres-close').addEventListener('click', function () {
@@ -135,6 +133,19 @@ window.addEventListener('load', function () {
   }
   filters.addEventListener('touchstart', touchStart);
   filters.addEventListener('touchmove', touchMove);
+
+  body.addEventListener('click', (e) => {
+    if (!e.target.closest('.catalog-products__filters') && !e.target.closest('.filter-adaptive-active')) {
+      filters.classList.remove('active');
+      body.classList.remove('lock');
+      html.classList.remove('lock');
+    }
+    if (e.target.classList.contains('catalog-products__filters_button')) {
+      filters.classList.remove('active');
+      body.classList.remove('lock');
+      html.classList.remove('lock');
+    }
+  });
 });
 
 

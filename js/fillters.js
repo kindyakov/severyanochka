@@ -13,6 +13,10 @@ window.addEventListener('load', function () {
   const quickFilters = document.querySelectorAll('.catalog-products__quick-filters_btn');
   const filtersMenuList = document.querySelector('.filter-menu__list');
   const catalogWrapper = document.querySelector('.catalog-products__wrapper');
+
+  const minPrice = document.querySelector('#min-price');
+  const maxPrice = document.querySelector('#max-price');
+
   let min_maxPriceArr = [];
   let rangeSettings = {
     start: [0, 999],
@@ -23,32 +27,26 @@ window.addEventListener('load', function () {
       'max': [999],
     }
   }
+  const filter__itemClear = document.querySelector('.filter-menu__item-clear');
+  let filterss__items, filters__itemPrice;
 
-  let errorProducts = false;
+  async function getProducts() {
+    const response = await fetch('../JSON/products.json');
+    const productsArray = await response.json();
+    if (products_container) {
+      const productsCurrent = productsArray[`${products_container.dataset.products}`];
+      if (productsCurrent !== undefined) {
+        productsCurrent.forEach(object => {
+          min_maxPriceArr.push(object.price, object.price_card);
+          if (object.price_card == undefined) {
+            min_maxPriceArr.pop();
+          }
+        })
 
-  if (filters) {
-    async function getProducts() {
-      const response = await fetch('../JSON/products.json');
-      const productsArray = await response.json();
-      if (products_container) {
-        const productsCurrent = productsArray[`${products_container.dataset.products}`];
-        if (productsCurrent !== undefined) {
-          productsCurrent.forEach(object => {
-            min_maxPriceArr.push(object.price, object.price_card);
-            if (object.price_card == undefined) {
-              min_maxPriceArr.pop();
-            }
-          })
-        } else errorProducts = true;
-      }
-      if (!errorProducts) {
         rangeSettings.range['max'] = [Math.ceil(Math.max.apply(null, min_maxPriceArr))]; // Округление в большую сторону
         rangeSettings.range['min'] = [Math.floor(Math.min.apply(null, min_maxPriceArr))]; // Округление в меньшую сторону
 
         noUiSlider.create(randeSlider, rangeSettings);
-
-        const minPrice = document.querySelector('#min-price');
-        const maxPrice = document.querySelector('#max-price');
 
         const inputsPrice = [minPrice, maxPrice];
 
@@ -68,60 +66,57 @@ window.addEventListener('load', function () {
             setRangeSlider(i, e.currentTarget.value);
           })
         })
-      }
-    }
 
-    getProducts();
-
-    let filterArray = [];
-
-    filters.addEventListener('click', function (e) {
-      if (e.target.closest('.filters_box-paramets__btn')) {
-        randeSlider.noUiSlider.set([0, 999]);
-
-        filtersProducts.forEach(el => el.classList.remove('active'));
-        quickFilters.forEach(el => el.classList.remove('active'));
-
-        inputCheckbox.checked = false;
-      }
-      if (e.target.closest('.filters-products__name')) {
-        e.target.classList.toggle('active');
-      }
-      if (e.target.closest('.catalog-products__filters_button')) {
-        let menuFilterHtml;
-        document.querySelectorAll('.filters-products__name').forEach(item => {
-          if (item.classList.contains('active')) {
-            menuFilterHtml = item.dataset.filter;
-            filtersMenuList.insertAdjacentHTML('afterbegin', `<li class="filter-menu__item active"><span class="filter-menu__item-span">${menuFilterHtml}</span><span
-          class="filter-menu__item-close"></span></li>`)
-            filterArray.push(filtersMenuList.firstChild);
-          }
+        filtersProducts.forEach(item => {
+          filtersMenuList.insertAdjacentHTML('afterbegin', `<li class="filter-menu__item filterss__items active none" data-filter="${item.dataset.filter}"><span class="filter-menu__item-span">${item.textContent}</span><span
+            class="filter-menu__item-close"></span></li>`)
         })
-        if (filterArray.length > 0) {
-          filtersMenuList.insertAdjacentHTML('beforeend', `<li class="filter-menu__item filter-menu__item-clear">
-          <span class="filter-menu__item-span">Очистить фильтры</span>
-          <span class="filter-menu__item-close"></span>
-        </li>`);
-          catalogWrapper.classList.add('add-margin');
-        }
-      }
-    })
+        filtersMenuList.insertAdjacentHTML('afterbegin', `<li class="filter-menu__item filters__item-price active none"><span class="filter-menu__item-span filters__item-price_text">${Math.min.apply(null, min_maxPriceArr).toFixed(2)} ₽ - ${Math.max.apply(null, min_maxPriceArr).toFixed(2)} ₽</span><span
+            class="filter-menu__item-close"></span></li>`)
 
-    filtersMenuList.addEventListener('click', function (e) {
-      if (e.target.classList.contains('filter-menu__item-close') && !e.target.closest('.filter-menu__item-clear')) {
-        e.target.closest('.filter-menu__item').remove();
-      }
-      if (e.target.closest('.filter-menu__item-clear')) {
-        filtersMenuList.querySelectorAll('.filter-menu__item').forEach(el => {
-          el.remove();
-        });
-        catalogWrapper.classList.remove('add-margin');
-      }
-    })
-    quickFilters.forEach(el => {
-      el.addEventListener('click', function () {
-        el.classList.toggle('active');
-      })
-    })
+        filterss__items = document.querySelectorAll('.filterss__items');
+        filters__itemPrice = document.querySelector('.filters__item-price');
+      } else { }
+    }
   }
+
+  getProducts();
+
+  filters.addEventListener('click', function (e) {
+    if (e.target.closest('.filters_box-paramets__btn')) {
+      randeSlider.noUiSlider.set([0, 999]);
+
+      filtersProducts.forEach(el => el.classList.remove('active'));
+      quickFilters.forEach(el => el.classList.remove('active'));
+
+      inputCheckbox.checked = false;
+    }
+    if (e.target.closest('.filters-products__name')) e.target.classList.toggle('active');
+    if (e.target.classList.contains('catalog-products__filters_button')) {
+      document.querySelectorAll('.filter-menu__item').forEach(li => li.classList.add('none'));
+
+      catalogWrapper.classList.add('add-margin');
+
+      filters__itemPrice.classList.remove('none');
+      filters__itemPrice.querySelector('.filters__item-price_text').textContent = `${minPrice.value} ₽ - ${maxPrice.value} ₽`;
+
+      filtersProducts.forEach(li => {
+        if (li.classList.contains('active')) filtersMenuList.querySelector(`[data-filter="${li.dataset.filter}"]`).classList.remove('none');
+      });
+      filter__itemClear.classList.remove('none');
+    }
+  })
+
+  filtersMenuList.addEventListener('click', function (e) {
+    if (e.target.classList.contains('filter-menu__item-close') && !e.target.closest('.filter-menu__item-clear')) {
+      e.target.closest('.filter-menu__item').classList.add('none');
+    }
+    if (e.target.closest('.filter-menu__item-clear')) {
+      const viewport_width = Math.max(document.documentElement.clientWidth, window.innerWidth);
+      filtersMenuList.querySelectorAll('.filter-menu__item').forEach(li => li.classList.add('none'));
+      if (viewport_width >= 768) catalogWrapper.classList.remove('add-margin');
+    }
+  })
+
+  quickFilters.forEach(el => el.addEventListener('click', () => el.classList.toggle('active')));
 })
