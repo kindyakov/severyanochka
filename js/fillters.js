@@ -7,7 +7,6 @@ window.addEventListener('load', function () {
   const products_container = document.querySelector('#products-container')
 
   const randeSlider = document.querySelector('.filters_box-paramets__sliders');
-  const filtersProducts = document.querySelectorAll('.filters-products__name');
   const filters = document.querySelector('.catalog-products__filters');
   const inputCheckbox = document.querySelector('.filters__wrapper-checkbox__checkbox');
   const quickFilters = document.querySelectorAll('.catalog-products__quick-filters_btn');
@@ -28,15 +27,19 @@ window.addEventListener('load', function () {
     }
   }
   const filter__itemClear = document.querySelector('.filter-menu__item-clear');
-  let filterss__items, filters__itemPrice;
+  let filterss__items, filters__itemPrice, filtersProducts;
 
   async function getProducts() {
     const response = await fetch('../JSON/products.json');
     const productsArray = await response.json();
+    const productsCurrent = productsArray[`${products_container.dataset.products}`];
+
     if (products_container) {
-      const productsCurrent = productsArray[`${products_container.dataset.products}`];
       if (productsCurrent !== undefined) {
-        productsCurrent.forEach(object => {
+        const productsCards = productsCurrent['cardData'];
+        const productsFillters = productsCurrent['fillters'];
+
+        productsCards.forEach(object => {
           min_maxPriceArr.push(object.price, object.price_card);
           if (object.price_card == undefined) {
             min_maxPriceArr.pop();
@@ -67,8 +70,8 @@ window.addEventListener('load', function () {
           })
         })
 
-        filtersProducts.forEach(item => {
-          filtersMenuList.insertAdjacentHTML('afterbegin', `<li class="filter-menu__item filterss__items active none" data-filter="${item.dataset.filter}"><span class="filter-menu__item-span">${item.textContent}</span><span
+        productsFillters.forEach((item, i) => {
+          filtersMenuList.insertAdjacentHTML('afterbegin', `<li class="filter-menu__item filterss__items active none" data-filter="${i}"><span class="filter-menu__item-span">${item}</span><span
             class="filter-menu__item-close"></span></li>`)
         })
         filtersMenuList.insertAdjacentHTML('afterbegin', `<li class="filter-menu__item filters__item-price active none"><span class="filter-menu__item-span filters__item-price_text">${Math.min.apply(null, min_maxPriceArr).toFixed(2)} ₽ - ${Math.max.apply(null, min_maxPriceArr).toFixed(2)} ₽</span><span
@@ -76,6 +79,7 @@ window.addEventListener('load', function () {
 
         filterss__items = document.querySelectorAll('.filterss__items');
         filters__itemPrice = document.querySelector('.filters__item-price');
+        filtersProducts = document.querySelectorAll('.filters-products__name');
       } else { }
     }
   }

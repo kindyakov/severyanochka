@@ -204,6 +204,14 @@
           content: '';
           background: #fff;
         }
+
+        &:hover {
+
+          &::before,
+          &::after {
+            background: #FF6633;
+          }
+        }
       }
     }
 
@@ -232,13 +240,12 @@
     height: 13px;
     position: relative;
 
-    &:hover {
-      &::before {
-        background-color: #FF6633;
-      }
 
+    &:hover {
+
+      &::before,
       &::after {
-        background-color: #FF6633
+        background-color: #FF6633;
       }
     }
 
@@ -506,7 +513,8 @@
     align-items: center;
 
     &.none {
-      display: none;
+      opacity: 0;
+      visibility: hidden;
     }
   }
 
@@ -518,13 +526,15 @@
     transform: rotate(180deg);
 
     &.none {
-      display: none;
+      opacity: 0;
+      visibility: hidden;
     }
   }
 
   &__duble-prev {
     &.none {
-      display: none;
+      opacity: 0;
+      visibility: hidden;
     }
   }
 
