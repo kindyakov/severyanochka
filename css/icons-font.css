@@ -27,6 +27,18 @@
 }
 
 /* -------------- */
+._icon-bell:before {
+  content: "\e90a";
+}
+
+._icon-log-in:before {
+  content: "\e90b";
+}
+
+._icon-uniE90C:before {
+  content: "\e90c";
+}
+
 ._icon-arrow:before {
   content: "\e900";
 }
