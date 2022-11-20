@@ -514,6 +514,10 @@
   .header-catalog__menu {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  .profile-enter {
+    display: none;
+  }
 }
 
 @media (max-width: 640px) {

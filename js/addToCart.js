@@ -1,8 +1,7 @@
 let cardObject;
 let cardBasketArray = [];
 let cardFavouritesArray = [];
-let disableCardArray = [];
-let disableCardFavourites = [];
+
 // Проверяю чтоб не было null
 if (JSON.parse(localStorage.getItem('productsBasket')) !== null) {
   cardBasketArray = JSON.parse(localStorage.getItem('productsBasket'));
@@ -28,9 +27,8 @@ window.addEventListener('DOMContentLoaded', function () {
 })
 
 function addDisableCardBtn() {
-  cardBasketArray.forEach(card => disableCardArray.push(card.id));
-  disableCardArray.forEach(cardsID => {
-    let cardDisable = document.querySelector(`[id = "${cardsID}"]`);
+  cardBasketArray.forEach(card => {
+    let cardDisable = document.querySelector(`[id = "${card.id}"]`);
     if (cardDisable) {
       let cardDisableBtn = cardDisable.querySelector('.card-button');
       cardDisableBtn.classList.add('disable');

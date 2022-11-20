@@ -422,6 +422,43 @@ body {
   cursor: pointer;
 }
 
+.profil-btn {
+  display: flex;
+  align-items: center;
+  background-color: #FF6633;
+  padding: 8px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    background-color: #FCD5BA;
+    color: #FF6633;
+
+    .profile-enter,
+    .profile-icon {
+      color: #FF6633;
+    }
+  }
+}
+
+.profile-enter {
+  margin: 0 12px;
+}
+
+.profile-icon,
+.profile-enter {
+  color: #fff;
+  transition: 0.2s;
+}
+
+.profile-icon {
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .header-profil__name {
   cursor: pointer;
   position: relative;
@@ -571,11 +608,16 @@ body {
 
   &__close {
     position: absolute;
-    right: 10px;
-    top: 15px;
-    width: 15px;
-    height: 15px;
+    right: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
+    background-color: #F3F2F1;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &::before {
       content: '';

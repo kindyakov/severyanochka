@@ -15,7 +15,10 @@ let duble_next, duble_prev;
 if (JSON.parse(localStorage.getItem('productsBasket')) !== null) {
   productsArrayLocalStorage = JSON.parse(localStorage.getItem('productsBasket'));
 }
-
+let cardFavouritesArrays = [];
+if (JSON.parse(localStorage.getItem('productsFavourites')) !== null) {
+  cardFavouritesArrays = JSON.parse(localStorage.getItem('productsFavourites'));
+}
 
 const products__footer = document.querySelector('.catalog-products__footer');
 if (products_container) {
@@ -182,7 +185,7 @@ if (products_container) {
     }
   };
   function renderFillters(filltersArray) {
-    filltersArray.forEach((el, i) => { 
+    filltersArray.forEach((el, i) => {
       filters_products.insertAdjacentHTML('beforeend', `<div class="filters-products__name" data-filter="${i}">${el}</div>`);
     });
   }
@@ -218,9 +221,8 @@ function rating() {
 rating();
 
 function addDisableCardBtn() {
-  productsArrayLocalStorage.forEach(card => disableCardArray.push(card.id));
-  disableCardArray.forEach(cardsID => {
-    let cardDisable = document.querySelector(`[id="${cardsID}"]`);
+  productsArrayLocalStorage.forEach(card => {
+    let cardDisable = document.querySelector(`[id="${card.id}"]`);
     if (cardDisable) {
       let cardDisableBtn = cardDisable.querySelector('.card-button');
       cardDisableBtn.classList.add('disable');
@@ -229,7 +231,7 @@ function addDisableCardBtn() {
   })
 }
 function addDisableCardLike() {
-  productsArrayLocalStorage.forEach(card => {
+  cardFavouritesArrays.forEach(card => {
     let cardDisable = document.querySelector(`[id = "${card.id}"]`);
     if (cardDisable) {
       let cardDisableLike = cardDisable.querySelector('.card-like');

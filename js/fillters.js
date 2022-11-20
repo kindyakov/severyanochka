@@ -74,7 +74,7 @@ window.addEventListener('load', function () {
           filtersMenuList.insertAdjacentHTML('afterbegin', `<li class="filter-menu__item filterss__items active none" data-filter="${i}"><span class="filter-menu__item-span">${item}</span><span
             class="filter-menu__item-close"></span></li>`)
         })
-        filtersMenuList.insertAdjacentHTML('afterbegin', `<li class="filter-menu__item filters__item-price active none"><span class="filter-menu__item-span filters__item-price_text">${Math.min.apply(null, min_maxPriceArr).toFixed(2)} ₽ - ${Math.max.apply(null, min_maxPriceArr).toFixed(2)} ₽</span><span
+        filtersMenuList.insertAdjacentHTML('afterbegin', `<li class="filter-menu__item filterss__items filters__item-price active none"><span class="filter-menu__item-span filters__item-price_text">${Math.min.apply(null, min_maxPriceArr).toFixed(2)} ₽ - ${Math.max.apply(null, min_maxPriceArr).toFixed(2)} ₽</span><span
             class="filter-menu__item-close"></span></li>`)
 
         filterss__items = document.querySelectorAll('.filterss__items');
@@ -114,6 +114,14 @@ window.addEventListener('load', function () {
   filtersMenuList.addEventListener('click', function (e) {
     if (e.target.classList.contains('filter-menu__item-close') && !e.target.closest('.filter-menu__item-clear')) {
       e.target.closest('.filter-menu__item').classList.add('none');
+      let num = 0;
+
+      filterss__items.forEach(li => { if (li.classList.contains('none')) num++ });
+      if (num == filterss__items.length) {
+        filter__itemClear.classList.add('none');
+        catalogWrapper.classList.remove('add-margin');
+      };
+
     }
     if (e.target.closest('.filter-menu__item-clear')) {
       const viewport_width = Math.max(document.documentElement.clientWidth, window.innerWidth);
