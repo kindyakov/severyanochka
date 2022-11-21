@@ -1,0 +1,148 @@
+.registration {
+  margin-top: 24px;
+
+  &__title {
+    font-size: 28px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  &__body {
+    margin: 0 auto;
+    max-width: 600px;
+  }
+
+  &__form {}
+
+  &__content {
+    margin-top: 40px;
+  }
+
+  &__subtitle {
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
+  }
+
+  &__section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 24px;
+    column-gap: 32px;
+    row-gap: 16px;
+  }
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 8px 16px;
+    border: 2px solid #BFBFBF;
+    border-radius: 4px;
+    color: #414141;
+    font-size: 16px;
+    caret-color: #70C05B;
+
+    &:focus {
+      border: 2px solid #70C05B;
+      box-shadow: 0 4px 8px 0 rgba(112, 192, 91, 0.2)
+    }
+
+    &.error {
+      border: 2px solid #D80000;
+    }
+  }
+
+  &__select {
+    width: 100%;
+    padding: 8px 16px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    outline: none;
+    border-radius: 4px;
+    color: #414141;
+    border: 2px solid #BFBFBF;
+  }
+
+  &__item-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px;
+    background-color: #F3F2F1;
+    width: 100%;
+  }
+
+  &__item-block {
+    border-radius: 4px;
+    cursor: pointer;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    transition: 0.2s;
+
+    span {
+      transition: 0.2s;
+      font-size: 12px;
+      color: #414141;
+    }
+
+    &.active {
+      background-color: #70C05B;
+
+      span {
+        color: #FFFfff;
+      }
+    }
+  }
+
+  &__continue {
+    width: 260px;
+    height: 68px;
+    border-radius: 4px;
+    background-color: #FCD5BA;
+    color: #FF6633;
+    display: block;
+    margin: 40px auto 0 auto;
+    font-size: 24px;
+    transition: all 0.2s linear;
+
+    &:hover {
+      background-color: #FF6633;
+      color: #FCD5BA;
+    }
+  }
+
+  &__checkbox {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__check {
+    margin-right: 8px;
+  }
+
+  &__label {
+    color: #8F8F8F;
+  }
+}
+
+.input-title {
+  color: #8F8F8F;
+  font-size: 16px;
+}
+
+.registration-select {}

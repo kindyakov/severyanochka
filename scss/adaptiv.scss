@@ -625,6 +625,22 @@
     font-weight: bold;
     font-size: 18px;
   }
+
+  .registration__section {
+    column-gap: 18px;
+  }
+
+  .input-title {
+    font-size: 12px;
+  }
+
+  .registration__label {
+    font-size: 12px;
+  }
+
+  .registration__input {
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 440px) {
@@ -763,6 +779,18 @@
   .products__aside-similar-link {
     width: 100%;
     max-width: none;
+  }
+
+  .input-title {
+    font-size: 14px;
+  }
+
+  .registration__label {
+    font-size: 14px;
+  }
+
+  .registration__section {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 

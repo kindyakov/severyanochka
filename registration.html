@@ -144,12 +144,86 @@
 
                 <div class="registration__content">
                   <h2 class="registration__subtitle">Обязательные поля</h2>
-                  <div class="registration__section"></div>
+                  <div class="registration__section">
+                    <div class="registration__column">
+                      <div class="registration__item">
+                        <span class="input-title">Телефон</span>
+                        <input type="tel" name="phone" data-valid="phone" class="registration__input">
+                      </div>
+                      <div class="registration__item">
+                        <span class="input-title">Фамилия</span>
+                        <input type="text" name="surname" data-valid="name" class="registration__input">
+                      </div>
+                      <div class="registration__item">
+                        <span class="input-title">Имя</span>
+                        <input type="text" name="name" data-valid="name" class="registration__input">
+                      </div>
+                      <div class="registration__item">
+                        <span class="input-title">Пароль</span>
+                        <input type="password" name="password" data-valid="password" class="registration__input"
+                          autocomplete="off">
+                      </div>
+                      <div class="registration__item">
+                        <span class="input-title">Повторите пароль</span>
+                        <input type="password" name="confirm-password" data-valid="password" class="registration__input"
+                          autocomplete="off">
+                      </div>
+                    </div>
+                    <div class="registration__column">
+                      <div class="registration__item">
+                        <span class="input-title">Дата рождения</span>
+                        <input type="date" name="date" data-valid="date" class="registration__input">
+                      </div>
+
+                      <div class="registration__item">
+                        <span class="input-title">Регион</span>
+                        <!-- <select name="region" class="registration__select registration-select">
+                          <option value=""></option>
+                          <option value="Усть-Ижма">Усть-Ижма</option>
+                          <option value="Калининград">Калининград</option>
+                          <option value="Волгоград">Волгоград</option>
+                        </select> -->
+                        <input type="text" name="region" data-valid="region" class="registration__input">
+                      </div>
+
+                      <div class="registration__item">
+                        <span class="input-title">Населенный пункт</span>
+                        <!-- <select name="city" class="registration__select registration-select">
+                          <option value=""></option>
+                          <option value="Усть-Ижма">Усть-Ижма</option>
+                          <option value="Калининград">Калининград</option>
+                          <option value="Волгоград">Волгоград</option>
+                        </select> -->
+                        <input type="text" name="city" data-valid="city" class="registration__input">
+                      </div>
+
+                      <div class="registration__item">
+                        <span class="input-title">Пол</span>
+                        <div class="registration__item-content">
+                          <div class="registration__item-block active" data-gender="Мужской"><span>Мужской</span></div>
+                          <div class="registration__item-block" data-gender="Женский"><span>Женский</span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 <div class="registration__content">
                   <h2 class="registration__subtitle">Необязательные поля</h2>
-                  <div class="registration__section"></div>
+                  <div class="registration__section">
+                    <div class="registration__item">
+                      <span class="input-title">Номер карты</span>
+                      <input type="text" name="card" class="registration__input" data-valid="card">
+                      <div class="registration__checkbox">
+                        <input type="checkbox" name="checkbox" id="check" class="registration__check">
+                        <label for="check" class="registration__label">У меня нет карты лояльности</label>
+                      </div>
+                    </div>
+                    <div class="registration__item">
+                      <span class="input-title">E-mail</span>
+                      <input type="email" name="email" class="registration__input" data-valid="email">
+                    </div>
+                  </div>
                 </div>
 
                 <button class="registration__continue">Продолжить</button>
@@ -216,6 +290,7 @@
 
     <div class="btn-up">↑</div>
   </div>
+  <script src="js/registration.js"></script>
   <script src="js/module.js"></script>
   <script src="js/main.js"></script>
   <script src="js/search.js"></script>
