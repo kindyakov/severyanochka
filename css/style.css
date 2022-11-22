@@ -3351,6 +3351,27 @@ body.lock {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+  position: relative;
+}
+.registration__item .info-error {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  font-size: 12px;
+  color: #D80000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s linear;
+}
+.registration__item.error .registration__input {
+  border: 2px solid #D80000;
+}
+.registration__item.error .info-error {
+  opacity: 0.7;
+  visibility: visible;
+}
+.registration__item.error .registration__item-content {
+  border: 2px solid #D80000;
 }
 .registration__input {
   width: 100%;
@@ -3360,13 +3381,11 @@ body.lock {
   color: #414141;
   font-size: 16px;
   caret-color: #70C05B;
+  transition: all 0.2s linear;
 }
 .registration__input:focus {
   border: 2px solid #70C05B;
   box-shadow: 0 4px 8px 0 rgba(112, 192, 91, 0.2);
-}
-.registration__input.error {
-  border: 2px solid #D80000;
 }
 .registration__select {
   width: 100%;
@@ -3382,30 +3401,46 @@ body.lock {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 4px;
+  padding: 2px;
   background-color: #F3F2F1;
   width: 100%;
-}
-.registration__item-block {
   border-radius: 4px;
+  border: 2px solid #BFBFBF;
+}
+.registration__item-label {
+  height: 30px;
+  width: 50%;
+  transition: 0.2s;
+  position: relative;
+}
+.registration__item-label-check {
+  position: absolute;
+  left: 0;
+  border-radius: 4px;
+  top: 0;
+  height: 100%;
+  width: 100%;
   cursor: pointer;
-  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50%;
-  transition: 0.2s;
+  transition: all 0.2s linear;
 }
-.registration__item-block span {
-  transition: 0.2s;
+.registration__item-label-check span {
+  transition: all 0.2s linear;
   font-size: 12px;
   color: #414141;
 }
-.registration__item-block.active {
+.registration__input-radio {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.registration__input-radio:checked + .registration__item-label-check {
   background-color: #70C05B;
 }
-.registration__item-block.active span {
-  color: #FFFfff;
+.registration__input-radio:checked + .registration__item-label-check span {
+  color: #ffffff;
 }
 .registration__continue {
   width: 260px;

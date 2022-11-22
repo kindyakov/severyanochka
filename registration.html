@@ -148,60 +148,75 @@
                     <div class="registration__column">
                       <div class="registration__item">
                         <span class="input-title">Телефон</span>
-                        <input type="tel" name="phone" data-valid="phone" class="registration__input">
+                        <span class="info-error">Пустое поле !</span>
+                        <input type="tel" name="phone" data-valid="phone" class="registration__input input-required">
                       </div>
                       <div class="registration__item">
                         <span class="input-title">Фамилия</span>
-                        <input type="text" name="surname" data-valid="name" class="registration__input">
+                        <span class="info-error">Пустое поле !</span>
+                        <input type="text" name="surname" data-valid="name" class="registration__input input-required">
                       </div>
                       <div class="registration__item">
                         <span class="input-title">Имя</span>
-                        <input type="text" name="name" data-valid="name" class="registration__input">
+                        <span class="info-error">Пустое поле !</span>
+                        <input type="text" name="name" data-valid="name" class="registration__input input-required">
                       </div>
                       <div class="registration__item">
                         <span class="input-title">Пароль</span>
-                        <input type="password" name="password" data-valid="password" class="registration__input"
-                          autocomplete="off">
+                        <span class="info-error">Пустое поле !</span>
+                        <input type="password" name="password" data-valid="password"
+                          class="registration__input input-required" autocomplete="off">
                       </div>
                       <div class="registration__item">
                         <span class="input-title">Повторите пароль</span>
-                        <input type="password" name="confirm-password" data-valid="password" class="registration__input"
-                          autocomplete="off">
+                        <span class="info-error">Пустое поле !</span>
+                        <input type="password" name="confirm-password" data-valid="password"
+                          class="registration__input input-required" autocomplete="off">
                       </div>
                     </div>
                     <div class="registration__column">
                       <div class="registration__item">
                         <span class="input-title">Дата рождения</span>
-                        <input type="date" name="date" data-valid="date" class="registration__input">
+                        <span class="info-error">Пустое поле !</span>
+                        <input type="text" name="date" data-valid="date" class="registration__input input-required">
                       </div>
 
                       <div class="registration__item">
                         <span class="input-title">Регион</span>
+                        <span class="info-error">Пустое поле !</span>
                         <!-- <select name="region" class="registration__select registration-select">
                           <option value=""></option>
                           <option value="Усть-Ижма">Усть-Ижма</option>
                           <option value="Калининград">Калининград</option>
                           <option value="Волгоград">Волгоград</option>
                         </select> -->
-                        <input type="text" name="region" data-valid="region" class="registration__input">
+                        <input type="text" name="region" data-valid="region" class="registration__input input-required">
                       </div>
 
                       <div class="registration__item">
                         <span class="input-title">Населенный пункт</span>
+                        <span class="info-error">Пустое поле !</span>
                         <!-- <select name="city" class="registration__select registration-select">
                           <option value=""></option>
                           <option value="Усть-Ижма">Усть-Ижма</option>
                           <option value="Калининград">Калининград</option>
                           <option value="Волгоград">Волгоград</option>
                         </select> -->
-                        <input type="text" name="city" data-valid="city" class="registration__input">
+                        <input type="text" name="city" data-valid="city" class="registration__input input-required">
                       </div>
 
                       <div class="registration__item">
                         <span class="input-title">Пол</span>
+                        <span class="info-error">Выберите пол !</span>
                         <div class="registration__item-content">
-                          <div class="registration__item-block active" data-gender="Мужской"><span>Мужской</span></div>
-                          <div class="registration__item-block" data-gender="Женский"><span>Женский</span></div>
+                          <label for="gender" class="registration__item-label" data-gender="Мужской">
+                            <input type="radio" id="gender" name="genders" value="Мужской" class="registration__input-radio" checked>
+                            <label for="gender" class="registration__item-label-check"><span>Мужской</span></label>
+                          </label>
+                          <label for="gender1" class="registration__item-label" data-gender="Женский">
+                            <input type="radio" id="gender1" name="genders" value="Женский" class="registration__input-radio">
+                            <label for="gender1" class="registration__item-label-check"><span>Женский</span></label>
+                          </label>
                         </div>
                       </div>
                     </div>
@@ -215,7 +230,7 @@
                       <span class="input-title">Номер карты</span>
                       <input type="text" name="card" class="registration__input" data-valid="card">
                       <div class="registration__checkbox">
-                        <input type="checkbox" name="checkbox" id="check" class="registration__check">
+                        <input type="checkbox" name="checkbox" id="check" class="registration__check" checked>
                         <label for="check" class="registration__label">У меня нет карты лояльности</label>
                       </div>
                     </div>
@@ -226,7 +241,7 @@
                   </div>
                 </div>
 
-                <button class="registration__continue">Продолжить</button>
+                <button type="submit" class="registration__continue">Продолжить</button>
               </form>
             </div>
           </div>
@@ -290,6 +305,7 @@
 
     <div class="btn-up">↑</div>
   </div>
+  <script src="libs/inputMask/inputmask.min.js"></script>
   <script src="js/registration.js"></script>
   <script src="js/module.js"></script>
   <script src="js/main.js"></script>
