@@ -3435,6 +3435,8 @@ body.lock {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  opacity: 0;
+  visibility: hidden;
 }
 .registration__input-radio:checked + .registration__item-label-check {
   background-color: #70C05B;
