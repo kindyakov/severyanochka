@@ -1,6 +1,6 @@
 const modalLogin = document.querySelector('.modal-login');
 const inputLogin = document.querySelector('.modal-login__input');
-
+const profilBtn = document.querySelector('.header-profil');
 
 let profile = {};
 // Modal 

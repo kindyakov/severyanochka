@@ -11,8 +11,7 @@ window.addEventListener('DOMContentLoaded', () => {
   new Inputmask('99-99-9999').mask(inputsData); // Маска даты рождения
   new Inputmask('9999-9999-9999-9999').mask(inputsCard); // Маска карты
 
-  const inputPass = document.querySelector('input[name="password"]');
-  const inputConfirmPass = document.querySelector('input[name="confirm-password"]');
+  const inputPassword = document.querySelectorAll('[type="password"]')
 
   const inputEmail = document.querySelector('input[name="email"]');
   const inputCard = document.querySelector('input[name="card"]');
@@ -25,15 +24,15 @@ window.addEventListener('DOMContentLoaded', () => {
     email: /^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i,
     password: /^[a-zA-Z0-9а-яА-ЯЁё]{5,}$/,
     data: /^[0-9]+$/,
-    card: /^[0-9]+$/,
+    card: /[0-9]/,
   }
 
   let error = 0;
 
   input.forEach(inputs => {
     inputs.addEventListener('input', () => {
-      removeError(inputs);
-      if (inputs.type === 'password') {
+      removeError(inputs)
+      if (inputs.type == 'password') {
         validPassword();
       };
     });
@@ -49,7 +48,7 @@ window.addEventListener('DOMContentLoaded', () => {
       if (inputs.value === '') addError(inputs, 'Пустое поле !');
       else if (inputName === 'phone') validPhone(inputs);
       else if (inputData === 'name') validName(inputs);
-      else if (inputName === 'confirm-password') validPassword();
+      else if (inputName === 'password') validPassword();
     });
     if (inputEmail.value !== '') validEmail(inputEmail);
     if (inputCard.value !== '') validСard(inputCard);
@@ -59,6 +58,7 @@ window.addEventListener('DOMContentLoaded', () => {
       console.log('отправка');
     }
   });
+
   function validPhone(inputs) {
     if (!pattern[inputs.name].test(inputs.value.trim())) {
       addError(inputs, 'Проверте правильность ввода !');
@@ -71,10 +71,15 @@ window.addEventListener('DOMContentLoaded', () => {
     };
   };
   function validPassword() {
-    if (inputPass.value !== inputConfirmPass.value) {
-      const inputPassword = document.querySelectorAll('[type="password"]')
-      inputPassword.forEach(inputsPas => addError(inputsPas, 'Пароли не совоподают !'));
-    };
+    const inputPass = document.querySelector('input[name="password"]');
+    const inputConfirmPass = document.querySelector('input[name="confirm-password"]');
+    if (!pattern['password'].test(inputPass.value.trim())) {
+      addError(inputPass, 'Минимальное коллчиество символов 5 !');
+    } else {
+      if (inputPass.value !== inputConfirmPass.value) {
+        addError(inputConfirmPass, 'Пароли не совоподают !')
+      } else removeError(inputConfirmPass);
+    }
   };
   function validEmail(inputs) {
     if (!pattern[inputs.name].test(inputs.value.trim())) {
@@ -86,6 +91,7 @@ window.addEventListener('DOMContentLoaded', () => {
       addError(inputs, 'Проверте правильность ввода !');
     };
   };
+  
   function addError(inputs, strError) {
     const item = inputs.closest('.registration__item');
     const infoError = item.querySelector('.info-error');

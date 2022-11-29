@@ -1,7 +1,7 @@
 const catalogMenu = document.querySelector('.header-catalog');
 const wrapper = document.querySelector('.wrapper');
 //Modal
-const profilBtn = document.querySelector('.header-profil');
+const profilButton = document.querySelector('.header-profil');
 //Menu
 const headerOriginal = document.querySelector('.header-menu__wrpper');
 const headerClon = document.querySelector('.menu-fixed')
@@ -93,14 +93,14 @@ window.addEventListener('resize', function () {
   }
 
   if (viewport_width <= 440) {
-    if (!profilBtn.classList.contains('done')) {
-      headerMenu.insertBefore(profilBtn, headerMenu.children[headerMenu.children.length])
-      profilBtn.classList.add('done');
+    if (!profilButton.classList.contains('done')) {
+      headerMenu.insertBefore(profilButton, headerMenu.children[headerMenu.children.length])
+      profilButton.classList.add('done');
     }
   } else {
-    if (profilBtn.classList.contains('done')) {
-      headerWrapper.insertBefore(profilBtn, headerWrapper.children[headerWrapper.children.length])
-      profilBtn.classList.remove('done');
+    if (profilButton.classList.contains('done')) {
+      headerWrapper.insertBefore(profilButton, headerWrapper.children[headerWrapper.children.length])
+      profilButton.classList.remove('done');
     }
   }
 })
@@ -121,14 +121,14 @@ window.addEventListener('load', function () {
   }
 
   if (viewport_width <= 440) {
-    if (!profilBtn.classList.contains('done')) {
-      headerMenu.insertBefore(profilBtn, headerMenu.children[headerMenu.children.length])
-      profilBtn.classList.add('done');
+    if (!profilButton.classList.contains('done')) {
+      headerMenu.insertBefore(profilButton, headerMenu.children[headerMenu.children.length])
+      profilButton.classList.add('done');
     }
   } else {
-    if (profilBtn.classList.contains('done')) {
-      headerWrapper.insertBefore(profilBtn, headerWrapper.children[headerWrapper.children.length - 1])
-      profilBtn.classList.remove('done');
+    if (profilButton.classList.contains('done')) {
+      headerWrapper.insertBefore(profilButton, headerWrapper.children[headerWrapper.children.length - 1])
+      profilButton.classList.remove('done');
     }
   }
 })

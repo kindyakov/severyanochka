@@ -135,15 +135,17 @@ window.addEventListener('load', function () {
   filters.addEventListener('touchmove', touchMove);
 
   body.addEventListener('click', (e) => {
-    if (!e.target.closest('.catalog-products__filters') && !e.target.closest('.filter-adaptive-active')) {
-      filters.classList.remove('active');
-      body.classList.remove('lock');
-      html.classList.remove('lock');
-    }
-    if (e.target.classList.contains('catalog-products__filters_button')) {
-      filters.classList.remove('active');
-      body.classList.remove('lock');
-      html.classList.remove('lock');
+    if (filters.classList.contains('active')) {
+      if (!e.target.closest('.catalog-products__filters') && !e.target.closest('.filter-adaptive-active')) {
+        filters.classList.remove('active');
+        body.classList.remove('lock');
+        html.classList.remove('lock');
+      }
+      if (e.target.classList.contains('catalog-products__filters_button')) {
+        filters.classList.remove('active');
+        body.classList.remove('lock');
+        html.classList.remove('lock');
+      }
     }
   });
 });
