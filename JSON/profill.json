@@ -1,0 +1,35 @@
+{
+  "users": [
+    {
+      "phone": "+7 (908) 602-89-55",
+      "surname": "Киндяков",
+      "name": "Андрей",
+      "password": "",
+      "confirm-password": "",
+      "date": "",
+      "region": "",
+      "city": "",
+      "genders": "Мужской",
+      "card": "",
+      "checkbox": "on",
+      "email": "kindyakov_2016@mail.ru",
+      "id": "986990754",
+      "dateRegistration": "10.12.2022 20:16:40"
+    },
+    {
+      "phone": "+7 (908) 602-89-55",
+      "surname": "Киндяков",
+      "name": "Андрей",
+      "password": "Makarona3",
+      "confirm-password": "Makarona3",
+      "date": "30-08-2003",
+      "region": "Липецкая ",
+      "city": "Липецк",
+      "genders": "Мужской",
+      "card": "1231-2312-3123-1231",
+      "email": "kindyakov_2016@mail.ru",
+      "id": "933050039",
+      "dateRegistration": "11.12.2022 21:10:48"
+    }
+  ]
+}

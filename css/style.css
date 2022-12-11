@@ -674,6 +674,57 @@ body.lock {
   color: #FF6633;
 }
 
+.modal-successful {
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(252, 213, 186, 0.8);
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.4s;
+  overflow: auto;
+}
+.modal-successful.active {
+  opacity: 1;
+  visibility: visible;
+}
+.modal-successful.active .modal-successful__content {
+  transform: scale(1);
+}
+.modal-successful__body {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+.modal-successful__content {
+  background-color: #fff;
+  padding: 72px 80px 40px 80px;
+  max-width: 420px;
+  margin: auto;
+  position: relative;
+  border-radius: 4px;
+  overflow: auto;
+  transform: scale(0);
+  transition: 0.4s;
+}
+.modal-successful__title {
+  font-weight: bold;
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 32px;
+}
+.modal-successful__img {
+  max-width: 100%;
+  height: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
 .menu-fixed {
   display: none;
   position: fixed;
