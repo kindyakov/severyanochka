@@ -12,153 +12,241 @@
         "name": "Молоко пастеризованное ПРОСТОКВАШИНО цельное отборное 3,4-4,5%, без змж, 930мл",
         "price": "15.10",
         "price_card": "345.70",
-        "img": "milk.jpg",
+        "img": [
+          "milk.jpg"
+        ],
         "rating": 1.8,
-        "discount": 30
+        "discount": 30,
+        "reviews": 0,
+        "link": "",
+        "article": 43345
       },
       {
         "id": "002",
         "name": "Кефир 3,2% 930 г",
         "price": "89.99",
-        "img": "kefir.png",
-        "rating": 4.3
+        "img": [
+          "kefir.png"
+        ],
+        "reviews": 0,
+        "rating": 4.3,
+        "link": "",
+        "article": 43345
       },
       {
         "id": "003",
         "name": "Молоко сгущенное РОГАЧЕВ Егорка, цельное с сахаром",
         "price": "77.99",
-        "img": "sgushenka.jpg",
-        "rating": 3.9
+        "img": [
+          "sgushenka.jpg"
+        ],
+        "rating": 3.9,
+        "reviews": 0,
+        "link": "",
+        "article": 43345
       },
       {
         "id": "004",
         "name": "Йогурт Fruttis'Сливочное лакомство' с персиком и маракуйей, ананасом и дыней, 5,0% 115г",
         "price": "876.20",
         "price_card": "500.90",
-        "img": "йогурт1.jpg",
+        "img": [
+          "йогурт1.jpg"
+        ],
         "rating": 4.3,
-        "discount": 50
+        "discount": 50,
+        "reviews": 0,
+        "link": "",
+        "article": 43345
       },
       {
         "id": "005",
         "name": "Йогурт Fruttis Сливочное лакомство, с вишней и черникой, 5,0% 115г",
         "price": "77.99",
         "price_card": "68.50",
-        "img": "йогурт2.jpg",
+        "img": [
+          "йогурт2.jpg"
+        ],
         "rating": 3.7,
-        "discount": 25
+        "discount": 25,
+        "reviews": 0,
+        "link": "",
+        "article": 43345
       },
       {
         "id": "006",
         "name": "Масло сливочное ПРОСТОКВАШИНО 82%, без змж, 180г",
         "price": "50.80",
-        "img": "масло.jpg",
-        "rating": 4.4
+        "img": [
+          "масло.jpg"
+        ],
+        "rating": 4.4,
+        "reviews": 0,
+        "link": "",
+        "article": 43345
       },
       {
         "id": "007",
         "name": "Крем-сыр Дорблю с голубой плесенью 65% жир. 80г",
         "price": "77.99",
         "price_card": "68.50",
-        "img": "сыр-дорблю.jpg",
+        "img": [
+          "сыр-дорблю.jpg"
+        ],
         "rating": 1,
-        "discount": 100
+        "discount": 100,
+        "reviews": 0,
+        "link": "",
+        "article": 43345
       },
       {
         "id": "008",
         "name": "Коктейль молочный ЧУДО Шоколадный 2%, без змж, 960г, Россия, 960 г",
         "price": "168.29",
         "price_card": "139.49",
-        "img": "chudo-molochni-kokteil-shokolad.jfif",
+        "img": [
+          "chudo-molochni-kokteil-shokolad.jfif"
+        ],
         "rating": 1.8,
-        "discount": 30
+        "discount": 30,
+        "reviews": 0,
+        "link": "",
+        "article": 43345
       },
       {
         "id": "009",
         "name": "Сливки ультрапастеризованные для взбивания BONVIDA 33%, без змж, 1000г, Россия, 1000 г",
         "price": "379.99",
-        "img": "bonvida-slivki-1000g-33.jfif",
-        "rating": 3.9
+        "img": [
+          "bonvida-slivki-1000g-33.jfif"
+        ],
+        "rating": 3.9,
+        "reviews": 0,
+        "link": "",
+        "article": 43345
       },
       {
         "id": "010",
         "name": "Сливки ультрапастеризованные ВКУСНОТЕЕВО 20%, без змж, 475г, Россия, 475 г",
         "price": "187.60",
         "price_card": "175.10",
-        "img": "vkusnoteevo-slivki-475g-20.jfif",
+        "img": [
+          "vkusnoteevo-slivki-475g-20.jfif"
+        ],
         "rating": 4.3,
-        "discount": 50
+        "discount": 50,
+        "reviews": 0,
+        "link": "",
+        "article": 43345
       },
       {
         "id": "011",
         "name": "Ряженка ЛЕБЕДЯНЬМОЛОКО 4%, без змж, 900г, Россия, 900 г",
         "price": "89.89",
-        "img": "lebedan-rajenka-4.jfif",
-        "rating": 3.7
+        "img": [
+          "lebedan-rajenka-4.jfif"
+        ],
+        "rating": 3.7,
+        "reviews": 0,
+        "link": "",
+        "article": 43345
       },
       {
         "id": "012",
         "name": "Масло сливочное ВКУСНОТЕЕВО Традиционное 82,5% высший сорт, без змж, 400г, Россия, 400 г",
         "price": "449.99",
-        "img": "maslo-slivochnoe-vkusnoteevo-400g.jfif",
-        "rating": 2.7
+        "img": [
+          "maslo-slivochnoe-vkusnoteevo-400g.jfif"
+        ],
+        "rating": 2.7,
+        "reviews": 0,
+        "link": "",
+        "article": 43345
       },
       {
         "id": "013",
         "name": "Сыр полутвердый ЛАМБЕР 50% полшара, без змж, весовой, Россия",
         "price": "849.12",
         "price_card": "824.47",
-        "img": "sir-lamber-0.5kg.jfif",
+        "img": [
+          "sir-lamber-0.5kg.jfif"
+        ],
         "rating": 3.4,
-        "discount": 100
+        "discount": 100,
+        "link": "",
+        "article": 43345
       },
       {
         "id": "014",
         "name": "Творог ЛЕБЕДЯНЬМОЛОКО 5%, без змж, 300г, Россия, 300 г",
         "price": "154.599",
-        "img": "tvorog.jfif",
-        "rating": 3.9
+        "img": [
+          "tvorog.jfif"
+        ],
+        "rating": 3.9,
+        "link": "",
+        "article": 43345
       },
       {
         "id": "015",
         "name": "Яйцо куриное ЛЕТО С1 столовое, 20шт, Россия, 20 шт",
         "price": "199.89",
         "price_card": "189.89",
-        "img": "лето-яйца-столовые.jfif",
+        "img": [
+          "лето-яйца-столовые.jfif"
+        ],
         "rating": 4.3,
-        "discount": 50
+        "discount": 50,
+        "link": "",
+        "article": 43345
       },
       {
         "id": "016",
         "name": "Яйцо куриное ЛИПЕЦКОЕ С1, 10шт, Россия, 10 шт",
         "price": "101.09",
-        "img": "липецкое-яйцо.jfif",
-        "rating": 3.7
+        "img": [
+          "липецкое-яйцо.jfif"
+        ],
+        "rating": 3.7,
+        "link": "",
+        "article": 43345
       },
       {
         "id": "017",
         "name": "Сметана ПРОСТОКВАШИНО 15%, без змж, 300г, Россия, 300 г",
         "price": "96.45",
-        "img": "простоквашина-спетана-15.jfif",
-        "rating": 3.6
+        "img": [
+          "простоквашина-спетана-15.jfif"
+        ],
+        "rating": 3.6,
+        "link": "",
+        "article": 43345
       },
       {
         "id": "018",
         "name": "Сырок творожный глазированный ВКУСНОТЕЕВО Премиум ванильный 16%, без змж, 40г, Россия, 40 г",
         "price": "36.79",
         "price_card": "34.89",
-        "img": "сырок-глазированный-вкуснотеево-ваниль.jfif",
+        "img": [
+          "сырок-глазированный-вкуснотеево-ваниль.jfif"
+        ],
         "rating": 4.8,
-        "discount": 5
+        "discount": 5,
+        "link": "",
+        "article": 43345
       },
       {
         "id": "020",
         "name": "Сыр РОССИЙСКИЙ 50%, без змж, весовой, Россия",
         "price": "525.79",
         "price_card": "599.99",
-        "img": "сыр-российский.jfif",
+        "img": [
+          "сыр-российский.jfif"
+        ],
         "rating": 4.1,
-        "discount": 19
+        "discount": 19,
+        "link": "",
+        "article": 43345
       }
     ]
   },
@@ -175,9 +263,212 @@
         "name": "Батон ЛИМАК Нарезной в нарезке, 360г, Россия, 360 г",
         "price": "46.79",
         "price_card": "39.89",
-        "img": "baton-limak.jfif",
+        "img": [
+          "baton-limak.jfif"
+        ],
         "rating": 4.8,
-        "discount": 5
+        "discount": 5,
+        "link": "",
+        "article": 43345
+      }
+    ]
+  },
+  "frozen-foods": {
+    "fillters": [
+      "Пельмени",
+      "Мороженное"
+    ],
+    "cardData": [
+      {
+        "id": "21",
+        "name": "Пельмени ЦЕЗАРЬ Фирменные, категория Б, 800г, Россия, 800 г",
+        "price": "543.21",
+        "price_card": "245.89",
+        "img": [
+          "pelmeni-cezar-800.jfif"
+        ],
+        "rating": 4.24,
+        "link": "",
+        "article": 43345
+      },
+      {
+        "id": "22",
+        "name": "Мороженое ЗОЛОТОЙ СТАНДАРТ Пломбир с суфле и крошкой из глазури 12%, без змж, вафельный стаканчик, 86г, Россия, 86 г",
+        "price": "32.21",
+        "img": [
+          "morojennoe-zolotoi-standart.jfif"
+        ],
+        "rating": 4.24,
+        "link": "morozhenoe-prochie-tovary-plombir-s-sufle-i-kroshkojj-iz-glazuri-v-vaf-st-bez-zmzh-rossiya-86g",
+        "article": 44345
+      },
+      {
+        "id": "23",
+        "name": "Мороженое BASKIN ROBBINS Миндально-фисташковое, сливочное с ароматом фисташек и орехом миндаля, без змж, 1000мл, Россия, 1000 мл",
+        "price": "710.49",
+        "img": [
+          "232878_1.jfif"
+        ],
+        "rating": 4.24,
+        "article": 43345,
+        "characteristic": [
+          [
+            "Бренд",
+            "BASKIN ROBBINS"
+          ],
+          [
+            "Производитель",
+            "АО «БРПИ»"
+          ],
+          [
+            "Страна производителя",
+            "Россия"
+          ],
+          [
+            "Упаковка",
+            "1000 мл"
+          ],
+          [
+            "Калорийность на 100 г",
+            "213 кКал/894 кДж"
+          ],
+          [
+            "Жирность",
+            "11,5%"
+          ]
+        ]
+      },
+      {
+        "id": "24",
+        "name": "Наггетсы ГОРЯЧАЯ ШТУЧКА Сочная курочка, 250г, Россия, 250 г",
+        "price": "109.49",
+        "price_card": "245.89",
+        "img": [
+          "454624_1.jfif"
+        ],
+        "rating": 4.24,
+        "link": "naggetsy-prochie-tovary-sochnaya-kurochka-rossiya-250g",
+        "article": 433245
+      },
+      {
+        "id": "25",
+        "name": "Мороженое ЭKZO Манго-малина молочное без змж, ведро, 520г, Россия, 520 г",
+        "price": "349.49",
+        "price_card": "565.89",
+        "img": [
+          "284471.jfif",
+          "400588.jfif"
+        ],
+        "rating": 4.24,
+        "discount": 5,
+        "link": "cards_product/morozhenoe-ekzo-mango-malina-molochnoe-vedro-bez-zmzh-rossiya-520g.html",
+        "article": 123413,
+        "characteristic": [
+          [
+            "Бренд",
+            "ЭKZO"
+          ],
+          [
+            "Производитель",
+            "ООО «Юнилевер Русь»»"
+          ],
+          [
+            "Страна производителя",
+            "Россия"
+          ],
+          [
+            "Упаковка",
+            "520 г"
+          ],
+          [
+            "Калорийность на 100 г",
+            "128 кКал/535 кДж"
+          ],
+          [
+            "Жирность",
+            "2%"
+          ]
+        ]
+      },
+      {
+        "id": "26",
+        "name": "Мороженое ВОЛОГОДСКИЙ ПЛОМБИР Пломбир с черной смородиной 12%, без змж, брикет, 250г, Россия, 250 г",
+        "price": "343.49",
+        "price_card": "235.89",
+        "img": [
+          "412160.jfif"
+        ],
+        "rating": 4.24,
+        "discount": 45,
+        "link": "cards_product/morozhenoe-prochie-tovary-s-chernojj-smorodinojj-briket-bez-zmzh-rossiya-250g",
+        "article": 675413,
+        "characteristic": [
+          [
+            "Бренд",
+            "ЭKZO"
+          ],
+          [
+            "Производитель",
+            "ООО «Юнилевер Русь»»"
+          ],
+          [
+            "Страна производителя",
+            "Россия"
+          ],
+          [
+            "Упаковка",
+            "520 г"
+          ],
+          [
+            "Калорийность на 100 г",
+            "128 кКал/535 кДж"
+          ],
+          [
+            "Жирность",
+            "2%"
+          ]
+        ]
+      },
+      {
+        "id": "27",
+        "name": "Пицца LA TRATTORIA Ассорти, 335г, Россия, 335 г",
+        "price": "343.49",
+        "price_card": "157.89",
+        "img": [
+          "194618.jfif",
+          "6600_1.jfif",
+          "98378.jfif"
+        ],
+        "rating": 4.24,
+        "discount": 25,
+        "link": "cards_product/picca-la-trattoria-assorti-rossiya-335g",
+        "article": 545413,
+        "characteristic": [
+          [
+            "Бренд",
+            "LA TRATTORIA"
+          ],
+          [
+            "Производитель",
+            "ООО «Морозко»"
+          ],
+          [
+            "Страна производителя",
+            "Россия"
+          ],
+          [
+            "Упаковка",
+            "335 г"
+          ],
+          [
+            "Калорийность на 100 г",
+            "263 кКал/1106 кДж"
+          ],
+          [
+            "Время приготовления",
+            "В духовом шкафу: 10–15 минут, в СВЧ-печи: 3–5 минут"
+          ]
+        ]
       }
     ]
   }

@@ -62,12 +62,13 @@ window.addEventListener('DOMContentLoaded', () => {
     formData.forEach((value, key) => obj[key] = value);
     obj['id'] = (Math.random() * 1000000000).toFixed(0);
     obj['dateRegistration'] = `${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}`;
-    // if (error == 0) {
-    postForm(obj)
-      .catch(err => alert(err));
-    activeModal = setInterval(timeActive, 1000);
-    modalSuccessful.classList.add('active');
-    // }
+    if (error == 0) {
+      postForm(obj)
+        .catch(err => alert(err));
+
+      activeModal = setInterval(timeActive, 1000);
+      modalSuccessful.classList.add('active');
+    }
   });
   async function postForm(formData) {
     let response = await fetch('http://localhost:3000/users', {

@@ -4,8 +4,7 @@
   "description": "Попытался повторить главный функционал интернет-магазина ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "json-server -w JSON/db/json"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",

@@ -239,11 +239,11 @@ function addDisableCardLike() {
     }
   });
 }
-function cardsHtml(id, img, price, title, rating) {
+function cardsHtml(id, img, price, title, rating, link) {
   return `<div class="wrapper-card" id="${id}">
   <div class="card">
-    <a href="" class="card-wrapper-img">
-      <img src="../img/img-card/${img}" alt="Блинчики" class="card-img" data-img="${img}"></img>
+    <a href="${link}" class="card-wrapper-img">
+      <img src="../img/img-card/${img[0]}" alt="${title}" class="card-img" data-img="${img}"></img>
     </a>
     <div class="card-content">
       <div class="card-wrapper-price">
@@ -297,7 +297,7 @@ function footerCatalogHtml() {
     </div>`;
 }
 function renderCardHtml(card) {
-  products_container.insertAdjacentHTML('beforeend', cardsHtml(card.id, card.img, card.price, card.name, card.rating));
+  products_container.insertAdjacentHTML('beforeend', cardsHtml(card.id, card.img, card.price, card.name, card.rating, card.link));
 
   const cardID = document.querySelector(`[id = "${card.id}"]`);
   if (card.discount) {
