@@ -62,19 +62,4 @@ const productsSwiper = new Swiper('.products-swiper', {
     },
   }
 });
-const productsSliderSlide = document.querySelectorAll('.products__main-slider-slide');
 
-const imgSwiper = new Swiper('.products__main-slider-active', {
-  slidesPerView: 1,
-});
-if (productsSliderSlide) {
-  productsSliderSlide.forEach(el => {
-    el.addEventListener('click', (e) => {
-      productsSliderSlide.forEach(elem => elem.classList.remove('active'));
-
-      const index = e.currentTarget.dataset.index;
-      e.currentTarget.classList.add('active');
-      imgSwiper.slideTo(index);
-    });
-  });
-}

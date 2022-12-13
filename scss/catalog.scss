@@ -8,7 +8,6 @@
   &__navigation-list {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
     row-gap: 8px;
   }
 
@@ -25,8 +24,16 @@
       color: #FF6633;
     }
 
+    &:nth-last-child(n+2) {
+      white-space: nowrap;
+    }
+
     &:last-child {
       color: #FF6633;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
   }
 

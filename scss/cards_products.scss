@@ -119,6 +119,14 @@
     }
   }
 
+  &__main-slider-preview-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    transition: all 0.2s linear;
+  }
+
   &__main-slider-img {
     max-width: 100%;
     max-height: 100%;
@@ -156,6 +164,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  max-width: 500px;
+  max-height: 500px;
 }
 
 // .products-header-rating {}

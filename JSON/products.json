@@ -13,77 +13,241 @@
         "price": "15.10",
         "price_card": "345.70",
         "img": [
-          "milk.jpg"
+          "346818_6.jfif"
         ],
         "rating": 1.8,
-        "discount": 30,
-        "reviews": 0,
-        "link": "",
-        "article": 43345
+        "discount": "23",
+        "feedback": "0",
+        "link": "moloko-prostokvashino-past-pitevoe-celnoe-otbornoe-3445-pet-rossiya-930ml.html",
+        "article": "43345",
+        "characteristic": [
+          [
+            "Бренд",
+            "ПРОСТОКВАШИНО"
+          ],
+          [
+            "Производитель",
+            "АО «Данон Россия»"
+          ],
+          [
+            "Страна производителя",
+            "Россия"
+          ],
+          [
+            "Упаковка",
+            "930 мл"
+          ],
+          [
+            "Калорийность на 100 г",
+            "61–71 кКал"
+          ],
+          [
+            "Жирность",
+            "3,4–4,5%"
+          ]
+        ]
       },
       {
         "id": "002",
-        "name": "Кефир 3,2% 930 г",
+        "name": "Кефир ПРОСТОКВАШИНО 3,2%, без змж, 930г, Россия, 930 г",
         "price": "89.99",
+        "price_card": "86.70",
         "img": [
-          "kefir.png"
+          "kefir.png",
+          "401744_1.jfif"
         ],
-        "reviews": 0,
+        "feedback": "0",
+        "discount": "",
         "rating": 4.3,
-        "link": "",
-        "article": 43345
+        "link": "kefir-prostokvashino-32-rossiya-930g.html",
+        "article": "43345",
+        "characteristic": [
+          [
+            "Бренд",
+            "ПРОСТОКВАШИНО"
+          ],
+          [
+            "Производитель",
+            "АО «Данон Россия»"
+          ],
+          [
+            "Страна производителя",
+            "Россия"
+          ],
+          [
+            "Упаковка",
+            "930 г"
+          ],
+          [
+            "Калорийность на 100 г",
+            "57 кКал"
+          ],
+          [
+            "Жирность",
+            "3,2%"
+          ]
+        ]
       },
       {
         "id": "003",
-        "name": "Молоко сгущенное РОГАЧЕВ Егорка, цельное с сахаром",
+        "name": "Молоко сгущенное РОГАЧЕВЪ Егорка, цельное с сахаром вареное 8,5%, без змж, 360г, Беларусь, 360 г",
         "price": "77.99",
+        "price_card": "76.34",
         "img": [
-          "sgushenka.jpg"
+          "391879.jfif"
         ],
         "rating": 3.9,
-        "reviews": 0,
-        "link": "",
-        "article": 43345
+        "discount": "",
+        "feedback": "0",
+        "link": "moloko-sgushchennoe-rogachev-egorka-varenoe-celnoe-s-sah-85-belarus-360g.html",
+        "article": "43345",
+        "characteristic": [
+          [
+            "Бренд",
+            "РОГАЧЕВЪ"
+          ],
+          [
+            "Производитель",
+            "ОАО «Рогачевский молочноконсервный комбинат»"
+          ],
+          [
+            "Страна производителя",
+            "Россия"
+          ],
+          [
+            "Упаковка",
+            "360 г"
+          ],
+          [
+            "Калорийность на 100 г",
+            "330 кКал/1382 кДж"
+          ],
+          [
+            "Жирность",
+            "3,2%"
+          ]
+        ]
       },
       {
         "id": "004",
         "name": "Йогурт Fruttis'Сливочное лакомство' с персиком и маракуйей, ананасом и дыней, 5,0% 115г",
-        "price": "876.20",
-        "price_card": "500.90",
+        "price": "36.20",
+        "price_card": "34.99",
         "img": [
-          "йогурт1.jpg"
+          "йогурт1.jpg",
+          "193178.jfif",
+          "193186.jfif"
         ],
         "rating": 4.3,
-        "discount": 50,
-        "reviews": 0,
-        "link": "",
-        "article": 43345
+        "discount": "",
+        "feedback": "0",
+        "link": "jjogurtnyjj-fruttis-past-slivochnyjj-persikmarakuyaananasdynya-5-rossiya-115g.html",
+        "article": "43345",
+        "characteristic": [
+          [
+            "Бренд",
+            "FRUTTIS"
+          ],
+          [
+            "Производитель",
+            "ООО «Кампина»"
+          ],
+          [
+            "Страна производителя",
+            "Россия"
+          ],
+          [
+            "Упаковка",
+            "115 г"
+          ],
+          [
+            "Калорийность на 100 г",
+            "120 кКал"
+          ],
+          [
+            "Вкус",
+            "Персик, Маракуйя, Ананас, Дыня"
+          ]
+        ]
       },
       {
         "id": "005",
         "name": "Йогурт Fruttis Сливочное лакомство, с вишней и черникой, 5,0% 115г",
-        "price": "77.99",
-        "price_card": "68.50",
+        "price": "36.20",
+        "price_card": "34.99",
         "img": [
-          "йогурт2.jpg"
+          "йогурт2.jpg",
+          "193182.jfif",
+          "193185.jfif"
         ],
         "rating": 3.7,
-        "discount": 25,
-        "reviews": 0,
-        "link": "",
-        "article": 43345
+        "discount": "",
+        "feedback": "0",
+        "link": "jjogurtnyjj-fruttis-past-slivochnyjj-vishnya-chernika-5-rossiya-115g.html",
+        "article": "43345",
+        "characteristic": [
+          [
+            "Бренд",
+            "FRUTTIS"
+          ],
+          [
+            "Производитель",
+            "ООО «Кампина»"
+          ],
+          [
+            "Страна производителя",
+            "Россия"
+          ],
+          [
+            "Упаковка",
+            "115 г"
+          ],
+          [
+            "Калорийность на 100 г",
+            "120 кКал"
+          ],
+          [
+            "Вкус",
+            "Вишня, Черника"
+          ]
+        ]
       },
       {
         "id": "006",
         "name": "Масло сливочное ПРОСТОКВАШИНО 82%, без змж, 180г",
-        "price": "50.80",
+        "price": "205.99",
+        "price_card": "200.94",
         "img": [
-          "масло.jpg"
+          "244310_5.jfif",
+          "401766_1.jfif"
         ],
         "rating": 4.4,
-        "reviews": 0,
-        "link": "",
-        "article": 43345
+        "discount": "",
+        "feedback": "0",
+        "link": "maslo-prostokvashino-slivochnoe-vs-82-folga-rossiya-180g.html",
+        "article": "43345",
+        "characteristic": [
+          [
+            "Бренд",
+            "ПРОСТОКВАШИНО"
+          ],
+          [
+            "Производитель",
+            "АО «Данон Россия»"
+          ],
+          [
+            "Страна производителя",
+            "Россия"
+          ],
+          [
+            "Упаковка",
+            "180 Г"
+          ],
+          [
+            "Жирность",
+            "82%"
+          ]
+        ]
       },
       {
         "id": "007",
@@ -94,10 +258,10 @@
           "сыр-дорблю.jpg"
         ],
         "rating": 1,
-        "discount": 100,
-        "reviews": 0,
+        "discount": "2",
+        "feedback": "0",
         "link": "",
-        "article": 43345
+        "article": "43345"
       },
       {
         "id": "008",
@@ -108,10 +272,10 @@
           "chudo-molochni-kokteil-shokolad.jfif"
         ],
         "rating": 1.8,
-        "discount": 30,
-        "reviews": 0,
+        "discount": "30",
+        "feedback": "0",
         "link": "",
-        "article": 43345
+        "article": "43345"
       },
       {
         "id": "009",
@@ -121,9 +285,10 @@
           "bonvida-slivki-1000g-33.jfif"
         ],
         "rating": 3.9,
-        "reviews": 0,
+        "discount": "",
         "link": "",
-        "article": 43345
+        "feedback": "0",
+        "article": "43345"
       },
       {
         "id": "010",
@@ -134,10 +299,10 @@
           "vkusnoteevo-slivki-475g-20.jfif"
         ],
         "rating": 4.3,
-        "discount": 50,
-        "reviews": 0,
+        "discount": "7",
         "link": "",
-        "article": 43345
+        "feedback": "0",
+        "article": "43345"
       },
       {
         "id": "011",
@@ -147,9 +312,10 @@
           "lebedan-rajenka-4.jfif"
         ],
         "rating": 3.7,
-        "reviews": 0,
+        "discount": "",
         "link": "",
-        "article": 43345
+        "feedback": "0",
+        "article": "43345"
       },
       {
         "id": "012",
@@ -159,9 +325,10 @@
           "maslo-slivochnoe-vkusnoteevo-400g.jfif"
         ],
         "rating": 2.7,
-        "reviews": 0,
+        "discount": "",
         "link": "",
-        "article": 43345
+        "feedback": "0",
+        "article": "43345"
       },
       {
         "id": "013",
@@ -172,9 +339,10 @@
           "sir-lamber-0.5kg.jfif"
         ],
         "rating": 3.4,
-        "discount": 100,
+        "discount": "4",
         "link": "",
-        "article": 43345
+        "feedback": "0",
+        "article": "43345"
       },
       {
         "id": "014",
@@ -184,8 +352,10 @@
           "tvorog.jfif"
         ],
         "rating": 3.9,
+        "discount": "",
         "link": "",
-        "article": 43345
+        "feedback": "0",
+        "article": "43345"
       },
       {
         "id": "015",
@@ -196,9 +366,10 @@
           "лето-яйца-столовые.jfif"
         ],
         "rating": 4.3,
-        "discount": 50,
+        "discount": "12",
         "link": "",
-        "article": 43345
+        "feedback": "0",
+        "article": "43345"
       },
       {
         "id": "016",
@@ -208,8 +379,10 @@
           "липецкое-яйцо.jfif"
         ],
         "rating": 3.7,
+        "discount": "",
         "link": "",
-        "article": 43345
+        "feedback": "0",
+        "article": "43345"
       },
       {
         "id": "017",
@@ -219,8 +392,10 @@
           "простоквашина-спетана-15.jfif"
         ],
         "rating": 3.6,
+        "discount": "",
         "link": "",
-        "article": 43345
+        "feedback": "0",
+        "article": "43345"
       },
       {
         "id": "018",
@@ -231,9 +406,10 @@
           "сырок-глазированный-вкуснотеево-ваниль.jfif"
         ],
         "rating": 4.8,
-        "discount": 5,
+        "discount": "9",
         "link": "",
-        "article": 43345
+        "feedback": "0",
+        "article": "43345"
       },
       {
         "id": "020",
@@ -244,9 +420,10 @@
           "сыр-российский.jfif"
         ],
         "rating": 4.1,
-        "discount": 19,
+        "discount": "19",
         "link": "",
-        "article": 43345
+        "feedback": "0",
+        "article": "43345"
       }
     ]
   },
@@ -267,9 +444,10 @@
           "baton-limak.jfif"
         ],
         "rating": 4.8,
-        "discount": 5,
+        "discount": "5",
         "link": "",
-        "article": 43345
+        "feedback": "0",
+        "article": "43345"
       }
     ]
   },
@@ -288,29 +466,94 @@
           "pelmeni-cezar-800.jfif"
         ],
         "rating": 4.24,
-        "link": "",
-        "article": 43345
+        "link": "pelmeni-cezar-firmennye-katv-zam-rossiya-800g.html",
+        "feedback": "0",
+        "discount": "",
+        "article": "43345",
+        "characteristic": [
+          [
+            "Бренд",
+            "ЦЕЗАРЬ"
+          ],
+          [
+            "Производитель",
+            "ООО «Морозко»"
+          ],
+          [
+            "Страна производителя",
+            "Россия"
+          ],
+          [
+            "Упаковка",
+            "800  г"
+          ],
+          [
+            "Калорийность на 100 г",
+            "366 кКал/1537 кДж"
+          ],
+          [
+            "Вид мяса",
+            "Смешанный"
+          ],
+          [
+            "Время приготовления",
+            "5 минут"
+          ]
+        ]
       },
       {
         "id": "22",
         "name": "Мороженое ЗОЛОТОЙ СТАНДАРТ Пломбир с суфле и крошкой из глазури 12%, без змж, вафельный стаканчик, 86г, Россия, 86 г",
         "price": "32.21",
+        "price_card": "30.89",
         "img": [
           "morojennoe-zolotoi-standart.jfif"
         ],
         "rating": 4.24,
-        "link": "morozhenoe-prochie-tovary-plombir-s-sufle-i-kroshkojj-iz-glazuri-v-vaf-st-bez-zmzh-rossiya-86g",
-        "article": 44345
+        "discount": "",
+        "link": "morozhenoe-prochie-tovary-plombir-s-sufle-i-kroshkojj-iz-glazuri-v-vaf-st-bez-zmzh-rossiya-86g.html",
+        "feedback": "0",
+        "article": "44345",
+        "characteristic": [
+          [
+            "Бренд",
+            "ЗОЛОТОЙ СТАНДАРТ"
+          ],
+          [
+            "Производитель",
+            "ООО «Юнилевер Русь»»"
+          ],
+          [
+            "Страна производителя",
+            "Россия"
+          ],
+          [
+            "Упаковка",
+            "86 г"
+          ],
+          [
+            "Калорийность на 100 г",
+            "262 кКал/1094 кДж"
+          ],
+          [
+            "Тип разделки/Форма выпуска",
+            "Вафельный стаканчик"
+          ]
+        ]
       },
       {
         "id": "23",
         "name": "Мороженое BASKIN ROBBINS Миндально-фисташковое, сливочное с ароматом фисташек и орехом миндаля, без змж, 1000мл, Россия, 1000 мл",
         "price": "710.49",
+        "price_card": "700.89",
         "img": [
           "232878_1.jfif"
         ],
         "rating": 4.24,
-        "article": 43345,
+        "link": "morozhenoe-baskin-robbins-mindalnofistashkovoe-rossiya-1000ml.html",
+        "article": "43345",
+        "discount": "",
+        "feedback": "0",
         "characteristic": [
           [
             "Бренд",
@@ -347,22 +590,52 @@
           "454624_1.jfif"
         ],
         "rating": 4.24,
-        "link": "naggetsy-prochie-tovary-sochnaya-kurochka-rossiya-250g",
-        "article": 433245
+        "link": "naggetsy-prochie-tovary-sochnaya-kurochka-rossiya-250g.html",
+        "article": "433245",
+        "feedback": "0",
+        "discount": "",
+        "characteristic": [
+          [
+            "Бренд",
+            "ГОРЯЧАЯ ШТУЧКА"
+          ],
+          [
+            "Производитель",
+            "ЗАО «Мясная Галерея»"
+          ],
+          [
+            "Страна производителя",
+            "Россия"
+          ],
+          [
+            "Упаковка",
+            "250 г"
+          ],
+          [
+            "Калорийность на 100 г",
+            "260 кКал/1080 кДж"
+          ],
+          [
+            "Время приготовления",
+            "3 минуты"
+          ]
+        ]
       },
       {
         "id": "25",
         "name": "Мороженое ЭKZO Манго-малина молочное без змж, ведро, 520г, Россия, 520 г",
-        "price": "349.49",
-        "price_card": "565.89",
+        "price": "549.49",
+        "price_card": "539.49",
         "img": [
           "284471.jfif",
           "400588.jfif"
         ],
+        "alt": "Мороженное",
         "rating": 4.24,
-        "discount": 5,
-        "link": "cards_product/morozhenoe-ekzo-mango-malina-molochnoe-vedro-bez-zmzh-rossiya-520g.html",
-        "article": 123413,
+        "discount": "17",
+        "link": "morozhenoe-ekzo-mango-malina-molochnoe-vedro-bez-zmzh-rossiya-520g.html",
+        "article": "123413",
+        "feedback": "0",
         "characteristic": [
           [
             "Бренд",
@@ -399,9 +672,10 @@
           "412160.jfif"
         ],
         "rating": 4.24,
-        "discount": 45,
-        "link": "cards_product/morozhenoe-prochie-tovary-s-chernojj-smorodinojj-briket-bez-zmzh-rossiya-250g",
-        "article": 675413,
+        "discount": "5",
+        "link": "morozhenoe-prochie-tovary-s-chernojj-smorodinojj-briket-bez-zmzh-rossiya-250g.html",
+        "article": "675413",
+        "feedback": "0",
         "characteristic": [
           [
             "Бренд",
@@ -440,9 +714,10 @@
           "98378.jfif"
         ],
         "rating": 4.24,
-        "discount": 25,
-        "link": "cards_product/picca-la-trattoria-assorti-rossiya-335g",
-        "article": 545413,
+        "discount": "25",
+        "link": "picca-la-trattoria-assorti-rossiya-335g.html",
+        "article": "545413",
+        "feedback": "0",
         "characteristic": [
           [
             "Бренд",

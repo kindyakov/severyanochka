@@ -275,6 +275,10 @@
   .products-title {
     font-size: 20px;
   }
+
+  .main__navigation-list {
+    flex-wrap: wrap;
+  }
 }
 
 @media (max-width: 960px) {
@@ -346,6 +350,10 @@
   .products__main-slider-slide {
     height: 46px;
     width: 64px;
+  }
+
+  .products__main-sliders {
+    max-height: 400px;
   }
 }
 
@@ -517,6 +525,10 @@
 
   .profile-enter {
     display: none;
+  }
+
+  .products__main-sliders {
+    max-height: 300px;
   }
 }
 

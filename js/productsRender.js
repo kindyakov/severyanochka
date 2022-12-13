@@ -1,5 +1,8 @@
 const products_container = document.querySelector('#products-container');
 const filters_products = document.querySelector('.filters-products');
+
+const products_containerDataset = products_container.dataset.products;
+
 let btnNore;
 let paginationList;
 let modulePagination;
@@ -25,7 +28,7 @@ if (products_container) {
   async function getProducts() {
     const response = await fetch('../JSON/products.json');
     const productsObject = await response.json();
-    const productsCurrent = productsObject[`${products_container.dataset.products}`];
+    const productsCurrent = productsObject[`${products_containerDataset}`];
 
     if (productsCurrent !== undefined) {
       const productsCards = productsCurrent['cardData'];
@@ -242,7 +245,7 @@ function addDisableCardLike() {
 function cardsHtml(id, img, price, title, rating, link) {
   return `<div class="wrapper-card" id="${id}">
   <div class="card">
-    <a href="${link}" class="card-wrapper-img">
+    <a href="${products_containerDataset}/${link}" class="card-wrapper-img">
       <img src="../img/img-card/${img[0]}" alt="${title}" class="card-img" data-img="${img}"></img>
     </a>
     <div class="card-content">
@@ -252,7 +255,7 @@ function cardsHtml(id, img, price, title, rating, link) {
         </p>
       </div>
       <div class="card-info">
-        <a href="" class="card-name-product">${title}</a>
+        <a href="${products_containerDataset}/${link}" class="card-name-product">${title}</a>
         <div class="card-rating">
           <div class="card-rating__active">
             <div class="card-rating__item _icon-star"></div>
