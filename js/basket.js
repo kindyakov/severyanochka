@@ -37,11 +37,11 @@ if (product.length > 0) {
       </div>
 
       <div class="basket__card-wrapper-content">
-        <a href="" class="basket__card-wrapper-img">
+        <a href="HTML/${card.link}" class="basket__card-wrapper-img">
           <img src="img/img-card/${card.img}" class="basket__card-img"></img>
         </a>
         <div class="basket__card-content">
-          <a href="" class="basket__card-name">${card.name}</a>
+          <a href="HTML/${card.link}" class="basket__card-name">${card.name}</a>
           <div class="basket__card-text">
             <p class="basket__card-wrapper-price">
               <span class="basket__card-price">${card.price}</span>
@@ -85,11 +85,11 @@ if (product.length > 0) {
         </div>
 
         <div class="basket__card-wrapper-content">
-          <a href="" class="basket__card-wrapper-img">
+          <a href="HTML/${card.link}" class="basket__card-wrapper-img">
             <img src="img/img-card/${card.img}" class="basket__card-img"></img>
           </a>
           <div class="basket__card-content">
-            <a href="" class="basket__card-name">${card.name}</a>
+            <a href="HTML/${card.link}" class="basket__card-name">${card.name}</a>
             <div class="basket__card-text">
               <p class="basket__card-wrapper-price">
                 <span class="basket__card-price">${card.price}</span>

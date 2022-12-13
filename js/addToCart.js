@@ -52,6 +52,7 @@ function addInfoCard(target, arr, storage) {
     price: '',
     img: '',
     rating: '',
+    link: '',
   };
   // Обертка карточки
   const card = target.closest('.wrapper-card');
@@ -69,6 +70,8 @@ function addInfoCard(target, arr, storage) {
   const rating = card.querySelector('.card-rating__items').dataset.rating;
   // Скидка 
   const discount = card.querySelector('.card-discount');
+  const url = card.querySelector('.card-wrapper-img').href; // url товара 
+  const link = url.split('/').reverse()[1] + '/' + url.split('/').reverse()[0]; // относительная ссылка
 
   cardObject.id = cardID;
   cardObject.name = name;
@@ -77,6 +80,7 @@ function addInfoCard(target, arr, storage) {
   cardObject.img = imgSrc;
   cardObject.rating = rating;
   if (discount) cardObject.discount = discount.textContent;
+  cardObject.link = link;
 
   arr.unshift(cardObject)
   localStorage.setItem(`${storage}`, JSON.stringify(arr));

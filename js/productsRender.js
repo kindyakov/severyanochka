@@ -246,7 +246,7 @@ function cardsHtml(id, img, price, title, rating, link) {
   return `<div class="wrapper-card" id="${id}">
   <div class="card">
     <a href="${products_containerDataset}/${link}" class="card-wrapper-img">
-      <img src="../img/img-card/${img[0]}" alt="${title}" class="card-img" data-img="${img}"></img>
+      <img src="../img/img-card/${img[0]}" alt="${title}" class="card-img" data-img="${img[0]}"></img>
     </a>
     <div class="card-content">
       <div class="card-wrapper-price">

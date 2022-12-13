@@ -17,7 +17,7 @@ if (JSON.parse(localStorage.getItem('productsFavourites')) !== null) {
 
 if (product.length > 0) {
   product.forEach(function (card) {
-    favouritesProducts.insertAdjacentHTML('beforeend', cardsHtml(card.id, card.img, card.price, card.name, card.rating));
+    favouritesProducts.insertAdjacentHTML('beforeend', cardsHtml(card.id, card.img, card.price, card.name, card.rating, card.link));
 
     const cards = document.querySelector(`[id = "${card.id}"]`);
     if (card.discount) {
@@ -46,10 +46,10 @@ if (product.length > 0) {
   </div>`;
 }
 
-function cardsHtml(id, img, price, title, rating) {
+function cardsHtml(id, img, price, title, rating, link) {
   return `<div class="wrapper-card" id="${id}">
   <div class="card">
-    <a href="" class="card-wrapper-img">
+    <a href="HTML/${link}" class="card-wrapper-img">
       <img src="img/img-card/${img}" alt="Блинчики" class="card-img" data-img="${img}"></img>
     </a>
     <div class="card-content">
@@ -59,7 +59,7 @@ function cardsHtml(id, img, price, title, rating) {
         </p>
       </div>
       <div class="card-info">
-        <a href="" class="card-name-product">${title}</a>
+        <a href="HTML/${link}" class="card-name-product">${title}</a>
         <div class="card-rating">
           <div class="card-rating__active">
             <div class="card-rating__item _icon-star"></div>
