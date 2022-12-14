@@ -61,9 +61,9 @@ function addInfoCard(target, arr, storage) {
   // Название товара
   const name = card.querySelector('.card-name-product').textContent;
   // Цена товара
-  const price = card.querySelector('.card-price__card').textContent;
+  const price = card.querySelector('.card-price__ordinary').textContent;
   // Цена товара без карты 
-  const price_card = card.querySelector('.card-price__ordinary');
+  const price_card = card.querySelector('.card-price__card');
   // Картинка карточки
   const imgSrc = card.querySelector('.card-img').dataset.img;
   // Рейтинг 

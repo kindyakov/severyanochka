@@ -17,24 +17,8 @@ if (JSON.parse(localStorage.getItem('productsFavourites')) !== null) {
 
 if (product.length > 0) {
   product.forEach(function (card) {
-    favouritesProducts.insertAdjacentHTML('beforeend', cardsHtml(card.id, card.img, card.price, card.name, card.rating, card.link));
-
-    const cards = document.querySelector(`[id = "${card.id}"]`);
-    if (card.discount) {
-      const cardWrapperImg = cards.querySelector('.card-wrapper-img');
-      cardWrapperImg.insertAdjacentHTML('beforeend', `<span class="card-discount">${card.discount}</span>`)
-    }
-    if (card.price_card) {
-      const cardWrapperPrice = cards.querySelector('.card-wrapper-price');
-      const cardPrice__card = cards.querySelector('.card-price__card');
-
-      cardWrapperPrice.insertAdjacentHTML('beforeend', `
-      <p class="card-price-text">
-        <span class="card-price__ordinary card-price">${card.price_card}</span>
-        <i>Обычная</i>
-      </p>`);
-      cardPrice__card.insertAdjacentHTML('afterend', `<i>С картой</i>`);
-    }
+    renderCardHtml(card)
+    rating();
   })
 } else {
   favouritesProducts.style.height = '100%';
@@ -49,17 +33,19 @@ if (product.length > 0) {
 function cardsHtml(id, img, price, title, rating, link) {
   return `<div class="wrapper-card" id="${id}">
   <div class="card">
-    <a href="HTML/${link}" class="card-wrapper-img">
+    <a href="html/${link}" class="card-wrapper-img">
+    <span class="card-discount"></span>
       <img src="img/img-card/${img}" alt="Блинчики" class="card-img" data-img="${img}"></img>
     </a>
     <div class="card-content">
       <div class="card-wrapper-price">
         <p class="card-price-text">
-          <span class="card-price__card card-price">${price}</span>
+          <span class="card-price__ordinary card-price">${price}</span>
+          <i>Обычная</i>
         </p>
       </div>
       <div class="card-info">
-        <a href="HTML/${link}" class="card-name-product">${title}</a>
+        <a href="html/${link}" class="card-name-product">${title}</a>
         <div class="card-rating">
           <div class="card-rating__active">
             <div class="card-rating__item _icon-star"></div>
@@ -86,7 +72,23 @@ function cardsHtml(id, img, price, title, rating, link) {
   </div>
 </div>`;
 }
+function renderCardHtml(card) {
+  favouritesProducts.insertAdjacentHTML('beforeend', cardsHtml(card.id, card.img, card.price, card.name, card.rating, card.link));
 
+  const cardID = document.querySelector(`[id = "${card.id}"]`);
+  const cardDiscount = cardID.querySelector('.card-discount');
+  if (card.discount) cardDiscount.textContent = card.discount;
+  else cardDiscount.style.display = 'none';
+  if (card.price_card) {
+    const cardWrapperPrice = cardID.querySelector('.card-wrapper-price');
+
+    cardWrapperPrice.insertAdjacentHTML('beforeend', `
+      <p class="card-price-text">
+        <span class="card-price__card card-price">${card.price_card}</span>
+        <i>С картой</i>
+      </p>`);
+  }
+}
 let min_maxPriceArr = [];
 let rangeSettings = {
   start: [0, 999],
@@ -193,4 +195,28 @@ function cardRemoveAnim(item) {
 
 if ('ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0) {
   document.querySelectorAll('.card-delete').forEach(span => span.style.opacity = 1);
+}
+function rating() {
+  const cardRating = document.getElementsByClassName('card-rating');
+  if (cardRating.length > 0) {
+    initRatings();
+  }
+  function initRatings() {
+    for (let i = 0; i < cardRating.length; i++) {
+      const ratings = cardRating[i];
+      initRating(ratings)
+    }
+  }
+  function initRating(ratings) {
+    initRatingVars(ratings)
+    setTatingActiveWidth();
+  }
+  function initRatingVars(ratings) {
+    ratingActive = ratings.querySelector('.card-rating__active');
+    ratingValue = ratings.querySelector('.card-rating__items');
+  }
+  function setTatingActiveWidth(index = ratingValue.dataset.rating) {
+    const ratingActiveWidth = index / 0.05;
+    ratingActive.style.width = `${ratingActiveWidth}px`;
+  }
 }

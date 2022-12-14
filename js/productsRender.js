@@ -251,7 +251,8 @@ function cardsHtml(id, img, price, title, rating, link) {
     <div class="card-content">
       <div class="card-wrapper-price">
         <p class="card-price-text">
-          <span class="card-price__card card-price">${price} ₽</span>
+          <span class="card-price__ordinary card-price">${price} ₽</span>
+          <i>Обычная</i>
         </p>
       </div>
       <div class="card-info">
@@ -279,6 +280,38 @@ function cardsHtml(id, img, price, title, rating, link) {
   </div>
 </div>`;
 }
+
+function renderCardHtml(card) {
+  products_container.insertAdjacentHTML('beforeend', cardsHtml(card.id, card.img, card.price, card.name, card.rating, card.link));
+
+  const cardID = document.querySelector(`[id = "${card.id}"]`);
+  if (card.discount !== '') {
+    const cardWrapperImg = cardID.querySelector('.card-wrapper-img');
+    cardWrapperImg.insertAdjacentHTML('beforeend', `<span class="card-discount">-${card.discount}%</span>`)
+  }
+  if (card.price_card) {
+    const cardWrapperPrice = cardID.querySelector('.card-wrapper-price');
+
+    cardWrapperPrice.insertAdjacentHTML('beforeend', `
+      <p class="card-price-text">
+        <span class="card-price__card card-price">${card.price_card} ₽</span>
+        <i>С картой</i>
+      </p>`);
+  }
+}
+function addClassPaginationBlock() {
+  if (paginationItem[0].classList.contains('show')) blockPrev.classList.add('none');
+  else blockPrev.classList.remove('none');
+
+  if (paginationItem[paginationItem.length - 1].classList.contains('show')) blockNext.classList.add('none');
+  else blockNext.classList.remove('none');
+
+  if (paginationItem[1].classList.contains('show')) duble_prev.classList.add('none');
+  else duble_prev.classList.remove('none');
+
+  if (paginationItem[paginationItem.length - 2].classList.contains('show')) duble_next.classList.add('none');
+  else duble_next.classList.remove('none');
+}
 function footerCatalogHtml() {
   return `<div class="more-wrapper">
       <button class="products__more-btn">Показать ещё</button>
@@ -298,37 +331,4 @@ function footerCatalogHtml() {
         </div>
       </nav>
     </div>`;
-}
-function renderCardHtml(card) {
-  products_container.insertAdjacentHTML('beforeend', cardsHtml(card.id, card.img, card.price, card.name, card.rating, card.link));
-
-  const cardID = document.querySelector(`[id = "${card.id}"]`);
-  if (card.discount) {
-    const cardWrapperImg = cardID.querySelector('.card-wrapper-img');
-    cardWrapperImg.insertAdjacentHTML('beforeend', `<span class="card-discount">-${card.discount}%</span>`)
-  }
-  if (card.price_card) {
-    const cardWrapperPrice = cardID.querySelector('.card-wrapper-price');
-    const cardPrice__card = cardID.querySelector('.card-price__card');
-
-    cardWrapperPrice.insertAdjacentHTML('beforeend', `
-      <p class="card-price-text">
-        <span class="card-price__ordinary card-price">${card.price_card} ₽</span>
-        <i>Обычная</i>
-      </p>`);
-    cardPrice__card.insertAdjacentHTML('afterend', `<i>С картой</i>`);
-  }
-}
-function addClassPaginationBlock() {
-  if (paginationItem[0].classList.contains('show')) blockPrev.classList.add('none');
-  else blockPrev.classList.remove('none');
-
-  if (paginationItem[paginationItem.length - 1].classList.contains('show')) blockNext.classList.add('none');
-  else blockNext.classList.remove('none');
-
-  if (paginationItem[1].classList.contains('show')) duble_prev.classList.add('none');
-  else duble_prev.classList.remove('none');
-
-  if (paginationItem[paginationItem.length - 2].classList.contains('show')) duble_next.classList.add('none');
-  else duble_next.classList.remove('none');
 }

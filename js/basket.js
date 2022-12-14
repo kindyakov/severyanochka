@@ -25,95 +25,9 @@ if (JSON.parse(localStorage.getItem('productsBasket')) !== null) {
 }
 
 if (product.length > 0) {
-  product.forEach(function (card, i) {
-    if (card.discount || card.price_card) {
-      const productHTML = `<div class="basket__wrapper-cards" id="${card.id}">
-    <div class="basket__card">
-      <div class="basket__card-wrapper-checkbox">
-        <div class="basket__card-checkbox">
-          <input type="checkbox" id="basket-card-check" class="basket__card-check basket-card-check">
-          <label for="basket-card-check" class="basket__card-check-label">✓</label>
-        </div>
-      </div>
+  product.forEach((card, i) => {
+    renderCardHtml(card);
 
-      <div class="basket__card-wrapper-content">
-        <a href="html/${card.link}" class="basket__card-wrapper-img">
-          <img src="img/img-card/${card.img}" class="basket__card-img"></img>
-        </a>
-        <div class="basket__card-content">
-          <a href="html/${card.link}" class="basket__card-name">${card.name}</a>
-          <div class="basket__card-text">
-            <p class="basket__card-wrapper-price">
-              <span class="basket__card-price">${card.price}</span>
-              <i class="basket__card-price-context">С картой</i>
-            </p>
-            <p class="basket__card-wrapper-price">
-              <span class="basket__card-price basket__card-price-usual">${card.price_card}</span>
-              <i class="basket__card-price-context">Обычная</i>
-            </p>
-            <p>
-              <span class="basket__card-info">за шт.</span>
-            </p>
-            <p>
-              <span class="basket__card-discount">${card.discount}</span>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="basket__card-count-wrapper">
-        <div class="basket__card-counter">
-          <button class="basket__card-counter-btn counter-plus" data-counter-plus="+"></button>
-          <span class="basket__card-counter-input">1</span>
-          <button class="basket__card-counter-btn counter-minus" data-counter-plus="-"></button>
-        </div>
-        <div class="basket__card-counter-wrapper-price">
-          <span class="basket__card-counter-price-sum">${card.price}</span>
-          <i class="basket__card-counter-price-old">${card.price_card}</i>
-        </div>
-      </div>
-    </div>
-  </div>`;
-      basket__content.insertAdjacentHTML('beforeend', productHTML);
-    } else {
-      const productHTML = `<div class="basket__wrapper-cards" id="${card.id}">
-      <div class="basket__card">
-        <div class="basket__card-wrapper-checkbox">
-          <div class="basket__card-checkbox">
-            <input type="checkbox" id="basket-card-check" class="basket__card-check basket-card-check">
-            <label for="basket-card-check" class="basket__card-check-label">✓</label>
-          </div>
-        </div>
-
-        <div class="basket__card-wrapper-content">
-          <a href="html/${card.link}" class="basket__card-wrapper-img">
-            <img src="img/img-card/${card.img}" class="basket__card-img"></img>
-          </a>
-          <div class="basket__card-content">
-            <a href="html/${card.link}" class="basket__card-name">${card.name}</a>
-            <div class="basket__card-text">
-              <p class="basket__card-wrapper-price">
-                <span class="basket__card-price">${card.price}</span>
-              </p>
-              <p>
-                <span class="basket__card-info">за шт.</span>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="basket__card-count-wrapper">
-          <div class="basket__card-counter">
-            <button class="basket__card-counter-btn counter-plus" data-counter-plus="+"></button>
-            <span class="basket__card-counter-input">1</span>
-            <button class="basket__card-counter-btn counter-minus" data-counter-plus="-"></button>
-          </div>
-          <div class="basket__card-counter-wrapper-price">
-            <span class="basket__card-counter-price-sum">${card.price}</span>
-          </div>
-        </div>
-      </div>
-    </div>`;
-      basket__content.insertAdjacentHTML('beforeend', productHTML);
-    }
     basket__content.children[i].style.cssText = 'margin-bottom: 30px';
   })
   basket__content.children[basket__content.children.length - 1].removeAttribute('style');
@@ -355,4 +269,69 @@ function removeCardAnimate(array) {
       removeCardAnimate(array);
     }
   }, 150)
+}
+function cardBasketHtml(id, img, link, price, title) {
+  return `<div class="basket__wrapper-cards" id="${id}">
+  <div class="basket__card">
+    <div class="basket__card-wrapper-checkbox">
+      <div class="basket__card-checkbox">
+        <input type="checkbox" id="basket-card-check" class="basket__card-check basket-card-check">
+        <label for="basket-card-check" class="basket__card-check-label">✓</label>
+      </div>
+    </div>
+
+    <div class="basket__card-wrapper-content">
+      <a href="html/${link}" class="basket__card-wrapper-img">
+        <img src="img/img-card/${img}" class="basket__card-img"></img>
+      </a>
+      <div class="basket__card-content">
+        <a href="html/${link}" class="basket__card-name">${title}</a>
+        <div class="basket__card-text">
+          <p class="basket__card-wrapper-price wrapper-price">
+            <span class="basket__card-price basket__card-price-usual">${price}</span>
+            <i class="basket__card-price-context card-price-context-ordinary"></i>
+          </p>
+          <p class="basket__card-wrapper-price">
+            <span class="basket__card-price basket__card-price-card"></span>
+            <i class="basket__card-price-context card-price-context-card"></i>
+          </p>
+          <p>
+            <span class="basket__card-info">за шт.</span>
+          </p>
+          <p>
+            <span class="basket__card-discount"></span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="basket__card-count-wrapper">
+      <div class="basket__card-counter">
+        <button class="basket__card-counter-btn counter-plus" data-counter-plus="+"></button>
+        <span class="basket__card-counter-input">1</span>
+        <button class="basket__card-counter-btn counter-minus" data-counter-plus="-"></button>
+      </div>
+      <div class="basket__card-counter-wrapper-price">
+        <span class="basket__card-counter-price-sum">${price}</span>
+        <i class="basket__card-counter-price-old"></i>
+      </div>
+    </div>
+  </div>
+</div>`;
+}
+function renderCardHtml(card) {
+  basket__content.insertAdjacentHTML('beforeend', cardBasketHtml(card.id, card.img, card.link, card.price, card.name));
+
+  const cardID = document.querySelector(`[id = "${card.id}"]`);
+  const cardDiscount = cardID.querySelector('.basket__card-discount');
+  if (card.discount) cardDiscount.textContent = card.discount;
+  else cardDiscount.style.display = 'none';
+
+  if (card.price_card) {
+    const priceCard = cardID.querySelector('.basket__card-price-card');
+    priceCard.textContent = card.price_card;
+
+    const priceContextOrdinary = cardID.querySelector('.card-price-context-ordinary').textContent = 'Обычная';
+    const priceContextCard = cardID.querySelector('.card-price-context-card').textContent = 'С картой';
+    const counterPriceOld = cardID.querySelector('.basket__card-counter-price-old').textContent = card.price;
+  }
 }
