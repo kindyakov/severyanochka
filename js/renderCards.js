@@ -49,7 +49,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
   function renderPage(data) {
     title.textContent = data.name + ' | Купит в интернет-магазине Северяночка'; // Заголовок страницы 
-    navigationLink[--navigationLink.length].textContent = data.name; // навигационная ссылка
+    navigationLink[--navigationLink.length].textContent = data.name; // навигационная ссылка Заголовок страницы
+    navigationLink[--navigationLink.length].href = nameFile; // навигационная ссылка 
     productsTitle.textContent = data.name; // название товара
     article.textContent = 'арт. ' + data.article; // артикуль
     ratings.dataset.rating = data.rating; // рейтинг
