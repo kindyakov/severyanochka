@@ -721,7 +721,7 @@ body.lock {
   justify-content: center;
   padding: 0 8px 2px 8px;
   z-index: 101;
-  outline: 2px solid rgba(65, 65, 65, 0.2470588235);
+  border: 2px solid rgba(65, 65, 65, 0.2470588235);
 }
 .gallery__close:hover span {
   color: #ff0000;
