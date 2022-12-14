@@ -14,6 +14,11 @@ window.addEventListener('DOMContentLoaded', function () {
   const priceCard = document.querySelector('.products__aside-card-price');
   const specifications = document.querySelector('.specifications-body');
 
+  const gallery__swiper = document.querySelector('.gallery__swiper');
+  const gallery = document.querySelector('.gallery');
+  const gallery__wrapper = document.querySelector('.gallery__wrapper-swiper');
+
+  let gallerySwiper;
   let cardsData;
 
   let url = window.location.href;
@@ -28,6 +33,8 @@ window.addEventListener('DOMContentLoaded', function () {
     cardsData = productsCurrent.filter(card => card.link == nameFile)[0];
 
     renderPage(cardsData);
+    renderGallery(cardsData.img, cardsData.name);
+    galleryActive();
 
     const productsSliderSlide = document.querySelectorAll('.products__main-slider-slide');
     const imgSwiper = new Swiper('.products__main-slider-active', { slidesPerView: 1, });
@@ -82,6 +89,53 @@ window.addEventListener('DOMContentLoaded', function () {
     <td class="specifications-cell specifications-cell-value">${value}</td>
   </tr>`;
   }
+  function renderGallery(imeg, title) {
+    imeg.forEach(img => gallery__wrapper.insertAdjacentHTML('beforeend', `
+    <div class="gallery__swiper-slide swiper-slide">
+      <img src="../../img/img-card/${img}" alt="${title}">
+    </div>`));
+    gallerySwiper = new Swiper(gallery__swiper, {
+      navigation: {
+        nextEl: '.gallery-button-next',
+        prevEl: '.gallery-button-prev',
+      },
+      pagination: {
+        el: '.gallery-pagination',
+        type: 'bullets',
+        clickable: true,
+      },
+      keyboard: { // управление с помощью клавиотуры 
+        enabled: true,
+      },
+      slidesPerView: 1,
+      spaceBetween: 0
+    });
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0) {
+      gallery__swiper.classList.remove('swiper-no-swiping');
+    }
+  }
+  function galleryActive() {
+    const sliders_slide = document.querySelectorAll('.products__main-sliders');
+    sliders_slide.forEach((slider, i) => {
+      slider.addEventListener('click', () => {
+        gallerySwiper.slideTo(i);
+        gallery.classList.add('active');
+        document.body.classList.add('lock');
+        document.querySelector('html').classList.add('lock');
+      });
+    })
+  }
+  function closeGallery(e) {
+    if (gallery.classList.contains('active')) {
+      if (e.keyCode === 27) removeClass();
+      if (e.target.closest('.gallery__close')) removeClass();
+    }
+  }
+  function removeClass() {
+    gallery.classList.remove('active')
+    document.body.classList.remove('lock');
+    document.querySelector('html').classList.remove('lock');
+  }
   function rating() {
     const cardRating = document.getElementsByClassName('card-rating');
     if (cardRating.length > 0) {
@@ -106,6 +160,8 @@ window.addEventListener('DOMContentLoaded', function () {
       ratingActive.style.width = `${ratingActiveWidth}px`;
     }
   }
+  document.addEventListener('keyup', closeGallery);
+  document.addEventListener('click', closeGallery);
 });
 
 
