@@ -2,6 +2,19 @@
 
 * {
   box-sizing: border-box;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #FBF8EC;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #FF6633;
+    border-radius: 10px;
+  }
 }
 
 button {
@@ -89,6 +102,8 @@ body {
   font-size: 16px;
   touch-action: none;
   -ms-touch-action: none;
+
+
 
   &.lock {
     overflow: hidden;
