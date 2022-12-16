@@ -1132,11 +1132,15 @@ body {
     color: #fff;
   }
 
+
+}
+
+.add-btn {
   &.disable {
-    color: #fff;
-    background-color: #606060;
-    opacity: 0.4;
-    border: 1px solid #606060;
+    color: #fff !important;
+    background-color: #606060 !important;
+    opacity: 0.4 !important;
+    border: 1px solid #606060 !important;
   }
 }
 

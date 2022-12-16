@@ -1066,11 +1066,12 @@ body.lock {
   background-color: #FF6633;
   color: #fff;
 }
-.card-button.disable {
-  color: #fff;
-  background-color: #606060;
-  opacity: 0.4;
-  border: 1px solid #606060;
+
+.add-btn.disable {
+  color: #fff !important;
+  background-color: #606060 !important;
+  opacity: 0.4 !important;
+  border: 1px solid #606060 !important;
 }
 
 .card-like {

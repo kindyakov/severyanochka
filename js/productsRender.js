@@ -225,9 +225,9 @@ rating();
 
 function addDisableCardBtn() {
   productsArrayLocalStorage.forEach(card => {
-    let cardDisable = document.querySelector(`[id="${card.id}"]`);
+    let cardDisable = document.querySelector(`[id="${card}"]`);
     if (cardDisable) {
-      let cardDisableBtn = cardDisable.querySelector('.card-button');
+      let cardDisableBtn = cardDisable.querySelector('.add-btn');
       cardDisableBtn.classList.add('disable');
       cardDisableBtn.textContent = 'В корзине';
     }
@@ -235,7 +235,7 @@ function addDisableCardBtn() {
 }
 function addDisableCardLike() {
   cardFavouritesArrays.forEach(card => {
-    let cardDisable = document.querySelector(`[id = "${card.id}"]`);
+    let cardDisable = document.querySelector(`[id = "${card}"]`);
     if (cardDisable) {
       let cardDisableLike = cardDisable.querySelector('.card-like');
       cardDisableLike.classList.add('disable');
@@ -274,7 +274,7 @@ function cardsHtml(id, img, price, title, rating, link) {
           </div>
         </div>
       </div>
-      <button class="card-button">В корзину</button>
+      <button class="card-button add-btn">В корзину</button>
     </div>
     <span class="card-like _icon-shape"></span>
   </div>

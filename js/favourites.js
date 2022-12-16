@@ -63,7 +63,7 @@ function cardsHtml(id, img, price, title, rating, link) {
           </div>
         </div>
       </div>
-      <button class="card-button">В корзину</button>
+      <button class="card-button add-btn">В корзину</button>
     </div>
     <span class="card-like _icon-shape"></span>
     <div class="card-delete-wrapper">

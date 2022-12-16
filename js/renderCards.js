@@ -50,6 +50,7 @@ window.addEventListener('DOMContentLoaded', function () {
       });
     }
     rating();
+    addDisableCardBtn(cardsData.id)
   };
   getData();
 
@@ -164,5 +165,12 @@ window.addEventListener('DOMContentLoaded', function () {
   document.addEventListener('click', closeGallery);
 });
 
-
+function addDisableCardBtn(id) {
+  let cardDisable = document.querySelector(`[id = "${id}"]`);
+  if (cardDisable) {
+    let cardDisableBtn = cardDisable.querySelector('.add-btn');
+    cardDisableBtn.classList.add('disable');
+    cardDisableBtn.textContent = 'В корзине';
+  }
+};
 
