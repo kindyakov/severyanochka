@@ -73,8 +73,11 @@ window.addEventListener('DOMContentLoaded', function () {
     productsTitle.textContent = data.name; // название товара
     article.textContent = 'арт. ' + data.article; // артикуль
     ratings.dataset.rating = data.rating; // рейтинг
-    feedback.textContent = data.feedback + ' отзывов'; // отзывы
-    btnLike.classList.add('like');
+    // отзывы
+    if (data.feedback.length === 1) feedback.textContent = data.feedback.length + ' отзыв';
+    else if (data.feedback.length === 0 || data.feedback.length > 4) feedback.textContent = data.feedback.length + ' отзывов';
+    else if (data.feedback.length < 5) feedback.textContent = data.feedback.length + ' отзыва';
+    btnLike.classList.add('like'); 
     products.setAttribute('id', data.id); // ID товара
     data.img.forEach((imeg, i) => {
       products__mainSlider.insertAdjacentHTML('beforeend', navSliderHtml(imeg, data.alt, i));
@@ -83,8 +86,10 @@ window.addEventListener('DOMContentLoaded', function () {
     if (data.discount.length > 0) discount.textContent = `-${data.discount}%`; // Скидка
     else discount.style.display = 'none';
     price.textContent = data.price + ' ₽'; // обычная цена
-    if (data.price_card.length > 0) priceCard.textContent = data.price_card + ' ₽'; // цена по карте
+    if (data.price_card !== '') priceCard.textContent = data.price_card + ' ₽';// цена по карте
+    else priceCard.parentNode.style.display = 'none';
     data.characteristic.forEach(arr => specifications.insertAdjacentHTML('beforeend', specificationsHtml(arr[0], arr[1]))); // Характеристики
+    document.querySelector('.main-promo__title').textContent = 'С этим товаров покупают';
   }
   function navSliderHtml(img, alt, i) {
     return `<div class="products__main-slider-slide" data-index="${i}">

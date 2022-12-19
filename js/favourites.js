@@ -186,7 +186,7 @@ favouritesProducts.addEventListener('click', e => {
     const wrapperCardId = wrapperCard.getAttribute('id');
 
     // Нахожу удалееные карточку в массиве 
-    const removeCardIndex = product.findIndex(card => card.id === wrapperCardId);
+    const removeCardIndex = product.findIndex(id => id === wrapperCardId);
 
     // Удаление из массива
     product.splice(removeCardIndex, 1);

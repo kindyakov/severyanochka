@@ -85,9 +85,7 @@ basket.addEventListener('click', function (e) {
       // ID карточки
       const wrapperCardId = wrapperCard.getAttribute('id');
       // Нахожу удалееные карточку в массиве 
-      const removeCardIndex = productID.findIndex(card => {
-        return card.id === wrapperCardId;
-      });
+      const removeCardIndex = productID.findIndex(id => id === wrapperCardId);
       // Удаление из массива
       productID.splice(removeCardIndex, 1);
       localStorage.setItem('productsBasket', JSON.stringify(productID));
@@ -157,7 +155,6 @@ basket.addEventListener('click', function (e) {
       const currentCards = e.target.closest('.basket__wrapper-cards').getAttribute('id');// ID текущей карточки
       const currentBoxInfoOrder = document.querySelector(`.basket__aside-info-block[data-card-id="${currentCards}"]`);// Текущя коробка информации заказа 
       const currentQuantityProduct = currentBoxInfoOrder.querySelector('.basket__aside-info-text');// Текущее количество товаров в инфо блоке
-      const currentPriceProductSum = currentBoxInfoOrder.querySelector('.basket__aside-info-price');// Текущая сумма цены по колочиество товаров
       const currentResultPriceProduct = currentBoxInfoOrder.querySelector('.basket__aside-info-price'); // Итоговая цена продукта с учетом его количества
       const resultPriceProduct = document.querySelectorAll('.basket__aside-info-price');
 
