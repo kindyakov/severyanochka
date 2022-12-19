@@ -16,6 +16,17 @@ if (JSON.parse(localStorage.getItem('productsFavourites')) !== null) {
   productQuantity.textContent = product.length;
 } else productQuantity.textContent = '0';
 
+let min_maxPriceArr = [];
+let rangeSettings = {
+  start: [0, 999],
+  connect: true,
+  step: 1,
+  range: {
+    'min': [0],
+    'max': [999],
+  }
+}
+
 fetch('../JSON/products.json')
   .then(data => data.json())
   .then(data => allCard(data))
@@ -63,9 +74,6 @@ function serachCard(array) {
   })
   return cards;
 }
-
-
-
 function cardsHtml(id, img, price, title, rating, link, catalog) {
   return `<div class="wrapper-card" id="${id}">
   <div class="card">
@@ -125,26 +133,15 @@ function renderCardHtml(card) {
       </p>`);
   }
 }
-let min_maxPriceArr = [];
-let rangeSettings = {
-  start: [0, 999],
-  connect: true,
-  step: 1,
-  range: {
-    'min': [0],
-    'max': [999],
-  }
-}
-
 function filter(product) {
   if (product.length > 0) {
     product.forEach(card => {
       min_maxPriceArr.push(priceWithoutSpaces(card.price));
-      if (card.price_card !== undefined) min_maxPriceArr.push(priceWithoutSpaces(card.price_card))
+      if (card.price_card !== '') min_maxPriceArr.push(priceWithoutSpaces(card.price_card))
     })
 
-    rangeSettings.range['max'] = [Math.max.apply(null, min_maxPriceArr)];
-    rangeSettings.range['min'] = [Math.min.apply(null, min_maxPriceArr)];
+    rangeSettings.range['max'] = [Math.max(...min_maxPriceArr)];
+    rangeSettings.range['min'] = [Math.min(...min_maxPriceArr)];
 
     noUiSlider.create(randeSlider, rangeSettings);
 
@@ -171,12 +168,10 @@ function filter(product) {
     })
   }
 }
-
 // Получаю числовое значение из строки 
 function priceWithoutSpaces(str) {
   return Number(str.replace(/[^\d.-]/g, ''));
 }
-
 // Удаление карточек
 favouritesProducts.addEventListener('click', e => {
   if (e.target.classList.contains('card-delete')) {
@@ -200,11 +195,11 @@ favouritesProducts.addEventListener('click', e => {
 
     product.forEach(card => {
       min_maxPriceArr.push(priceWithoutSpaces(card.price));
-      if (card.price_card !== undefined) min_maxPriceArr.push(priceWithoutSpaces(card.price_card));
+      if (card.price_card !== '') min_maxPriceArr.push(priceWithoutSpaces(card.price_card));
     })
 
-    priceMax = Math.max.apply(null, min_maxPriceArr);
-    priceMin = Math.min.apply(null, min_maxPriceArr);
+    priceMax = Math.max(...min_maxPriceArr);
+    priceMin = Math.min(...min_maxPriceArr);
 
     rangeSettings.range['max'] = [priceMax];
     rangeSettings.range['min'] = [priceMin];
@@ -221,7 +216,6 @@ favouritesProducts.addEventListener('click', e => {
     </div>`;
   }
 });
-
 function rating() {
   const cardRating = document.getElementsByClassName('card-rating');
   if (cardRating.length > 0) {
