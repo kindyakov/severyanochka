@@ -1,37 +1,55 @@
-// Корзина
-const basket = document.querySelector('.basket');
-// Оюертка карточек
-const basket__content = document.querySelector('.basket__content');
-// Выделить всё
-const checkAll = document.querySelector('#settings-check');
-// Форма оформления заказы
-const basket__form = document.querySelector('.basket__aside-form');
-// Коробка информации заказа
-const boxInfoOrder = document.querySelector('.basket__aside-info');
-// Итоговая цена 
-const priceResult = document.querySelector('.basket__aside-info-price-result');
-// Кнопка оформить заказ
-const basketButton = document.querySelector('.basket__aside-button');
-// Продукт из localSorange
-let product = [];
+const catalog = ['milk-cheese-egg', 'frozen-foods', 'breed', 'baby-food', 'confectionery-products', 'drinks', 'fruits-vegetables', 'grocery', 'healthy-eating', 'meat-poultry-sausage', 'non-food-products', 'tea-coffee', 'pet-supplies'];
+const basket = document.querySelector('.basket');// Корзина
+const basket__content = document.querySelector('.basket__content');// Оюертка карточек
+const checkAll = document.querySelector('#settings-check');// Выделить всё
+const basket__form = document.querySelector('.basket__aside-form');// Форма оформления заказы
+const boxInfoOrder = document.querySelector('.basket__aside-info');// Коробка информации заказа
+const priceResult = document.querySelector('.basket__aside-info-price-result');// Итоговая цена 
+const basketButton = document.querySelector('.basket__aside-button');// Кнопка оформить заказ
+
+let productID = [];// Продукт из localSorange
+let productsALL = [];
 // "span" для вывода Колличество товара 
 const productQuantity = document.querySelector('.main-title-quantity');
 // Проверяю чтоб не было null
 if (JSON.parse(localStorage.getItem('productsBasket')) !== null) {
-  product = JSON.parse(localStorage.getItem('productsBasket'));
-  productQuantity.textContent = product.length;
+  productID = JSON.parse(localStorage.getItem('productsBasket'));
+  productQuantity.textContent = productID.length;
 } else {
   productQuantity.textContent = '0';
 }
-
-if (product.length > 0) {
-  product.forEach((card, i) => {
-    renderCardHtml(card);
-
-    basket__content.children[i].style.cssText = 'margin-bottom: 30px';
+fetch('../JSON/products.json')
+  .then(data => data.json())
+  .then(data => allCard(data))
+  .then(data => serachCard(data))
+  .then(data => {
+    if (productID.length > 0) {
+      data.forEach((card, i) => {
+        renderCardHtml(card);
+        basket__content.children[i].style.cssText = 'margin-bottom: 30px';
+      })
+      basket__content.children[basket__content.children.length - 1].removeAttribute('style');
+    } else basket__content.innerHTML = `<div class="basket__wrapper-empty"><div class="basket__empty"><p class="basket__empty-text">Ваша корзина пуста</p><a href="html/catalog.html" class="basket__empty-link">Нажмите здесь, чтобы продолжить покупки</a></div></div>`;
   })
-  basket__content.children[basket__content.children.length - 1].removeAttribute('style');
-} else basket__content.innerHTML = `<div class="basket__wrapper-empty"><div class="basket__empty"><p class="basket__empty-text">Ваша корзина пуста</p><a href="html/catalog.html" class="basket__empty-link">Нажмите здесь, чтобы продолжить покупки</a></div></div>`;
+  .catch(err => console.error(err))
+// Сохраняю все карточки
+function allCard(data) {
+  catalog.forEach(title => {
+    if (data[title]) {
+      productsALL = [...productsALL, ...data[title].cardData];
+    }
+  });
+  return productsALL;
+}
+// Ищу нужные карточки
+function serachCard(array) {
+  let cards = [];
+  productID.forEach(id => {
+    cards = cards.concat(array.filter(card => card.id === id));
+  })
+  return cards;
+}
+
 
 // Значение счетчика
 let counterScore = 1;
@@ -65,19 +83,19 @@ basket.addEventListener('click', function (e) {
       // ID карточки
       const wrapperCardId = wrapperCard.getAttribute('id');
       // Нахожу удалееные карточку в массиве 
-      const removeCardIndex = product.findIndex(card => {
+      const removeCardIndex = productID.findIndex(card => {
         return card.id === wrapperCardId;
       });
       // Удаление из массива
-      product.splice(removeCardIndex, 1);
-      localStorage.setItem('productsBasket', JSON.stringify(product));
+      productID.splice(removeCardIndex, 1);
+      localStorage.setItem('productsBasket', JSON.stringify(productID));
     })
 
     indexAnim = 0;
     removeCardAnimate(falseWrapperCard(cardsCheckInputArr_true));
     // Вывод количество товаров в корзине 
-    document.querySelector('#menu-basket').textContent = product.length;
-    productQuantity.textContent = product.length;
+    document.querySelector('#menu-basket').textContent = productID.length;
+    productQuantity.textContent = productID.length;
 
     // Нахожу карточки с checked = false;
     function falseWrapperCard(array) {
@@ -260,7 +278,7 @@ function removeCardAnimate(array) {
       finishAnim.addEventListener('finish', () => {
         el.remove();
       });
-      if (product.length == 0) setTimeout(() => {
+      if (productID.length == 0) setTimeout(() => {
         basket__content.innerHTML = `<div class="basket__wrapper-empty"><div class="basket__empty"><p class="basket__empty-text">Ваша корзина пуста</p><a href="html/catalog.html" class="basket__empty-link">Нажмите здесь, чтобы продолжить покупки</a></div></div>`;
       }, array.length * durationHeight);
     })
@@ -270,7 +288,7 @@ function removeCardAnimate(array) {
     }
   }, 150)
 }
-function cardBasketHtml(id, img, link, price, title) {
+function cardBasketHtml(id, img, link, catalog, price, title) {
   return `<div class="basket__wrapper-cards" id="${id}">
   <div class="basket__card">
     <div class="basket__card-wrapper-checkbox">
@@ -281,11 +299,11 @@ function cardBasketHtml(id, img, link, price, title) {
     </div>
 
     <div class="basket__card-wrapper-content">
-      <a href="html/${link}" class="basket__card-wrapper-img">
-        <img src="img/img-card/${img}" class="basket__card-img"></img>
+      <a href="html/${catalog}/${link}" class="basket__card-wrapper-img">
+        <img src="img/img-card/${img[0]}" class="basket__card-img"></img>
       </a>
       <div class="basket__card-content">
-        <a href="html/${link}" class="basket__card-name">${title}</a>
+        <a href="html/${catalog}/${link}" class="basket__card-name">${title}</a>
         <div class="basket__card-text">
           <p class="basket__card-wrapper-price wrapper-price">
             <span class="basket__card-price basket__card-price-usual">${price}</span>
@@ -319,7 +337,7 @@ function cardBasketHtml(id, img, link, price, title) {
 </div>`;
 }
 function renderCardHtml(card) {
-  basket__content.insertAdjacentHTML('beforeend', cardBasketHtml(card.id, card.img, card.link, card.price, card.name));
+  basket__content.insertAdjacentHTML('beforeend', cardBasketHtml(card.id, card.img, card.link, card.catalog, card.price, card.name));
 
   const cardID = document.querySelector(`[id = "${card.id}"]`);
   const cardDiscount = cardID.querySelector('.basket__card-discount');

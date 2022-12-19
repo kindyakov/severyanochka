@@ -1,3 +1,4 @@
+const catalog = ['milk-cheese-egg', 'frozen-foods', 'breed', 'baby-food', 'confectionery-products', 'drinks', 'fruits-vegetables', 'grocery', 'healthy-eating', 'meat-poultry-sausage', 'non-food-products', 'tea-coffee', 'pet-supplies'];
 const favouritesProducts = document.querySelector('#favourites-products');
 const randeSlider = document.querySelector('.filters_box-paramets__sliders');
 
@@ -10,32 +11,57 @@ const productQuantity = document.querySelector('.main-title-quantity');
 if (JSON.parse(localStorage.getItem('productsFavourites')) !== null) {
   product = JSON.parse(localStorage.getItem('productsFavourites'));
   productQuantity.textContent = product.length;
+} else productQuantity.textContent = '0';
 
-} else {
-  productQuantity.textContent = '0';
-}
-
-if (product.length > 0) {
-  product.forEach(function (card) {
-    renderCardHtml(card)
-    rating();
+fetch('../JSON/products.json')
+  .then(data => data.json())
+  .then(data => allCard(data))
+  .then(data => serachCard(data))
+  .then(data => {
+    if (product.length > 0) {
+      data.forEach(card => {
+        renderCardHtml(card)
+        rating();
+      })
+    } else {
+      favouritesProducts.style.height = '100%';
+      favouritesProducts.innerHTML = `<div class="error-products">
+        <div class="error-products_content">
+          <span class="error-products_text">К сожалению, раздел пуст</span>
+          <a href="html/catalog.html" class="basket__empty-link">Нажмите здесь, чтобы продолжить покупки</a>
+        </div>
+      </div>`;
+    }
+    filter(data);
   })
-} else {
-  favouritesProducts.style.height = '100%';
-  favouritesProducts.innerHTML = `<div class="error-products">
-    <div class="error-products_content">
-      <span class="error-products_text">К сожалению, раздел пуст</span>
-      <a href="html/catalog.html" class="basket__empty-link">Нажмите здесь, чтобы продолжить покупки</a>
-    </div>
-  </div>`;
+  .catch(err => console.error(err))
+// Сохраняю все карточки
+function allCard(data) {
+  let productsALL = [];
+  catalog.forEach(title => {
+    if (data[title]) {
+      productsALL = [...productsALL, ...data[title].cardData];
+    }
+  });
+  return productsALL;
+}
+// Ищу нужные карточки
+function serachCard(array) {
+  let cards = [];
+  product.forEach(id => {
+    cards = cards.concat(array.filter(card => card.id === id));
+  })
+  return cards;
 }
 
-function cardsHtml(id, img, price, title, rating, link) {
+
+
+function cardsHtml(id, img, price, title, rating, link, catalog) {
   return `<div class="wrapper-card" id="${id}">
   <div class="card">
-    <a href="html/${link}" class="card-wrapper-img">
+    <a href="html/${catalog}/${link}" class="card-wrapper-img">
     <span class="card-discount"></span>
-      <img src="img/img-card/${img}" alt="Блинчики" class="card-img" data-img="${img}"></img>
+      <img src="img/img-card/${img[0]}" alt="Блинчики" class="card-img" data-img="${img}"></img>
     </a>
     <div class="card-content">
       <div class="card-wrapper-price">
@@ -45,7 +71,7 @@ function cardsHtml(id, img, price, title, rating, link) {
         </p>
       </div>
       <div class="card-info">
-        <a href="html/${link}" class="card-name-product">${title}</a>
+        <a href="html/${catalog}/${link}" class="card-name-product">${title}</a>
         <div class="card-rating">
           <div class="card-rating__active">
             <div class="card-rating__item _icon-star"></div>
@@ -73,7 +99,7 @@ function cardsHtml(id, img, price, title, rating, link) {
 </div>`;
 }
 function renderCardHtml(card) {
-  favouritesProducts.insertAdjacentHTML('beforeend', cardsHtml(card.id, card.img, card.price, card.name, card.rating, card.link));
+  favouritesProducts.insertAdjacentHTML('beforeend', cardsHtml(card.id, card.img, card.price, card.name, card.rating, card.link, card.catalog));
 
   const cardID = document.querySelector(`[id = "${card.id}"]`);
   const cardDiscount = cardID.querySelector('.card-discount');
@@ -100,39 +126,40 @@ let rangeSettings = {
   }
 }
 
-
-if (product.length > 0) {
-  product.forEach(card => {
-    min_maxPriceArr.push(priceWithoutSpaces(card.price));
-    if (card.price_card !== undefined) min_maxPriceArr.push(priceWithoutSpaces(card.price_card))
-  })
-
-  rangeSettings.range['max'] = [Math.max.apply(null, min_maxPriceArr)];
-  rangeSettings.range['min'] = [Math.min.apply(null, min_maxPriceArr)];
-
-  noUiSlider.create(randeSlider, rangeSettings);
-
-  const minPrice = document.querySelector('#min-price');
-  const maxPrice = document.querySelector('#max-price');
-
-  const inputsPrice = [minPrice, maxPrice];
-
-  randeSlider.noUiSlider.on('update', function (values, handle) {
-    inputsPrice[handle].value = Math.round(values[handle]);
-  })
-
-  const setRangeSlider = (i, value) => {
-    let arr = [null, null]
-    arr[i] = value;
-
-    randeSlider.noUiSlider.set(arr);
-  }
-
-  inputsPrice.forEach((el, i) => {
-    el.addEventListener('change', function (e) {
-      setRangeSlider(i, e.currentTarget.value);
+function filter(product) {
+  if (product.length > 0) {
+    product.forEach(card => {
+      min_maxPriceArr.push(priceWithoutSpaces(card.price));
+      if (card.price_card !== undefined) min_maxPriceArr.push(priceWithoutSpaces(card.price_card))
     })
-  })
+
+    rangeSettings.range['max'] = [Math.max.apply(null, min_maxPriceArr)];
+    rangeSettings.range['min'] = [Math.min.apply(null, min_maxPriceArr)];
+
+    noUiSlider.create(randeSlider, rangeSettings);
+
+    const minPrice = document.querySelector('#min-price');
+    const maxPrice = document.querySelector('#max-price');
+
+    const inputsPrice = [minPrice, maxPrice];
+
+    randeSlider.noUiSlider.on('update', function (values, handle) {
+      inputsPrice[handle].value = Math.round(values[handle]);
+    })
+
+    const setRangeSlider = (i, value) => {
+      let arr = [null, null]
+      arr[i] = value;
+
+      randeSlider.noUiSlider.set(arr);
+    }
+
+    inputsPrice.forEach((el, i) => {
+      el.addEventListener('change', function (e) {
+        setRangeSlider(i, e.currentTarget.value);
+      })
+    })
+  }
 }
 
 // Получаю числовое значение из строки 
