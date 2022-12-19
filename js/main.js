@@ -7,9 +7,7 @@ const headerOriginal = document.querySelector('.header-menu__wrpper');
 const headerClon = document.querySelector('.menu-fixed')
 const headerMenu = document.querySelector('.header-menu')
 const headerWrapper = document.querySelector('.header-wrapper')
-//
-// const catalog = document.querySelector('.catalog');
-//
+
 const cardsCatalog = document.querySelectorAll('.cards-catalog');
 let cardCatalogbool = true;
 //

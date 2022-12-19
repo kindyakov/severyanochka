@@ -1148,7 +1148,6 @@ body {
   position: absolute;
   right: 8px;
   top: 8px;
-  cursor: pointer;
   transition: color 0.2s;
   padding: 5px;
   background-color: rgba(243, 242, 241, 0.5);
@@ -1167,6 +1166,11 @@ body {
       font-weight: 700;
     }
   }
+
+}
+
+.like {
+  cursor: pointer;
 
   &.disable {
     color: #FF6633;

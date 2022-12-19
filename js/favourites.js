@@ -4,10 +4,13 @@ const randeSlider = document.querySelector('.filters_box-paramets__sliders');
 
 // Продукт из localSorange
 let product = [];
-
+let cardBasketArray = [];
 // "span" для вывода Колличество товара 
 const productQuantity = document.querySelector('.main-title-quantity');
 // Проверяю чтоб не было null
+if (JSON.parse(localStorage.getItem('productsBasket')) !== null) {
+  cardBasketArray = JSON.parse(localStorage.getItem('productsBasket'));
+}
 if (JSON.parse(localStorage.getItem('productsFavourites')) !== null) {
   product = JSON.parse(localStorage.getItem('productsFavourites'));
   productQuantity.textContent = product.length;
@@ -21,7 +24,7 @@ fetch('../JSON/products.json')
     if (product.length > 0) {
       data.forEach(card => {
         renderCardHtml(card)
-        rating();
+
       })
     } else {
       favouritesProducts.style.height = '100%';
@@ -32,9 +35,16 @@ fetch('../JSON/products.json')
         </div>
       </div>`;
     }
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0) {
+      document.querySelectorAll('.card-delete').forEach(span => span.style.opacity = 1);
+    }
+    addDisableCardBtn();
+    addDisableCardLike();
+    rating();
     filter(data);
   })
   .catch(err => console.error(err))
+
 // Сохраняю все карточки
 function allCard(data) {
   let productsALL = [];
@@ -91,7 +101,7 @@ function cardsHtml(id, img, price, title, rating, link, catalog) {
       </div>
       <button class="card-button add-btn">В корзину</button>
     </div>
-    <span class="card-like _icon-shape"></span>
+    <span class="card-like _icon-shape like"></span>
     <div class="card-delete-wrapper">
       <span class="card-delete">✖</span>
     </div>
@@ -103,7 +113,7 @@ function renderCardHtml(card) {
 
   const cardID = document.querySelector(`[id = "${card.id}"]`);
   const cardDiscount = cardID.querySelector('.card-discount');
-  if (card.discount) cardDiscount.textContent = card.discount;
+  if (card.discount) cardDiscount.textContent = '-' + card.discount + '%';
   else cardDiscount.style.display = 'none';
   if (card.price_card) {
     const cardWrapperPrice = cardID.querySelector('.card-wrapper-price');
@@ -211,18 +221,7 @@ favouritesProducts.addEventListener('click', e => {
     </div>`;
   }
 });
-// Анияция карточки при удалении
-function cardRemoveAnim(item) {
-  let anim = item.animate([
-    { transform: 'scale(1)', opacity: '1' },
-    { transform: 'scale(0)', opacity: '0' },
-  ], { duration: 200 });
-  anim.addEventListener('finish', () => item.remove());
-}
 
-if ('ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0) {
-  document.querySelectorAll('.card-delete').forEach(span => span.style.opacity = 1);
-}
 function rating() {
   const cardRating = document.getElementsByClassName('card-rating');
   if (cardRating.length > 0) {
@@ -246,4 +245,23 @@ function rating() {
     const ratingActiveWidth = index / 0.05;
     ratingActive.style.width = `${ratingActiveWidth}px`;
   }
+}
+function addDisableCardBtn() {
+  cardBasketArray.forEach(card => {
+    let cardDisable = document.querySelector(`[id = "${card}"]`);
+    if (cardDisable) {
+      let cardDisableBtn = cardDisable.querySelector('.add-btn');
+      cardDisableBtn.classList.add('disable');
+      cardDisableBtn.textContent = 'В корзине';
+    }
+  })
+}
+function addDisableCardLike() {
+  product.forEach(card => {
+    let cardDisable = document.querySelector(`[id = "${card}"]`);
+    if (cardDisable) {
+      let cardDisableLike = cardDisable.querySelector('.card-like');
+      cardDisableLike.classList.add('disable');
+    }
+  });
 }

@@ -10,23 +10,21 @@ window.addEventListener('load', function () {
   if (JSON.parse(localStorage.getItem('productsBasket')) !== null) {
     cardBasketArray = JSON.parse(localStorage.getItem('productsBasket'));
     basketQuantity.textContent = cardBasketArray.length;
-  } else {
-    basketQuantity.textContent = '0';
-  }
+  } else basketQuantity.textContent = '0';
+
 
   if (JSON.parse(localStorage.getItem('productsFavourites')) !== null) {
     cardFavouritesArray = JSON.parse(localStorage.getItem('productsFavourites'));
     favouritesQuantity.textContent = cardFavouritesArray.length;
-  } else {
-    favouritesQuantity.textContent = '0';
-  }
+  } else favouritesQuantity.textContent = '0';
+
 
   body.addEventListener('click', function (e) {
-    if (e.target.classList.contains('card-button')) {
+    if (e.target.classList.contains('add-btn')) {
       cardBasketArray = JSON.parse(localStorage.getItem('productsBasket'));
       basketQuantity.textContent = cardBasketArray.length;
     }
-    if (e.target.classList.contains('card-like')) {
+    if (e.target.classList.contains('like')) {
       cardFavouritesArray = JSON.parse(localStorage.getItem('productsFavourites'));
       favouritesQuantity.textContent = cardFavouritesArray.length;
     }

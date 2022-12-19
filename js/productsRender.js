@@ -276,7 +276,7 @@ function cardsHtml(id, img, price, title, rating, link) {
       </div>
       <button class="card-button add-btn">В корзину</button>
     </div>
-    <span class="card-like _icon-shape"></span>
+    <span class="card-like _icon-shape like"></span>
   </div>
 </div>`;
 }

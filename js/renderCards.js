@@ -1,4 +1,14 @@
 window.addEventListener('DOMContentLoaded', function () {
+  let cardBasketArray = [];
+  let cardFavouritesArray = [];
+
+  // Проверяю чтоб не было null
+  if (JSON.parse(localStorage.getItem('productsBasket')) !== null) {
+    cardBasketArray = JSON.parse(localStorage.getItem('productsBasket'));
+  }
+  if (JSON.parse(localStorage.getItem('productsFavourites')) !== null) {
+    cardFavouritesArray = JSON.parse(localStorage.getItem('productsFavourites'));
+  }
 
   const title = document.querySelector('title'); // Заголовок страницы 
   const navigationLink = document.querySelectorAll('.main__navigation-link'); // Навигационная ссылка
@@ -18,6 +28,8 @@ window.addEventListener('DOMContentLoaded', function () {
   const gallery = document.querySelector('.gallery');
   const gallery__wrapper = document.querySelector('.gallery__wrapper-swiper');
 
+  const btnLike = document.querySelector('.products__header-icon._icon-shape');
+
   let gallerySwiper;
   let cardsData;
 
@@ -26,7 +38,6 @@ window.addEventListener('DOMContentLoaded', function () {
   let nameFolder = url.split('/').reverse()[1];
 
   async function getData() {
-
     const response = await fetch('../../JSON/products.json');
     const productsArr = await response.json();
     const productsCurrent = productsArr[`${nameFolder}`].cardData;
@@ -50,10 +61,10 @@ window.addEventListener('DOMContentLoaded', function () {
       });
     }
     rating();
-    addDisableCardBtn(cardsData.id)
+    addDisableCardBtn();
+    addDisableCardLike();
   };
   getData();
-
 
   function renderPage(data) {
     title.textContent = data.name + ' | Купит в интернет-магазине Северяночка'; // Заголовок страницы 
@@ -63,6 +74,7 @@ window.addEventListener('DOMContentLoaded', function () {
     article.textContent = 'арт. ' + data.article; // артикуль
     ratings.dataset.rating = data.rating; // рейтинг
     feedback.textContent = data.feedback + ' отзывов'; // отзывы
+    btnLike.classList.add('like');
     products.setAttribute('id', data.id); // ID товара
     data.img.forEach((imeg, i) => {
       products__mainSlider.insertAdjacentHTML('beforeend', navSliderHtml(imeg, data.alt, i));
@@ -161,16 +173,26 @@ window.addEventListener('DOMContentLoaded', function () {
       ratingActive.style.width = `${ratingActiveWidth}px`;
     }
   }
+  function addDisableCardBtn() {
+    cardBasketArray.forEach(id => {
+      let cardDisable = document.querySelector(`[id = "${id}"]`);
+      if (cardDisable) {
+        let cardDisableBtn = cardDisable.querySelector('.add-btn');
+        cardDisableBtn.classList.add('disable');
+        cardDisableBtn.textContent = 'В корзине';
+      }
+    })
+  }
+  function addDisableCardLike() {
+    cardFavouritesArray.forEach(id => {
+      let cardDisable = document.querySelector(`[id = "${id}"]`);
+      if (cardDisable) {
+        let cardDisableLike = document.querySelector('.like');
+        if (cardDisableLike) cardDisableLike.classList.add('disable');
+      }
+    });
+  }
   document.addEventListener('keyup', closeGallery);
   document.addEventListener('click', closeGallery);
 });
-
-function addDisableCardBtn(id) {
-  let cardDisable = document.querySelector(`[id = "${id}"]`);
-  if (cardDisable) {
-    let cardDisableBtn = cardDisable.querySelector('.add-btn');
-    cardDisableBtn.classList.add('disable');
-    cardDisableBtn.textContent = 'В корзине';
-  }
-};
 

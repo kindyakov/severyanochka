@@ -1078,7 +1078,6 @@ body.lock {
   position: absolute;
   right: 8px;
   top: 8px;
-  cursor: pointer;
   transition: color 0.2s;
   padding: 5px;
   background-color: rgba(243, 242, 241, 0.5);
@@ -1094,10 +1093,14 @@ body.lock {
   color: #FF6633;
   font-weight: 700;
 }
-.card-like.disable {
+
+.like {
+  cursor: pointer;
+}
+.like.disable {
   color: #FF6633;
 }
-.card-like.disable::before {
+.like.disable::before {
   font-weight: 700;
 }
 

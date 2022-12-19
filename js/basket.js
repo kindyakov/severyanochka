@@ -246,7 +246,6 @@ function calcSumPrice(elem) {
     if (!minSum) document.querySelector('.basket__aside-footer').insertAdjacentHTML('afterbegin', `<div class="basket__aside-minsum">Минимальная сумма заказа 1000р</div>`);
   }
 }
-
 function removeCardAnimate(array) {
   setTimeout(function () {
     const el = array[indexAnim];
@@ -330,7 +329,7 @@ function renderCardHtml(card) {
 
   const cardID = document.querySelector(`[id = "${card.id}"]`);
   const cardDiscount = cardID.querySelector('.basket__card-discount');
-  if (card.discount) cardDiscount.textContent = card.discount;
+  if (card.discount) cardDiscount.textContent = '-' + card.discount + '%';
   else cardDiscount.style.display = 'none';
 
   if (card.price_card) {
