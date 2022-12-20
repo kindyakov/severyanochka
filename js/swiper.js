@@ -1,74 +1,190 @@
-const index_swiper = document.querySelectorAll('.index-swiper');
-const products_swiper = document.querySelectorAll('.products-swiper');
-const indexSwiper = new Swiper('.index-swiper', {
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-  //= colum-gap
-  spaceBetween: 25,
-  // Бесконечная прокрутка
-  // loop: true,
-  // Кол-во дублирующих слайдов
-  // loopedSlides: 1,
+window.addEventListener('DOMContentLoaded', function () {
+  const catalog = ['milk-cheese-egg', 'frozen-foods', 'breed', 'baby-food', 'confectionery-products', 'drinks', 'fruits-vegetables', 'grocery', 'healthy-eating', 'meat-poultry-sausage', 'non-food-products', 'tea-coffee', 'pet-supplies'];
+  const index_swiper = document.querySelectorAll('.index-swiper');
 
-  // Брейк поинты (ширины )
-  breakpoints: {
-    300: {
-      slidesPerView: 1,
-      spaceBetween: 0
-    },
-    360: {
-      slidesPerView: 2,
-      spaceBetween: 15
-    },
-    580: {
-      slidesPerView: 3,
-      spaceBetween: 15
-    },
-    768: {
-      slidesPerView: 4,
-      spaceBetween: 25,
-    },
+  const stocks = document.querySelector('.stocks');
+  const related = document.querySelector('.related');
+
+  let cardBasketArray = [];
+  let cardFavouritesArray = [];
+
+  // Проверяю чтоб не было null
+  if (JSON.parse(localStorage.getItem('productsBasket')) !== null) {
+    cardBasketArray = JSON.parse(localStorage.getItem('productsBasket'));
   }
-});
-const productsSwiper = new Swiper('.products-swiper', {
-  navigation: {
-    nextEl: '.products-swiper-next',
-    prevEl: '.products-swiper-prev',
-  },
-  //= colum-gap
-  spaceBetween: 25,
-  // Бесконечная прокрутка
-  // loop: true,
-  // Кол-во дублирующих слайдов
-  // loopedSlides: 1,
-
-  // Брейк поинты (ширины )
-  breakpoints: {
-    320: {
-      slidesPerView: 1,
-      spaceBetween: 0
-    },
-    360: {
-      slidesPerView: 2,
-      spaceBetween: 15
-    },
-    580: {
-      slidesPerView: 3,
-      spaceBetween: 15
-    },
-    768: {
-      slidesPerView: 4,
-      spaceBetween: 25,
-    },
+  if (JSON.parse(localStorage.getItem('productsFavourites')) !== null) {
+    cardFavouritesArray = JSON.parse(localStorage.getItem('productsFavourites'));
   }
-});
+  const indexSwiper = new Swiper('.index-swiper', {
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    //= colum-gap
+    spaceBetween: 25,
+    // Бесконечная прокрутка
+    // loop: true,
+    // Кол-во дублирующих слайдов
+    // loopedSlides: 1,
 
-if ('ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0) {
-  index_swiper.forEach(swiper => swiper.classList.remove('swiper-no-swiping'));
-  products_swiper.forEach(swiper => swiper.classList.remove('swiper-no-swiping'));
-} else {
-  index_swiper.forEach(swiper => swiper.classList.add('swiper-no-swiping'));
-  products_swiper.forEach(swiper => swiper.classList.add('swiper-no-swiping'));
-}
+    // Брейк поинты (ширины )
+    breakpoints: {
+      300: {
+        slidesPerView: 1,
+        spaceBetween: 0
+      },
+      360: {
+        slidesPerView: 2,
+        spaceBetween: 15
+      },
+      580: {
+        slidesPerView: 3,
+        spaceBetween: 15
+      },
+      768: {
+        slidesPerView: 4,
+        spaceBetween: 25,
+      },
+    }
+  });
+  let urlOrigin = window.location.origin;
+  let urlJson = urlOrigin + '/JSON/products.json';
+  let urlImg = urlOrigin + '/img/img-card/';
+  let urlProducts = urlOrigin + '/html/';
+
+  fetch(urlJson)
+    .then(data => data.json())
+    .then(data => allCard(data))
+    .then(data => serachCard(data))
+    .then(data => {
+      if (stocks) data.forEach(card => renderCardHtml(card, stocks));
+      rating();
+      addDisableCardBtn();
+      addDisableCardLike();
+    })
+    .catch(err => console.error(err))
+  // Сохраняю все карточки
+  function allCard(data) {
+    let productsALL = [];
+    catalog.forEach(title => {
+      if (data[title]) {
+        productsALL = [...productsALL, ...data[title].cardData];
+      }
+    });
+    return productsALL;
+  }
+  // Ищу нужные карточки
+  function serachCard(array) {
+    let cards = [];
+    cards = cards.concat(array.filter(card => card.discount !== ''));
+    return cards;
+  }
+
+  if ('ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0) {
+    index_swiper.forEach(swiper => swiper.classList.remove('swiper-no-swiping'));
+  } else {
+    index_swiper.forEach(swiper => swiper.classList.add('swiper-no-swiping'));
+  }
+  if (related) {
+    related.closest('.main-promo').style.display = 'none';
+  }
+  function cardsHtml(id, img, price, title, rating, link, catalog) {
+    return `<div class="wrapper-card swiper-slide" id="${id}">
+    <div class="card">
+      <a href="${urlProducts}${catalog}/${link}" class="card-wrapper-img">
+        <img src="${urlImg}${img[0]}" alt="${title}" class="card-img" data-img="${img[0]}"></img>
+        <span class="card-discount"></span>
+      </a>
+      <div class="card-content">
+        <div class="card-wrapper-price">
+          <p class="card-price-text">
+            <span class="card-price__ordinary card-price">${price} ₽</span>
+            <i>Обычная</i>
+          </p>
+        </div>
+        <div class="card-info">
+          <a href="${urlProducts}${catalog}/${link}" class="card-name-product">${title}</a>
+          <div class="card-rating">
+            <div class="card-rating__active">
+              <div class="card-rating__item _icon-star"></div>
+              <div class="card-rating__item _icon-star"></div>
+              <div class="card-rating__item _icon-star"></div>
+              <div class="card-rating__item _icon-star"></div>
+              <div class="card-rating__item _icon-star"></div>
+            </div>
+            <div class="card-rating__items" data-rating="${rating}">
+              <div class="card-rating__item _icon-star"></div>
+              <div class="card-rating__item _icon-star"></div>
+              <div class="card-rating__item _icon-star"></div>
+              <div class="card-rating__item _icon-star"></div>
+              <div class="card-rating__item _icon-star"></div>
+            </div>
+          </div>
+        </div>
+        <button class="card-button add-btn">В корзину</button>
+      </div>
+      <span class="card-like _icon-shape like"></span>
+    </div>
+  </div>`;
+  }
+  function renderCardHtml(card, stocks) {
+    const content = stocks.querySelector('.swiper-wrapper');
+    content.insertAdjacentHTML('beforeend', cardsHtml(card.id, card.img, card.price, card.name, card.rating, card.link, card.catalog));
+
+    const cardID = document.querySelector(`[id = "${card.id}"]`);
+    const cardDiscount = cardID.querySelector('.card-discount');
+    if (card.discount) cardDiscount.textContent = '-' + card.discount + '%';
+    else cardDiscount.style.display = 'none';
+    if (card.price_card) {
+      const cardWrapperPrice = cardID.querySelector('.card-wrapper-price');
+      cardWrapperPrice.insertAdjacentHTML('beforeend', `
+        <p class="card-price-text">
+          <span class="card-price__card card-price">${card.price_card}</span>
+          <i>С картой</i>
+        </p>`);
+    }
+  }
+  function rating() {
+    const cardRating = document.getElementsByClassName('card-rating');
+    if (cardRating.length > 0) {
+      initRatings();
+    }
+    function initRatings() {
+      for (let i = 0; i < cardRating.length; i++) {
+        const ratings = cardRating[i];
+        initRating(ratings)
+      }
+    }
+    function initRating(ratings) {
+      initRatingVars(ratings)
+      setTatingActiveWidth();
+    }
+    function initRatingVars(ratings) {
+      ratingActive = ratings.querySelector('.card-rating__active');
+      ratingValue = ratings.querySelector('.card-rating__items');
+    }
+    function setTatingActiveWidth(index = ratingValue.dataset.rating) {
+      const ratingActiveWidth = index / 0.05;
+      ratingActive.style.width = `${ratingActiveWidth}px`;
+    }
+  }
+  function addDisableCardBtn() {
+    cardBasketArray.forEach(id => {
+      let cardDisable = document.querySelector(`[id = "${id}"]`);
+      if (cardDisable) {
+        let cardDisableBtn = cardDisable.querySelector('.add-btn');
+        cardDisableBtn.classList.add('disable');
+        cardDisableBtn.textContent = 'В корзине';
+      }
+    })
+  }
+  function addDisableCardLike() {
+    cardFavouritesArray.forEach(id => {
+      let cardDisable = document.querySelector(`[id = "${id}"]`);
+      if (cardDisable) {
+        let cardDisableLike = cardDisable.querySelector('.like');
+        if (cardDisableLike) cardDisableLike.classList.add('disable');
+      }
+    });
+  }
+})

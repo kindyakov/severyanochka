@@ -280,7 +280,6 @@ function cardsHtml(id, img, price, title, rating, link) {
   </div>
 </div>`;
 }
-
 function renderCardHtml(card) {
   products_container.insertAdjacentHTML('beforeend', cardsHtml(card.id, card.img, card.price, card.name, card.rating, card.link));
 

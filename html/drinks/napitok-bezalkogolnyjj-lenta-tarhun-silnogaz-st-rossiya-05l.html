@@ -138,7 +138,7 @@
               <h1 class="products-title"></h1>
             </div>
             <div class="products">
-              <div class="products__container">
+              <div class="products__container wrapper-card">
                 <div class="products__header">
                   <div class="products__header-block"><span class="products__header-article">арт. 371431</span></div>
                   <div class="products__header-block products-header-rating">
@@ -169,96 +169,95 @@
                     <a href="" class="products__header-link">В избраное</a>
                   </div>
                 </div>
-              </div>
-
-              <div class="products__main wrapper-card">
-                <div class="products__main-gallery">
-                  <div class="products__main-slider">
-                    <!-- картинки для навигации с превью -->
+                <div class="products__main">
+                  <div class="products__main-gallery">
+                    <div class="products__main-slider">
+                      <!-- картинки для навигации с превью -->
+                    </div>
+                    <div class="products__main-slider-active swiper">
+                      <span class="card-discount products__main-discount"></span>
+                      <div class="products__main-slider-wrapper swiper-wrapper">
+                        <!-- Слайды с картинками -->
+                      </div>
+                    </div>
                   </div>
-                  <div class="products__main-slider-active swiper">
-                    <span class="card-discount products__main-discount"></span>
-                    <div class="products__main-slider-wrapper swiper-wrapper">
-                      <!-- Слайды с картинками -->
+                  <div class="products__aside">
+                    <div class="products__aside-content">
+                      <div class="products__aside-wrapper-price">
+                        <div class="products__aside-block-price">
+                          <span class="products__aside-regular-price"></span>
+                          <p class="products__aside-price-info">
+                            <i class="products__aside-price-comment">Обычная цена</i>
+                          </p>
+                        </div>
+                        <div class="products__aside-block-price">
+                          <span class="products__aside-card-price"></span>
+                          <p class="products__aside-price-info">
+                            <i class="products__aside-price-comment">С картой Северяночки</i>
+                            <span></span>
+                          </p>
+                        </div>
+                      </div>
+
+                      <button class="products__aside-add-basket add-btn">
+                        <span class="products__aside-icon-btn _icon-cart"></span>
+                        В корзину
+                      </button>
+
+                      <div class="products__aside-block-center">
+                        <div class="products__aside-bonus">
+                          <span class="products__aside-bonus-text">Вы получаете 10 бонусов</span>
+                        </div>
+                      </div>
+
+
+                      <div class="products__aside-block-center">
+                        <a href="" class="products__aside-notification">
+                          <span class="products__aside-notification-icon _icon-bell"></span>
+                          <span class="products__aside-notification-text">Уведомить о снижении цены</span>
+                        </a>
+                      </div>
+
+                      <div class="products__aside-specifications">
+                        <table class="specifications-table">
+                          <tbody class="specifications-body">
+                            <!-- Характеристика товара -->
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="products__aside">
-                  <div class="products__aside-content">
-                    <div class="products__aside-wrapper-price">
-                      <div class="products__aside-block-price">
-                        <span class="products__aside-regular-price"></span>
-                        <p class="products__aside-price-info">
-                          <i class="products__aside-price-comment">Обычная цена</i>
-                        </p>
-                      </div>
-                      <div class="products__aside-block-price">
-                        <span class="products__aside-card-price"></span>
-                        <p class="products__aside-price-info">
-                          <i class="products__aside-price-comment">С картой Северяночки</i>
-                          <span></span>
-                        </p>
-                      </div>
-                    </div>
-
-                    <button class="products__aside-add-basket add-btn">
-                      <span class="products__aside-icon-btn _icon-cart"></span>
-                      В корзину
-                    </button>
-
-                    <div class="products__aside-block-center">
-                      <div class="products__aside-bonus">
-                        <span class="products__aside-bonus-text">Вы получаете 10 бонусов</span>
-                      </div>
-                    </div>
-
-
-                    <div class="products__aside-block-center">
-                      <a href="" class="products__aside-notification">
-                        <span class="products__aside-notification-icon _icon-bell"></span>
-                        <span class="products__aside-notification-text">Уведомить о снижении цены</span>
+                  <div class="products__aside-similar">
+                    <span class="products__aside-similar-text">Похожие</span>
+                    <div class="products__aside-similar-column">
+                      <a href="" class="products__aside-similar-link">
+                        <img class="products__aside-similar-img" src="../../img/img-card/панталь.png" alt="Масло">
+                        <span class="products__aside-similar-price">157.50 ₽</span>
+                      </a>
+                      <a href="" class="products__aside-similar-link">
+                        <img class="products__aside-similar-img" src="../../img/img-card/тысяча озер.png" alt="Масло">
+                        <span class="products__aside-similar-price">157.50 ₽</span>
+                      </a>
+                      <a href="" class="products__aside-similar-link">
+                        <img class="products__aside-similar-img" src="../../img/img-card/сливочное-масло.png"
+                          alt="Масло">
+                        <span class="products__aside-similar-price">157.50 ₽</span>
+                      </a>
+                      <a href="" class="products__aside-similar-link">
+                        <img class="products__aside-similar-img" src="../../img/img-card/панталь.png" alt="Масло">
+                        <span class="products__aside-similar-price">157.50 ₽</span>
                       </a>
                     </div>
-
-                    <div class="products__aside-specifications">
-                      <table class="specifications-table">
-                        <tbody class="specifications-body">
-                          <!-- Характеристика товара -->
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-                <div class="products__aside-similar">
-                  <span class="products__aside-similar-text">Похожие</span>
-                  <div class="products__aside-similar-column">
-                    <a href="" class="products__aside-similar-link">
-                      <img class="products__aside-similar-img" src="../../img/img-card/панталь.png" alt="Масло">
-                      <span class="products__aside-similar-price">157.50 ₽</span>
-                    </a>
-                    <a href="" class="products__aside-similar-link">
-                      <img class="products__aside-similar-img" src="../../img/img-card/тысяча озер.png" alt="Масло">
-                      <span class="products__aside-similar-price">157.50 ₽</span>
-                    </a>
-                    <a href="" class="products__aside-similar-link">
-                      <img class="products__aside-similar-img" src="../../img/img-card/сливочное-масло.png" alt="Масло">
-                      <span class="products__aside-similar-price">157.50 ₽</span>
-                    </a>
-                    <a href="" class="products__aside-similar-link">
-                      <img class="products__aside-similar-img" src="../../img/img-card/панталь.png" alt="Масло">
-                      <span class="products__aside-similar-price">157.50 ₽</span>
-                    </a>
                   </div>
                 </div>
               </div>
-
 
               <div class="main-promo main-section">
                 <div class="main-promo__header">
                   <h2 class="main-promo__title main-title title-discount">С этим товаров мокупают</h2>
                 </div>
-                <div class="products-swiper-wrapper">
-                  <div class="products-swiper swiper">
+                <div class="products-swiper-wrapper related">
+                  <div class="index-swiper swiper">
                     <div class="main-promo__content swiper-wrapper">
 
                     </div>
@@ -273,8 +272,9 @@
                   <h2 class="main-promo__title main-title title-discount">Акции</h2>
                   <a href="" class="main-promo__all-link main-promo__all-discount _icon-arrow">Все акции</a>
                 </div>
-                <div class="products-swiper-wrapper">
-                  <div class="products-swiper swiper">
+                <div class="products-swiper-wrapper stocks">
+                  <!-- products-swiper -->
+                  <div class="index-swiper swiper">
                     <div class="main-promo__content swiper-wrapper">
 
                     </div>

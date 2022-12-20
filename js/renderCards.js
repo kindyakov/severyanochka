@@ -16,7 +16,7 @@ window.addEventListener('DOMContentLoaded', function () {
   const article = document.querySelector('.products__header-article'); // Артикл
   const ratings = document.querySelector('.card-rating__items'); // Рейтинг
   const feedback = document.querySelector('.products__header-feedback'); // Отзывы
-  const products = document.querySelector('.products__main');
+  const products = document.querySelector('.products__container');
   const products__mainSlider = document.querySelector('.products__main-slider'); // Обертка с слайдами навигации картинок
   const sliderWrapper = document.querySelector('.products__main-slider-wrapper'); // Обертка с слайдами картинок
   const discount = document.querySelector('.products__main-discount'); // Скидка 
@@ -77,7 +77,7 @@ window.addEventListener('DOMContentLoaded', function () {
     if (data.feedback.length === 1) feedback.textContent = data.feedback.length + ' отзыв';
     else if (data.feedback.length === 0 || data.feedback.length > 4) feedback.textContent = data.feedback.length + ' отзывов';
     else if (data.feedback.length < 5) feedback.textContent = data.feedback.length + ' отзыва';
-    btnLike.classList.add('like'); 
+    btnLike.classList.add('like');
     products.setAttribute('id', data.id); // ID товара
     data.img.forEach((imeg, i) => {
       products__mainSlider.insertAdjacentHTML('beforeend', navSliderHtml(imeg, data.alt, i));
@@ -192,7 +192,7 @@ window.addEventListener('DOMContentLoaded', function () {
     cardFavouritesArray.forEach(id => {
       let cardDisable = document.querySelector(`[id = "${id}"]`);
       if (cardDisable) {
-        let cardDisableLike = document.querySelector('.like');
+        let cardDisableLike = cardDisable.querySelector('.like');
         if (cardDisableLike) cardDisableLike.classList.add('disable');
       }
     });
