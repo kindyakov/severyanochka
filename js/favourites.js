@@ -32,12 +32,8 @@ fetch('../JSON/products.json')
   .then(data => allCard(data))
   .then(data => serachCard(data))
   .then(data => {
-    if (product.length > 0) {
-      data.forEach(card => {
-        renderCardHtml(card)
-
-      })
-    } else {
+    if (product.length > 0) data.forEach(card => renderCardHtml(card))
+    else {
       favouritesProducts.style.height = '100%';
       favouritesProducts.innerHTML = `<div class="error-products">
         <div class="error-products_content">
