@@ -18,7 +18,7 @@ if (JSON.parse(localStorage.getItem('productsBasket')) !== null) {
 } else {
   productQuantity.textContent = '0';
 }
-fetch('../JSON/products.json')
+fetch('https://kindyakov.github.io/severyanochka/JSON/products.json')
   .then(data => data.json())
   .then(data => allCard(data))
   .then(data => serachCard(data))
