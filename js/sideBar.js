@@ -25,7 +25,7 @@ window.addEventListener('load', function () {
   let widthFilters = filters.offsetWidth;
 
   async function getProducts() {
-    const response = await fetch('../JSON/products.json');
+    const response = await fetch('https://kindyakov.github.io/severyanochka/JSON/products.json');
     const productsArray = await response.json();
 
     filtersValue()
