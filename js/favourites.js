@@ -16,6 +16,10 @@ if (JSON.parse(localStorage.getItem('productsFavourites')) !== null) {
   productQuantity.textContent = product.length;
 } else productQuantity.textContent = '0';
 
+let arr = [];
+localStorage.setItem('productsBasket', JSON.stringify(arr));
+localStorage.setItem('productsFavourites', JSON.stringify(arr));
+
 let min_maxPriceArr = [];
 let rangeSettings = {
   start: [0, 999],

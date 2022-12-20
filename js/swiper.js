@@ -1,3 +1,5 @@
+const index_swiper = document.querySelectorAll('.index-swiper');
+const products_swiper = document.querySelectorAll('.products-swiper');
 const indexSwiper = new Swiper('.index-swiper', {
   navigation: {
     nextEl: '.swiper-button-next',
@@ -63,3 +65,10 @@ const productsSwiper = new Swiper('.products-swiper', {
   }
 });
 
+if ('ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0) {
+  index_swiper.forEach(swiper => swiper.classList.remove('swiper-no-swiping'));
+  products_swiper.forEach(swiper => swiper.classList.remove('swiper-no-swiping'));
+} else {
+  index_swiper.forEach(swiper => swiper.classList.add('swiper-no-swiping'));
+  products_swiper.forEach(swiper => swiper.classList.add('swiper-no-swiping'));
+}
