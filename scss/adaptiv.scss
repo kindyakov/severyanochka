@@ -677,6 +677,15 @@
     width: 95%;
     height: 350px;
   }
+
+  .feedback__content {
+    flex-direction: column;
+    row-gap: 40px;
+  }
+
+  .feedback__users-text {
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 440px) {

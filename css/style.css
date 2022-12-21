@@ -1017,13 +1017,13 @@ body.lock {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  margin-bottom: 10px;
 }
 .card-name-product:hover {
   color: #FF6633;
 }
 
 .card-rating {
-  margin-top: 10px;
   position: relative;
   display: inline-block;
 }
@@ -1037,7 +1037,6 @@ body.lock {
   align-items: center;
   overflow: hidden;
   height: 100%;
-  width: 50%;
   align-items: flex-start;
 }
 .card-rating__active .card-rating__item {
@@ -3506,6 +3505,193 @@ body.lock {
   color: #FF6633;
 }
 
+.feedback {
+  width: 100%;
+}
+.feedback__title {
+  font-size: 26px;
+  font-weight: bold;
+}
+.feedback__content {
+  margin-top: 40px;
+  display: flex;
+  align-items: flex-start;
+  -moz-column-gap: 40px;
+       column-gap: 40px;
+}
+.feedback__wrappper-rating {
+  min-width: 190px;
+}
+.feedback__rating {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  -moz-column-gap: 8px;
+       column-gap: 8px;
+}
+.feedback__rating-text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.feedback__rating-span {
+  font-size: 18px;
+  font-weight: bold;
+}
+.feedback__rating-content {
+  margin-top: 16px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  row-gap: 12px;
+}
+.feedback__rating-rows {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.feedback__description-wrapper {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+}
+.feedback__description-content {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  row-gap: 40px;
+}
+.feedback__feedback {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  row-gap: 12px;
+}
+.feedback__users {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 12px;
+       column-gap: 12px;
+}
+.feedback__users-imeg {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+.feedback__users-img {
+  max-width: 100%;
+  max-height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.feedback__users-name {
+  font-size: 18px;
+}
+.feedback__users-rating {
+  display: flex;
+  align-items: center;
+}
+.feedback__users-data {
+  margin-left: 16px;
+  font-size: 12px;
+  color: #8F8F8F;
+}
+.feedback__users-text {
+  line-height: 24px;
+}
+.feedback__leave {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  row-gap: 18px;
+  width: 100%;
+  margin-top: 40px;
+}
+.feedback__estimation {
+  display: flex;
+  align-items: center;
+}
+.feedback__estimation-title {
+  margin-right: 16px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.feedback__leave-comment {
+  width: 100%;
+}
+.feedback__leave-textarea {
+  resize: none;
+  width: 100%;
+  min-height: 84px;
+  border-radius: 4px;
+  border: 1px solid #BFBFBF;
+  padding: 10px;
+  caret-color: #FF6633;
+  font-family: "Rubik";
+  font-weight: normal;
+  color: #414141;
+  font-size: 16px;
+}
+.feedback__leave-textarea:focus {
+  outline: 2px solid #FF6633;
+}
+.feedback__submit {
+  background-color: #FCD5BA;
+  color: #FF6633;
+  padding: 10px 16px;
+  transition: 0.3s;
+  font-size: 16px;
+  border-radius: 4px;
+}
+.feedback__submit:hover {
+  background-color: #FF6633;
+  color: #FCD5BA;
+}
+
+.leave-rating {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.leave-rating__active {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  -moz-column-gap: 5px;
+       column-gap: 5px;
+  align-items: center;
+  overflow: hidden;
+  height: 100%;
+  width: 0%;
+  align-items: flex-start;
+}
+.leave-rating__active .leave-rating__item {
+  color: #FF6633;
+}
+
+.leave-rating__items {
+  align-items: center;
+  display: flex;
+  -moz-column-gap: 5px;
+       column-gap: 5px;
+}
+
+.leave-rating__item {
+  font-size: 22px;
+  color: #BFBFBF;
+}
+
 .registration {
   margin-top: 24px;
 }
@@ -4168,6 +4354,13 @@ body.lock {
   .gallery__swiper {
     width: 95%;
     height: 350px;
+  }
+  .feedback__content {
+    flex-direction: column;
+    row-gap: 40px;
+  }
+  .feedback__users-text {
+    font-size: 14px;
   }
 }
 @media (max-width: 440px) {

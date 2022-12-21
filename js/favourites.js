@@ -51,7 +51,39 @@ fetch('https://kindyakov.github.io/severyanochka/JSON/products.json')
     filter(data);
   })
   .catch(err => console.error(err))
+// Удаление карточек
+favouritesProducts.addEventListener('click', e => {
+  if (e.target.classList.contains('card-delete')) {
+    // Карточка
+    const wrapperCard = e.target.closest('.wrapper-card');
+    // ID карточки
+    const wrapperCardId = wrapperCard.getAttribute('id');
 
+    // Нахожу удаленные карточку в массиве 
+    const removeCardIndex = product.findIndex(id => id === wrapperCardId);
+
+    // Удаление из массива
+    product.splice(removeCardIndex, 1);
+    localStorage.setItem('productsFavourites', JSON.stringify(product));
+
+    // Вывод количество товаров в избранном 
+    document.querySelector('#menu-favourites').textContent = product.length;
+    productQuantity.textContent = product.length;
+
+    wrapperCard.remove();
+    const wrapperCards = document.querySelectorAll('.wrapper-card');
+    // filterPrice(wrapperCards)
+  }
+  if (product.length === 0) {
+    favouritesProducts.style.height = '100%';
+    favouritesProducts.innerHTML = `<div class="error-products">
+      <div class="error-products_content">
+        <span class="error-products_text">К сожалению, раздел пуст</span>
+        <a href="html/catalog.html" class="basket__empty-link">Нажмите здесь, чтобы продолжить покупки</a>
+      </div>
+    </div>`;
+  }
+});
 // Сохраняю все карточки
 function allCard(data) {
   let productsALL = [];
@@ -74,13 +106,13 @@ function cardsHtml(id, img, price, title, rating, link, catalog) {
   return `<div class="wrapper-card" id="${id}">
   <div class="card">
     <a href="html/${catalog}/${link}" class="card-wrapper-img">
-    <span class="card-discount"></span>
       <img src="img/img-card/${img[0]}" alt="Блинчики" class="card-img" data-img="${img}"></img>
+      <span class="card-discount"></span>
     </a>
     <div class="card-content">
       <div class="card-wrapper-price">
         <p class="card-price-text">
-          <span class="card-price__ordinary card-price">${price}</span>
+          <span class="card-price__ordinary card-price">${price} ₽</span>
           <i>Обычная</i>
         </p>
       </div>
@@ -124,7 +156,7 @@ function renderCardHtml(card) {
 
     cardWrapperPrice.insertAdjacentHTML('beforeend', `
       <p class="card-price-text">
-        <span class="card-price__card card-price">${card.price_card}</span>
+        <span class="card-price__card card-price">${card.price_card} ₽</span>
         <i>С картой</i>
       </p>`);
   }
@@ -168,50 +200,6 @@ function filter(product) {
 function priceWithoutSpaces(str) {
   return Number(str.replace(/[^\d.-]/g, ''));
 }
-// Удаление карточек
-favouritesProducts.addEventListener('click', e => {
-  if (e.target.classList.contains('card-delete')) {
-    // Карточка
-    const wrapperCard = e.target.closest('.wrapper-card');
-    // ID карточки
-    const wrapperCardId = wrapperCard.getAttribute('id');
-
-    // Нахожу удалееные карточку в массиве 
-    const removeCardIndex = product.findIndex(id => id === wrapperCardId);
-
-    // Удаление из массива
-    product.splice(removeCardIndex, 1);
-    localStorage.setItem('productsFavourites', JSON.stringify(product));
-
-    // Вывод количество товаров в избранном 
-    document.querySelector('#menu-favourites').textContent = product.length;
-    productQuantity.textContent = product.length;
-
-    wrapperCard.remove();
-
-    product.forEach(card => {
-      min_maxPriceArr.push(priceWithoutSpaces(card.price));
-      if (card.price_card !== '') min_maxPriceArr.push(priceWithoutSpaces(card.price_card));
-    })
-
-    priceMax = Math.max(...min_maxPriceArr);
-    priceMin = Math.min(...min_maxPriceArr);
-
-    rangeSettings.range['max'] = [priceMax];
-    rangeSettings.range['min'] = [priceMin];
-
-    randeSlider.noUiSlider.set([priceMin, priceMax]);
-  }
-  if (product.length === 0) {
-    favouritesProducts.style.height = '100%';
-    favouritesProducts.innerHTML = `<div class="error-products">
-      <div class="error-products_content">
-        <span class="error-products_text">К сожалению, раздел пуст</span>
-        <a href="html/catalog.html" class="basket__empty-link">Нажмите здесь, чтобы продолжить покупки</a>
-      </div>
-    </div>`;
-  }
-});
 function rating() {
   const cardRating = document.getElementsByClassName('card-rating');
   if (cardRating.length > 0) {
@@ -255,3 +243,17 @@ function addDisableCardLike() {
     }
   });
 }
+// function filterPrice(cards) {
+//   cards.forEach(card => {
+//     min_maxPriceArr.push(priceWithoutSpaces(card.price));
+//     if (card.price_card !== '') min_maxPriceArr.push(priceWithoutSpaces(card.price_card));
+//   })
+
+//   priceMax = Math.max(...min_maxPriceArr);
+//   priceMin = Math.min(...min_maxPriceArr);
+
+//   rangeSettings.range['max'] = [priceMax];
+//   rangeSettings.range['min'] = [priceMin];
+
+//   randeSlider.noUiSlider.set([priceMin, priceMax]);
+// }

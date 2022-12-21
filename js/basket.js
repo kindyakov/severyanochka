@@ -291,7 +291,7 @@ function cardBasketHtml(id, img, link, catalog, price, title) {
         <a href="html/${catalog}/${link}" class="basket__card-name">${title}</a>
         <div class="basket__card-text">
           <p class="basket__card-wrapper-price wrapper-price">
-            <span class="basket__card-price basket__card-price-usual">${price}</span>
+            <span class="basket__card-price basket__card-price-usual">${price} ₽</span>
             <i class="basket__card-price-context card-price-context-ordinary"></i>
           </p>
           <p class="basket__card-wrapper-price">
@@ -314,7 +314,7 @@ function cardBasketHtml(id, img, link, catalog, price, title) {
         <button class="basket__card-counter-btn counter-minus" data-counter-plus="-"></button>
       </div>
       <div class="basket__card-counter-wrapper-price">
-        <span class="basket__card-counter-price-sum">${price}</span>
+        <span class="basket__card-counter-price-sum">${price} ₽</span>
         <i class="basket__card-counter-price-old"></i>
       </div>
     </div>
@@ -331,10 +331,10 @@ function renderCardHtml(card) {
 
   if (card.price_card) {
     const priceCard = cardID.querySelector('.basket__card-price-card');
-    priceCard.textContent = card.price_card;
+    priceCard.textContent = card.price_card + ' ₽';
 
     const priceContextOrdinary = cardID.querySelector('.card-price-context-ordinary').textContent = 'Обычная';
     const priceContextCard = cardID.querySelector('.card-price-context-card').textContent = 'С картой';
-    const counterPriceOld = cardID.querySelector('.basket__card-counter-price-old').textContent = card.price;
+    const counterPriceOld = cardID.querySelector('.basket__card-counter-price-old').textContent = card.price + ' ₽';
   }
 }

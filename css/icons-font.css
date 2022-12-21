@@ -27,6 +27,10 @@
 }
 
 /* -------------- */
+._icon-user:before {
+  content: "\e90d";
+}
+
 ._icon-bell:before {
   content: "\e90a";
 }
