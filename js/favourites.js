@@ -27,7 +27,7 @@ let rangeSettings = {
   }
 }
 
-fetch('https://kindyakov.github.io/severyanochka/JSON/products.json')
+fetch('JSON/products.json')
   .then(data => data.json())
   .then(data => allCard(data))
   .then(data => serachCard(data))

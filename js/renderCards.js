@@ -7,7 +7,7 @@ window.addEventListener('DOMContentLoaded', function () {
   let urlJson = urlOrigin + '/JSON/products.json';
   let urlImg = urlOrigin + '/img/img-card/';
   let urlProducts = urlOrigin + '/html/';
-
+  console.log(urlImg);
   // Проверяю чтоб не было null
   if (JSON.parse(localStorage.getItem('productsBasket')) !== null) {
     cardBasketArray = JSON.parse(localStorage.getItem('productsBasket'));
