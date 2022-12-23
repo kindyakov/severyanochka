@@ -119,6 +119,7 @@
     align-items: flex-start;
     row-gap: 16px;
     position: relative;
+    flex: 0 1 33.333%;
   }
 
   &__description-img {
@@ -134,6 +135,7 @@
   &__description-subtitle {
     font-size: 24px;
     font-weight: bold;
+    margin-top: auto;
   }
 
   &__thanks {

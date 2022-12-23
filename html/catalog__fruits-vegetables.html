@@ -34,8 +34,13 @@
           <div class="header-serch__block">
             <form action="#" class="header-search">
               <input id="header-input" type="text" name="search" class="header-search__input" placeholder="Найти товар">
-              <button for="header-input" class="_icon-search btn-search">
+              <button for="header-input" class="_icon-search btn-search"></button>
             </form>
+            <div class="search_result">
+              <ul class="search_list">
+              </ul>
+              <a href="" class="search-all">Все результаты</a>
+            </div>
           </div>
           <div class="header-menu__wrpper">
             <div class="header-menu">
@@ -126,7 +131,7 @@
               <span class="main__navigation-span _icon-arrow"></span>
               <a href="catalog.html" class="main__navigation-link">Каталог</a>
               <span class="main__navigation-span _icon-arrow"></span>
-              <a href="catalog__milk-cheese-egg.html" class="main__navigation-link">Фрукты и Овощи</a>
+              <a href="catalog__fruits-vegetables.html" class="main__navigation-link">Фрукты и Овощи</a>
             </ul>
           </nav>
           <div class="main__content">
@@ -189,7 +194,6 @@
                     </nav>
                     <div id="products-container" class="catalog-products__wrapper" data-products="fruits-vegetables">
                       <!-- Здесь выводятся карточки -->
-
                     </div>
                     <div class="catalog-products__footer">
 
@@ -265,6 +269,7 @@
   <script src="../js/main.js"></script>
   <script src="../js/addToCart.js"></script>
   <script src="../js/module.js" type="module"></script>
+  <script src="../js/search.js"></script>
 </body>
 
 </html>

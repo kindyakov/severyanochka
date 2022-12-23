@@ -286,6 +286,13 @@ body {
   display: flex;
   flex-direction: column;
   row-gap: 5px;
+  max-height: 550px;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
 }
 
 .search_li {
@@ -1025,6 +1032,7 @@ body {
   border-radius: 4px;
   bottom: 14px;
   left: 0;
+  font-size: 16px;
 }
 
 .card-content {
@@ -1078,6 +1086,7 @@ body {
   -webkit-box-orient: vertical;
   overflow: hidden;
   margin-bottom: 10px;
+  font-size: 16px;
 
   &:hover {
     color: #FF6633;
@@ -1561,6 +1570,37 @@ body {
   }
 }
 
+.search-result {
+  padding: 80px 0;
+
+  &__body {}
+
+  &__title {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 24px;
+  }
+
+  // &__respons {}
+  &__value {
+    color: #FF6633;
+  }
+
+  &__error {
+    color: #ff0000;
+  }
+
+  &__content {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+}
+
+.search-result-span {
+  font-size: 24px;
+}
 
 @import "catalog.scss";
 @import "product-groups.scss";

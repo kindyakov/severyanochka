@@ -13,7 +13,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   document.body.addEventListener('click', function (e) {
     const target = e.target;
- 
+
     if (target.classList.contains('add-btn') && !target.classList.contains('disable')) {
       addInfoCard(target, cardBasketArray, 'productsBasket');
       addDisableCardBtn();

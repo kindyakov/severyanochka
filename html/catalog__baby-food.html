@@ -6,8 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Детское питание | Купить в интернет магазине Северяночка</title>
-  <link type="image/ico" rel="icon" href="img/favicon.ico">
+  <link type="image/ico" rel="icon" href="../img/favicon.ico">
   <link rel="stylesheet" href="../css/icons-font.css">
+  <link rel="stylesheet" href="../libs/nouiSlider/nouislider.min.css">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 
@@ -33,33 +34,41 @@
           <div class="header-serch__block">
             <form action="#" class="header-search">
               <input id="header-input" type="text" name="search" class="header-search__input" placeholder="Найти товар">
-              <button for="header-input" class="_icon-search btn-search">
+              <button for="header-input" class="_icon-search btn-search"></button>
             </form>
+            <div class="search_result">
+              <ul class="search_list">
+              </ul>
+              <a href="" class="search-all">Все результаты</a>
+            </div>
           </div>
           <div class="header-menu__wrpper">
             <div class="header-menu">
               <a href="catalog.html" class="header-menu__item header-menu__catalog">
-                <span class="icon icon-shape _icon-menu"></span>
+                <span class="icon icon-menu _icon-menu"></span>
                 <span class="text">Каталог</span>
               </a>
-              <a href="#" class="header-menu__item header-menu__favourites">
-                <span class="icon icon-shape _icon-shape"></span>
-                <span class="text">Избранное</span>
+              <a href="../favourites.html" class="header-menu__item header-menu__favourites">
+                <span class="icon icon-menu _icon-shape"><span id="menu-favourites"
+                    class="cart-quantity">1</span></span>
+                <span class="text">Избраное</span>
               </a>
-              <a href="#" class="header-menu__item header-menu__orders">
-                <span class="icon icon-orders _icon-orders"> </span>
+              <a href="../orders.html" class="header-menu__item header-menu__orders">
+                <span class="icon icon-menu _icon-orders"><span id="menu-orders" class="cart-quantity">1</span></span>
                 <span class="text">Заказы</span>
               </a>
-              <a href="#" class="header-menu__item header-menu__cart">
-                <span class="icon icon-cart _icon-cart"><span class="cart-quantity">1</span></span>
+              <a href="../basket.html" class="header-menu__item header-menu__cart">
+                <span class="icon icon-menu _icon-cart"><span id="menu-basket" class="cart-quantity">1</span></span>
                 <span class="text">Корзина</span>
               </a>
             </div>
           </div>
 
           <div class="header-profil">
-            <img src="../img/avatar.png" alt="Аватарка" class="profil-img">
-            <a href="#" class="header-profil__name _icon-arrow">Алексей</a>
+            <div class="profil-btn">
+              <div class="profile-enter">Войти</div>
+              <div class="profile-icon _icon-log-in"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -69,29 +78,42 @@
           <div class="header-catalog__wrapper">
             <nav class="header-catalog__menu">
               <ul class="header-catalog__list">
-                <li class="header-catalog__item"><a href="catalog__milk-cheese-egg.html" class="header-catalog__link">Молоко, сыр, яйцо</a>
+                <li class="header-catalog__item"><a href="catalog__milk-cheese-egg.html"
+                    class="header-catalog__link">Молоко, сыр, яйцо</a>
                 </li>
-                <li class="header-catalog__item"><a href="catalog__bread.html" class="header-catalog__link">Хлеб</a></li>
-                <li class="header-catalog__item"><a href="catalog__fruits-vegetables.html" class="header-catalog__link">Фрукты и овощи</a></li>
-                <li class="header-catalog__item"><a href="catalog__frozen-foods.html" class="header-catalog__link">Замороженные продукты</a>
+                <li class="header-catalog__item"><a href="catalog__bread.html" class="header-catalog__link">Хлеб</a>
+                </li>
+                <li class="header-catalog__item"><a href="catalog__fruits-vegetables.html"
+                    class="header-catalog__link">Фрукты и овощи</a></li>
+                <li class="header-catalog__item"><a href="catalog__frozen-foods.html"
+                    class="header-catalog__link">Замороженные продукты</a>
                 </li>
               </ul>
               <ul class="header-catalog__list">
-                <li class="header-catalog__item"><a href="catalog__drinks.html" class="header-catalog__link">Напитки</a></li>
-                <li class="header-catalog__item"><a href="catalog__confectionery-products.html" class="header-catalog__link">Кондитерские изделия</a>
+                <li class="header-catalog__item"><a href="catalog__drinks.html" class="header-catalog__link">Напитки</a>
                 </li>
-                <li class="header-catalog__item"><a href="catalog__tea-coffee.html" class="header-catalog__link">Чай, кофе</a></li>
+                <li class="header-catalog__item"><a href="catalog__confectionery-products.html"
+                    class="header-catalog__link">Кондитерские изделия</a>
+                </li>
+                <li class="header-catalog__item"><a href="catalog__tea-coffee.html" class="header-catalog__link">Чай,
+                    кофе</a></li>
               </ul>
               <ul class="header-catalog__list">
-                <li class="header-catalog__item"><a href="catalog__grocery.html" class="header-catalog__link">Бакалея</a></li>
-                <li class="header-catalog__item"><a href="catalog__healthy-eating.html" class="header-catalog__link">Здоровое питание</a></li>
-                <li class="header-catalog__item"><a href="catalog__pet-supplies.html" class="header-catalog__link">Зоотовары</a></li>
+                <li class="header-catalog__item"><a href="catalog__grocery.html"
+                    class="header-catalog__link">Бакалея</a></li>
+                <li class="header-catalog__item"><a href="catalog__healthy-eating.html"
+                    class="header-catalog__link">Здоровое питание</a></li>
+                <li class="header-catalog__item"><a href="catalog__pet-supplies.html"
+                    class="header-catalog__link">Зоотовары</a></li>
               </ul>
               <ul class="header-catalog__list">
-                <li class="header-catalog__item"><a href="catalog__non-food-products.html" class="header-catalog__link">Непродовольственные товары</a>
+                <li class="header-catalog__item"><a href="catalog__non-food-products.html"
+                    class="header-catalog__link">Непродовольственные товары</a>
                 </li>
-                <li class="header-catalog__item"><a href="catalog__baby-food.html" class="header-catalog__link">Детское питание</a></li>
-                <li class="header-catalog__item"><a href="catalog__meat-poultry-sausage.html" class="header-catalog__link">Мясо, птица, колбаса</a></li>
+                <li class="header-catalog__item"><a href="catalog__baby-food.html" class="header-catalog__link">Детское
+                    питание</a></li>
+                <li class="header-catalog__item"><a href="catalog__meat-poultry-sausage.html"
+                    class="header-catalog__link">Мясо, птица, колбаса</a></li>
               </ul>
             </nav>
           </div>
@@ -109,11 +131,77 @@
               <span class="main__navigation-span _icon-arrow"></span>
               <a href="catalog.html" class="main__navigation-link">Каталог</a>
               <span class="main__navigation-span _icon-arrow"></span>
-              <a href="catalog__milk-cheese-egg.html" class="main__navigation-link">Детское питание</a>
+              <a href="catalog__baby-food.html" class="main__navigation-link">Детское питание</a>
             </ul>
           </nav>
           <div class="main__content">
             <h1 class="main__title-catalog">Детское питание</h1>
+            <div class="catalog-products">
+              <div class="catalog-products__quick-filters">
+                <button class="catalog-products__quick-filters_btn catalog-products-btn"">Товары нашего производства</button>
+                <button class=" catalog-products__quick-filters_btn catalog-products-btn"">Полезное питание</button>
+                <button class="catalog-products__quick-filters_btn catalog-products-btn"">Без ГМО</button>
+              </div>
+
+              <div class=" catalog-products__body">
+                  <aside class="catalog-products__filters">
+                    <div class="catalog-products__filters_body">
+                      <div class="catalog-products__filters_wrapper-title">
+                        <h3 class="catalog-products__filters_title">Фильтр</h3>
+                        <div class="catalog-products__filters_close-filtres filtres-close"></div>
+                      </div>
+
+                      <div class="filters_box-paramets">
+                        <div class="filters_box-paramets__header">
+                          <span class="filters_box-paramets__price">Цена</span>
+                          <button class="filters_box-paramets__btn catalog-products-btn">Очистить</button>
+                        </div>
+                        <div class="filters_box-paramets__body">
+                          <input class="filters_box-paramets__input" type="number" id="min-price">
+                          <span></span>
+                          <input class="filters_box-paramets__input" type="number" id="max-price">
+                        </div>
+                        <div class="filters_box-paramets__sliders">
+
+                        </div>
+                      </div>
+
+                      <div class="filters-products">
+
+                      </div>
+
+                      <div class="filters__wrapper-checkbox">
+                        <label for="checkbox" class="filters__wrapper-checkbox__lable">
+                          <input id="checkbox" class="filters__wrapper-checkbox__checkbox" type="checkbox">
+                          <div class="filters__wrapper-checkbox__checkbox-item"></div>
+                        </label>
+                        <span class="filters__wrapper-checkbox__span">В наличие</span>
+                      </div>
+
+                      <button class="catalog-products__filters_button">Применить</и>
+
+                    </div>
+                  </aside>
+                  <div class="catalog-products__content">
+                    <nav class="filter-menu">
+                      <button class="filter-adaptive-active">Фильтр</button>
+                      <ul class="filter-menu__list">
+                        <li class="filter-menu__item filter-menu__item-clear none">
+                          <span class="filter-menu__item-span">Очистить фильтры</span>
+                          <span class="filter-menu__item-close"></span>
+                        </li>
+                      </ul>
+                    </nav>
+                    <div id="products-container" class="catalog-products__wrapper" data-products="baby-food">
+                      <!-- Здесь выводятся карточки -->
+                    </div>
+                    <div class="catalog-products__footer">
+
+                    </div>
+                  </div>
+              </div>
+
+            </div>
           </div>
         </div>
       </div>
@@ -123,14 +211,15 @@
       <div class="container">
         <div class="footer__content">
           <nav class="footer__menu">
-            <a href="index.html" class="footer__logo-link"><img src="img/logo-footer.png" alt=""
+            <a href="../index.html" class="footer__logo-link"><img src="../img/logo-footer.png" alt=""
                 class="footer__logo"></a>
             <ul class="footer__menu-list">
-              <li class="footer__menu-item"><a href="" class="footer__menu-link">О компании</a></li>
-              <li class="footer__menu-item"><a href="" class="footer__menu-link">Контакты</a></li>
-              <li class="footer__menu-item"><a href="" class="footer__menu-link">Вакансии</a></li>
-              <li class="footer__menu-item"><a href="" class="footer__menu-link">Статьи</a></li>
-              <li class="footer__menu-item"><a href="" class="footer__menu-link">Политика обработки персональных
+              <li class="footer__menu-item"><a href="../about.html" class="footer__menu-link">О компании</a></li>
+              <li class="footer__menu-item"><a href="../contacts.html" class="footer__menu-link">Контакты</a></li>
+              <li class="footer__menu-item"><a href="../openings.html" class="footer__menu-link">Вакансии</a></li>
+              <li class="footer__menu-item"><a href="../articles.html" class="footer__menu-link">Статьи</a></li>
+              <li class="footer__menu-item"><a href="../personal-date.html" class="footer__menu-link">Политика обработки
+                  персональных
                   данных</a></li>
             </ul>
           </nav>
@@ -161,7 +250,7 @@
             <input type="tel" name="phone" class="modal-login__input">
             <button class="modal-login__btn-log">Вход</button>
             <div class="form-footer">
-              <a href="" class="form-footer__btn-registration">Регистрация</a>
+              <a href="../registration.html" class="form-footer__btn-registration">Регистрация</a>
               <a href="" class="form-footer__forgot-pass">Забыли пароль?</a>
             </div>
           </form>
@@ -170,12 +259,17 @@
       </div>
     </div>
     <div class="menu-fixed"></div>
+    <div class="btn-up">↑</div>
   </div>
-  <script src="https://api-maps.yandex.ru/2.1/?apikey=b756749a-c9d8-4f04-a6c7-2653f5d9d0b7&lang=ru_RU"
-    type="text/javascript">
-    </script>
-  <!-- b756749a-c9d8-4f04-a6c7-2653f5d9d0b7 -->
+  <script src="../js/profile.js"></script>
+  <script src="../js/productsRender.js"></script>
+  <script src="../js/fillters.js"></script>
+  <script src="../js/sideBar.js"></script>
+  <script src="../libs/nouiSlider/nouislider.min.js"></script>
   <script src="../js/main.js"></script>
+  <script src="../js/addToCart.js"></script>
+  <script src="../js/module.js" type="module"></script>
+  <script src="../js/search.js"></script>
 </body>
 
 </html>

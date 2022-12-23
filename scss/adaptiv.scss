@@ -544,6 +544,14 @@
     width: 500px;
     height: 400px;
   }
+
+  .about__description {
+    flex-direction: column;
+  }
+
+  .about__description-item {
+    flex: 1 1 100%;
+  }
 }
 
 @media (max-width: 640px) {
