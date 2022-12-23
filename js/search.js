@@ -7,10 +7,12 @@ window.addEventListener('DOMContentLoaded', function () {
   const search_all = document.querySelector('.search-all');
 
   let productsArray = [];
+  let search_result_id = [];
   let urlOrigin = window.location.origin;
   let urlJson = urlOrigin + '/JSON/products.json';
   let urlImg = urlOrigin + '/img/img-card/';
   let urlProducts = urlOrigin + '/html/';
+  let urlSearchResult = urlOrigin + '/search-result.html';
 
   searchInput.addEventListener('input', () => {
     let value = searchInput.value.toLowerCase().trim();
@@ -23,13 +25,18 @@ window.addEventListener('DOMContentLoaded', function () {
           for (let card of search_list.children) {
             if (card.getAttribute('id') == product.id) return;
           }
+          search_result_id.push(product.id);
           search_list.insertAdjacentHTML('afterbegin', cardHtml(product.id, product.img, product.name, product.link, product.catalog));
         } else {
           // search_list.classList.remove('search');
           const search_li = document.querySelectorAll('.search_li');
+
           search_li.forEach(li => {
             const currentNameProducts = li.querySelector('.search_span').innerText.toLowerCase().trim();
-            if (currentNameProducts.search(value) === -1) li.remove();
+            if (currentNameProducts.search(value) === -1) {
+              search_result_id.splice(search_result_id.findIndex(id => id == li.getAttribute('id')), 1);
+              li.remove();
+            };
           });
         }
       });
@@ -50,20 +57,20 @@ window.addEventListener('DOMContentLoaded', function () {
     });
   };
   products();
-  function setSearchResult() {
+  function setSearchResult(e) {
     let search_result = {
       value: searchInput.value,
       availability: true,
-      productsID: []
+      productsID: search_result_id
     };
-    if (search_list.children.length > 0) {
-      for (let li of search_list.children) {
-        let id = li.getAttribute('id');
-        search_result.productsID.push(id);
-      }
-    } else search_result.availability = false;
-
+    if (search_result.productsID.length == 0) {
+      search_result.availability = false;
+    }
     localStorage.setItem('search_result', JSON.stringify(search_result));
+    if (this.classList.contains('btn-search')) {
+      e.preventDefault();
+      document.location.href = urlSearchResult;
+    }
   }
   function isertMark(str, pos, lenght) {
     return str.slice(0, pos) + '<mark>' + str.slice(pos, pos + lenght) + '</mark>' + str.slice(pos + lenght);

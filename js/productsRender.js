@@ -252,7 +252,7 @@ function cardsHtml(id, img, price, title, rating, link) {
       <div class="card-wrapper-price">
         <p class="card-price-text">
           <span class="card-price__ordinary card-price">${price} ₽</span>
-          <i>Обычная</i>
+          <i class="card-price__i"></i>
         </p>
       </div>
       <div class="card-info">
@@ -290,7 +290,7 @@ function renderCardHtml(card) {
   }
   if (card.price_card) {
     const cardWrapperPrice = cardID.querySelector('.card-wrapper-price');
-
+    cardID.querySelector('.card-price__i').textContent = 'обычная';
     cardWrapperPrice.insertAdjacentHTML('beforeend', `
       <p class="card-price-text">
         <span class="card-price__card card-price">${card.price_card} ₽</span>

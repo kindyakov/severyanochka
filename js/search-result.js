@@ -64,7 +64,7 @@ window.addEventListener('DOMContentLoaded', function () {
         <div class="card-wrapper-price">
           <p class="card-price-text">
             <span class="card-price__ordinary card-price">${price} ₽</span>
-            <i>Обычная</i>
+            <i class="card-price__i"></i>
           </p>
         </div>
         <div class="card-info">
@@ -100,6 +100,7 @@ window.addEventListener('DOMContentLoaded', function () {
     else cardDiscount.style.display = 'none';
     if (card.price_card !== '') {
       const cardWrapperPrice = cardID.querySelector('.card-wrapper-price');
+      cardID.querySelector('.card-price__i').textContent = 'Обычная';
       cardWrapperPrice.insertAdjacentHTML('beforeend', `
         <p class="card-price-text">
           <span class="card-price__card card-price">${card.price_card}</span>
