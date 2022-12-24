@@ -4,7 +4,6 @@ window.addEventListener('DOMContentLoaded', function () {
   const searchInput = document.querySelector('.header-search__input');// Поиск
   const search_list = document.querySelector('.search_list');// Лист для вывода поискового товара 
   const search_result = document.querySelector('.search_result');
-  const serachBtn = document.querySelector('.btn-search');// Кнопка поиска
   const search_all = document.querySelector('.search-all');
 
   let productsArray = [];

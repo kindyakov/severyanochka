@@ -8,10 +8,10 @@ window.addEventListener('DOMContentLoaded', function () {
   let cardBasketArray = [];
   let cardFavouritesArray = [];
   // '/severyanochka'
-  let urlOrigin = window.location.origin;
-  let urlJson = urlOrigin + '/JSON/products.json';
-  let urlImg = urlOrigin + '/img/img-card/';
-  let urlProducts = urlOrigin + '/html/';
+  // let urlOrigin = window.location.origin;
+  // let urlJson = urlOrigin + '/JSON/products.json';
+  // let urlImg = urlOrigin + '/img/img-card/';
+  // let urlProducts = urlOrigin + '/html/';
 
   if (JSON.parse(localStorage.getItem('search_result')) !== null) {
     search_result = JSON.parse(localStorage.getItem('search_result'));
@@ -56,8 +56,8 @@ window.addEventListener('DOMContentLoaded', function () {
   function cardsHtml(id, img, price, title, rating, link, catalog) {
     return `<div class="wrapper-card swiper-slide" id="${id}">
     <div class="card">
-      <a href="${urlProducts}${catalog}/${link}" class="card-wrapper-img">
-        <img src="${urlImg}${img[0]}" alt="${title}" class="card-img" data-img="${img[0]}"></img>
+      <a href="html/${catalog}/${link}" class="card-wrapper-img">
+        <img src="img/img-card/${img[0]}" alt="${title}" class="card-img" data-img="${img[0]}"></img>
         <span class="card-discount"></span>
       </a>
       <div class="card-content">
@@ -68,7 +68,7 @@ window.addEventListener('DOMContentLoaded', function () {
           </p>
         </div>
         <div class="card-info">
-          <a href="${urlProducts}${catalog}/${link}" class="card-name-product">${title}</a>
+          <a href="html/${catalog}/${link}" class="card-name-product">${title}</a>
           <div class="card-rating">
             <div class="card-rating__active">
               <div class="card-rating__item _icon-star"></div>
