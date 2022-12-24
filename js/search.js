@@ -23,12 +23,12 @@ window.addEventListener('DOMContentLoaded', function () {
         if (nameProducts.search(value) !== -1) {
           search_result.classList.add('search');
           for (let card of search_list.children) {
-            if (card.getAttribute('id') == product.id) return;
+            if (card.getAttribute('id') === product.id) return;
           }
           search_result_id.push(product.id);
           search_list.insertAdjacentHTML('afterbegin', cardHtml(product.id, product.img, product.name, product.link, product.catalog));
         } else {
-          // search_list.classList.remove('search');
+          search_list.classList.remove('search');
           const search_li = document.querySelectorAll('.search_li');
 
           search_li.forEach(li => {
@@ -73,7 +73,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   }
   function isertMark(str, pos, lenght) {
-    return str.slice(0, pos) + '<mark>' + str.slice(pos, pos + lenght) + '</mark>' + str.slice(pos + lenght);
+    return str.slice(0, pos) + '<mark class="search-mark">' + str.slice(pos, pos + lenght) + '</mark>' + str.slice(pos + lenght);
   };
   function cardHtml(id, img, title, link, catalog) {
     return `<li class="search_li" id="${id}">
@@ -85,6 +85,7 @@ window.addEventListener('DOMContentLoaded', function () {
   </a>
 </li>`;
   }
+  // isertMark(title, title.search(value), value.length)
   // ${isertMark(nameProducts, nameProducts.search(value), value.lenght)}
   serachBtn.addEventListener('click', setSearchResult);
   search_all.addEventListener('click', setSearchResult);

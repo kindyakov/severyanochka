@@ -7,7 +7,7 @@ window.addEventListener('DOMContentLoaded', function () {
   let urlJson = urlOrigin + '/JSON/products.json';
   let urlImg = urlOrigin + '/img/img-card/';
   let urlProducts = urlOrigin + '/html/';
-  
+
   // Проверяю чтоб не было null
   if (JSON.parse(localStorage.getItem('productsBasket')) !== null) {
     cardBasketArray = JSON.parse(localStorage.getItem('productsBasket'));
@@ -123,6 +123,7 @@ window.addEventListener('DOMContentLoaded', function () {
     else priceCard.parentNode.style.display = 'none';
     data.characteristic.forEach(arr => specifications.insertAdjacentHTML('beforeend', specificationsHtml(arr[0], arr[1]))); // Характеристики
     document.querySelector('.main-promo__title').textContent = 'С этим товаров покупают';
+    document.querySelector('.header-menu__catalog').href = '../catalog.html';
   }
   function navSliderHtml(img, alt, i) {
     return `<div class="products__main-slider-slide" data-index="${i}">
@@ -375,4 +376,3 @@ window.addEventListener('DOMContentLoaded', function () {
   document.addEventListener('keyup', closeGallery);
   document.addEventListener('click', closeGallery);
 });
-
