@@ -9,7 +9,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   let productsArray = [];
   let search_result_id = [];
-  let urlOrigin = window.location.origin;
+  let urlOrigin = window.location.origin + '/severyanochka';
   let urlJson = urlOrigin + '/JSON/products.json';
   let urlImg = urlOrigin + '/img/img-card/';
   let urlProducts = urlOrigin + '/html/';
