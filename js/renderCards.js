@@ -113,8 +113,8 @@ window.addEventListener('DOMContentLoaded', function () {
     btnLike.classList.add('like');
     products.setAttribute('id', data.id); // ID товара
     data.img.forEach((imeg, i) => {
-      products__mainSlider.insertAdjacentHTML('beforeend', navSliderHtml(imeg, data.alt, i));
-      sliderWrapper.insertAdjacentHTML('beforeend', sliderHtml(imeg, data.alt));
+      products__mainSlider.insertAdjacentHTML('beforeend', navSliderHtml(imeg, data.name, i));
+      sliderWrapper.insertAdjacentHTML('beforeend', sliderHtml(imeg, data.name));
     }); // Картинки
     if (data.discount.length > 0) discount.textContent = `-${data.discount}%`; // Скидка
     else discount.style.display = 'none';
