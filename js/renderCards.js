@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', function () {
   let cardBasketArray = [];
   let cardFavouritesArray = [];
   // '/severyanochka'
-  let urlOrigin = window.location.origin;
+  let urlOrigin = window.location.origin + '/severyanochka';
   let urlJson = urlOrigin + '/JSON/products.json';
   let urlImg = urlOrigin + '/img/img-card/';
   let urlProducts = urlOrigin + '/html/';
