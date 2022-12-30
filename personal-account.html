@@ -5,8 +5,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width. initial-scale=1.0">
-  <title>Результат поиска | Интернет-магазина Северяночка</title>
+  <title>Личный кабинет | Интернет-магазин Северяночка</title>
   <link type="image/ico" rel="icon" href="img/favicon.ico">
+  <link rel="stylesheet" href="libs/Swiper/swiper-bundle.min.css" />
   <link rel="stylesheet" href="css/icons-font.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -66,6 +67,8 @@
           </div>
 
           <div class="header-profil">
+            <!-- <img src="img/avatar.png" alt="Аватарка" class="profil-img"> -->
+            <!-- <a href="#" class="header-profil__name _icon-arrow">Алексей</a> -->
             <div class="profil-btn">
               <div class="profile-enter">Войти</div>
               <div class="profile-icon _icon-log-in"></div>
@@ -125,17 +128,92 @@
 
     <main class="main">
       <div class="container">
-        <div class="search-result">
-          <div class="search-result__body">
-            <h1 class="search-result__title">Результат поиска</h1>
-            <div class="search-result__respons-wrapper">
-              <span class="search-result__respons search-result-span">по запросу -</span>
-              <span class="search-result__value search-result-span"></span>
-              <span class="search-result__error search-result-span" style="display: none;">- Сожалеем, но ничего не
-                найдено.</span>
+        <div class="main-body">
+          <nav class="main__navigation">
+            <ul class="main__navigation-list">
+              <a href="index.html" class="main__navigation-link">Главная</a>
+              <span class="main__navigation-span _icon-arrow"></span>
+              <a href="personal-account.html" class="main__navigation-link">Личный кабинет</a>
+            </ul>
+          </nav>
+          <div class="main__content">
+            <div class="main-wrapper-title">
+              <h1 class="main__title-catalog">Личный кабинет</h1>
             </div>
-            <div class="grid-container search-result__content" id="search-result-content">
+            <!-- account -->
+            <div class="account">
+              <div class="account__body">
+                <div class="account__tab">
+                  <a href="#" class="account__tabs account-tabs active" data-account="data"><span
+                      class="account__tabs-title">Личные
+                      данные</span>
+                  </a>
+                  <a href="#" class="account__tabs account-tabs" data-account="change-password"><span
+                      class="account__tabs-title">Сменить пароль</span></a>
+                  <a href="basket.html" class="account__tabs" data-account="basket"><span
+                      class="account__tabs-title">Моя корзина</span>
+                  </a>
+                  <a href="favourites.html" class="account__tabs" data-account="favourites"><span
+                      class="account__tabs-title">Избранные
+                      товары</span></a>
+                  <a href="orders.html" class="account__tabs" data-account="active-orders"><span
+                      class="account__tabs-title">Активные
+                      заказы</span></a>
+                  <a href="orders.html" class="account__tabs" data-account="all-orders"><span
+                      class="account__tabs-title">Все
+                      заказы</span></a>
+                  <a href="#" class="account__tabs account-tabs" data-account="history-purchas"><span
+                      class="account__tabs-title">История
+                      покупок</span></a>
+                </div>
+                <div class="account__content">
+                  <div class="account__tab-preview active" data-account="data">
+                    <form action="#" class="account__pesonal-account">
+                      <div class="account__tab-item">
+                        <span class="input-title">Фамилия</span>
+                        <input type="text" name="surname" data-valid="name"
+                          class="registration__input account__input input-required">
+                      </div>
+                      <div class="account__tab-item">
+                        <span class="input-title">Имя</span>
+                        <input type="text" name="name" data-valid="name"
+                          class="registration__input account__input input-required">
+                      </div>
+                      <div class="account__tab-item">
+                        <span class="input-title">Телефон</span>
+                        <input type="tel" name="phone" data-valid="phone" class="registration__input input-required"
+                          inputmode="numeric">
+                      </div>
+                      <div class="account__tab-item">
+                        <span class="input-title">E-mail</span>
+                        <span class="info-error"></span>
+                        <input type="text" name="email" class="registration__input" data-valid="email">
+                      </div>
+                      <button type="submit" class="save-date">Сохранить изменения</button>
+                    </form>
+                  </div>
+                  <div class="account__tab-preview" data-account="change-password">
+                    <form action="#" class="account__pesonal-account">
+                      <div class="account__tab-item">
+                        <span class="input-title">Пароль</span>
+                        <input type="password" name="password" data-valid="password"
+                          class="registration__input account__input input-required" autocomplete="off">
+                      </div>
+                      <div class="account__tab-item">
+                        <span class="input-title">Повторите пароль</span>
+                        <input type="password" name="confirm-password" data-valid="password"
+                          class="registration__input account__input" autocomplete="off">
+                      </div>
+                      <button type="submit" class="save-date">Сохранить изменения</button>
+                    </form>
+                  </div>
+                  <div class="account__tab-preview" data-account="history-purchas">
+                    <form action="#" class="account__pesonal-account">
 
+                    </form>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -198,10 +276,8 @@
 
     <div class="btn-up">↑</div>
   </div>
-
-  <script src="js/search-result.js"></script>
+  <script src="js/account.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/addToCart.js"></script>
   <script src="js/module.js" type="module"></script>
   <script src="js/search.js"></script>
   <script src="js/profile.js"></script>

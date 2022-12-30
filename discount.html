@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width. initial-scale=1.0">
-  <title>Результат поиска | Интернет-магазина Северяночка</title>
+  <title>Акции | Интернет-магазина Северяночка</title>
   <link type="image/ico" rel="icon" href="img/favicon.ico">
   <link rel="stylesheet" href="css/icons-font.css">
   <link rel="stylesheet" href="css/style.css">
@@ -125,16 +125,20 @@
 
     <main class="main">
       <div class="container">
-        <div class="search-result">
-          <div class="search-result__body">
-            <h1 class="search-result__title">Результат поиска</h1>
-            <div class="search-result__respons-wrapper">
-              <span class="search-result__respons search-result-span">по запросу -</span>
-              <span class="search-result__value search-result-span"></span>
-              <span class="search-result__error search-result-span" style="display: none;">- Сожалеем, но ничего не
-                найдено.</span>
+        <div class="main-body">
+          <nav class="main__navigation">
+            <ul class="main__navigation-list">
+              <a href="index.html" class="main__navigation-link">Главная</a>
+              <span class="main__navigation-span _icon-arrow"></span>
+              <a href="discount.html" class="main__navigation-link">Акции</a>
+            </ul>
+          </nav>
+          <div class="main__content">
+            <div class="main-wrapper-title">
+              <h1 class="main__title-catalog">Акции</h1>
             </div>
-            <div class="grid-container search-result__content" id="search-result-content">
+            <!-- discount -->
+            <div class="grid-container discount_content" id="discount-content">
 
             </div>
           </div>
@@ -198,8 +202,7 @@
 
     <div class="btn-up">↑</div>
   </div>
-
-  <script src="js/search-result.js"></script>
+  <script src="js/discount.js"></script>
   <script src="js/main.js"></script>
   <script src="js/addToCart.js"></script>
   <script src="js/module.js" type="module"></script>

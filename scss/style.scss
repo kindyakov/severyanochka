@@ -1574,7 +1574,7 @@ body {
 .search-result {
   padding: 80px 0;
 
-  &__body {}
+  // &__body {}
 
   &__title {
     font-size: 36px;
@@ -1591,12 +1591,14 @@ body {
     color: #ff0000;
   }
 
-  &__content {
-    margin-top: 40px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
-  }
+  // &__content {}
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  margin-top: 40px;
 }
 
 .search-mark {
@@ -1617,4 +1619,5 @@ body {
 @import "artickes.scss";
 @import "cards_products.scss";
 @import "registration.scss";
+@import "account.scss";
 @import "adaptiv.scss";

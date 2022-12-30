@@ -40,6 +40,8 @@ window.addEventListener('DOMContentLoaded', function () {
   const stocks = document.querySelector('.stocks');
   const related = document.querySelector('.related');
 
+  const all_discount = document.querySelector('.main-promo__all-discount');
+
   let gallerySwiper;
   let cardsData;
 
@@ -124,6 +126,7 @@ window.addEventListener('DOMContentLoaded', function () {
     data.characteristic.forEach(arr => specifications.insertAdjacentHTML('beforeend', specificationsHtml(arr[0], arr[1]))); // Характеристики
     document.querySelector('.main-promo__title').textContent = 'С этим товаров покупают';
     document.querySelector('.header-menu__catalog').href = '../catalog.html';
+    all_discount.href = '../../discount.html';
   }
   function navSliderHtml(img, alt, i) {
     return `<div class="products__main-slider-slide" data-index="${i}">
