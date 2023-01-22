@@ -103,8 +103,8 @@ window.addEventListener('DOMContentLoaded', function () {
           });
         }
       });
+      setSearchResult();
     }
-    setSearchResult();
   }
   searchInput.addEventListener('input', searchProducktsInput);
   searchForm.addEventListener('submit', searchProducktsSubmit);

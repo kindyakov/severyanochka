@@ -335,6 +335,7 @@ function renderCardHtml(card) {
 
     const priceContextOrdinary = cardID.querySelector('.card-price-context-ordinary').textContent = 'Обычная';
     const priceContextCard = cardID.querySelector('.card-price-context-card').textContent = 'С картой';
+    const counterPriceSum = cardID.querySelector('.basket__card-counter-price-sum').textContent = card.price_card + ' ₽';
     const counterPriceOld = cardID.querySelector('.basket__card-counter-price-old').textContent = card.price + ' ₽';
   }
 }
