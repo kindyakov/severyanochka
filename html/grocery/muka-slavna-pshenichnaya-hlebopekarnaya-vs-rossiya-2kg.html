@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <link rel="stylesheet" href="../../libs/Swiper/swiper-bundle.min.css" />
+  <link type="image/ico" rel="icon" href="../../img/favicon.ico">
+  <link rel="stylesheet" href="../../css/icons-font.css">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body class="body">
+  <div class="wrapper">
+    <header class="header">
+      <div class="container">
+        <div class="header-wrapper">
+          <div class="header-logo">
+            <a href="../../index.html" class="link-logo">
+              <img src="../../img/logo.png" alt="Лого Серебряночка" class="logo-img">
+              <span class="header-logo__span">Северяночка</span>
+            </a>
+          </div>
+          <div class="wrpper-catalog__button">
+            <a href="../catalog.html" class="header-catalog__button">
+              <div class="header-catalog__icon">
+                <span></span>
+              </div>
+              <span class="header-catalog__span">Каталог</span>
+            </a>
+          </div>
+          <div class="header-serch__block">
+            <form action="#" class="header-search">
+              <input id="header-input" type="text" name="search" class="header-search__input" placeholder="Найти товар">
+              <button for="header-input" class="_icon-search btn-search"></button>
+            </form>
+            <div class="search_result">
+              <ul class="search_list">
+              </ul>
+              <a href="../../search-result.html" class="search-all">Все результаты</a>
+            </div>
+          </div>
+          <div class="header-menu__wrpper">
+            <div class="header-menu">
+              <a href="../html/catalog.html" class="header-menu__item header-menu__catalog">
+                <span class="icon icon-menu _icon-menu"></span>
+                <span class="text">Каталог</span>
+              </a>
+              <a href="../../favourites.html" class="header-menu__item header-menu__favourites">
+                <span class="icon icon-menu _icon-shape"><span id="menu-favourites"
+                    class="cart-quantity">1</span></span>
+                <span class="text">Избраное</span>
+              </a>
+              <a href="../../orders.html" class="header-menu__item header-menu__orders">
+                <span class="icon icon-menu _icon-orders"><span id="menu-orders" class="cart-quantity">1</span></span>
+                <span class="text">Заказы</span>
+              </a>
+              <a href="../../basket.html" class="header-menu__item header-menu__cart">
+                <span class="icon icon-menu _icon-cart"><span id="menu-basket" class="cart-quantity">1</span></span>
+                <span class="text">Корзина</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="header-profil">
+            <div class="profil-btn">
+              <div class="profile-enter">Войти</div>
+              <div class="profile-icon _icon-log-in"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-catalog">
+        <div class="container">
+          <div class="header-catalog__wrapper">
+            <nav class="header-catalog__menu">
+              <ul class="header-catalog__list">
+                <li class="header-catalog__item"><a href="../catalog__milk-cheese-egg.html"
+                    class="header-catalog__link">Молоко, сыр, яйцо</a>
+                </li>
+                <li class="header-catalog__item"><a href="../catalog__bread.html" class="header-catalog__link">Хлеб</a>
+                </li>
+                <li class="header-catalog__item"><a href="../catalog__fruits-vegetables.html"
+                    class="header-catalog__link">Фрукты и овощи</a></li>
+                <li class="header-catalog__item"><a href="../catalog__frozen-foods.html"
+                    class="header-catalog__link">Замороженные продукты</a>
+                </li>
+              </ul>
+              <ul class="header-catalog__list">
+                <li class="header-catalog__item"><a href="../catalog__drinks.html"
+                    class="header-catalog__link">Напитки</a>
+                </li>
+                <li class="header-catalog__item"><a href="../catalog__confectionery-products.html"
+                    class="header-catalog__link">Кондитерские изделия</a>
+                </li>
+                <li class="header-catalog__item"><a href="../catalog__tea-coffee.html" class="header-catalog__link">Чай,
+                    кофе</a></li>
+              </ul>
+              <ul class="header-catalog__list">
+                <li class="header-catalog__item"><a href="../catalog__grocery.html"
+                    class="header-catalog__link">Бакалея</a></li>
+                <li class="header-catalog__item"><a href="../catalog__healthy-eating.html"
+                    class="header-catalog__link">Здоровое питание</a></li>
+                <li class="header-catalog__item"><a href="../catalog__pet-supplies.html"
+                    class="header-catalog__link">Зоотовары</a></li>
+              </ul>
+              <ul class="header-catalog__list">
+                <li class="header-catalog__item"><a href="../catalog__non-food-products.html"
+                    class="header-catalog__link">Непродовольственные товары</a>
+                </li>
+                <li class="header-catalog__item"><a href="../catalog__baby-food.html"
+                    class="header-catalog__link">Детское
+                    питание</a></li>
+                <li class="header-catalog__item"><a href="../catalog__meat-poultry-sausage.html"
+                    class="header-catalog__link">Мясо, птица, колбаса</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+
+
+    <main class="main">
+      <div class="container">
+        <div class="main-body">
+          <nav class="main__navigation">
+            <ul class="main__navigation-list">
+              <a href="../../index.html" class="main__navigation-link">Главная</a>
+              <span class="main__navigation-span _icon-arrow"></span>
+              <a href="../catalog.html" class="main__navigation-link">Каталог</a>
+              <span class="main__navigation-span _icon-arrow"></span>
+              <a href="../catalog__grocery.html" class="main__navigation-link">Бакалея</a>
+              <span class="main__navigation-span _icon-arrow"></span>
+              <a href="" class="main__navigation-link"></a>
+            </ul>
+          </nav>
+          <div class="main__content">
+            <div class="main-wrapper-title">
+              <h1 class="products-title"></h1>
+            </div>
+            <div class="products">
+              <div class="products__container wrapper-card">
+                <div class="products__header">
+                  <div class="products__header-block"><span class="products__header-article">арт. 371431</span></div>
+                  <div class="products__header-block products-header-rating">
+                    <div class="card-rating">
+                      <div class="card-rating__active">
+                        <div class="card-rating__item _icon-star"></div>
+                        <div class="card-rating__item _icon-star"></div>
+                        <div class="card-rating__item _icon-star"></div>
+                        <div class="card-rating__item _icon-star"></div>
+                        <div class="card-rating__item _icon-star"></div>
+                      </div>
+                      <div class="card-rating__items" data-rating="">
+                        <div class="card-rating__item _icon-star"></div>
+                        <div class="card-rating__item _icon-star"></div>
+                        <div class="card-rating__item _icon-star"></div>
+                        <div class="card-rating__item _icon-star"></div>
+                        <div class="card-rating__item _icon-star"></div>
+                      </div>
+                    </div>
+                    <a href="#feedback" class="products__header-feedback"></a>
+                  </div>
+                  <div class="products__header-block products-header-block-link">
+                    <span class="products__header-icon _icon-uniE90C"></span>
+                    <a href="" class="products__header-link">Поделиться</a>
+                  </div>
+                  <div class="products__header-block products-header-block-link">
+                    <span class="products__header-icon _icon-shape"></span>
+                    <a href="" class="products__header-link">В избраное</a>
+                  </div>
+                </div>
+                <div class="products__main">
+                  <div class="products__main-gallery">
+                    <div class="products__main-slider">
+                      <!-- картинки для навигации с превью -->
+                    </div>
+                    <div class="products__main-slider-active swiper">
+                      <span class="card-discount products__main-discount"></span>
+                      <div class="products__main-slider-wrapper swiper-wrapper">
+                        <!-- Слайды с картинками -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="products__aside">
+                    <div class="products__aside-content">
+                      <div class="products__aside-wrapper-price">
+                        <div class="products__aside-block-price">
+                          <span class="products__aside-regular-price"></span>
+                          <p class="products__aside-price-info">
+                            <i class="products__aside-price-comment">Обычная цена</i>
+                          </p>
+                        </div>
+                        <div class="products__aside-block-price">
+                          <span class="products__aside-card-price"></span>
+                          <p class="products__aside-price-info">
+                            <i class="products__aside-price-comment">С картой Северяночки</i>
+                            <span></span>
+                          </p>
+                        </div>
+                      </div>
+
+                      <button class="products__aside-add-basket add-btn">
+                        <span class="products__aside-icon-btn _icon-cart"></span>
+                        В корзину
+                      </button>
+
+                      <div class="products__aside-block-center">
+                        <div class="products__aside-bonus">
+                          <span class="products__aside-bonus-text">Вы получаете 10 бонусов</span>
+                        </div>
+                      </div>
+
+
+                      <div class="products__aside-block-center">
+                        <a href="" class="products__aside-notification">
+                          <span class="products__aside-notification-icon _icon-bell"></span>
+                          <span class="products__aside-notification-text">Уведомить о снижении цены</span>
+                        </a>
+                      </div>
+
+                      <div class="products__aside-specifications">
+                        <table class="specifications-table">
+                          <tbody class="specifications-body">
+                            <!-- Характеристика товара -->
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="products__aside-similar">
+                    <span class="products__aside-similar-text">Похожие</span>
+                    <div class="products__aside-similar-column">
+                      <a href="" class="products__aside-similar-link">
+                        <img class="products__aside-similar-img" src="../../img/img-card/панталь.png" alt="Масло">
+                        <span class="products__aside-similar-price">157.50 ₽</span>
+                      </a>
+                      <a href="" class="products__aside-similar-link">
+                        <img class="products__aside-similar-img" src="../../img/img-card/тысяча озер.png" alt="Масло">
+                        <span class="products__aside-similar-price">157.50 ₽</span>
+                      </a>
+                      <a href="" class="products__aside-similar-link">
+                        <img class="products__aside-similar-img" src="../../img/img-card/сливочное-масло.png"
+                          alt="Масло">
+                        <span class="products__aside-similar-price">157.50 ₽</span>
+                      </a>
+                      <a href="" class="products__aside-similar-link">
+                        <img class="products__aside-similar-img" src="../../img/img-card/панталь.png" alt="Масло">
+                        <span class="products__aside-similar-price">157.50 ₽</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="main-promo main-section">
+                <div class="main-promo__header">
+                  <h2 class="main-promo__title main-title title-discount">С этим товаров мокупают</h2>
+                </div>
+                <div class="products-swiper-wrapper related">
+                  <div class="index-swiper swiper">
+                    <div class="main-promo__content swiper-wrapper">
+
+                    </div>
+                    <div class="swiper-button-prev products-swiper-prev"></div>
+                    <div class="swiper-button-next products-swiper-next"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="main-promo main-section">
+                <div class="main-promo__header">
+                  <h2 class="main-promo__title main-title title-discount">Акции</h2>
+                  <a href="" class="main-promo__all-link main-promo__all-discount _icon-arrow">Все акции</a>
+                </div>
+                <div class="products-swiper-wrapper stocks">
+                  <!-- products-swiper -->
+                  <div class="index-swiper swiper">
+                    <div class="main-promo__content swiper-wrapper">
+
+                    </div>
+                    <div class="swiper-button-prev products-swiper-prev"></div>
+                    <div class="swiper-button-next products-swiper-next"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="feedback" id="feedback">
+                <div class="feedback__body">
+                  <h3 class="feedback__title">Отзывы</h3>
+                  <div class="feedback__content">
+                    <div class="feedback__wrappper-rating">
+                      <div class="feedback__rating">
+                        <div class="card-rating">
+                          <div class="card-rating__active">
+                            <div class="card-rating__item _icon-star"></div>
+                            <div class="card-rating__item _icon-star"></div>
+                            <div class="card-rating__item _icon-star"></div>
+                            <div class="card-rating__item _icon-star"></div>
+                            <div class="card-rating__item _icon-star"></div>
+                          </div>
+                          <div class="card-rating__items" id="feedback-rating" data-rating="0">
+                            <div class="card-rating__item _icon-star"></div>
+                            <div class="card-rating__item _icon-star"></div>
+                            <div class="card-rating__item _icon-star"></div>
+                            <div class="card-rating__item _icon-star"></div>
+                            <div class="card-rating__item _icon-star"></div>
+                          </div>
+                        </div>
+                        <p class="feedback__rating-text">
+                          <span class="feedback__rating-span" id="span-rating">0 из 5</span>
+                        </p>
+                      </div>
+                      <div class="feedback__rating-content">
+                        <div class="feedback__rating-rows">
+                          <span class="feedback__rating-rows-span">5</span>
+                          <div class="card-rating">
+                            <div class="card-rating__active">
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                            </div>
+                            <div class="card-rating__items" data-rating="5">
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                            </div>
+                          </div>
+                          <span class="counter-stars" data-stars="5">0</span>
+                        </div>
+                        <div class="feedback__rating-rows">
+                          <span class="feedback__rating-rows-span">4</span>
+                          <div class="card-rating">
+                            <div class="card-rating__active">
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                            </div>
+                            <div class="card-rating__items" data-rating="4">
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                            </div>
+                          </div>
+                          <span class="counter-stars" data-stars="4">0</span>
+                        </div>
+                        <div class="feedback__rating-rows">
+                          <span class="feedback__rating-rows-span">3</span>
+                          <div class="card-rating">
+                            <div class="card-rating__active">
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                            </div>
+                            <div class="card-rating__items" data-rating="3">
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                            </div>
+                          </div>
+                          <span class="counter-stars" data-stars="3">0</span>
+                        </div>
+                        <div class="feedback__rating-rows">
+                          <span class="feedback__rating-rows-span">2</span>
+                          <div class="card-rating">
+                            <div class="card-rating__active">
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                            </div>
+                            <div class="card-rating__items" data-rating="2">
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                            </div>
+                          </div>
+                          <span class="counter-stars" data-stars="2">0</span>
+                        </div>
+                        <div class="feedback__rating-rows">
+                          <span class="feedback__rating-rows-span">1</span>
+                          <div class="card-rating">
+                            <div class="card-rating__active">
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                            </div>
+                            <div class="card-rating__items" data-rating="1">
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                              <div class="card-rating__item _icon-star"></div>
+                            </div>
+                          </div>
+                          <span class="counter-stars" data-stars="1">0</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="feedback__description-wrapper">
+                      <div class="feedback__description-content">
+
+                      </div>
+                      <div class="feedback__leave">
+                        <div class="feedback__estimation">
+                          <h4 class="feedback__estimation-title">Ваша оценка</h4>
+                          <div class="leave-rating">
+                            <div class="leave-rating__active" data-rating="0">
+                              <div class="leave-rating__item _icon-star" data-value="1"></div>
+                              <div class="leave-rating__item _icon-star" data-value="2"></div>
+                              <div class="leave-rating__item _icon-star" data-value="3"></div>
+                              <div class="leave-rating__item _icon-star" data-value="4"></div>
+                              <div class="leave-rating__item _icon-star" data-value="5"></div>
+                            </div>
+                            <div class="leave-rating__items" id="feedback-rating">
+                              <div class="leave-rating__item _icon-star" data-value="1"></div>
+                              <div class="leave-rating__item _icon-star" data-value="2"></div>
+                              <div class="leave-rating__item _icon-star" data-value="3"></div>
+                              <div class="leave-rating__item _icon-star" data-value="4"></div>
+                              <div class="leave-rating__item _icon-star" data-value="5"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="feedback__leave-comment">
+                          <textarea class="feedback__leave-textarea" name="comment" id="leave-comment"
+                            autocomplete="off" minlength="10" spellcheck="true"></textarea>
+                        </div>
+                        <div class="feedback__leave-button">
+                          <button class="feedback__submit">Отправить отзыв</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__content">
+          <nav class="footer__menu">
+            <a href="../../index.html" class="footer__logo-link"><img src="../../img/logo-footer.png" alt=""
+                class="footer__logo"></a>
+            <ul class="footer__menu-list">
+              <li class="footer__menu-item"><a href="../../about.html" class="footer__menu-link">О компании</a></li>
+              <li class="footer__menu-item"><a href="../../contacts.html" class="footer__menu-link">Контакты</a></li>
+              <li class="footer__menu-item"><a href="../../openings.html" class="footer__menu-link">Вакансии</a></li>
+              <li class="footer__menu-item"><a href="../../articles.html" class="footer__menu-link">Статьи</a></li>
+              <li class="footer__menu-item"><a href="../../personal-date.html" class="footer__menu-link">Акции</a></li>
+            </ul>
+          </nav>
+          <nav class="footer__contact">
+            <ul class="footer__contact-list">
+              <li class="footer__contact-item"><a href="" class="footer__contact-link"><img
+                    src="../../img/svg/instagram.svg" alt=""></a></li>
+              <li class="footer__contact-item"><a href="" class="footer__contact-link"><img src="../../img/svg/vk.svg"
+                    alt=""></a></li>
+              <li class="footer__contact-item"><a href="" class="footer__contact-link"><img
+                    src="../../img/svg/facebook.svg" alt=""></a></li>
+              <li class="footer__contact-item"><a href="" class="footer__contact-link"><img
+                    src="../../img/svg/odnaklasshiki.svg" alt=""></a></li>
+            </ul>
+            <a href="tel:+88007773333" class="footer__contact-tel _icon-phone">8 800 777 33 33</a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+
+
+    <div class="modal-login">
+      <div class="modal-login__body">
+        <div class="modal-login__content">
+          <h3 class="modal-login__title">Вход</h3>
+          <form action="#" class="modal-login__form">
+            <label class="modal-login__label">Телефон</label>
+            <input type="tel" name="phone" class="modal-login__input">
+            <button class="modal-login__btn-log">Вход</button>
+            <div class="form-footer">
+              <a href="../../registration.html" class="form-footer__btn-registration">Регистрация</a>
+              <a href="" class="form-footer__forgot-pass">Забыли пароль?</a>
+            </div>
+          </form>
+          <div class="modal-login__close"></div>
+        </div>
+      </div>
+    </div>
+    <div class="gallery">
+      <div class="gallery__body">
+        <div class="gallery__content">
+          <div class="gallery__swiper swiper swiper-no-swiping">
+            <div class="gallery__wrapper-swiper swiper-wrapper">
+
+            </div>
+          </div>
+          <div class="swiper-button-prev gallery-button-prev"></div>
+          <div class="swiper-button-next gallery-button-next"></div>
+          <div class="swiper-pagination gallery-pagination"></div>
+        </div>
+        <div class="gallery__close"><span>✖</span></div>
+      </div>
+    </div>
+    <div class="menu-fixed"></div>
+    <div class="btn-up">↑</div>
+  </div>
+  <script src="../../libs/Swiper/swiper-bundle.min.js"></script>
+  <script src="../../js/renderCards.js"></script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/swiper.js"></script>
+  <script src="../../js/addToCart.js"></script>
+  <script src="../../js/module.js" type="module"></script>
+  <script src="../../js/profile.js"></script>
+  <!-- <script src="../../js/search.js"></script> -->
+</body>
+
+</html>

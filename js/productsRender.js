@@ -78,6 +78,7 @@ if (products_container) {
       duble_prev = document.querySelector('.module-pagination__duble-prev');
 
       blockPrev.classList.add('none');
+      if (productsArray.length <= cardsVisible * 2) duble_next.classList.add('none');
 
       // Pagination add in html
       const arrayPaginstion = Math.ceil(productsArray.length / cardsVisible);
