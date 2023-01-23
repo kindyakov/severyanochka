@@ -1,5 +1,5 @@
+import { AddDisableCardBtn, AddDisableCardLike } from './components/AddDisableClass.js';
 window.addEventListener('DOMContentLoaded', function () {
-
   let cardBasketArray = [];
   let cardFavouritesArray = [];
 
@@ -16,15 +16,15 @@ window.addEventListener('DOMContentLoaded', function () {
 
     if (target.classList.contains('add-btn') && !target.classList.contains('disable')) {
       addInfoCard(target, cardBasketArray, 'productsBasket');
-      addDisableCardBtn();
+      AddDisableCardBtn(cardBasketArray);
     };
     if (target.classList.contains('like') && !target.classList.contains('disable')) {
       addInfoCard(target, cardFavouritesArray, 'productsFavourites');
-      addDisableCardLike();
+      AddDisableCardLike(cardFavouritesArray);
     }
   });
-  addDisableCardBtn();
-  addDisableCardLike();
+  AddDisableCardBtn(cardBasketArray);
+  AddDisableCardLike(cardFavouritesArray);
 
   function addInfoCard(target, arr, storage) {
     const card = target.closest('.wrapper-card');// Обертка карточки
@@ -32,25 +32,6 @@ window.addEventListener('DOMContentLoaded', function () {
 
     arr.unshift(cardID);
     localStorage.setItem(`${storage}`, JSON.stringify(arr));
-  }
-  function addDisableCardBtn() {
-    cardBasketArray.forEach(card => {
-      let cardDisable = document.querySelector(`[id = "${card}"]`);
-      if (cardDisable) {
-        let cardDisableBtn = cardDisable.querySelector('.add-btn');
-        cardDisableBtn.classList.add('disable');
-        cardDisableBtn.textContent = 'В корзине';
-      }
-    })
-  }
-  function addDisableCardLike() {
-    cardFavouritesArray.forEach(card => {
-      let cardDisable = document.querySelector(`[id = "${card}"]`);
-      if (cardDisable) {
-        let cardDisableLike = cardDisable.querySelector('.like');
-        if (cardDisableLike) cardDisableLike.classList.add('disable');
-      }
-    });
   }
 });
 

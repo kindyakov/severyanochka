@@ -1,3 +1,5 @@
+import UpdateNav from "./components/UpdateNav.js";
+
 const catalogMenu = document.querySelector('.header-catalog');
 const wrapper = document.querySelector('.wrapper');
 //Modal
@@ -144,6 +146,7 @@ window.addEventListener('load', function () {
   let url = document.location.href;
   linkActive(footerLinks, url);
   linkActive(menuLinks, url);
+  UpdateNav();
 })
 
 if (btnUp) {

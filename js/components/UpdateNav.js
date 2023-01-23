@@ -1,4 +1,4 @@
-window.addEventListener('load', function () {
+const UpdateNav = () => {
   const body = document.body;
   // Колличество товаров корзины в шапке
   const basketQuantity = document.querySelector('#menu-basket');
@@ -29,5 +29,6 @@ window.addEventListener('load', function () {
       favouritesQuantity.textContent = cardFavouritesArray.length;
     }
   })
-})
+}
 
+export default UpdateNav; 

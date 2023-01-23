@@ -1,3 +1,5 @@
+import { urlOrigin, urlJsonProducts, urlImgCard, urlHtml } from './components/Links.js';
+
 window.addEventListener('DOMContentLoaded', function () {
   const catalog = ['milk-cheese-egg', 'frozen-foods', 'breed', 'baby-food', 'confectionery-products', 'drinks', 'fruits-vegetables', 'grocery', 'healthy-eating', 'meat-poultry-sausage', 'non-food-products', 'tea-coffee', 'pet-supplies'];
   const searchForm = document.querySelector('.header-search');
@@ -8,13 +10,11 @@ window.addEventListener('DOMContentLoaded', function () {
 
   let productsArray = [];
   let search_result_id = [];
-  let urlOrigin = window.location.origin;
-  let urlJson = urlOrigin + '/JSON/products.json';
-  let urlImg = urlOrigin + '/img/img-card/';
-  let urlProducts = urlOrigin + '/html/';
+
+  searchInput.autocomplete = 'off';
 
   async function products() {
-    const response = await fetch(urlJson);
+    const response = await fetch(urlJsonProducts);
     const products = await response.json();
     catalog.forEach(title => {
       if (products[title]) {
@@ -23,18 +23,7 @@ window.addEventListener('DOMContentLoaded', function () {
     });
   };
   products();
-  function setSearchResult() {
-    let search_result = {
-      value: searchInput.value,
-      availability: true,
-      productsID: search_result_id
-    };
-    if (search_result.productsID.length == 0) {
-      search_result.availability = false;
-    }
-    localStorage.setItem('search_result', JSON.stringify(search_result));
-    document.location.href = search_all.href;
-  }
+
   function searchProducktsInput() {
     let value = searchInput.value.toLowerCase().trim();
     if (value !== '') {
@@ -71,9 +60,9 @@ window.addEventListener('DOMContentLoaded', function () {
   };
   function cardHtml(id, img, title, link, catalog) {
     return `<li class="search_li" id="${id}">
-  <a href="${urlProducts}${catalog}/${link}" class="search_link">
+  <a href="${urlHtml}${catalog}/${link}" class="search_link">
     <div class="search-wrapper_img">
-      <img class="search_img" src="${urlImg}${img[0]}" alt="Картинка">
+      <img class="search_img" src="${urlImgCard}${img[0]}" alt="Картинка">
     </div>
     <span class="search_span">${title}</span>
   </a>
@@ -81,6 +70,20 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   // isertMark(title, title.search(value), value.length)
   // ${isertMark(nameProducts, nameProducts.search(value), value.lenght)}
+
+  function setSearchResult() {
+    let search_result = {
+      value: searchInput.value,
+      availability: true,
+      productsID: search_result_id
+    };
+    if (search_result.productsID.length == 0) {
+      search_result.availability = false;
+    }
+    localStorage.setItem('search_result', JSON.stringify(search_result));
+    document.location.href = search_all.href;
+  }
+
   function searchProducktsSubmit(e) {
     e.preventDefault();
     let value = searchInput.value.toLowerCase().trim();
@@ -106,6 +109,7 @@ window.addEventListener('DOMContentLoaded', function () {
       setSearchResult();
     }
   }
+
   searchInput.addEventListener('input', searchProducktsInput);
   searchForm.addEventListener('submit', searchProducktsSubmit);
   search_all.addEventListener('click', setSearchResult);

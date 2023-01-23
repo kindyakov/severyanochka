@@ -1,12 +1,13 @@
+import { urlOrigin } from './components/Links.js';
+import CardHtml from './components/CardHtml.js';
+import { AddDisableCardBtn, AddDisableCardLike } from './components/AddDisableClass.js';
+import Rating from "./components/Rating.js";
+import FeedbackHtml from './components/FeedbackHtml.js';
+
 window.addEventListener('DOMContentLoaded', function () {
   const catalog = ['milk-cheese-egg', 'frozen-foods', 'breed', 'baby-food', 'confectionery-products', 'drinks', 'fruits-vegetables', 'grocery', 'healthy-eating', 'meat-poultry-sausage', 'non-food-products', 'tea-coffee', 'pet-supplies'];
   let cardBasketArray = [];
   let cardFavouritesArray = [];
-  // '/severyanochka'
-  let urlOrigin = window.location.origin;
-  let urlJson = urlOrigin + '/JSON/products.json';
-  let urlImg = urlOrigin + '/img/img-card/';
-  let urlProducts = urlOrigin + '/html/';
 
   // Проверяю чтоб не было null
   if (JSON.parse(localStorage.getItem('productsBasket')) !== null) {
@@ -81,11 +82,11 @@ window.addEventListener('DOMContentLoaded', function () {
     if (stocks) allCard(productsArr, cardsData.id).forEach(card => renderCardHtml(card, stocks));
     if (related) related.closest('.main-promo').style.display = 'none';
 
-    addDisableCardBtn();
-    addDisableCardLike();
+    AddDisableCardBtn(cardBasketArray);
+    AddDisableCardLike(cardFavouritesArray);
     renderFeedback(cardsData);
     setRating();
-    rating();
+    Rating();
   };
   getData();
 
@@ -97,14 +98,13 @@ window.addEventListener('DOMContentLoaded', function () {
         productsALL = [...productsALL, ...data[title].cardData];
       }
     });
-    productsALL = productsALL.filter(card => card.id !== id); // фильтрация масива чтоб не попала текущая карточкая
-    productsALL = productsALL.filter(card => card.discount !== '');
+    productsALL = productsALL.filter(card => card.id !== id && card.discount !== ''); // фильтрация масива чтоб не попала текущая карточкая
     return productsALL;
   }
   function renderPage(data) {
     title.textContent = data.name + ' | Купит в интернет-магазине Северяночка'; // Заголовок страницы 
-    navigationLink[--navigationLink.length].textContent = data.name; // навигационная ссылка Заголовок страницы
-    navigationLink[--navigationLink.length].href = nameFile; // навигационная ссылка 
+    navigationLink[navigationLink.length - 1].textContent = data.name; // навигационная ссылка Заголовок страницы
+    navigationLink[navigationLink.length - 1].href = nameFile; // навигационная ссылка 
     productsTitle.textContent = data.name; // название товара
     article.textContent = 'арт. ' + data.article; // артикуль
     ratings.dataset.rating = data.rating; // рейтинг
@@ -191,49 +191,6 @@ window.addEventListener('DOMContentLoaded', function () {
     document.body.classList.remove('lock');
     document.querySelector('html').classList.remove('lock');
   }
-  function rating() {
-    const cardRating = document.getElementsByClassName('card-rating');
-    if (cardRating.length > 0) {
-      initRatings();
-    }
-    function initRatings() {
-      for (let i = 0; i < cardRating.length; i++) {
-        const ratings = cardRating[i];
-        initRating(ratings)
-      }
-    }
-    function initRating(ratings) {
-      initRatingVars(ratings)
-      setTatingActiveWidth();
-    }
-    function initRatingVars(ratings) {
-      ratingActive = ratings.querySelector('.card-rating__active');
-      ratingValue = ratings.querySelector('.card-rating__items');
-    }
-    function setTatingActiveWidth(index = ratingValue.dataset.rating) {
-      const ratingActiveWidth = index / 0.05;
-      ratingActive.style.width = `${ratingActiveWidth}px`;
-    }
-  }
-  function addDisableCardBtn() {
-    cardBasketArray.forEach(id => {
-      let cardDisable = document.querySelector(`[id = "${id}"]`);
-      if (cardDisable) {
-        let cardDisableBtn = cardDisable.querySelector('.add-btn');
-        cardDisableBtn.classList.add('disable');
-        cardDisableBtn.textContent = 'В корзине';
-      }
-    })
-  }
-  function addDisableCardLike() {
-    cardFavouritesArray.forEach(id => {
-      let cardDisable = document.querySelector(`[id = "${id}"]`);
-      if (cardDisable) {
-        let cardDisableLike = cardDisable.querySelector('.like');
-        if (cardDisableLike) cardDisableLike.classList.add('disable');
-      }
-    });
-  }
   function renderFeedback(data) {
     let feedback = data.feedback;
     const feedback_rating = document.querySelector('#feedback-rating');
@@ -250,39 +207,8 @@ window.addEventListener('DOMContentLoaded', function () {
         if (countStar.dataset.stars == 2) countStar.textContent = feedback.filter(comm => comm.rating == 2).length;
         if (countStar.dataset.stars == 1) countStar.textContent = feedback.filter(comm => comm.rating == 1).length;
       })
-      feedback.forEach(comm => feedback__content.insertAdjacentHTML('beforeend', feedbackHtml(comm.author, comm.rating, comm.data, comm.comment)));
+      feedback.forEach(comm => feedback__content.insertAdjacentHTML('beforeend', FeedbackHtml(comm.author, comm.rating, comm.data, comm.comment)));
     } else feedback__content.innerHTML = '<div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;"><span style="font-size: 18px; font-weight: bold;">Отзывов пока нет. Вы можете стать первым!</span></div>';
-
-  }
-  function feedbackHtml(name, rating, data, comment) {
-    return `<div class="feedback__feedback">
-    <div class="feedback__users">
-      <div class="feedback__users-imeg">
-        <img class="feedback__users-img" src="../../img/svg/user.svg" alt="${name}">
-      </div>
-      <span class="feedback__users-name">${name}</span>
-    </div>
-    <div class="feedback__users-rating">
-      <div class="card-rating">
-        <div class="card-rating__active">
-          <div class="card-rating__item _icon-star"></div>
-          <div class="card-rating__item _icon-star"></div>
-          <div class="card-rating__item _icon-star"></div>
-          <div class="card-rating__item _icon-star"></div>
-          <div class="card-rating__item _icon-star"></div>
-        </div>
-        <div class="card-rating__items" id="user-rating" data-rating="${rating}">
-          <div class="card-rating__item _icon-star"></div>
-          <div class="card-rating__item _icon-star"></div>
-          <div class="card-rating__item _icon-star"></div>
-          <div class="card-rating__item _icon-star"></div>
-          <div class="card-rating__item _icon-star"></div>
-        </div>
-      </div>
-      <span class="feedback__users-data">${data}</span>
-    </div>
-    <p class="feedback__users-text">${comment}</p>
-  </div>`;
   }
   function setRating() {
     let ratingActive, ratingValue;
@@ -320,50 +246,13 @@ window.addEventListener('DOMContentLoaded', function () {
       });
     }
   }
-  function cardsHtml(id, img, price, title, rating, link, catalog) {
-    return `<div class="wrapper-card swiper-slide" id="${id}">
-    <div class="card">
-      <a href="../${catalog}/${link}" class="card-wrapper-img">
-        <img src="../../img/img-card/${img[0]}" alt="${title}" class="card-img" data-img="${img[0]}"></img>
-        <span class="card-discount"></span>
-      </a>
-      <div class="card-content">
-        <div class="card-wrapper-price">
-          <p class="card-price-text">
-            <span class="card-price__ordinary card-price">${price} ₽</span>
-            <i>Обычная</i>
-          </p>
-        </div>
-        <div class="card-info">
-          <a href="../${catalog}/${link}" class="card-name-product">${title}</a>
-          <div class="card-rating">
-            <div class="card-rating__active">
-              <div class="card-rating__item _icon-star"></div>
-              <div class="card-rating__item _icon-star"></div>
-              <div class="card-rating__item _icon-star"></div>
-              <div class="card-rating__item _icon-star"></div>
-              <div class="card-rating__item _icon-star"></div>
-            </div>
-            <div class="card-rating__items" data-rating="${rating}">
-              <div class="card-rating__item _icon-star"></div>
-              <div class="card-rating__item _icon-star"></div>
-              <div class="card-rating__item _icon-star"></div>
-              <div class="card-rating__item _icon-star"></div>
-              <div class="card-rating__item _icon-star"></div>
-            </div>
-          </div>
-        </div>
-        <button class="card-button add-btn">В корзину</button>
-      </div>
-      <span class="card-like _icon-shape like"></span>
-    </div>
-  </div>`;
-  }
   function renderCardHtml(card, stocks) {
     const content = stocks.querySelector('.swiper-wrapper');
-    content.insertAdjacentHTML('beforeend', cardsHtml(card.id, card.img, card.price, card.name, card.rating, card.link, card.catalog));
+    content.insertAdjacentHTML('beforeend', CardHtml(card.id, card.img, card.price, card.name, card.rating, card.link, card.catalog, urlOrigin));
 
     const cardID = document.querySelector(`[id = "${card.id}"]`);
+    cardID.classList.add('swiper-slide');
+
     const cardDiscount = cardID.querySelector('.card-discount');
     if (card.discount !== '') cardDiscount.textContent = '-' + card.discount + '%';
     else cardDiscount.style.display = 'none';

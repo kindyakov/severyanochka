@@ -1,8 +1,8 @@
-const CardHtml = (id, img, price, title, rating, link, catalog) => {
+const CardHtml = (id, img, price, title, rating, link, catalog, urlOrigin) => {
   return `<div class="wrapper-card" id="${id}">
   <div class="card">
-    <a href="html/${catalog}/${link}" class="card-wrapper-img">
-      <img src="img/img-card/${img[0]}" alt="Блинчики" class="card-img" data-img="${img}"></img>
+    <a href="${urlOrigin}/html/${catalog}/${link}" class="card-wrapper-img">
+      <img src="${urlOrigin}/img/img-card/${img[0]}" alt="Блинчики" class="card-img" data-img="${img}"></img>
       <span class="card-discount"></span>
     </a>
     <div class="card-content">
@@ -13,7 +13,7 @@ const CardHtml = (id, img, price, title, rating, link, catalog) => {
         </p>
       </div>
       <div class="card-info">
-        <a href="html/${catalog}/${link}" class="card-name-product">${title}</a>
+        <a href="${urlOrigin}/html/${catalog}/${link}" class="card-name-product">${title}</a>
         <div class="card-rating">
           <div class="card-rating__active">
             <div class="card-rating__item _icon-star"></div>

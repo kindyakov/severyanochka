@@ -1,4 +1,7 @@
-const catalog = ['milk-cheese-egg', 'frozen-foods', 'breed', 'baby-food', 'confectionery-products', 'drinks', 'fruits-vegetables', 'grocery', 'healthy-eating', 'meat-poultry-sausage', 'non-food-products', 'tea-coffee', 'pet-supplies'];
+import { urlOrigin } from './components/Links.js';
+import GetAllCards from './components/GetAllCards.js';
+import CardBasketHtml from './components/CardBasketHtml.js';
+
 const basket = document.querySelector('.basket');// Корзина
 const basket__content = document.querySelector('.basket__content');// Обертка карточек
 const checkAll = document.querySelector('#settings-check');// Выделить всё
@@ -20,8 +23,7 @@ if (JSON.parse(localStorage.getItem('productsBasket')) !== null) {
 }
 fetch('JSON/products.json')
   .then(data => data.json())
-  .then(data => allCard(data))
-  .then(data => serachCard(data))
+  .then(data => GetAllCards(data, productID))
   .then(data => {
     if (productID.length > 0) {
       data.forEach((card, i) => {
@@ -34,24 +36,6 @@ fetch('JSON/products.json')
     calcSumPrice(cardsWrapper);
   })
   .catch(err => console.error(err))
-// Сохраняю все карточки
-function allCard(data) {
-  catalog.forEach(title => {
-    if (data[title]) {
-      productsALL = [...productsALL, ...data[title].cardData];
-    }
-  });
-  return productsALL;
-}
-// Ищу нужные карточки
-function serachCard(array) {
-  let cards = [];
-  productID.forEach(id => {
-    cards = cards.concat(array.filter(card => card.id === id));
-  })
-  return cards;
-}
-
 
 // Значение счетчика
 let counterScore = 1;
@@ -216,9 +200,6 @@ basketButton.addEventListener('click', function (e) {
   }
 })
 
-
-
-
 function calcSumPrice(elem) {
   boxInfoOrder.innerHTML = '';
   // Сумма товаров
@@ -273,56 +254,8 @@ function removeCardAnimate(array) {
     }
   }, 150)
 }
-function cardBasketHtml(id, img, link, catalog, price, title) {
-  return `<div class="basket__wrapper-cards" id="${id}">
-  <div class="basket__card">
-    <div class="basket__card-wrapper-checkbox">
-      <div class="basket__card-checkbox">
-        <input type="checkbox" id="basket-card-check" class="basket__card-check basket-card-check">
-        <label for="basket-card-check" class="basket__card-check-label">✓</label>
-      </div>
-    </div>
-
-    <div class="basket__card-wrapper-content">
-      <a href="html/${catalog}/${link}" class="basket__card-wrapper-img">
-        <img src="img/img-card/${img[0]}" class="basket__card-img"></img>
-      </a>
-      <div class="basket__card-content">
-        <a href="html/${catalog}/${link}" class="basket__card-name">${title}</a>
-        <div class="basket__card-text">
-          <p class="basket__card-wrapper-price wrapper-price">
-            <span class="basket__card-price basket__card-price-usual">${price} ₽</span>
-            <i class="basket__card-price-context card-price-context-ordinary"></i>
-          </p>
-          <p class="basket__card-wrapper-price">
-            <span class="basket__card-price basket__card-price-card"></span>
-            <i class="basket__card-price-context card-price-context-card"></i>
-          </p>
-          <p>
-            <span class="basket__card-info">за шт.</span>
-          </p>
-          <p>
-            <span class="basket__card-discount"></span>
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="basket__card-count-wrapper">
-      <div class="basket__card-counter">
-        <button class="basket__card-counter-btn counter-plus" data-counter-plus="+"></button>
-        <span class="basket__card-counter-input">1</span>
-        <button class="basket__card-counter-btn counter-minus" data-counter-plus="-"></button>
-      </div>
-      <div class="basket__card-counter-wrapper-price">
-        <span class="basket__card-counter-price-sum">${price} ₽</span>
-        <i class="basket__card-counter-price-old"></i>
-      </div>
-    </div>
-  </div>
-</div>`;
-}
 function renderCardHtml(card) {
-  basket__content.insertAdjacentHTML('beforeend', cardBasketHtml(card.id, card.img, card.link, card.catalog, card.price, card.name));
+  basket__content.insertAdjacentHTML('beforeend', CardBasketHtml(card.id, card.img, card.link, card.catalog, card.price, card.name, urlOrigin));
 
   const cardID = document.querySelector(`[id = "${card.id}"]`);
   const cardDiscount = cardID.querySelector('.basket__card-discount');
