@@ -1,3 +1,5 @@
+import CardHtml from './components/CardHtml.js';
+
 window.addEventListener('DOMContentLoaded', function () {
   const catalog = ['milk-cheese-egg', 'frozen-foods', 'breed', 'baby-food', 'confectionery-products', 'drinks', 'fruits-vegetables', 'grocery', 'healthy-eating', 'meat-poultry-sausage', 'non-food-products', 'tea-coffee', 'pet-supplies'];
   const favouritesProducts = document.querySelector('#favourites-products');
@@ -103,50 +105,8 @@ window.addEventListener('DOMContentLoaded', function () {
     })
     return cards;
   }
-  function cardsHtml(id, img, price, title, rating, link, catalog) {
-    return `<div class="wrapper-card" id="${id}">
-  <div class="card">
-    <a href="html/${catalog}/${link}" class="card-wrapper-img">
-      <img src="img/img-card/${img[0]}" alt="Блинчики" class="card-img" data-img="${img}"></img>
-      <span class="card-discount"></span>
-    </a>
-    <div class="card-content">
-      <div class="card-wrapper-price">
-        <p class="card-price-text">
-          <span class="card-price__ordinary card-price">${price} ₽</span>
-          <i class="card-price__i"></i>
-        </p>
-      </div>
-      <div class="card-info">
-        <a href="html/${catalog}/${link}" class="card-name-product">${title}</a>
-        <div class="card-rating">
-          <div class="card-rating__active">
-            <div class="card-rating__item _icon-star"></div>
-            <div class="card-rating__item _icon-star"></div>
-            <div class="card-rating__item _icon-star"></div>
-            <div class="card-rating__item _icon-star"></div>
-            <div class="card-rating__item _icon-star"></div>
-          </div>
-          <div class="card-rating__items" data-rating="${rating}">
-            <div class="card-rating__item _icon-star"></div>
-            <div class="card-rating__item _icon-star"></div>
-            <div class="card-rating__item _icon-star"></div>
-            <div class="card-rating__item _icon-star"></div>
-            <div class="card-rating__item _icon-star"></div>
-          </div>
-        </div>
-      </div>
-      <button class="card-button add-btn">В корзину</button>
-    </div>
-    <span class="card-like _icon-shape like"></span>
-    <div class="card-delete-wrapper">
-      <span class="card-delete">✖</span>
-    </div>
-  </div>
-</div>`;
-  }
   function renderCardHtml(card) {
-    favouritesProducts.insertAdjacentHTML('beforeend', cardsHtml(card.id, card.img, card.price, card.name, card.rating, card.link, card.catalog));
+    favouritesProducts.insertAdjacentHTML('beforeend', CardHtml(card.id, card.img, card.price, card.name, card.rating, card.link, card.catalog));
 
     const cardID = document.querySelector(`[id = "${card.id}"]`);
     const cardDiscount = cardID.querySelector('.card-discount');
@@ -202,6 +162,7 @@ window.addEventListener('DOMContentLoaded', function () {
     return Number(str.replace(/[^\d.-]/g, ''));
   }
   function rating() {
+    let ratingActive, ratingValue;
     const cardRating = document.getElementsByClassName('card-rating');
     if (cardRating.length > 0) {
       initRatings();
