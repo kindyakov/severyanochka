@@ -1,8 +1,8 @@
-import { urlOrigin } from './components/Links.js';
-import CardHtml from './components/CardHtml.js';
-import { AddDisableCardBtn, AddDisableCardLike } from './components/AddDisableClass.js';
-import Rating from './components/Rating.js';
-import GetAllCards from './components/GetAllCards.js';
+import { urlOrigin } from './modules/Links.js';
+import CardHtml from './modules/CardHtml.js';
+import { AddDisableCardBtn, AddDisableCardLike } from './modules/AddDisableClass.js';
+import Rating from './modules/Rating.js';
+import GetAllCards from './modules/GetAllCards.js';
 
 window.addEventListener('DOMContentLoaded', function () {
   const content = document.querySelector('.search-result__content');

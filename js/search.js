@@ -1,4 +1,4 @@
-import { urlOrigin, urlJsonProducts, urlImgCard, urlHtml } from './components/Links.js';
+import { urlOrigin, urlJsonProducts, urlImgCard, urlHtml } from './modules/Links.js';
 
 window.addEventListener('DOMContentLoaded', function () {
   const catalog = ['milk-cheese-egg', 'frozen-foods', 'breed', 'baby-food', 'confectionery-products', 'drinks', 'fruits-vegetables', 'grocery', 'healthy-eating', 'meat-poultry-sausage', 'non-food-products', 'tea-coffee', 'pet-supplies'];

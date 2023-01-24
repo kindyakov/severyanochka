@@ -1,6 +1,6 @@
-import { urlOrigin } from './components/Links.js';
-import GetAllCards from './components/GetAllCards.js';
-import CardBasketHtml from './components/CardBasketHtml.js';
+import { urlOrigin } from './modules/Links.js';
+import GetAllCards from './modules/GetAllCards.js';
+import CardBasketHtml from './modules/CardBasketHtml.js';
 
 const basket = document.querySelector('.basket');// Корзина
 const basket__content = document.querySelector('.basket__content');// Обертка карточек

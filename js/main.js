@@ -1,4 +1,4 @@
-import UpdateNav from "./components/UpdateNav.js";
+import UpdateNav from "./modules/UpdateNav.js";
 
 const catalogMenu = document.querySelector('.header-catalog');
 const wrapper = document.querySelector('.wrapper');

@@ -1,7 +1,7 @@
-import { urlOrigin } from './components/Links.js';
-import CardHtml from './components/CardHtml.js';
-import { AddDisableCardBtn, AddDisableCardLike } from './components/AddDisableClass.js';
-import Rating from "./components/Rating.js";
+import { urlOrigin } from './modules/Links.js';
+import CardHtml from './modules/CardHtml.js';
+import { AddDisableCardBtn, AddDisableCardLike } from './modules/AddDisableClass.js';
+import Rating from "./modules/Rating.js";
 
 const products_container = document.querySelector('#products-container');
 const filters_products = document.querySelector('.filters-products');

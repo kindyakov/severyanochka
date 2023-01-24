@@ -1,4 +1,4 @@
-import { AddDisableCardBtn, AddDisableCardLike } from './components/AddDisableClass.js';
+import { AddDisableCardBtn, AddDisableCardLike } from './modules/AddDisableClass.js';
 window.addEventListener('DOMContentLoaded', function () {
   let cardBasketArray = [];
   let cardFavouritesArray = [];

@@ -1,8 +1,8 @@
-import { urlOrigin } from './components/Links.js';
-import CardHtml from './components/CardHtml.js';
-import { AddDisableCardBtn, AddDisableCardLike } from './components/AddDisableClass.js';
-import Rating from "./components/Rating.js";
-import FeedbackHtml from './components/FeedbackHtml.js';
+import { urlOrigin } from './modules/Links.js';
+import CardHtml from './modules/CardHtml.js';
+import { AddDisableCardBtn, AddDisableCardLike } from './modules/AddDisableClass.js';
+import Rating from "./modules/Rating.js";
+import FeedbackHtml from './modules/FeedbackHtml.js';
 
 window.addEventListener('DOMContentLoaded', function () {
   const catalog = ['milk-cheese-egg', 'frozen-foods', 'breed', 'baby-food', 'confectionery-products', 'drinks', 'fruits-vegetables', 'grocery', 'healthy-eating', 'meat-poultry-sausage', 'non-food-products', 'tea-coffee', 'pet-supplies'];
