@@ -18,4 +18,4 @@ const AddDisableCardLike = (arr) => {
   });
 }
 
-export { AddDisableCardBtn, AddDisableCardLike }
+export { AddDisableCardBtn, AddDisableCardLike };
