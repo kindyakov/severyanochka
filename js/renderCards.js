@@ -3,6 +3,7 @@ import CardHtml from './modules/CardHtml.js';
 import { AddDisableCardBtn, AddDisableCardLike } from './modules/AddDisableClass.js';
 import Rating from "./modules/Rating.js";
 import FeedbackHtml from './modules/FeedbackHtml.js';
+import CreateSliderCards from './modules/CreateSliderCards.js';
 
 window.addEventListener('DOMContentLoaded', function () {
   const catalog = ['milk-cheese-egg', 'frozen-foods', 'breed', 'baby-food', 'confectionery-products', 'drinks', 'fruits-vegetables', 'grocery', 'healthy-eating', 'meat-poultry-sausage', 'non-food-products', 'tea-coffee', 'pet-supplies'];
@@ -81,12 +82,20 @@ window.addEventListener('DOMContentLoaded', function () {
     galleryActive();
     if (stocks) allCard(productsArr, cardsData.id).forEach(card => renderCardHtml(card, stocks));
     if (related) related.closest('.main-promo').style.display = 'none';
+    // new CreateSliderCards(products, {
+    //   title: 'Новинки',
+    //   link: 'https://google.com',
+    //   linkText: 'Все новинки',
+    //   className: 'new_products'
+    // }, allCard(productsArr, cardsData.id), urlOrigin);
 
     AddDisableCardBtn(cardBasketArray);
     AddDisableCardLike(cardFavouritesArray);
     renderFeedback(cardsData);
     setRating();
     Rating();
+
+
   };
   getData();
 

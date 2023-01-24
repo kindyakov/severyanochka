@@ -1,7 +1,7 @@
 const modalLogin = document.querySelector('.modal-login');
 const inputLogin = document.querySelector('.modal-login__input');
 const profilBtn = document.querySelector('.header-profil');
-
+const wrapper = document.querySelector('.wrapper');
 let profile = {};
 // Modal 
 if (JSON.parse(localStorage.getItem('profile')) !== null) {

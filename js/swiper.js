@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('load', function () {
   const indexSwiper = new Swiper('.index-swiper', {
     navigation: {
       nextEl: '.swiper-button-next',
