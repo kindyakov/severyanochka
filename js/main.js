@@ -37,7 +37,7 @@ if (_slides_cards) {
       insert: _slides_cards,
       where: 'afterbegin',
       title: 'Новинки',
-      link: urlOrigin + '/discount.html',
+      link: urlOrigin + '/new-products.html',
       linkText: 'Все новинки',
       className: 'new_products',
       cards: GetAllCards(data),
