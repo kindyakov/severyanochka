@@ -1,5 +1,5 @@
 import UpdateNav from "./modules/UpdateNav.js";
-import Request from "./modules/request.js";
+import Request from "./modules/Request.js";
 import CreateSliderCards from "./modules/CreateSliderCards.js";
 import { urlOrigin } from "./modules/Links.js";
 import GetAllCards from "./modules/GetAllCards.js";
