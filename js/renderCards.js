@@ -1,6 +1,6 @@
 import { urlOrigin } from './modules/Links.js';
 import { CardHtml, RenderCardHtml } from './modules/CardHtml.js';
-import Request from './modules/request.js';
+// import Request from './modules/request.js';
 import { AddDisableCardBtn, AddDisableCardLike } from './modules/AddDisableClass.js';
 import Rating from "./modules/Rating.js";
 import FeedbackHtml from './modules/FeedbackHtml.js';
