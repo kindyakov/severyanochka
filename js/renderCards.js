@@ -1,9 +1,11 @@
 import { urlOrigin } from './modules/Links.js';
-import CardHtml from './modules/CardHtml.js';
+import { CardHtml, RenderCardHtml } from './modules/CardHtml.js';
+import Request from './modules/request.js';
 import { AddDisableCardBtn, AddDisableCardLike } from './modules/AddDisableClass.js';
 import Rating from "./modules/Rating.js";
 import FeedbackHtml from './modules/FeedbackHtml.js';
 import CreateSliderCards from './modules/CreateSliderCards.js';
+import GetAllCards from './modules/GetAllCards.js';
 
 window.addEventListener('DOMContentLoaded', function () {
   const catalog = ['milk-cheese-egg', 'frozen-foods', 'breed', 'baby-food', 'confectionery-products', 'drinks', 'fruits-vegetables', 'grocery', 'healthy-eating', 'meat-poultry-sausage', 'non-food-products', 'tea-coffee', 'pet-supplies'];
@@ -38,12 +40,6 @@ window.addEventListener('DOMContentLoaded', function () {
 
   const btnLike = document.querySelector('.products__header-icon._icon-shape');
 
-  const index_swiper = document.querySelectorAll('.index-swiper');
-  const stocks = document.querySelector('.stocks');
-  const related = document.querySelector('.related');
-
-  const all_discount = document.querySelector('.main-promo__all-discount');
-
   let gallerySwiper;
   let cardsData;
 
@@ -51,12 +47,6 @@ window.addEventListener('DOMContentLoaded', function () {
   let nameFile = url.split('/').reverse()[0];
   let nameFolder = url.split('/').reverse()[1];
   nameFile = nameFile.split('#')[0];
-
-  if ('ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0) {
-    index_swiper.forEach(swiper => swiper.classList.remove('swiper-no-swiping'));
-  } else {
-    index_swiper.forEach(swiper => swiper.classList.add('swiper-no-swiping'));
-  }
 
   async function getData() {
     const response = await fetch('../../JSON/products.json');
@@ -80,22 +70,35 @@ window.addEventListener('DOMContentLoaded', function () {
       });
     }
     galleryActive();
-    if (stocks) allCard(productsArr, cardsData.id).forEach(card => renderCardHtml(card, stocks));
-    if (related) related.closest('.main-promo').style.display = 'none';
-    // new CreateSliderCards(products, {
-    //   title: 'Новинки',
-    //   link: 'https://google.com',
-    //   linkText: 'Все новинки',
-    //   className: 'new_products'
-    // }, allCard(productsArr, cardsData.id), urlOrigin);
+
+    // Request(urlOrigin).then(data => {
+    //   new CreateSliderCards({
+    //     insert: _slides_cards,
+    //     where: 'afterbegin',
+    //     title: 'Акции',
+    //     link: urlOrigin + '/discount.html',
+    //     linkText: 'Все акции',
+    //     className: 'new_action',
+    //     cards: GetAllCards(data),
+    //     urlOrigin: urlOrigin,
+    //   });
+    //   new CreateSliderCards({
+    //     insert: _slides_cards,
+    //     where: 'afterbegin',
+    //     title: 'Новинки',
+    //     link: urlOrigin + '/discount.html',
+    //     linkText: 'Все новинки',
+    //     className: 'new_products',
+    //     cards: GetAllCards(data),
+    //     urlOrigin: urlOrigin,
+    //   });
+    // })
 
     AddDisableCardBtn(cardBasketArray);
     AddDisableCardLike(cardFavouritesArray);
     renderFeedback(cardsData);
     setRating();
     Rating();
-
-
   };
   getData();
 
@@ -133,9 +136,7 @@ window.addEventListener('DOMContentLoaded', function () {
     if (data.price_card !== '') priceCard.textContent = data.price_card + ' ₽';// цена по карте
     else priceCard.parentNode.style.display = 'none';
     data.characteristic.forEach(arr => specifications.insertAdjacentHTML('beforeend', specificationsHtml(arr[0], arr[1]))); // Характеристики
-    document.querySelector('.main-promo__title').textContent = 'С этим товаров покупают';
     document.querySelector('.header-menu__catalog').href = '../catalog.html';
-    all_discount.href = '../../discount.html';
   }
   function navSliderHtml(img, alt, i) {
     return `<div class="products__main-slider-slide" data-index="${i}">

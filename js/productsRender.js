@@ -1,7 +1,8 @@
 import { urlOrigin } from './modules/Links.js';
-import CardHtml from './modules/CardHtml.js';
+import { RenderCardHtml } from './modules/CardHtml.js';
 import { AddDisableCardBtn, AddDisableCardLike } from './modules/AddDisableClass.js';
 import Rating from "./modules/Rating.js";
+import ErrorProducts from './modules/ErrorProducts.js';
 
 const products_container = document.querySelector('#products-container');
 const filters_products = document.querySelector('.filters-products');
@@ -35,25 +36,21 @@ if (products_container) {
     const productsObject = await response.json();
     const productsCurrent = productsObject[`${products_containerDataset}`];
 
-    if (productsCurrent !== undefined) {
-      const productsCards = productsCurrent['cardData'];
-      const productsFillters = productsCurrent['fillters'];
-
-      lastCardID = productsCards[productsCards.length - 1];
-      renderProducts(productsCards);
-      renderFillters(productsFillters)
-      Rating();
-      AddDisableCardBtn(productsArrayLocalStorage);
-      AddDisableCardLike(cardFavouritesArrays);
-    } else {
+    if (productsCurrent == undefined) {
       products_container.style.height = '100%';
-      products_container.innerHTML = `<div class="error-products">
-    <div class="error-products_content">
-      <span class="error-products_text">К сожалению, раздел пуст</span>
-      <span class="error-products_comment">В данный момент нет активных товаров</span>
-    </div>
-  </div>`;
+      products_container.innerHTML = ErrorProducts('К сожелению раздел пуст', 'catalog.html');
+      return;
     }
+
+    const productsCards = productsCurrent['cardData'];
+    const productsFillters = productsCurrent['fillters'];
+
+    lastCardID = productsCards[productsCards.length - 1];
+    renderProducts(productsCards);
+    renderFillters(productsFillters)
+    Rating();
+    AddDisableCardBtn(productsArrayLocalStorage);
+    AddDisableCardLike(cardFavouritesArrays);
   }
   getProducts();
 
@@ -64,7 +61,7 @@ if (products_container) {
 
     productsArray.forEach(card => {
       if (inter < cards) {
-        renderCardHtml(card);
+        RenderCardHtml(products_container, card, urlOrigin);
         inter++;
       }
     });
@@ -104,7 +101,7 @@ if (products_container) {
           // Очищаю контейнер с карточками
           products_container.innerHTML = '';
           // Добовляю новые карточки
-          visibleCard.forEach(card => renderCardHtml(card));
+          visibleCard.forEach(card => RenderCardHtml(products_container, card, urlOrigin));
           // Для показа рейтинга
           Rating();
           // Добвляет класс disabled если карточка в корзине
@@ -132,13 +129,13 @@ if (products_container) {
               // Pagination active
               paginationItem[paginationIndex - 2].classList.add('show');
               // Вывод карточек            
-              visibleCard.forEach(card => renderCardHtml(card));
+              visibleCard.forEach(card => RenderCardHtml(products_container, card, urlOrigin));
             } else if (single == 'next') {
               const visibleCard = productsArray.slice(paginationIndex * cardsVisible, paginationIndex * cardsVisible + cardsVisible);
               // Pagination active
               paginationItem[paginationIndex--].classList.add('show');
               // Вывод карточек            
-              visibleCard.forEach(card => renderCardHtml(card));
+              visibleCard.forEach(card => RenderCardHtml(products_container, card, urlOrigin));
             }
           } else if (e.target.classList.contains('_icon-duble-arrows')) {
             const duble = e.target.dataset.duble;
@@ -147,13 +144,13 @@ if (products_container) {
               // Pagination active
               paginationItem[paginationIndex - 3].classList.add('show');
               // Вывод карточек            
-              visibleCard.forEach(card => renderCardHtml(card));
+              visibleCard.forEach(card => RenderCardHtml(products_container, card, urlOrigin));
             } else if (duble == 'duble-next') {
               const visibleCard = productsArray.slice(paginationIndex * cardsVisible + cardsVisible, paginationIndex * cardsVisible + cardsVisible * 2);
               // Pagination active
               paginationItem[paginationIndex + 1].classList.add('show');
               // Вывод карточек            
-              visibleCard.forEach(card => renderCardHtml(card));
+              visibleCard.forEach(card => RenderCardHtml(products_container, card, urlOrigin));
             }
           }
           Rating();
@@ -177,7 +174,7 @@ if (products_container) {
           const visibleCard = productsArray.slice(paginationIndex * cardsVisible, paginationIndex * cardsVisible + cardsVisible);
 
           // Вывод карточек
-          visibleCard.forEach(card => renderCardHtml(card));
+          visibleCard.forEach(card => RenderCardHtml(products_container, card, urlOrigin));
           Rating();
           AddDisableCardBtn(productsArrayLocalStorage);
           AddDisableCardLike(cardFavouritesArrays);
@@ -200,26 +197,8 @@ if (products_container) {
   }
 };
 
-
 Rating();
 
-function renderCardHtml(card) {
-  products_container.insertAdjacentHTML('beforeend', CardHtml(card.id, card.img, card.price, card.name, card.rating, card.link, card.catalog, urlOrigin));
-
-  const cardID = document.querySelector(`[id = "${card.id}"]`);
-  const cardDiscount = cardID.querySelector('.card-discount');
-  if (card.discount) cardDiscount.textContent = '-' + card.discount + '%';
-  else cardDiscount.style.display = 'none';
-  if (card.price_card) {
-    const cardWrapperPrice = cardID.querySelector('.card-wrapper-price');
-    cardID.querySelector('.card-price__i').textContent = 'Обычная';
-    cardWrapperPrice.insertAdjacentHTML('beforeend', `
-      <p class="card-price-text">
-        <span class="card-price__card card-price">${card.price_card} ₽</span>
-        <i>С картой</i>
-      </p>`);
-  }
-}
 function addClassPaginationBlock() {
   if (paginationItem[0].classList.contains('show')) blockPrev.classList.add('none');
   else blockPrev.classList.remove('none');

@@ -1,20 +1,32 @@
 class CreateSliderCards {
-  constructor(insert, obj, cards, urlOrigin) {
-    this.insert = insert;
+  constructor(obj) {
+    this.insert = obj.insert;
+    this.where = obj.where;
     this.title = obj.title;
     this.link = obj.link;
     this.linkText = obj.linkText;
     this.className = obj.className;
-    this.cards = cards;
-    this.urlOrigin = urlOrigin;
+    this.cards = obj.cards;
+    this.urlOrigin = obj.urlOrigin;
 
     this.renderSlider();
+    this.blockSwiping();
   }
   addSliderHtml() {
-    this.insert.insertAdjacentHTML('afterend', sliderHtml(this.title, this.link, this.linkText, this.className));
+    this.insert.insertAdjacentHTML(`${this.where}`,
+      sliderHtml(this.title, this.link, this.linkText, this.className));
   }
   addCardSlider() {
+
     this.cards.forEach(card => renderCardHtml(card, this.className, this.urlOrigin));
+  }
+  blockSwiping() {
+    const index_swiper = document.querySelectorAll('.index-swiper');
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0) {
+      index_swiper.forEach(swiper => swiper.classList.remove('swiper-no-swiping'));
+    } else {
+      index_swiper.forEach(swiper => swiper.classList.add('swiper-no-swiping'));
+    }
   }
   renderSlider() {
     this.addSliderHtml();
@@ -29,10 +41,10 @@ const sliderHtml = (title, link, linkText, className) => {
           <h2 class="main-promo__title main-title title-discount">${title}</h2>
           <a href="${link}" class="main-promo__all-link main-promo__all-discount _icon-arrow">${linkText}</a>
         </div>
-        <div class="products-swiper-wrapper ${className}">
+        <div class="products-swiper-wrapper">
           <!-- products-swiper -->
           <div class="index-swiper swiper">
-            <div class="main-promo__content swiper-wrapper">
+            <div class="main-promo__content swiper-wrapper ${className}">
 
             </div>
             <div class="swiper-button-prev products-swiper-prev"></div>
@@ -84,8 +96,7 @@ const CardHtml = (id, img, price, title, rating, link, catalog, urlOrigin) => {
   </div>`;
 }
 const renderCardHtml = (card, selector, urlOrigin) => {
-  const wrapper = document.querySelector(`.${selector}`);
-  const content = wrapper.querySelector('.swiper-wrapper');
+  const content = document.querySelector(`.${selector}`);
 
   content.insertAdjacentHTML('beforeend', CardHtml(card.id, card.img,
     card.price, card.name,

@@ -1,8 +1,10 @@
+import GetCards from './modules/GetCards.js';
 import { urlOrigin } from './modules/Links.js';
-import CardHtml from './modules/CardHtml.js';
+import { RenderCardHtml } from './modules/CardHtml.js';
 import { AddDisableCardBtn, AddDisableCardLike } from './modules/AddDisableClass.js';
 import Rating from './modules/Rating.js';
 import GetAllCards from './modules/GetAllCards.js';
+import ErrorProducts from './modules/ErrorProducts.js';
 
 window.addEventListener('DOMContentLoaded', function () {
   const favouritesProducts = document.querySelector('#favourites-products');
@@ -37,15 +39,10 @@ window.addEventListener('DOMContentLoaded', function () {
     .then(data => data.json())
     .then(data => GetAllCards(data, product))
     .then(data => {
-      if (product.length > 0) data.forEach(card => renderCardHtml(card))
+      if (product.length > 0) data.forEach(card => RenderCardHtml(favouritesProducts, card, urlOrigin))
       else {
         favouritesProducts.style.height = '100%';
-        favouritesProducts.innerHTML = `<div class="error-products">
-        <div class="error-products_content">
-          <span class="error-products_text">К сожалению, раздел пуст</span>
-          <a href="html/catalog.html" class="basket__empty-link">Нажмите здесь, чтобы продолжить покупки</a>
-        </div>
-      </div>`;
+        favouritesProducts.innerHTML = ErrorProducts();
       }
       if ('ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0) {
         document.querySelectorAll('.card-delete').forEach(span => span.style.opacity = 1);
@@ -55,7 +52,11 @@ window.addEventListener('DOMContentLoaded', function () {
       Rating();
       filter(data);
     })
-    .catch(err => console.error(err))
+    .catch(err => {
+      favouritesProducts.style.height = '100%';
+      favouritesProducts.innerHTML = ErrorProducts();
+      console.error(err)
+    })
   // Удаление карточек
   favouritesProducts.addEventListener('click', e => {
     if (e.target.classList.contains('card-delete')) {
@@ -89,23 +90,6 @@ window.addEventListener('DOMContentLoaded', function () {
     </div>`;
     }
   });
-  function renderCardHtml(card) {
-    favouritesProducts.insertAdjacentHTML('beforeend', CardHtml(card.id, card.img, card.price, card.name, card.rating, card.link, card.catalog, urlOrigin));
-
-    const cardID = document.querySelector(`[id = "${card.id}"]`);
-    const cardDiscount = cardID.querySelector('.card-discount');
-    if (card.discount) cardDiscount.textContent = '-' + card.discount + '%';
-    else cardDiscount.style.display = 'none';
-    if (card.price_card) {
-      const cardWrapperPrice = cardID.querySelector('.card-wrapper-price');
-      cardID.querySelector('.card-price__i').textContent = 'Обычная';
-      cardWrapperPrice.insertAdjacentHTML('beforeend', `
-      <p class="card-price-text">
-        <span class="card-price__card card-price">${card.price_card} ₽</span>
-        <i>С картой</i>
-      </p>`);
-    }
-  }
   function filter(product) {
     if (product.length > 0) {
       product.forEach(card => {

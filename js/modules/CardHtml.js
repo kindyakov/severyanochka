@@ -40,5 +40,22 @@ const CardHtml = (id, img, price, title, rating, link, catalog, urlOrigin) => {
   </div>
   </div>`;
 }
+const RenderCardHtml = (where, card, urlOrigin) => {
+  where.insertAdjacentHTML('beforeend', CardHtml(card.id, card.img, card.price, card.name, card.rating, card.link, card.catalog, urlOrigin));
 
-export default CardHtml;
+  const cardID = document.querySelector(`[id = "${card.id}"]`);
+  const cardDiscount = cardID.querySelector('.card-discount');
+
+  if (card.discount) cardDiscount.textContent = '-' + card.discount + '%';
+  else cardDiscount.style.display = 'none';
+  if (card.price_card) {
+    const cardWrapperPrice = cardID.querySelector('.card-wrapper-price');
+    cardID.querySelector('.card-price__i').textContent = 'Обычная';
+    cardWrapperPrice.insertAdjacentHTML('beforeend', `
+      <p class="card-price-text">
+        <span class="card-price__card card-price">${card.price_card} ₽</span>
+        <i>С картой</i>
+      </p>`);
+  }
+}
+export { CardHtml, RenderCardHtml };

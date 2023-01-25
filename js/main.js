@@ -1,7 +1,12 @@
 import UpdateNav from "./modules/UpdateNav.js";
+import Request from "./modules/request.js";
+import CreateSliderCards from "./modules/CreateSliderCards.js";
+import { urlOrigin } from "./modules/Links.js";
+import GetAllCards from "./modules/GetAllCards.js";
 
 const catalogMenu = document.querySelector('.header-catalog');
 const wrapper = document.querySelector('.wrapper');
+const _slides_cards = document.querySelector('._slides-cards');
 //Modal
 const profilButton = document.querySelector('.header-profil');
 //Menu
@@ -10,14 +15,37 @@ const headerClon = document.querySelector('.menu-fixed')
 const headerMenu = document.querySelector('.header-menu')
 const headerWrapper = document.querySelector('.header-wrapper')
 
-const cardsCatalog = document.querySelectorAll('.cards-catalog');
-let cardCatalogbool = true;
 //
 const menuLinks = document.querySelectorAll('.header-menu__item');
 const footerLinks = document.querySelectorAll('.footer__menu-link');
 //
 const btnUp = document.querySelector('.btn-up');
 //
+if (_slides_cards) {
+  Request(urlOrigin).then(data => {
+    new CreateSliderCards({
+      insert: _slides_cards,
+      where: 'afterbegin',
+      title: 'Акции',
+      link: urlOrigin + '/discount.html',
+      linkText: 'Все акции',
+      className: 'new_action',
+      cards: GetAllCards(data),
+      urlOrigin: urlOrigin,
+    });
+    new CreateSliderCards({
+      insert: _slides_cards,
+      where: 'afterbegin',
+      title: 'Новинки',
+      link: urlOrigin + '/discount.html',
+      linkText: 'Все новинки',
+      className: 'new_products',
+      cards: GetAllCards(data),
+      urlOrigin: urlOrigin,
+    });
+  })
+}
+
 wrapper.addEventListener('mouseover', function (e) {
   if (e.target.closest('.header-catalog__button')) {
     catalogMenu.classList.add('open');

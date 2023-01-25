@@ -1,5 +1,5 @@
 import { urlOrigin } from './modules/Links.js';
-import CardHtml from './modules/CardHtml.js';
+import { CardHtml, RenderCardHtml } from './modules/CardHtml.js';
 import { AddDisableCardBtn, AddDisableCardLike } from './modules/AddDisableClass.js';
 import Rating from "./modules/Rating.js";
 
@@ -21,7 +21,7 @@ window.addEventListener('DOMContentLoaded', function () {
   fetch('JSON/products.json')
     .then(data => data.json())
     .then(data => allCard(data))
-    .then(cards => cards.forEach(card => renderCardHtml(card)))
+    .then(cards => cards.forEach(card => RenderCardHtml(content, card, urlOrigin)))
     .catch(err => console.error(err))
 
   // Сохраняю все карточки
@@ -34,24 +34,5 @@ window.addEventListener('DOMContentLoaded', function () {
     });
     productsALL = productsALL.filter(card => card.discount !== '');
     return productsALL;
-  }
-  function renderCardHtml(card) {
-    content.insertAdjacentHTML('beforeend', CardHtml(card.id, card.img, card.price, card.name, card.rating, card.link, card.catalog, urlOrigin));
-    const cardID = document.querySelector(`[id = "${card.id}"]`);
-    const cardDiscount = cardID.querySelector('.card-discount');
-    if (card.discount !== '') cardDiscount.textContent = '-' + card.discount + '%';
-    else cardDiscount.style.display = 'none';
-    if (card.price_card !== '') {
-      const cardWrapperPrice = cardID.querySelector('.card-wrapper-price');
-      cardID.querySelector('.card-price__i').textContent = 'Обычная';
-      cardWrapperPrice.insertAdjacentHTML('beforeend', `
-        <p class="card-price-text">
-          <span class="card-price__card card-price">${card.price_card}</span>
-          <i>С картой</i>
-        </p>`);
-    }
-    Rating();
-    AddDisableCardBtn(cardBasketArray);
-    AddDisableCardLike(cardFavouritesArray);
   }
 })
