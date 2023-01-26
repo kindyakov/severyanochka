@@ -4,23 +4,19 @@ import { AddDisableCardBtn, AddDisableCardLike } from './modules/AddDisableClass
 import Rating from './modules/Rating.js';
 import GetAllCards from './modules/GetAllCards.js';
 import ErrorProducts from './modules/ErrorProducts.js';
+import CardsFromLS from "./modules/CardsFromLS.js";
 
 window.addEventListener('DOMContentLoaded', function () {
   const favouritesProducts = document.querySelector('#favourites-products');
   const randeSlider = document.querySelector('.filters_box-paramets__sliders');
-
   // Продукт из localSorange
-  let product = [];
-  let cardBasketArray = [];
+  const [cardsBasket, cardsFavourites] = CardsFromLS();
+
   // "span" для вывода Колличество товара 
   const productQuantity = document.querySelector('.main-title-quantity');
-  // Проверяю чтоб не было null
-  if (JSON.parse(localStorage.getItem('productsBasket')) !== null) {
-    cardBasketArray = JSON.parse(localStorage.getItem('productsBasket'));
-  }
-  if (JSON.parse(localStorage.getItem('productsFavourites')) !== null) {
-    product = JSON.parse(localStorage.getItem('productsFavourites'));
-    productQuantity.textContent = product.length;
+
+  if (cardsFavourites.length > 0) {
+    productQuantity.textContent = cardsFavourites.length;
   } else productQuantity.textContent = '0';
 
   let min_maxPriceArr = [];
@@ -36,9 +32,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
   fetch('JSON/products.json')
     .then(data => data.json())
-    .then(data => GetAllCards({ product: data, productID: product, byId: true }))
+    .then(data => GetAllCards({ product: data, productID: cardsFavourites, byId: true }))
     .then(data => {
-      if (product.length > 0) data.forEach(card => RenderCardHtml(favouritesProducts, card, urlOrigin, true))
+      if (cardsFavourites.length > 0) data.forEach(card => RenderCardHtml(favouritesProducts, card, urlOrigin, true))
       else {
         favouritesProducts.style.height = '100%';
         favouritesProducts.innerHTML = ErrorProducts();
@@ -46,8 +42,8 @@ window.addEventListener('DOMContentLoaded', function () {
       if ('ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0) {
         document.querySelectorAll('.card-delete').forEach(span => span.style.opacity = 1);
       }
-      AddDisableCardBtn(cardBasketArray);
-      AddDisableCardLike(product);
+      AddDisableCardBtn(cardsBasket);
+      AddDisableCardLike(cardsFavourites);
       Rating();
       filter(data);
     })
@@ -65,21 +61,21 @@ window.addEventListener('DOMContentLoaded', function () {
       const wrapperCardId = wrapperCard.getAttribute('id');
 
       // Нахожу удаленные карточку в массиве 
-      const removeCardIndex = product.findIndex(id => id === wrapperCardId);
+      const removeCardIndex = cardsFavourites.findIndex(id => id === wrapperCardId);
 
       // Удаление из массива
-      product.splice(removeCardIndex, 1);
-      localStorage.setItem('productsFavourites', JSON.stringify(product));
+      cardsFavourites.splice(removeCardIndex, 1);
+      localStorage.setItem('productsFavourites', JSON.stringify(cardsFavourites));
 
       // Вывод количество товаров в избранном 
-      document.querySelector('#menu-favourites').textContent = product.length;
-      productQuantity.textContent = product.length;
+      document.querySelector('#menu-favourites').textContent = cardsFavourites.length;
+      productQuantity.textContent = cardsFavourites.length;
 
       wrapperCard.remove();
       const wrapperCards = document.querySelectorAll('.wrapper-card');
       // filterPrice(wrapperCards)
     }
-    if (product.length === 0) {
+    if (cardsFavourites.length === 0) {
       favouritesProducts.style.height = '100%';
       favouritesProducts.innerHTML = `<div class="error-products">
       <div class="error-products_content">
@@ -89,9 +85,9 @@ window.addEventListener('DOMContentLoaded', function () {
     </div>`;
     }
   });
-  function filter(product) {
-    if (product.length > 0) {
-      product.forEach(card => {
+  function filter(cardsFavourites) {
+    if (cardsFavourites.length > 0) {
+      cardsFavourites.forEach(card => {
         min_maxPriceArr.push(priceWithoutSpaces(card.price));
         if (card.price_card !== '') min_maxPriceArr.push(priceWithoutSpaces(card.price_card))
       })
