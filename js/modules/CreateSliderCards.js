@@ -89,9 +89,6 @@ const CardHtml = (id, img, price, title, rating, link, catalog, urlOrigin) => {
       <button class="card-button add-btn">В корзину</button>
     </div>
     <span class="card-like _icon-shape like"></span>
-    <div class="card-delete-wrapper">
-      <span class="card-delete">✖</span>
-    </div>
   </div>
   </div>`;
 }

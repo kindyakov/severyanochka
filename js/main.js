@@ -6,6 +6,7 @@ import GetAllCards from "./modules/GetAllCards.js";
 import Rating from "./modules/Rating.js";
 import { AddDisableCardBtn, AddDisableCardLike } from "./modules/AddDisableClass.js";
 import CardsFromLS from "./modules/CardsFromLS.js";
+import LoadingSwiper from "./modules/LoadingSwiper.js";
 
 const [cardsBasket, cardsFavourites] = CardsFromLS();
 
@@ -48,6 +49,7 @@ if (_slides_cards) {
       cards: GetAllCards({ product: data, random: true }),
       urlOrigin: urlOrigin,
     });
+    LoadingSwiper();
     Rating();
     AddDisableCardBtn(cardsBasket);
     AddDisableCardLike(cardsFavourites);

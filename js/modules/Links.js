@@ -1,9 +1,9 @@
-let urlOrigin = window.location.origin + '/severyanochka';
-// let urlOrigin = window.location.origin;
-let urlJson = urlOrigin + '/JSON';
-let urlJsonProducts = urlJson + '/products.json';
-let urlImg = urlOrigin + '/img';
-let urlImgCard = urlImg + '/img-card/';
-let urlHtml = urlOrigin + '/html/';
+const urlOrigin = window.location.origin + '/severyanochka';
+// const urlOrigin = window.location.origin;
+const urlJson = urlOrigin + '/JSON';
+const urlJsonProducts = urlJson + '/products.json';
+const urlImg = urlOrigin + '/img';
+const urlImgCard = urlImg + '/img-card/';
+const urlHtml = urlOrigin + '/html/';
 
 export { urlOrigin, urlJson, urlJsonProducts, urlImg, urlImgCard, urlHtml };

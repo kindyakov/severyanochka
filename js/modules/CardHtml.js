@@ -34,18 +34,20 @@ const CardHtml = (id, img, price, title, rating, link, catalog, urlOrigin) => {
       <button class="card-button add-btn">В корзину</button>
     </div>
     <span class="card-like _icon-shape like"></span>
-    <div class="card-delete-wrapper">
-      <span class="card-delete">✖</span>
-    </div>
   </div>
   </div>`;
 }
-const RenderCardHtml = (where, card, urlOrigin) => {
+const RenderCardHtml = (where, card, urlOrigin, favourites = false) => {
   where.insertAdjacentHTML('beforeend', CardHtml(card.id, card.img, card.price, card.name, card.rating, card.link, card.catalog, urlOrigin));
 
   const cardID = document.querySelector(`[id = "${card.id}"]`);
   const cardDiscount = cardID.querySelector('.card-discount');
-
+  if (favourites) {
+    const _Card = cardID.querySelector('.card');
+    _Card.insertAdjacentHTML('beforeend', `<div class="card-delete-wrapper">
+    <span class="card-delete">✖</span>
+  </div>`)
+  }
   if (card.discount) cardDiscount.textContent = '-' + card.discount + '%';
   else cardDiscount.style.display = 'none';
   if (card.price_card) {

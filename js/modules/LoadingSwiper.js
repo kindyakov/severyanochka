@@ -1,5 +1,5 @@
-window.addEventListener('load', function () {
-  const indexSwiper = new Swiper('.index-swiper', {
+const LoadingSwiper = () => {
+  new Swiper('.index-swiper', {
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
@@ -31,4 +31,5 @@ window.addEventListener('load', function () {
       },
     }
   });
-});
+}
+export default LoadingSwiper;

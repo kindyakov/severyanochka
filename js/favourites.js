@@ -38,7 +38,7 @@ window.addEventListener('DOMContentLoaded', function () {
     .then(data => data.json())
     .then(data => GetAllCards({ product: data, productID: product, byId: true }))
     .then(data => {
-      if (product.length > 0) data.forEach(card => RenderCardHtml(favouritesProducts, card, urlOrigin))
+      if (product.length > 0) data.forEach(card => RenderCardHtml(favouritesProducts, card, urlOrigin, true))
       else {
         favouritesProducts.style.height = '100%';
         favouritesProducts.innerHTML = ErrorProducts();
