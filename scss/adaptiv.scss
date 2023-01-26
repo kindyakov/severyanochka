@@ -23,7 +23,8 @@
     font-size: calc(24px + (36 - 24) * ((100vw - 360px) / 840));
   }
 
-  .main-section {
+  .main-section,
+  ._slides-cards {
     margin-bottom: calc(60px + (120 - 60) * ((100vw - 360px) / 840));
   }
 

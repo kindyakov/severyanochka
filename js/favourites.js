@@ -1,4 +1,3 @@
-import GetCards from './modules/GetCards.js';
 import { urlOrigin } from './modules/Links.js';
 import { RenderCardHtml } from './modules/CardHtml.js';
 import { AddDisableCardBtn, AddDisableCardLike } from './modules/AddDisableClass.js';
@@ -37,7 +36,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   fetch('JSON/products.json')
     .then(data => data.json())
-    .then(data => GetAllCards(data, product))
+    .then(data => GetAllCards({ product: data, productID: product, byId: true }))
     .then(data => {
       if (product.length > 0) data.forEach(card => RenderCardHtml(favouritesProducts, card, urlOrigin))
       else {

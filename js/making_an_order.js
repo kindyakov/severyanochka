@@ -12,7 +12,6 @@ const productQuantity = document.querySelector('.main-title-quantity');
 if (JSON.parse(localStorage.getItem('quantityProducts')) !== null) {
   quantityProduct = JSON.parse(localStorage.getItem('quantityProducts'));
   productQuantity.textContent = quantityProduct.quan;
-
   makingOrders();
 } else {
   productQuantity.textContent = '0';

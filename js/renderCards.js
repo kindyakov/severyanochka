@@ -1,24 +1,14 @@
 import { urlOrigin } from './modules/Links.js';
-import { CardHtml, RenderCardHtml } from './modules/CardHtml.js';
 // import Request from './modules/request.js';
 import { AddDisableCardBtn, AddDisableCardLike } from './modules/AddDisableClass.js';
 import Rating from "./modules/Rating.js";
 import FeedbackHtml from './modules/FeedbackHtml.js';
 import CreateSliderCards from './modules/CreateSliderCards.js';
 import GetAllCards from './modules/GetAllCards.js';
+import CardsFromLS from "./modules/CardsFromLS.js";
 
 window.addEventListener('DOMContentLoaded', function () {
-  const catalog = ['milk-cheese-egg', 'frozen-foods', 'breed', 'baby-food', 'confectionery-products', 'drinks', 'fruits-vegetables', 'grocery', 'healthy-eating', 'meat-poultry-sausage', 'non-food-products', 'tea-coffee', 'pet-supplies'];
-  let cardBasketArray = [];
-  let cardFavouritesArray = [];
-
-  // Проверяю чтоб не было null
-  if (JSON.parse(localStorage.getItem('productsBasket')) !== null) {
-    cardBasketArray = JSON.parse(localStorage.getItem('productsBasket'));
-  }
-  if (JSON.parse(localStorage.getItem('productsFavourites')) !== null) {
-    cardFavouritesArray = JSON.parse(localStorage.getItem('productsFavourites'));
-  }
+  const [cardsBasket, cardsFavourites] = CardsFromLS();
 
   const title = document.querySelector('title'); // Заголовок страницы 
   const navigationLink = document.querySelectorAll('.main__navigation-link'); // Навигационная ссылка
@@ -38,6 +28,7 @@ window.addEventListener('DOMContentLoaded', function () {
   const gallery = document.querySelector('.gallery');
   const gallery__wrapper = document.querySelector('.gallery__wrapper-swiper');
 
+  const _slides_cards = document.querySelector('._slides-cards');
   const btnLike = document.querySelector('.products__header-icon._icon-shape');
 
   let gallerySwiper;
@@ -71,48 +62,14 @@ window.addEventListener('DOMContentLoaded', function () {
     }
     galleryActive();
 
-    // Request(urlOrigin).then(data => {
-    //   new CreateSliderCards({
-    //     insert: _slides_cards,
-    //     where: 'afterbegin',
-    //     title: 'Акции',
-    //     link: urlOrigin + '/discount.html',
-    //     linkText: 'Все акции',
-    //     className: 'new_action',
-    //     cards: GetAllCards(data),
-    //     urlOrigin: urlOrigin,
-    //   });
-    //   new CreateSliderCards({
-    //     insert: _slides_cards,
-    //     where: 'afterbegin',
-    //     title: 'Новинки',
-    //     link: urlOrigin + '/discount.html',
-    //     linkText: 'Все новинки',
-    //     className: 'new_products',
-    //     cards: GetAllCards(data),
-    //     urlOrigin: urlOrigin,
-    //   });
-    // })
-
-    AddDisableCardBtn(cardBasketArray);
-    AddDisableCardLike(cardFavouritesArray);
+    AddDisableCardBtn(cardsBasket);
+    AddDisableCardLike(cardsFavourites);
     renderFeedback(cardsData);
     setRating();
     Rating();
   };
   getData();
 
-  // Сохраняю все карточки
-  function allCard(data, id) {
-    let productsALL = [];
-    catalog.forEach(title => {
-      if (data[title]) {
-        productsALL = [...productsALL, ...data[title].cardData];
-      }
-    });
-    productsALL = productsALL.filter(card => card.id !== id && card.discount !== ''); // фильтрация масива чтоб не попала текущая карточкая
-    return productsALL;
-  }
   function renderPage(data) {
     title.textContent = data.name + ' | Купит в интернет-магазине Северяночка'; // Заголовок страницы 
     navigationLink[navigationLink.length - 1].textContent = data.name; // навигационная ссылка Заголовок страницы
@@ -254,25 +211,6 @@ window.addEventListener('DOMContentLoaded', function () {
           setRatingActiveWidth(ratingAtem.dataset.value);
         })
       });
-    }
-  }
-  function renderCardHtml(card, stocks) {
-    const content = stocks.querySelector('.swiper-wrapper');
-    content.insertAdjacentHTML('beforeend', CardHtml(card.id, card.img, card.price, card.name, card.rating, card.link, card.catalog, urlOrigin));
-
-    const cardID = document.querySelector(`[id = "${card.id}"]`);
-    cardID.classList.add('swiper-slide');
-
-    const cardDiscount = cardID.querySelector('.card-discount');
-    if (card.discount !== '') cardDiscount.textContent = '-' + card.discount + '%';
-    else cardDiscount.style.display = 'none';
-    if (card.price_card !== '') {
-      const cardWrapperPrice = cardID.querySelector('.card-wrapper-price');
-      cardWrapperPrice.insertAdjacentHTML('beforeend', `
-        <p class="card-price-text">
-          <span class="card-price__card card-price">${card.price_card}</span>
-          <i>С картой</i>
-        </p>`);
     }
   }
   document.addEventListener('keyup', closeGallery);

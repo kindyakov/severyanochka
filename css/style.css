@@ -1460,6 +1460,10 @@ body.lock {
   font-size: 24px;
 }
 
+._slides-cards {
+  margin-bottom: 120px;
+}
+
 .main-body {
   padding: 30px 0 80px 0;
 }
@@ -4001,7 +4005,8 @@ body.lock {
   .main-title {
     font-size: calc(24px + 12 * (100vw - 360px) / 840);
   }
-  .main-section {
+  .main-section,
+._slides-cards {
     margin-bottom: calc(60px + 60 * (100vw - 360px) / 840);
   }
   .main-promo__header {

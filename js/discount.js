@@ -1,11 +1,14 @@
 import { urlOrigin } from './modules/Links.js';
-import { CardHtml, RenderCardHtml } from './modules/CardHtml.js';
+import { RenderCardHtml } from './modules/CardHtml.js';
 import { AddDisableCardBtn, AddDisableCardLike } from './modules/AddDisableClass.js';
 import Rating from "./modules/Rating.js";
+import CardsFromLS from './modules/CardsFromLS.js';
 
 window.addEventListener('DOMContentLoaded', function () {
   const catalog = ['milk-cheese-egg', 'frozen-foods', 'breed', 'baby-food', 'confectionery-products', 'drinks', 'fruits-vegetables', 'grocery', 'healthy-eating', 'meat-poultry-sausage', 'non-food-products', 'tea-coffee', 'pet-supplies'];
   const content = document.querySelector('#discount-content');
+  
+  const [cardsBasket, cardsFavourites] = CardsFromLS();
 
   let cardBasketArray = [];
   let cardFavouritesArray = [];
@@ -22,6 +25,11 @@ window.addEventListener('DOMContentLoaded', function () {
     .then(data => data.json())
     .then(data => allCard(data))
     .then(cards => cards.forEach(card => RenderCardHtml(content, card, urlOrigin)))
+    .then(() => {
+      Rating();
+      AddDisableCardBtn(cardsBasket);
+      AddDisableCardLike(cardsFavourites);
+    })
     .catch(err => console.error(err))
 
   // Сохраняю все карточки

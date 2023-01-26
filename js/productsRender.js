@@ -3,11 +3,14 @@ import { RenderCardHtml } from './modules/CardHtml.js';
 import { AddDisableCardBtn, AddDisableCardLike } from './modules/AddDisableClass.js';
 import Rating from "./modules/Rating.js";
 import ErrorProducts from './modules/ErrorProducts.js';
+import CardsFromLS from "./modules/CardsFromLS.js";
+
 
 const products_container = document.querySelector('#products-container');
 const filters_products = document.querySelector('.filters-products');
 
 const products_containerDataset = products_container.dataset.products;
+const [cardsBasket, cardsFavourites] = CardsFromLS();
 
 let btnNore;
 let paginationList;
@@ -15,19 +18,10 @@ let modulePagination;
 let paginationItem;
 // Последняя карточка в массиве
 let lastCardID;
-let productsArrayLocalStorage = [];
 // блоки со стрелочками в пагинции
 let blockPrev, blockNext;
 // Пагинация duble 
 let duble_next, duble_prev;
-// Проверяю чтоб не было null
-if (JSON.parse(localStorage.getItem('productsBasket')) !== null) {
-  productsArrayLocalStorage = JSON.parse(localStorage.getItem('productsBasket'));
-}
-let cardFavouritesArrays = [];
-if (JSON.parse(localStorage.getItem('productsFavourites')) !== null) {
-  cardFavouritesArrays = JSON.parse(localStorage.getItem('productsFavourites'));
-}
 
 const products__footer = document.querySelector('.catalog-products__footer');
 if (products_container) {
@@ -49,8 +43,8 @@ if (products_container) {
     renderProducts(productsCards);
     renderFillters(productsFillters)
     Rating();
-    AddDisableCardBtn(productsArrayLocalStorage);
-    AddDisableCardLike(cardFavouritesArrays);
+    AddDisableCardBtn(cardsBasket);
+    AddDisableCardLike(cardsFavourites);
   }
   getProducts();
 
@@ -105,8 +99,8 @@ if (products_container) {
           // Для показа рейтинга
           Rating();
           // Добвляет класс disabled если карточка в корзине
-          AddDisableCardBtn(productsArrayLocalStorage);
-          AddDisableCardLike(cardFavouritesArrays);
+          AddDisableCardBtn(cardsBasket);
+          AddDisableCardLike(cardsFavourites);
           // Проверка что последняя карточка на странице
           if (paginationItem.length == paginationIndex) btnNore.classList.add('disable');
           else btnNore.classList.remove('disable');
@@ -154,8 +148,8 @@ if (products_container) {
             }
           }
           Rating();
-          AddDisableCardBtn(productsArrayLocalStorage);
-          AddDisableCardLike(cardFavouritesArrays);
+          AddDisableCardBtn(cardsBasket);
+          AddDisableCardLike(cardsFavourites);
           addClassPaginationBlock();
           let arrayCard = document.querySelectorAll('.wrapper-card');
           if (arrayCard[arrayCard.length - 1].getAttribute('id') === lastCardID.id) btnNore.classList.add('disable');
@@ -176,8 +170,8 @@ if (products_container) {
           // Вывод карточек
           visibleCard.forEach(card => RenderCardHtml(products_container, card, urlOrigin));
           Rating();
-          AddDisableCardBtn(productsArrayLocalStorage);
-          AddDisableCardLike(cardFavouritesArrays);
+          AddDisableCardBtn(cardsBasket);
+          AddDisableCardLike(cardsFavourites);
           // Pagination active
           paginationItem[paginationIndex--].classList.add('show');
 
@@ -196,8 +190,6 @@ if (products_container) {
     });
   }
 };
-
-Rating();
 
 function addClassPaginationBlock() {
   if (paginationItem[0].classList.contains('show')) blockPrev.classList.add('none');

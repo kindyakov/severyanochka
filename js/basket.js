@@ -23,7 +23,7 @@ if (JSON.parse(localStorage.getItem('productsBasket')) !== null) {
 }
 fetch('JSON/products.json')
   .then(data => data.json())
-  .then(data => GetAllCards(data, productID))
+  .then(data => GetAllCards({ product: data, productID: productID, byId: true }))
   .then(data => {
     if (productID.length > 0) {
       data.forEach((card, i) => {

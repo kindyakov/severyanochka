@@ -3,26 +3,21 @@ import CardHtml from './modules/CardHtml.js';
 import { AddDisableCardBtn, AddDisableCardLike } from './modules/AddDisableClass.js';
 import Rating from './modules/Rating.js';
 import GetAllCards from './modules/GetAllCards.js';
+import CardsFromLS from "./modules/CardsFromLS.js";
+
+
 
 window.addEventListener('DOMContentLoaded', function () {
   const content = document.querySelector('.search-result__content');
   const searchResult_value = document.querySelector('.search-result__value ');
   const searchResult_error = document.querySelector('.search-result__error');
+  const [cardsBasket, cardsFavourites] = CardsFromLS();
 
   let search_result = []
-  let cardBasketArray = [];
-  let cardFavouritesArray = [];
-
   if (JSON.parse(localStorage.getItem('search_result')) !== null) {
     search_result = JSON.parse(localStorage.getItem('search_result'));
   }
-  // Проверяю чтоб не было null
-  if (JSON.parse(localStorage.getItem('productsBasket')) !== null) {
-    cardBasketArray = JSON.parse(localStorage.getItem('productsBasket'));
-  }
-  if (JSON.parse(localStorage.getItem('productsFavourites')) !== null) {
-    cardFavouritesArray = JSON.parse(localStorage.getItem('productsFavourites'));
-  }
+
   searchResult_value.textContent = search_result.value;
   if (search_result.availability == false) {
     searchResult_error.style.display = 'inline';
@@ -51,7 +46,7 @@ window.addEventListener('DOMContentLoaded', function () {
         </p>`);
     }
     Rating();
-    AddDisableCardBtn(cardBasketArray);
-    AddDisableCardLike(cardFavouritesArray);
+    AddDisableCardBtn(cardsBasket);
+    AddDisableCardLike(cardsFavourites);
   }
 })

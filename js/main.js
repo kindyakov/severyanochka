@@ -3,6 +3,11 @@ import Request from "./modules/Request.js";
 import CreateSliderCards from "./modules/CreateSliderCards.js";
 import { urlOrigin } from "./modules/Links.js";
 import GetAllCards from "./modules/GetAllCards.js";
+import Rating from "./modules/Rating.js";
+import { AddDisableCardBtn, AddDisableCardLike } from "./modules/AddDisableClass.js";
+import CardsFromLS from "./modules/CardsFromLS.js";
+
+const [cardsBasket, cardsFavourites] = CardsFromLS();
 
 const catalogMenu = document.querySelector('.header-catalog');
 const wrapper = document.querySelector('.wrapper');
@@ -30,7 +35,7 @@ if (_slides_cards) {
       link: urlOrigin + '/discount.html',
       linkText: 'Все акции',
       className: 'new_action',
-      cards: GetAllCards(data),
+      cards: GetAllCards({ product: data, byDiscount: true }),
       urlOrigin: urlOrigin,
     });
     new CreateSliderCards({
@@ -40,9 +45,12 @@ if (_slides_cards) {
       link: urlOrigin + '/new-products.html',
       linkText: 'Все новинки',
       className: 'new_products',
-      cards: GetAllCards(data),
+      cards: GetAllCards({ product: data, random: true }),
       urlOrigin: urlOrigin,
     });
+    Rating();
+    AddDisableCardBtn(cardsBasket);
+    AddDisableCardLike(cardsFavourites);
   })
 }
 
