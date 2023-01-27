@@ -28,32 +28,44 @@ const footerLinks = document.querySelectorAll('.footer__menu-link');
 const btnUp = document.querySelector('.btn-up');
 //
 if (_slides_cards) {
-  Request(urlOrigin).then(data => {
-    new CreateSliderCards({
-      insert: _slides_cards,
-      where: 'afterbegin',
-      title: 'Акции',
-      link: urlOrigin + '/discount.html',
-      linkText: 'Все акции',
-      className: 'new_action',
-      cards: GetAllCards({ product: data, byDiscount: true }),
-      urlOrigin: urlOrigin,
+  Request(urlOrigin)
+    .then(data => {
+      new CreateSliderCards({
+        insert: _slides_cards,
+        where: 'afterbegin',
+        title: 'Покупали раньше',
+        link: urlOrigin + '/discount.html',
+        linkText: 'Все покупки',
+        className: 'bought',
+        cards: GetAllCards({ product: data, random: true }),
+        urlOrigin: urlOrigin,
+      });
+      new CreateSliderCards({
+        insert: _slides_cards,
+        where: 'afterbegin',
+        title: 'Акции',
+        link: urlOrigin + '/discount.html',
+        linkText: 'Все акции',
+        className: 'new_action',
+        cards: GetAllCards({ product: data, byDiscount: true }),
+        urlOrigin: urlOrigin,
+      });
+      new CreateSliderCards({
+        insert: _slides_cards,
+        where: 'afterbegin',
+        title: 'Новинки',
+        link: urlOrigin + '/new-products.html',
+        linkText: 'Все новинки',
+        className: 'new_products',
+        cards: GetAllCards({ product: data, random: true }),
+        urlOrigin: urlOrigin,
+      });
+    }).then(() => {
+      LoadingSwiper();
+      Rating();
+      AddDisableCardBtn(cardsBasket);
+      AddDisableCardLike(cardsFavourites);
     });
-    new CreateSliderCards({
-      insert: _slides_cards,
-      where: 'afterbegin',
-      title: 'Новинки',
-      link: urlOrigin + '/new-products.html',
-      linkText: 'Все новинки',
-      className: 'new_products',
-      cards: GetAllCards({ product: data, random: true }),
-      urlOrigin: urlOrigin,
-    });
-    LoadingSwiper();
-    Rating();
-    AddDisableCardBtn(cardsBasket);
-    AddDisableCardLike(cardsFavourites);
-  })
 }
 
 wrapper.addEventListener('mouseover', function (e) {
