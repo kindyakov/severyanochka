@@ -60,7 +60,7 @@ if (_slides_cards) {
         cards: GetAllCards({ product: data, random: true }),
         urlOrigin: urlOrigin,
       });
-    }).then(() => {
+    }).finally(() => {
       LoadingSwiper();
       Rating();
       AddDisableCardBtn(cardsBasket);
