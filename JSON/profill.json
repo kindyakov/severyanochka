@@ -1,3 +1,20 @@
 {
-  "users": []
+  "users": [
+    {
+      "phone": "+7 (908) 602-89-55",
+      "surname": "Киндяков",
+      "name": "Андрей",
+      "password": "12345",
+      "confirm-password": "12345",
+      "date": "30-08-2003",
+      "region": "Липецкая",
+      "city": "Липецк",
+      "genders": "Мужской",
+      "card": "",
+      "checkbox": "on",
+      "email": "kindyakov_2016@mail.ru",
+      "id": "657849296",
+      "dateRegistration": "10.02.2023 14:27:04"
+    }
+  ]
 }

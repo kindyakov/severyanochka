@@ -64,20 +64,23 @@ window.addEventListener('DOMContentLoaded', () => {
     obj['dateRegistration'] = `${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}`;
     if (error == 0) {
       postForm(obj)
-        .catch(err => alert(err));
-
-      activeModal = setInterval(timeActive, 1000);
-      modalSuccessful.classList.add('active');
     }
   });
   async function postForm(formData) {
-    let response = await fetch('http://localhost:3000/users', {
-      method: 'POST',
-      body: JSON.stringify(formData),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
+    try {
+      await fetch('http://localhost:3000/users', {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      activeModal = setInterval(timeActive, 1000);
+      modalSuccessful.classList.add('active');
+    } catch (e) {
+      alert(e, 'Ошибка! попробуйте позже');
+    }
   }
   function timeActive() {
     time++;
