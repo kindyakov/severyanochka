@@ -2,6 +2,7 @@ import { urlOrigin } from './modules/Links.js';
 import GetAllCards from './modules/GetAllCards.js';
 import CardBasketHtml from './modules/CardBasketHtml.js';
 import CardsFromLS from "./modules/CardsFromLS.js";
+import isAuth from './modules/hook/isAuth.js';
 
 const basket = document.querySelector('.basket');// Корзина
 const basket__content = document.querySelector('.basket__content');// Обертка карточек
@@ -177,6 +178,7 @@ const priceWithoutSpaces = (str) => {
 // Форма оформления заказы
 basketButton.addEventListener('click', function (e) {
   e.preventDefault();
+  // if (!isAuth) return; // Пользователь должен быть авторизован 
   if (priceResultSum > 1000) {
     let productsInfo = {
       price: 0,

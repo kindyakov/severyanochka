@@ -1,20 +1,17 @@
-@import "fonts.scss";
+@import 'fonts.scss';
 
 * {
   box-sizing: border-box;
-
-  &::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: #FBF8EC;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: #FF6633;
-    border-radius: 10px;
-  }
+}
+*::-webkit-scrollbar {
+  width: 8px;
+}
+*::-webkit-scrollbar-track {
+  background-color: #fbf8ec;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #ff6633;
+  border-radius: 10px;
 }
 
 button {
@@ -91,19 +88,17 @@ html {
   }
 }
 
-[class*="copyrights-pane"] {
+[class*='copyrights-pane'] {
   display: none !important;
 }
 
 body {
-  font-family: "Rubik";
+  font-family: 'Rubik';
   font-weight: normal;
   color: #414141;
   font-size: 16px;
   touch-action: none;
   -ms-touch-action: none;
-
-
 
   &.lock {
     overflow: hidden;
@@ -157,7 +152,6 @@ body {
 }
 
 .wrpper-catalog__button {
-
   display: flex;
   position: relative;
 
@@ -171,7 +165,7 @@ body {
 }
 
 .header-catalog__button {
-  background-color: #70C05B;
+  background-color: #70c05b;
   padding: 8px 12px 8px 12px;
   border-radius: 4px;
   cursor: pointer;
@@ -183,9 +177,8 @@ body {
   display: flex;
 
   &.active {
-    background-color: #FF6633;
+    background-color: #ff6633;
   }
-
 }
 
 // .header-catalog__span {}
@@ -235,18 +228,18 @@ body {
 
   .header-search__input {
     border-radius: 4px;
-    border: 1px solid #70C05B;
+    border: 1px solid #70c05b;
     padding: 8px 16px;
     font-size: 16px;
     color: #414141;
     background-color: transparent;
     width: 100%;
     min-width: 230px;
-    caret-color: #70C05B;
+    caret-color: #70c05b;
 
     &:focus {
       outline: auto;
-      outline-color: #70C05B;
+      outline-color: #70c05b;
     }
   }
 
@@ -258,7 +251,7 @@ body {
     font-size: 24px;
 
     &:hover {
-      color: #70C05B;
+      color: #70c05b;
     }
   }
 }
@@ -269,7 +262,7 @@ body {
   width: 100%;
   left: 0;
   top: 100%;
-  background-color: #FCD5BA;
+  background-color: #fcd5ba;
   padding: 6px 8px;
   border-radius: 4px;
   opacity: 0;
@@ -303,7 +296,7 @@ body {
 
   &:hover {
     .search_span {
-      color: #FF6633;
+      color: #ff6633;
     }
 
     .search_img {
@@ -349,8 +342,8 @@ body {
   transition: 0.2s;
 
   &:hover {
-    background-color: #FF6633;
-    color: #FBF8EC;
+    background-color: #ff6633;
+    color: #fbf8ec;
   }
 }
 
@@ -371,11 +364,11 @@ body {
 
   &.active {
     .icon {
-      color: #FF6633;
+      color: #ff6633;
     }
 
     .text {
-      color: #FF6633;
+      color: #ff6633;
     }
   }
 
@@ -399,11 +392,11 @@ body {
 
   &:hover {
     .icon {
-      color: #FF6633;
+      color: #ff6633;
     }
 
     .text {
-      color: #FF6633;
+      color: #ff6633;
     }
   }
 }
@@ -416,7 +409,7 @@ body {
     font-size: 8px;
     position: absolute;
     color: #fff;
-    background-color: #FF6633;
+    background-color: #ff6633;
     border-radius: 100%;
     width: 12px;
     height: 12px;
@@ -426,15 +419,13 @@ body {
   }
 }
 
-
-
 .header-profil {
   display: flex;
   align-items: center;
 
   &:hover {
     a {
-      color: #FF6633;
+      color: #ff6633;
     }
   }
 }
@@ -447,19 +438,19 @@ body {
 .profil-btn {
   display: flex;
   align-items: center;
-  background-color: #FF6633;
+  background-color: #ff6633;
   padding: 8px 12px;
   border-radius: 3px;
   cursor: pointer;
   transition: 0.2s;
 
   &:hover {
-    background-color: #FCD5BA;
-    color: #FF6633;
+    background-color: #fcd5ba;
+    color: #ff6633;
 
     .profile-enter,
     .profile-icon {
-      color: #FF6633;
+      color: #ff6633;
     }
   }
 }
@@ -495,7 +486,6 @@ body {
     top: 4px;
   }
 }
-
 
 .header-catalog {
   background-color: #fff;
@@ -535,7 +525,7 @@ body {
     transition: color 0.2s;
 
     &:hover {
-      color: #FF6633;
+      color: #ff6633;
     }
   }
 }
@@ -590,7 +580,7 @@ body {
   }
 
   &__label {
-    color: #8F8F8F;
+    color: #8f8f8f;
     font-size: 18px;
   }
 
@@ -599,13 +589,13 @@ body {
     font-size: 24px;
     color: #414141;
     padding: 12px 16px;
-    border: 1px solid #8F8F8F;
+    border: 1px solid #8f8f8f;
     border-radius: 4px;
-    caret-color: #70C05B;
+    caret-color: #70c05b;
     margin-bottom: 32px;
 
     &:focus {
-      border: 1px solid #70C05B;
+      border: 1px solid #70c05b;
     }
 
     &.error {
@@ -615,16 +605,16 @@ body {
 
   &__btn-log {
     font-size: 24px;
-    color: #FF6633;
+    color: #ff6633;
     padding: 16px 0;
-    background-color: #FCD5BA;
+    background-color: #fcd5ba;
     border-radius: 4px;
     transition: 0.2s;
     margin-bottom: 32px;
 
     &:hover {
-      color: #FCD5BA;
-      background-color: #FF6633;
+      color: #fcd5ba;
+      background-color: #ff6633;
     }
   }
 
@@ -635,7 +625,7 @@ body {
     width: 40px;
     height: 40px;
     cursor: pointer;
-    background-color: #F3F2F1;
+    background-color: #f3f2f1;
     border-radius: 4px;
     display: flex;
     align-items: center;
@@ -705,7 +695,6 @@ body {
     border-radius: 4px;
   }
 
-
   &__swiper {
     width: 800px;
     height: 700px;
@@ -744,7 +733,7 @@ body {
       height: 12px;
 
       &.swiper-pagination-bullet-active {
-        background-color: #FF6633;
+        background-color: #ff6633;
         transform: scale(1.2);
       }
     }
@@ -788,15 +777,15 @@ body {
   &__btn-registration {
     width: 50%;
     border-radius: 4px;
-    border: 1px solid #70C05B;
-    color: #70C05B;
+    border: 1px solid #70c05b;
+    color: #70c05b;
     padding: 6px 0;
     transition: 0.2s;
     text-align: center;
 
     &:hover {
-      border: 1px solid #FF6633;
-      color: #FF6633;
+      border: 1px solid #ff6633;
+      color: #ff6633;
     }
   }
 
@@ -805,7 +794,7 @@ body {
     margin-right: 8px;
 
     &:hover {
-      color: #FF6633;
+      color: #ff6633;
     }
   }
 }
@@ -881,7 +870,7 @@ body {
 // MAIN ----------------------------------------
 .main {
   flex: 1 1 auto;
-  background-color: #FBF8EC;
+  background-color: #fbf8ec;
 }
 
 .promotion {
@@ -947,7 +936,7 @@ body {
     }
 
     &:hover {
-      color: #FF6633;
+      color: #ff6633;
 
       &::before {
         right: 8px;
@@ -964,7 +953,7 @@ body {
 
 .swiper-button-next,
 .swiper-button-prev {
-  color: #FF6633;
+  color: #ff6633;
 }
 
 .swiper-button-next {
@@ -1030,7 +1019,7 @@ body {
 .card-discount {
   position: absolute;
   padding: 4px 8px;
-  background-color: #FF6633;
+  background-color: #ff6633;
   color: #fff;
   border-radius: 4px;
   bottom: 14px;
@@ -1074,7 +1063,7 @@ body {
   i {
     display: block;
     font-size: 12px;
-    color: #BFBFBF;
+    color: #bfbfbf;
   }
 }
 
@@ -1092,7 +1081,7 @@ body {
   font-size: 16px;
 
   &:hover {
-    color: #FF6633;
+    color: #ff6633;
   }
 }
 
@@ -1112,7 +1101,7 @@ body {
     align-items: flex-start;
 
     .card-rating__item {
-      color: #FF6633;
+      color: #ff6633;
     }
   }
 
@@ -1124,7 +1113,7 @@ body {
 
   &__item {
     font-size: 16px;
-    color: #BFBFBF;
+    color: #bfbfbf;
   }
 }
 
@@ -1132,21 +1121,19 @@ body {
   width: 100%;
   text-align: center;
   padding: 10px 0;
-  color: #70C05B;
+  color: #70c05b;
   border-radius: 4px;
-  border: 1px solid #70C05B;
+  border: 1px solid #70c05b;
   background-color: transparent;
   transition: 0.3s;
   font-size: 16px;
   // margin-top: auto;
 
   &:hover {
-    border: 1px solid #FF6633;
-    background-color: #FF6633;
+    border: 1px solid #ff6633;
+    background-color: #ff6633;
     color: #fff;
   }
-
-
 }
 
 .add-btn {
@@ -1176,18 +1163,17 @@ body {
 
   &:hover {
     &::before {
-      color: #FF6633;
+      color: #ff6633;
       font-weight: 700;
     }
   }
-
 }
 
 .like {
   cursor: pointer;
 
   &.disable {
-    color: #FF6633;
+    color: #ff6633;
 
     &::before {
       font-weight: 700;
@@ -1224,11 +1210,9 @@ body {
   border-radius: 4px;
 
   &:hover {
-    color: #FF6633;
+    color: #ff6633;
   }
 }
-
-
 
 .special-offer {
   // &__tiile {}
@@ -1249,11 +1233,11 @@ body {
   }
 
   &__block-1 {
-    background-color: #FCD5BA;
+    background-color: #fcd5ba;
   }
 
   &__block-2 {
-    background-color: #E5FFDE;
+    background-color: #e5ffde;
   }
 
   &__item {
@@ -1277,7 +1261,6 @@ body {
   // &__item-text {}
   &__item-block-2 {
     position: relative;
-
   }
 }
 
@@ -1358,11 +1341,11 @@ body {
     transition: border 0.2s;
 
     &:hover {
-      border: 1px solid #70C05B;
+      border: 1px solid #70c05b;
     }
 
     &.active {
-      background-color: #70C05B;
+      background-color: #70c05b;
       color: #fff;
     }
   }
@@ -1429,7 +1412,7 @@ body {
   }
 
   &__data {
-    color: #8F8F8F;
+    color: #8f8f8f;
     font-size: 12px;
   }
 
@@ -1443,8 +1426,8 @@ body {
   }
 
   &__block-link {
-    background-color: #E5FFDE;
-    color: #70C05B;
+    background-color: #e5ffde;
+    color: #70c05b;
     border-radius: 4px;
     padding: 8px 16px;
     display: inline-block;
@@ -1452,7 +1435,7 @@ body {
     margin-top: 10px;
 
     &:hover {
-      background-color: #70C05B;
+      background-color: #70c05b;
       color: #fff;
     }
   }
@@ -1500,11 +1483,11 @@ body {
     transition: color 0.2s;
 
     &:hover {
-      color: #FF6633;
+      color: #ff6633;
     }
 
     &.active {
-      color: #FF6633;
+      color: #ff6633;
     }
   }
 
@@ -1543,7 +1526,7 @@ body {
     white-space: nowrap;
 
     &:hover {
-      color: #FF6633;
+      color: #ff6633;
     }
 
     &::before {
@@ -1559,7 +1542,7 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #FF6633;
+  background-color: #ff6633;
   color: #fff;
   font-size: 26px;
   text-align: center;
@@ -1586,7 +1569,7 @@ body {
 
   // &__respons {}
   &__value {
-    color: #FF6633;
+    color: #ff6633;
   }
 
   &__error {
@@ -1604,8 +1587,8 @@ body {
 }
 
 .search-mark {
-  background-color: #FF6633;
-  color: #FBF8EC;
+  background-color: #ff6633;
+  color: #fbf8ec;
 }
 
 .search-result-span {
@@ -1616,14 +1599,14 @@ body {
   margin-bottom: 120px;
 }
 
-@import "catalog.scss";
-@import "product-groups.scss";
-@import "basket.scss";
-@import "about.scss";
-@import "contacts.scss";
-@import "openings.scss";
-@import "artickes.scss";
-@import "cards_products.scss";
-@import "registration.scss";
-@import "account.scss";
-@import "adaptiv.scss";
+@import 'catalog.scss';
+@import 'product-groups.scss';
+@import 'basket.scss';
+@import 'about.scss';
+@import 'contacts.scss';
+@import 'openings.scss';
+@import 'artickes.scss';
+@import 'cards_products.scss';
+@import 'registration.scss';
+@import 'account.scss';
+@import 'adaptiv.scss';

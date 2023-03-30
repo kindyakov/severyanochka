@@ -26,7 +26,6 @@ window.addEventListener('DOMContentLoaded', function () {
 
   const gallery__swiper = document.querySelector('.gallery__swiper');
   const gallery = document.querySelector('.gallery');
-  const gallery__wrapper = document.querySelector('.gallery__wrapper-swiper');
 
   const _slides_cards = document.querySelector('._slides-cards');
   const btnLike = document.querySelector('.products__header-icon._icon-shape');
@@ -112,10 +111,12 @@ window.addEventListener('DOMContentLoaded', function () {
   </tr>`;
   }
   function renderGallery(imeg, title) {
+    const gallery__wrapper = document.querySelector('.gallery__wrapper-swiper');
     imeg.forEach(img => gallery__wrapper.insertAdjacentHTML('beforeend', `
     <div class="gallery__swiper-slide swiper-slide">
       <img src="../../img/img-card/${img}" alt="${title}">
     </div>`));
+
     gallerySwiper = new Swiper(gallery__swiper, {
       navigation: {
         nextEl: '.gallery-button-next',
@@ -151,6 +152,7 @@ window.addEventListener('DOMContentLoaded', function () {
     if (gallery.classList.contains('active')) {
       if (e.keyCode === 27) removeClass();
       if (e.target.closest('.gallery__close')) removeClass();
+      if (e.target.classList.contains('gallery__body')) removeClass();
     }
   }
   function removeClass() {

@@ -1,6 +1,6 @@
-const modalLogin = document.querySelector('.modal-login');
+import Modal from "./modules/modal.js";
+
 const inputLogin = document.querySelector('.modal-login__input');
-const profilBtn = document.querySelector('.header-profil');
 const wrapper = document.querySelector('.wrapper');
 let profile = {};
 // Modal 
@@ -11,30 +11,36 @@ let patterns = {
   phone: /(^[7|8]{0,1}\d{10}$)|(^\+7{1}\d{10}$)/,
 }
 
-profilBtn.addEventListener('click', function () {
-  const document_width = document.documentElement.clientWidth;
-  const window_width = window.innerWidth;
-  const wrapper_margin = window_width - document_width;
+// if (!patterns.phone.test(inputLogin.value)) {
+//   e.preventDefault();
+//   inputLogin.classList.add('error');
+// }
+// inputLogin.addEventListener('input', () => inputLogin.classList.remove('error'));
 
-  if (wrapper_margin > 0) wrapper.style.cssText = `padding-right: ${wrapper_margin}px;`;
+const options = {
+  speed: 400,
+  btnActive: '.profil-btn',
+  name: '.modal-login',
+  btnClose: '.modal-login__close',
+  closeArea: 'modal-login__body',
+  insertHTML: wrapper,
+  html: `<div class="modal-login" >
+        <div class="modal-login__body">
+          <div class="modal-login__content">
+            <h3 class="modal-login__title">Вход</h3>
+            <form action="#" class="modal-login__form">
+              <label class="modal-login__label">Телефон</label>
+              <input type="tel" name="phone" class="modal-login__input">
+                <button class="modal-login__btn-log">Вход</button>
+                <div class="form-footer">
+                  <a href="registration.html" class="form-footer__btn-registration">Регистрация</a>
+                  <button class="form-footer__forgot-pass">Забыли пароль?</button>
+                </div>
+            </form>
+            <div class="modal-login__close"></div>
+          </div>
+        </div>
+    </div>`,
+}
 
-  modalLogin.classList.add('active');
-  document.body.classList.add('lock');
-  document.querySelector('html').classList.add('lock');
-})
-
-modalLogin.addEventListener('click', function (e) {
-  if (e.target.classList.contains('modal-login__body') || e.target.classList.contains('modal-login__close')) {
-    wrapper.style.cssText = ``;
-    modalLogin.classList.remove('active');
-    document.body.classList.remove('lock');
-    document.querySelector('html').classList.remove('lock');
-  } else if (e.target.classList.contains('modal-login__btn-log')) {
-    if (!patterns.phone.test(inputLogin.value)) {
-      e.preventDefault();
-      inputLogin.classList.add('error');
-    }
-  }
-})
-
-inputLogin.addEventListener('input', () => inputLogin.classList.remove('error'));
+const modal = new Modal(options)
