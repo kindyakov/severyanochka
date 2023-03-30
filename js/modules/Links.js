@@ -1,5 +1,5 @@
-// const urlOrigin = window.location.origin + '/severyanochka';
-const urlOrigin = window.location.origin;
+const urlOrigin = window.location.origin + '/severyanochka';
+// const urlOrigin = window.location.origin;
 const urlJson = urlOrigin + '/JSON';
 const urlJsonProducts = urlJson + '/products.json';
 const urlImg = urlOrigin + '/img';
