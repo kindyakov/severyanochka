@@ -3942,7 +3942,7 @@ body.lock {
     font-size: calc(8px + 8 * (100vw - 768px) / 432);
   }
   .main-wrapper {
-    padding: calc(40px + 40 * (100vw - 360px) / 840);
+    padding: calc(40px + 40 * (100vw - 360px) / 840) 0;
   }
   .promotion {
     height: calc(80px + 120 * (100vw - 360px) / 840);
@@ -4527,7 +4527,7 @@ body.lock {
     right: 45%;
     border-right: 0 solid transparent;
     border-left: 40px solid transparent;
-    border-bottom: 40px solid #E5FFDE;
+    border-bottom: 40px solid #e5ffde;
   }
   .openings__content {
     grid-template-columns: repeat(1, 1fr);

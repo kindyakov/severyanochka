@@ -8,7 +8,7 @@
   }
 
   .main-wrapper {
-    padding: calc(40px + (80 - 40) * ((100vw - 360px) / 840));
+    padding: calc(40px + (80 - 40) * ((100vw - 360px) / 840)) 0;
   }
 
   .promotion {
@@ -59,7 +59,8 @@
 
   .special-offer {
     &__block {
-      padding: calc(20px + (30 - 20) * ((100vw - 360px) / 840)) calc(20px + (40 - 20) * ((100vw - 360px) / 840));
+      padding: calc(20px + (30 - 20) * ((100vw - 360px) / 840))
+        calc(20px + (40 - 20) * ((100vw - 360px) / 840));
     }
 
     &__item-title {
@@ -123,8 +124,8 @@
   }
 
   .main-body {
-    padding: calc(10px + (30 - 10) * ((100vw - 360px) / 840)) 0 calc(30px + (80 - 30) * ((100vw - 360px) / 840)) 0;
-    ;
+    padding: calc(10px + (30 - 10) * ((100vw - 360px) / 840)) 0
+      calc(30px + (80 - 30) * ((100vw - 360px) / 840)) 0;
   }
 
   .main__title-catalog {
@@ -216,7 +217,7 @@
     }
 
     &__card-title {
-      font-size: calc(20px + (24 - 20) * ((100vw - 360px) / 840))
+      font-size: calc(20px + (24 - 20) * ((100vw - 360px) / 840));
     }
 
     &__card-text {
@@ -233,7 +234,6 @@
   }
 
   .article {
-
     &__nav {
       margin-top: 60px;
     }
@@ -256,7 +256,6 @@
 
     &__aside-button {
       font-size: calc(16px + (24 - 16) * ((100vw - 360px) / 840));
-
     }
 
     &__delivery-row {
@@ -420,7 +419,6 @@
   }
 
   .main {
-
     &__catalog {
       grid-template-columns: repeat(3, 1fr);
     }
@@ -606,7 +604,6 @@
   }
 
   .special-offer {
-
     &__item-title {
       font-size: 18px;
     }
@@ -614,7 +611,6 @@
     &__item-text {
       font-size: 12px;
     }
-
   }
 
   .article {
@@ -624,7 +620,6 @@
   }
 
   .main {
-
     &__catalog {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -799,7 +794,7 @@
         right: 45%;
         border-right: 0 solid transparent;
         border-left: 40px solid transparent;
-        border-bottom: 40px solid #E5FFDE;
+        border-bottom: 40px solid #e5ffde;
       }
     }
   }
@@ -880,9 +875,7 @@
 }
 
 // @media (max-width: 360px) {}
-@media (max-width: 1024.98px),
-(max-height: 599.98px) {
-
+@media (max-width: 1024.98px), (max-height: 599.98px) {
   .gallery__swiper,
   .gallery__swiper-slide {
     height: 460px;
@@ -890,7 +883,6 @@
 }
 
 @media (max-height: 440px) {
-
   .gallery__swiper,
   .gallery__swiper-slide {
     height: 300px;
@@ -898,7 +890,6 @@
 }
 
 @media (max-height: 320.98px) {
-
   .gallery__swiper,
   .gallery__swiper-slide {
     height: 260px;
